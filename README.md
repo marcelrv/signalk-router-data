@@ -12,10 +12,7 @@ Databases are stored as `.sqlite.gz` (gzip-compressed) to reduce download size. 
 
 ## Available Regions
 
-Full machine-readable catalog: [index.json](index.json)
-
-| File | Country | Name | Nodes | Edges | POIs | Updated | Tags |
-|------|---------|------|-------|-------|------|---------|------|
+Full machine-readable catalog with all available databases: [index.json](index.json)
 
 ## Quick Start
 
