@@ -234,7 +234,7 @@ def generate_index(regions_dir: str) -> list:
 
 
 def render_coverage_map(entries: list, output_path: str):
-    """Render a world map showing coverage polygons for each region."""
+    """Render a coverage map with automatic zoom to the data extent."""
     try:
         import matplotlib
         matplotlib.use("Agg")
@@ -257,6 +257,34 @@ def render_coverage_map(entries: list, output_path: str):
         print("  [SKIP] coverage map — no entries", file=sys.stderr)
         return
 
+    # Compute combined bounds of all entries
+    min_lons, max_lons, min_lats, max_lats = [], [], [], []
+    for entry in entries:
+        bbox = entry.get("bounding_box")
+        if bbox:
+            min_lons.append(bbox["min_lon"])
+            max_lons.append(bbox["max_lon"])
+            min_lats.append(bbox["min_lat"])
+            max_lats.append(bbox["max_lat"])
+
+    if min_lons:
+        world_min_lon = min(min_lons)
+        world_max_lon = max(max_lons)
+        world_min_lat = min(min_lats)
+        world_max_lat = max(max_lats)
+    else:
+        world_min_lon, world_max_lon = -180, 180
+        world_min_lat, world_max_lat = -90, 90
+
+    lon_span = world_max_lon - world_min_lon
+    lat_span = world_max_lat - world_min_lat
+
+    # Add margin — at least 2°, otherwise 20% of span
+    margin_lon = max(2.0, lon_span * 0.2)
+    margin_lat = max(2.0, lat_span * 0.2)
+
+    show_global = (lon_span > 120 or lat_span > 60)
+
     colors = [
         "#3b8fd4", "#22c55e", "#f59e0b", "#ef4444", "#8b5cf6",
         "#14b8a6", "#ec4899", "#f97316", "#06b6d4", "#a855f7",
@@ -265,7 +293,15 @@ def render_coverage_map(entries: list, output_path: str):
 
     if USE_CARTOPY:
         fig, ax = plt.subplots(figsize=(14, 8), subplot_kw={"projection": ccrs.PlateCarree()})
-        ax.set_global()
+        if show_global:
+            ax.set_global()
+        else:
+            ax.set_extent([
+                world_min_lon - margin_lon,
+                world_max_lon + margin_lon,
+                world_min_lat - margin_lat,
+                world_max_lat + margin_lat,
+            ], crs=ccrs.PlateCarree())
         ax.add_feature(cfeature.LAND, color="#e8e8e8", edgecolor="#cccccc", linewidth=0.3)
         ax.add_feature(cfeature.OCEAN, color="#f8f8f8")
         ax.add_feature(cfeature.COASTLINE, linewidth=0.4, edgecolor="#999999")
@@ -331,14 +367,17 @@ def render_coverage_map(entries: list, output_path: str):
         ax.legend(handles=legend_patches, loc="lower left", framealpha=0.85,
                   fontsize=8, ncol=2)
 
-    if USE_CARTOPY:
-        ax.set_title("SignalK Routing Data — Coverage", fontsize=14, pad=16)
-    else:
-        ax.set_xlim(-180, 180)
-        ax.set_ylim(-90, 90)
+    ax.set_title("SignalK Routing Data — Coverage", fontsize=14, pad=16)
+
+    if not USE_CARTOPY:
+        if show_global:
+            ax.set_xlim(-180, 180)
+            ax.set_ylim(-90, 90)
+        else:
+            ax.set_xlim(world_min_lon - margin_lon, world_max_lon + margin_lon)
+            ax.set_ylim(world_min_lat - margin_lat, world_max_lat + margin_lat)
         ax.set_xlabel("Longitude")
         ax.set_ylabel("Latitude")
-        ax.set_title("SignalK Routing Data — Coverage", fontsize=14, pad=16)
         ax.grid(True, alpha=0.3)
 
     plt.tight_layout()

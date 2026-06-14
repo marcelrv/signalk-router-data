@@ -2,7 +2,7 @@
 
 [![Generate Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-index.yml)
 
-Pre-compiled nautical routing graphs for the [SignalK Autoroute route planner](https://github.com/marcelrv/signalk-autoroute). These `.sqlite` databases contain all the nodes, edges, and POIs needed for offline, vessel-aware route planning.
+Pre-compiled nautical routing graphs for the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute). These `.sqlite` databases contain all the nodes, edges, and POIs needed for offline, vessel-aware route planning.
 
 Databases are stored as `.sqlite.gz` (gzip-compressed) to reduce download size. The plugin's download dialog handles decompression automatically.
 
@@ -19,7 +19,7 @@ Full machine-readable catalog: [index.json](index.json)
 
 ## Quick Start
 
-1. Install the [SignalK Autoroute route planner](https://github.com/marcelrv/signalk-autoroute)
+1. Install the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute)
 2. Set `routingDataDir` in the plugin config to a directory on your server
 3. Download the `.sqlite.gz` file(s) for your region(s) from [the regions folder](regions/) or use the plugin's built-in "Manage Routing Data" dialog
 4. The plugin automatically decompresses `.sqlite.gz` files on download — just use the dialog
@@ -37,4 +37,4 @@ Each database file may have its own licensing terms as documented in the `metada
 
 ---
 
-*Maintained by the SignalK Autoroute community.*
+*Maintained by the SignalK Autoroute Nautical Route Planner community.*

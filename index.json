@@ -1,6 +1,137 @@
 {
   "version": 2,
-  "generated": "2026-06-14T00:00:00Z",
-  "region_count": 0,
-  "regions": []
+  "generated": "2026-06-14T20:22:56Z",
+  "region_count": 1,
+  "regions": [
+    {
+      "id": "europe_nl_netherlands",
+      "file": "regions/europe/nl/netherlands.sqlite.gz",
+      "inner_filename": "netherlands.sqlite",
+      "sha256": "03487e73e71aac2ab842a2c2a69e444e1b969dff57dcb4097f2ab0e3d4a20808",
+      "size_bytes": 15218364,
+      "compression": "gzip",
+      "country": "NL",
+      "name": "Netherlands",
+      "description": "Dutch waterways: inland centerlines and coastal waters",
+      "last_update": "2026-06-14T20:06:24Z",
+      "schema_version": 2,
+      "tags": [
+        "official",
+        "rws",
+        "enc",
+        "inland",
+        "coastal"
+      ],
+      "contributor": "marcelrv",
+      "url": "https://example.com/source",
+      "bounding_box": {
+        "min_lat": 50.7605,
+        "min_lon": 3.13833,
+        "max_lat": 53.35,
+        "max_lon": 7.14
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              5.68133,
+              50.7605
+            ],
+            [
+              3.8024,
+              51.21042
+            ],
+            [
+              3.36633,
+              51.3705
+            ],
+            [
+              3.13833,
+              51.5225
+            ],
+            [
+              3.13833,
+              51.8225
+            ],
+            [
+              5.04145,
+              52.93437
+            ],
+            [
+              5.27633,
+              53.0565
+            ],
+            [
+              5.28033,
+              53.0585
+            ],
+            [
+              5.29833,
+              53.0675
+            ],
+            [
+              5.37183,
+              53.088
+            ],
+            [
+              5.94633,
+              53.2475
+            ],
+            [
+              6.62333,
+              53.3325
+            ],
+            [
+              6.86433,
+              53.3495
+            ],
+            [
+              6.90984,
+              53.35
+            ],
+            [
+              6.98961,
+              53.35
+            ],
+            [
+              7.14,
+              53.33645
+            ],
+            [
+              7.14,
+              53.3147
+            ],
+            [
+              7.13883,
+              53.251
+            ],
+            [
+              6.86183,
+              52.22176
+            ],
+            [
+              5.69833,
+              50.7755
+            ],
+            [
+              5.68333,
+              50.7605
+            ],
+            [
+              5.68133,
+              50.7605
+            ]
+          ]
+        ]
+      },
+      "stats": {
+        "nodes": 136612,
+        "edges": 528462,
+        "pois": 3858,
+        "coastal_nodes": 97326,
+        "inland_nodes": 39286
+      }
+    }
+  ]
 }

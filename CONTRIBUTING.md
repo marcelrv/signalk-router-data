@@ -1,6 +1,6 @@
 # Contributing to SignalK Routing Data
 
-Thank you for contributing routing data! This repository hosts pre-compiled nautical routing graphs used by the [SignalK Autoroute route planner](https://github.com/marcelrv/signalk-autoroute).
+Thank you for contributing routing data! This repository hosts pre-compiled nautical routing graphs used by the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute).
 
 ## Database Format
 
