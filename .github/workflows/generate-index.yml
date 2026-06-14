@@ -1,0 +1,36 @@
+name: Generate Index & Coverage Map
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'regions/**/*.sqlite.gz'
+      - 'regions/**/*.sqlite'
+      - 'scripts/generate_index.py'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: 'scripts/requirements-index.txt'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libproj-dev libgeos-dev
+          pip install -r scripts/requirements-index.txt
+
+      - name: Generate index.json and coverage-map.png
+        run: python scripts/generate_index.py --regions-dir ./regions --output-dir .
+
+      - name: Commit updates
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-update index.json and coverage map"
+          file_pattern: index.json coverage-map.png

@@ -1,0 +1,5 @@
+# Dependencies for generate_index.py
+# pip install -r requirements-index.txt
+matplotlib>=3.5
+cartopy>=0.21
+shapely>=2.0
