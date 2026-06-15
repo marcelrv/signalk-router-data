@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "generated": "2026-06-15T08:14:32Z",
+  "generated": "2026-06-15T19:11:34Z",
   "region_count": 1,
   "regions": [
     {
       "id": "europe_nl_netherlands",
       "file": "regions/europe/nl/netherlands.sqlite.gz",
       "inner_filename": "netherlands.sqlite",
-      "sha256": "b75f65614d06d26dbf5445faeba76a84e79e20d2a0f3530d00a2bde6733056e1",
-      "size_bytes": 9686429,
+      "sha256": "1581a505bdae600f2c526c17da9e19886cf568a086aa6647ad838531825ecfcf",
+      "size_bytes": 9689228,
       "compression": "gzip",
       "country": "NL",
       "name": "Netherlands",
       "description": "Dutch inland waterways and coastal waters",
-      "last_update": "2026-06-15T07:39:59Z",
+      "last_update": "2026-06-15T08:48:13Z",
       "schema_version": 3,
       "tags": [
         "official",
@@ -126,10 +126,10 @@
         ]
       },
       "stats": {
-        "nodes": 77306,
-        "edges": 411907,
+        "nodes": 77328,
+        "edges": 411981,
         "pois": 1970,
-        "coastal_nodes": 74426,
+        "coastal_nodes": 74448,
         "inland_nodes": 2880
       }
     }
