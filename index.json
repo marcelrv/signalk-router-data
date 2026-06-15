@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "generated": "2026-06-14T20:36:29Z",
+  "generated": "2026-06-15T08:07:40Z",
   "region_count": 1,
   "regions": [
     {
       "id": "europe_nl_netherlands",
       "file": "regions/europe/nl/netherlands.sqlite.gz",
       "inner_filename": "netherlands.sqlite",
-      "sha256": "03487e73e71aac2ab842a2c2a69e444e1b969dff57dcb4097f2ab0e3d4a20808",
-      "size_bytes": 15218364,
+      "sha256": "b75f65614d06d26dbf5445faeba76a84e79e20d2a0f3530d00a2bde6733056e1",
+      "size_bytes": 9686429,
       "compression": "gzip",
       "country": "NL",
       "name": "Netherlands",
-      "description": "Dutch waterways: inland centerlines and coastal waters",
-      "last_update": "2026-06-14T20:06:24Z",
-      "schema_version": 2,
+      "description": "Dutch inland waterways and coastal waters",
+      "last_update": "2026-06-15T07:39:59Z",
+      "schema_version": 3,
       "tags": [
         "official",
         "rws",
@@ -25,112 +25,112 @@
       "contributor": "marcelrv",
       "url": "https://example.com/source",
       "bounding_box": {
-        "min_lat": 50.7605,
+        "min_lat": 51.21042,
         "min_lon": 3.13833,
-        "max_lat": 53.35,
-        "max_lon": 7.14
+        "max_lat": 53.58333,
+        "max_lon": 7.21533
       },
       "boundary_geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              5.68133,
-              50.7605
-            ],
-            [
               3.8024,
               51.21042
             ],
             [
-              3.36633,
-              51.3705
+              3.36233,
+              51.37413
+            ],
+            [
+              3.14333,
+              51.52013
             ],
             [
               3.13833,
-              51.5225
+              51.52513
             ],
             [
               3.13833,
-              51.8225
+              51.82013
             ],
             [
-              5.04145,
-              52.93437
+              4.66833,
+              53.33013
             ],
             [
-              5.27633,
-              53.0565
+              5.00333,
+              53.44513
             ],
             [
-              5.28033,
-              53.0585
+              5.33833,
+              53.51513
             ],
             [
-              5.29833,
-              53.0675
+              5.66833,
+              53.54513
             ],
             [
-              5.37183,
-              53.088
+              6.41833,
+              53.58013
             ],
             [
-              5.94633,
-              53.2475
+              6.62066,
+              53.58333
             ],
             [
-              6.62333,
-              53.3325
+              6.75833,
+              53.58013
             ],
             [
-              6.86433,
-              53.3495
+              6.86333,
+              53.56513
             ],
             [
-              6.90984,
-              53.35
+              7.02333,
+              53.49513
             ],
             [
-              6.98961,
-              53.35
+              7.21383,
+              53.33063
             ],
             [
-              7.14,
-              53.33645
+              7.21533,
+              53.32713
             ],
             [
-              7.14,
-              53.3147
+              7.21533,
+              53.25413
             ],
             [
-              7.13883,
-              53.251
+              7.21383,
+              53.24863
             ],
             [
-              6.86183,
-              52.22176
+              7.20383,
+              53.23863
             ],
             [
-              5.69833,
-              50.7755
+              4.94413,
+              51.69968
             ],
             [
-              5.68333,
-              50.7605
+              4.21733,
+              51.33413
             ],
             [
-              5.68133,
-              50.7605
+              3.8024,
+              51.21042
             ]
           ]
         ]
       },
       "stats": {
-        "nodes": 136612,
-        "edges": 528462,
-        "pois": 3858,
-        "coastal_nodes": 97326,
-        "inland_nodes": 39286
+        "nodes": 77306,
+        "edges": 411907,
+        "pois": 1970,
+        "coastal_nodes": 74426,
+        "inland_nodes": 2880
       }
     }
   ]
