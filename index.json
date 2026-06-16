@@ -1,29 +1,28 @@
 {
   "version": 2,
-  "generated": "2026-06-15T19:11:34Z",
+  "generated": "2026-06-16T10:47:29Z",
   "region_count": 1,
   "regions": [
     {
       "id": "europe_nl_netherlands",
       "file": "regions/europe/nl/netherlands.sqlite.gz",
       "inner_filename": "netherlands.sqlite",
-      "sha256": "1581a505bdae600f2c526c17da9e19886cf568a086aa6647ad838531825ecfcf",
-      "size_bytes": 9689228,
+      "sha256": "567abb95960800bfe223534f47793fc4baecf3119cd81df22552c2e1beb00854",
+      "size_bytes": 9746551,
       "compression": "gzip",
       "country": "NL",
       "name": "Netherlands",
-      "description": "Dutch inland waterways and coastal waters",
-      "last_update": "2026-06-15T08:48:13Z",
+      "description": "Dutch inland waterways and coastal waters based on ENCs",
+      "last_update": "2026-06-16T10:42:05Z",
       "schema_version": 3,
       "tags": [
-        "official",
         "rws",
         "enc",
         "inland",
         "coastal"
       ],
-      "contributor": "marcelrv",
-      "url": "https://example.com/source",
+      "contributor": "Marcel Verpaalen",
+      "url": "https://github.com/marcelrv/signalk-router-data",
       "bounding_box": {
         "min_lat": 51.21042,
         "min_lon": 3.13833,
@@ -127,7 +126,7 @@
       },
       "stats": {
         "nodes": 77328,
-        "edges": 411981,
+        "edges": 413249,
         "pois": 1970,
         "coastal_nodes": 74448,
         "inland_nodes": 2880
