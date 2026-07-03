@@ -1,7 +1,7 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-03T10:39:47Z",
+  "generated": "2026-07-03T16:08:22Z",
   "source_count": 2,
   "sources": [
     {
@@ -60,7 +60,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-03T10:39:47Z",
+        "last_checked": "2026-07-03T16:08:21Z",
         "latest_cycle": "2026-07-03T00:00:00Z"
       },
       "files": [
@@ -975,25 +975,25 @@
       "name": "OpenCPN XTide Harmonics",
       "description": "Global tidal harmonic constituents for current stations from OpenCPN/XTide (excludes US mainland)",
       "contributor": "OpenCPN",
-        "url": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
-        "tags": [
-          "harmonic",
-          "global",
-          "station-based",
-          "community",
-          "opencpn",
-          "xtide",
-          "static"
-        ],
-        "region": {
-          "name": "Global (non-US stations)",
-          "bounding_box": {
-            "min_lat": -90,
-            "min_lon": -180,
-            "max_lat": 90,
-            "max_lon": 180
-          },
-          "boundary_geometry": {
+      "url": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
+      "tags": [
+        "harmonic",
+        "global",
+        "station-based",
+        "community",
+        "opencpn",
+        "xtide",
+        "static"
+      ],
+      "region": {
+        "name": "Global (non-US stations)",
+        "bounding_box": {
+          "min_lat": -90,
+          "min_lon": -180,
+          "max_lat": 90,
+          "max_lon": 180
+        },
+        "boundary_geometry": {
           "type": "Polygon",
           "coordinates": [
             [
@@ -1023,7 +1023,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-03T10:39:47Z"
+        "last_checked": "2026-07-03T16:08:22Z"
       },
       "files": [
         {
