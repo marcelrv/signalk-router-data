@@ -1,0 +1,77 @@
+{
+  "regions": {
+    "north_sea": {
+      "title": "North Sea Tidal Heights, Currents & Diamonds",
+      "bbox": [-4.0, 50.5, 10.0, 61.5],
+      "stations": [
+        {
+          "id": "NL_PORT_VLI",
+          "name": "Vlissingen (Reference Port)",
+          "lat": 51.4422,
+          "lon": 3.5681,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 1.95
+        },
+        {
+          "id": "UK_PORT_DOV",
+          "name": "Dover (Reference Port)",
+          "lat": 51.1197,
+          "lon": 1.3283,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 3.40
+        },
+        {
+          "id": "NS_GERMAN_BIGHT",
+          "name": "Central German Bight",
+          "lat": 54.2000,
+          "lon": 7.5000,
+          "prediction_method": "harmonic_constituents_currents"
+        },
+        {
+          "id": "NS_DOGGER_BANK",
+          "name": "Dogger Bank South",
+          "lat": 54.8000,
+          "lon": 2.2000,
+          "prediction_method": "harmonic_constituents_currents"
+        },
+        {
+          "id": "NS_DIAMOND_VLI_01",
+          "name": "Roompot Outside Approach (Synced to Vlissingen)",
+          "lat": 51.6531,
+          "lon": 3.6843,
+          "prediction_method": "relative_time_offset",
+          "reference_port": "NL_PORT_VLI"
+        }
+      ]
+    },
+    "english_channel": {
+      "title": "English Channel Tidal Heights & Currents",
+      "bbox": [-6.0, 48.5, 2.0, 51.5],
+      "stations": [
+        {
+          "id": "FR_PORT_CHE",
+          "name": "Cherbourg (Reference Port)",
+          "lat": 49.6508,
+          "lon": -1.6367,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 3.20
+        },
+        {
+          "id": "EC_ALDERNEY_RACE",
+          "name": "Alderney Race (Raz Blanchard)",
+          "lat": 49.7200,
+          "lon": -2.0500,
+          "prediction_method": "harmonic_constituents_currents"
+        },
+        {
+          "id": "EC_DIAMOND_CHE_01",
+          "name": "Alderney Swinge Passage (Synced to Cherbourg)",
+          "lat": 49.7300,
+          "lon": -2.2500,
+          "prediction_method": "relative_time_offset",
+          "reference_port": "FR_PORT_CHE"
+        }
+      ]
+    }
+  }
+}

@@ -5,3 +5,9 @@ __pycache__/
 
 # Local-only tide/current tooling (one-time use)
 scripts/tide-current/sources/_tools/
+
+# Environment variables / secrets
+.env
+
+# Tide models (generated from FES2014)
+scripts/FES2014/tide_models/**

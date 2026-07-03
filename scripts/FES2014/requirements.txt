@@ -1,0 +1,4 @@
+# Dependencies for FES2014 utilities
+netCDF4
+numpy
+python-dotenv
