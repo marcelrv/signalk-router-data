@@ -13,6 +13,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: auto-commit-indexes
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -22,8 +26,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
-          cache-dependency-path: 'scripts/tide-current/requirements.txt'
 
       - name: Generate tide-current-index.json
         run: python scripts/tide-current/generate_index.py --output-dir .
