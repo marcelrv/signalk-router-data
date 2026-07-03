@@ -1,0 +1,2 @@
+# Dependencies for tide/current index scripts.
+# All collector scripts use only stdlib — no extra deps needed.

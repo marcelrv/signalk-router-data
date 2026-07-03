@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 .tmp_verify/
+
+# Local-only tide/current tooling (one-time use)
+scripts/tide-current/sources/_tools/
