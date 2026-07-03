@@ -244,7 +244,7 @@ def main():
         "description": "Regional ocean current forecasts from NOAA's "
                        "Real-Time Ocean Forecast System (RTOFS) in GRIB2 format",
         "contributor": "NOAA/NCEP",
-        "homepage": "https://www.ncei.noaa.gov/products/weather-climate-models/"
+        "url": "https://www.ncei.noaa.gov/products/weather-climate-models/"
                     "real-time-ocean-forecast",
         "tags": [
             "grib2",
@@ -257,6 +257,12 @@ def main():
         ],
         "region": {
             "name": "US coastal waters, Arctic, Tropical Pacific",
+            "bounding_box": {
+                "min_lat": -20,
+                "min_lon": -180,
+                "max_lat": 90,
+                "max_lon": 180,
+            },
             "boundary_geometry": {
                 "type": "Polygon",
                 "coordinates": [[[-180, -20], [180, -20], [180, 90], [-180, 90], [-180, -20]]],

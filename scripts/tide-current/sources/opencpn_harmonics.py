@@ -82,7 +82,7 @@ def main():
         "name": "OpenCPN XTide Harmonics",
         "description": "Global tidal harmonic constituents for current stations from OpenCPN/XTide (excludes US mainland)",
         "contributor": "OpenCPN",
-        "homepage": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
+        "url": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
         "tags": [
             "harmonic",
             "global",
@@ -94,6 +94,12 @@ def main():
         ],
         "region": {
             "name": "Global (non-US stations)",
+            "bounding_box": {
+                "min_lat": -90,
+                "min_lon": -180,
+                "max_lat": 90,
+                "max_lon": 180,
+            },
             "boundary_geometry": BOUNDARY_GEOMETRY,
         },
         "update_check": {

@@ -10,4 +10,4 @@ scripts/tide-current/sources/_tools/
 .env
 
 # Tide models (generated from FES2014)
-scripts/FES2014/tide_models/**
+tide_models/

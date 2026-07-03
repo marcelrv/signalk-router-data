@@ -18,7 +18,7 @@ Each region is a standard SQLite database (gzip-compressed to `.sqlite.gz`). The
 | `tags` | TEXT | JSON array of tags (e.g. `["enc","coastal"]`) |
 | `contributor` | TEXT | GitHub username or organization |
 | `url` | TEXT | Link to original data source / license |
-| `bounding_box` | TEXT | JSON `[minLon, minLat, maxLon, maxLat]` |
+| `bounding_box` | TEXT | JSON `{"min_lat":..., "min_lon":..., "max_lat":..., "max_lon":...}` |
 | `boundary_geometry` | TEXT | GeoJSON polygon of the region's convex hull |
 | `schema_version` | INTEGER | Must be `2` or higher |
 | `region_id` | INTEGER | Unique auto-increment ID |
@@ -57,13 +57,13 @@ POI IDs use `INSERT OR IGNORE` so duplicates from overlapping regions are skippe
 
 - Stored as `.sqlite.gz` in the repo (gzip-compressed).
 - The download handler on the plugin side decompresses automatically.
-- SHA-256 of the `.sqlite.gz` file is recorded in `index.json` for integrity checks.
+- SHA-256 of the `.sqlite.gz` file is recorded in `routing-index.json` for integrity checks.
 
 ### Requirements
 
 - `schema_version` must be `2` or higher.
 - `boundary_geometry` must be a valid GeoJSON polygon/convex hull covering the graph (used for coverage map rendering).
-- `bounding_box` must be `[minLon, minLat, maxLon, maxLat]`.
+- `bounding_box` must be `{"min_lat": ..., "min_lon": ..., "max_lat": ..., "max_lon": ...}`.
 - Node IDs must use the deterministic coordinate-hashing scheme above for cross-region merge compatibility.
 
 ## Adding a New Region
@@ -121,7 +121,7 @@ Examples:
 1. Fork this repository
 2. Add your `.sqlite.gz` file in the correct folder (or use the deploy script above)
 3. Open a Pull Request
-4. The CI workflow will automatically regenerate `index.json` and `coverage-map.png`
+4. The CI workflow will automatically regenerate `routing-index.json` and `coverage-map.png`
 
 ### 4. Updating an Existing Region
 

@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 
 
 TOP_LEVEL_SCHEMA = {
+    "catalog_schema_version": "1.0.0",
     "version": 1,
     "generated": "",
     "source_count": 0,
@@ -26,13 +27,13 @@ TOP_LEVEL_SCHEMA = {
 }
 
 REQUIRED_SOURCE_FIELDS = [
-    "id", "type", "name", "description", "source",
+    "id", "type", "name", "description", "source", "url",
     "region", "update_check", "files",
 ]
 
 OPTIONAL_SOURCE_FIELDS = ["tags"]
 
-REQUIRED_REGION_FIELDS = ["boundary_geometry"]
+REQUIRED_REGION_FIELDS = ["boundary_geometry", "bounding_box"]
 REQUIRED_UPDATE_FIELDS = ["method"]
 
 
@@ -136,6 +137,7 @@ def main():
     # Build index
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     index = {
+        "catalog_schema_version": "1.0.0",
         "version": 1,
         "generated": now,
         "source_count": len(fragments),

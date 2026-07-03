@@ -409,16 +409,17 @@ def main():
     entries = generate_index(regions_dir)
 
     index = {
+        "catalog_schema_version": "1.0.0",
         "version": 2,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "region_count": len(entries),
         "regions": entries,
     }
 
-    index_path = os.path.join(output_dir, "index.json")
+    index_path = os.path.join(output_dir, "routing-index.json")
     with open(index_path, "w") as f:
         json.dump(index, f, indent=2)
-    print(f"  index.json written with {len(entries)} regions ({index_path})", file=sys.stderr)
+    print(f"  routing-index.json written with {len(entries)} regions ({index_path})", file=sys.stderr)
 
     map_path = os.path.join(output_dir, "coverage-map.png")
     render_coverage_map(entries, map_path)

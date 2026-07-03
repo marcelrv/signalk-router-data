@@ -29,11 +29,11 @@ jobs:
           sudo apt-get install -y -qq libproj-dev libgeos-dev
           pip install -r scripts/requirements-index.txt
 
-      - name: Generate index.json and coverage-map.png
+      - name: Generate routing-index.json and coverage-map.png
         run: python scripts/generate_index.py --regions-dir ./regions --output-dir .
 
       - name: Commit updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-update index.json and coverage map"
-          file_pattern: index.json coverage-map.png
+          commit_message: "Auto-update routing-index.json and coverage map"
+          file_pattern: routing-index.json coverage-map.png

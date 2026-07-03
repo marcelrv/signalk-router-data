@@ -1,4 +1,5 @@
 {
+  "catalog_schema_version": "1.0.0",
   "version": 1,
   "generated": "2026-07-03T10:39:47Z",
   "source_count": 2,
@@ -10,7 +11,7 @@
       "name": "NOAA RTOFS Regional Ocean Currents",
       "description": "Regional ocean current forecasts from NOAA's Real-Time Ocean Forecast System (RTOFS) in GRIB2 format",
       "contributor": "NOAA/NCEP",
-      "homepage": "https://www.ncei.noaa.gov/products/weather-climate-models/real-time-ocean-forecast",
+      "url": "https://www.ncei.noaa.gov/products/weather-climate-models/real-time-ocean-forecast",
       "tags": [
         "grib2",
         "regional",
@@ -22,6 +23,12 @@
       ],
       "region": {
         "name": "US coastal waters, Arctic, Tropical Pacific",
+        "bounding_box": {
+          "min_lat": -20,
+          "min_lon": -180,
+          "max_lat": 90,
+          "max_lon": 180
+        },
         "boundary_geometry": {
           "type": "Polygon",
           "coordinates": [
@@ -968,19 +975,25 @@
       "name": "OpenCPN XTide Harmonics",
       "description": "Global tidal harmonic constituents for current stations from OpenCPN/XTide (excludes US mainland)",
       "contributor": "OpenCPN",
-      "homepage": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
-      "tags": [
-        "harmonic",
-        "global",
-        "station-based",
-        "community",
-        "opencpn",
-        "xtide",
-        "static"
-      ],
-      "region": {
-        "name": "Global (non-US stations)",
-        "boundary_geometry": {
+        "url": "https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata",
+        "tags": [
+          "harmonic",
+          "global",
+          "station-based",
+          "community",
+          "opencpn",
+          "xtide",
+          "static"
+        ],
+        "region": {
+          "name": "Global (non-US stations)",
+          "bounding_box": {
+            "min_lat": -90,
+            "min_lon": -180,
+            "max_lat": 90,
+            "max_lon": 180
+          },
+          "boundary_geometry": {
           "type": "Polygon",
           "coordinates": [
             [

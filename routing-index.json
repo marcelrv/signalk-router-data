@@ -1,4 +1,5 @@
 {
+  "catalog_schema_version": "1.0.0",
   "version": 2,
   "generated": "2026-06-16T10:47:29Z",
   "region_count": 1,
