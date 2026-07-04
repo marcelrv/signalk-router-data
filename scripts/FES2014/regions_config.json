@@ -1,8 +1,9 @@
 {
+  "_comment": "Current grids are listed FINE-FIRST: overlapping coarser grids are de-duplicated against the finer ones already placed, giving graduated density (fine in estuaries/Wadden, coarse offshore). Station placement is gated on the FES2014 land mask, so no nodes land on shore or the (masked) IJsselmeer/Markermeer.",
   "regions": {
-    "north_sea": {
-      "title": "North Sea Tidal Heights, Currents & Diamonds",
-      "bbox": [-4.0, 50.5, 10.0, 61.5],
+    "netherlands": {
+      "title": "Netherlands Coast, Delta & Wadden — Tidal Currents",
+      "bbox": [2.5, 51.0, 7.5, 54.0],
       "stations": [
         {
           "id": "NL_PORT_VLI",
@@ -12,6 +13,82 @@
           "prediction_method": "harmonic_constituents_heights",
           "mean_sea_level": 1.95
         },
+        {
+          "id": "NL_PORT_HVH",
+          "name": "Hoek van Holland (Reference Port)",
+          "lat": 51.9775,
+          "lon": 4.1200,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 1.10
+        },
+        {
+          "id": "NL_PORT_DHR",
+          "name": "Den Helder (Reference Port)",
+          "lat": 52.9600,
+          "lon": 4.7500,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 0.85
+        },
+        {
+          "id": "NL_PORT_HAR",
+          "name": "Harlingen (Reference Port)",
+          "lat": 53.1750,
+          "lon": 5.4090,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 1.05
+        },
+        {
+          "id": "NL_DIAMOND_VLI_01",
+          "name": "Roompot Outside Approach (Synced to Vlissingen)",
+          "lat": 51.6531,
+          "lon": 3.6843,
+          "prediction_method": "relative_time_offset",
+          "reference_port": "NL_PORT_VLI"
+        }
+      ],
+      "current_grids": [
+        {
+          "id_prefix": "WSCHELDE",
+          "lat_min": 51.28, "lat_max": 51.55,
+          "lon_min": 3.35, "lon_max": 4.30,
+          "step": 0.03
+        },
+        {
+          "id_prefix": "OSCHELDE",
+          "lat_min": 51.48, "lat_max": 51.80,
+          "lon_min": 3.55, "lon_max": 4.25,
+          "step": 0.03
+        },
+        {
+          "id_prefix": "WADDENW",
+          "lat_min": 52.85, "lat_max": 53.45,
+          "lon_min": 4.65, "lon_max": 5.75,
+          "step": 0.035
+        },
+        {
+          "id_prefix": "WADDENE",
+          "lat_min": 53.28, "lat_max": 53.62,
+          "lon_min": 5.55, "lon_max": 6.45,
+          "step": 0.035
+        },
+        {
+          "id_prefix": "NLCOAST",
+          "lat_min": 51.20, "lat_max": 53.60,
+          "lon_min": 3.20, "lon_max": 5.10,
+          "step": 0.06
+        },
+        {
+          "id_prefix": "NLSEA",
+          "lat_min": 51.00, "lat_max": 54.00,
+          "lon_min": 2.70, "lon_max": 4.30,
+          "step": 0.12
+        }
+      ]
+    },
+    "north_sea": {
+      "title": "North Sea — Tidal Currents & Reference Ports",
+      "bbox": [-4.0, 50.5, 10.0, 61.5],
+      "stations": [
         {
           "id": "UK_PORT_DOV",
           "name": "Dover (Reference Port)",
@@ -33,19 +110,25 @@
           "lat": 54.8000,
           "lon": 2.2000,
           "prediction_method": "harmonic_constituents_currents"
+        }
+      ],
+      "current_grids": [
+        {
+          "id_prefix": "NSGB",
+          "lat_min": 53.30, "lat_max": 55.30,
+          "lon_min": 6.00, "lon_max": 8.90,
+          "step": 0.12
         },
         {
-          "id": "NS_DIAMOND_VLI_01",
-          "name": "Roompot Outside Approach (Synced to Vlissingen)",
-          "lat": 51.6531,
-          "lon": 3.6843,
-          "prediction_method": "relative_time_offset",
-          "reference_port": "NL_PORT_VLI"
+          "id_prefix": "NS",
+          "lat_min": 51.00, "lat_max": 58.00,
+          "lon_min": -2.00, "lon_max": 9.00,
+          "step": 0.25
         }
       ]
     },
     "english_channel": {
-      "title": "English Channel Tidal Heights & Currents",
+      "title": "English Channel & Dover Strait — Tidal Currents",
       "bbox": [-6.0, 48.5, 2.0, 51.5],
       "stations": [
         {
@@ -57,10 +140,25 @@
           "mean_sea_level": 3.20
         },
         {
+          "id": "UK_PORT_DOV2",
+          "name": "Dover (Reference Port)",
+          "lat": 51.1197,
+          "lon": 1.3283,
+          "prediction_method": "harmonic_constituents_heights",
+          "mean_sea_level": 3.40
+        },
+        {
           "id": "EC_ALDERNEY_RACE",
           "name": "Alderney Race (Raz Blanchard)",
           "lat": 49.7200,
           "lon": -2.0500,
+          "prediction_method": "harmonic_constituents_currents"
+        },
+        {
+          "id": "EC_DOVER_STRAIT",
+          "name": "Dover Strait Mid-Channel",
+          "lat": 50.9500,
+          "lon": 1.5000,
           "prediction_method": "harmonic_constituents_currents"
         },
         {
@@ -70,6 +168,26 @@
           "lon": -2.2500,
           "prediction_method": "relative_time_offset",
           "reference_port": "FR_PORT_CHE"
+        }
+      ],
+      "current_grids": [
+        {
+          "id_prefix": "ECALD",
+          "lat_min": 49.35, "lat_max": 49.95,
+          "lon_min": -2.75, "lon_max": -1.60,
+          "step": 0.04
+        },
+        {
+          "id_prefix": "ECDOV",
+          "lat_min": 50.70, "lat_max": 51.20,
+          "lon_min": 0.90, "lon_max": 2.00,
+          "step": 0.05
+        },
+        {
+          "id_prefix": "EC",
+          "lat_min": 48.80, "lat_max": 51.20,
+          "lon_min": -5.50, "lon_max": 1.80,
+          "step": 0.15
         }
       ]
     }
