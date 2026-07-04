@@ -146,10 +146,28 @@ def main():
 
     os.makedirs(output_dir, exist_ok=True)
     index_path = os.path.join(output_dir, "tide-current-index.json")
-    with open(index_path, "w") as f:
-        json.dump(index, f, indent=2)
 
-    print(f"  Written {index_path} with {len(fragments)} sources", file=sys.stderr)
+    needs_update = True
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            existing = json.load(f)
+        # Strip volatile timestamps from top level and each source fragment
+        def strip_volatile(obj):
+            if isinstance(obj, dict):
+                return {k: strip_volatile(v) for k, v in obj.items()
+                        if k not in ("generated", "last_checked")}
+            if isinstance(obj, list):
+                return [strip_volatile(i) for i in obj]
+            return obj
+        if strip_volatile(existing) == strip_volatile(index):
+            needs_update = False
+
+    if needs_update:
+        with open(index_path, "w") as f:
+            json.dump(index, f, indent=2)
+        print(f"  Written {index_path} with {len(fragments)} sources", file=sys.stderr)
+    else:
+        print(f"  {index_path} unchanged", file=sys.stderr)
 
     if errors:
         print("\nWarnings / errors:", file=sys.stderr)

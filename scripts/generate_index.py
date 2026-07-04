@@ -417,9 +417,22 @@ def main():
     }
 
     index_path = os.path.join(output_dir, "routing-index.json")
-    with open(index_path, "w") as f:
-        json.dump(index, f, indent=2)
-    print(f"  routing-index.json written with {len(entries)} regions ({index_path})", file=sys.stderr)
+    
+    needs_update = True
+    if os.path.exists(index_path):
+        with open(index_path) as f:
+            existing = json.load(f)
+        existing_data = {k: v for k, v in existing.items() if k != "generated"}
+        new_data = {k: v for k, v in index.items() if k != "generated"}
+        if existing_data == new_data:
+            needs_update = False
+
+    if needs_update:
+        with open(index_path, "w") as f:
+            json.dump(index, f, indent=2)
+        print(f"  routing-index.json written with {len(entries)} regions ({index_path})", file=sys.stderr)
+    else:
+        print(f"  routing-index.json unchanged", file=sys.stderr)
 
     map_path = os.path.join(output_dir, "coverage-map.png")
     render_coverage_map(entries, map_path)

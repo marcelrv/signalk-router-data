@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/tide-current/**'
       - 'scripts/requirements-index.txt'
+      - 'regions/**/*.utcef'
   schedule:
     - cron: '0 6 * * 0'   # weekly Sunday 06:00 UTC
   workflow_dispatch:
@@ -27,11 +28,20 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libproj-dev libgeos-dev
+          pip install matplotlib cartopy shapely
+
       - name: Generate tide-current-index.json
         run: python scripts/tide-current/generate_index.py --output-dir .
+
+      - name: Render coverage map
+        run: python scripts/tide-current/render_coverage_map.py --index tide-current-index.json --output tide-current-coverage.png
 
       - name: Commit updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Auto-update tide-current-index.json"
-          file_pattern: tide-current-index.json
+          commit_message: "Auto-update tide-current-index.json and coverage map"
+          file_pattern: tide-current-index.json tide-current-coverage.png

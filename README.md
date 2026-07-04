@@ -1,13 +1,19 @@
-# SignalK Routing Data
+# Nautical Routing & Tidal Streams Data
 
-[![Generate Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-index.yml)
+[![Generate Routing Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml)
 [![Generate Tide/Current Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml)
 
-Pre-compiled nautical routing graphs for the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute) and tidal current data sources for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin.
+Pre-compiled nautical routing graphs for the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute) and tidal/current data sources for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin.
 
 Routing databases are stored as `.sqlite.gz` (gzip-compressed) to reduce download size. The plugin's download dialog handles decompression automatically.
 
 ## Coverage
+
+### Tidal Streams & Currents
+
+![Tide/Current Coverage Map](tide-current-coverage.png)
+
+### Routing Databases
 
 ![Coverage Map](coverage-map.png)
 

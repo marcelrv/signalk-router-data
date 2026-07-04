@@ -1,4 +1,4 @@
-name: Generate Index & Coverage Map
+name: Generate Routing Index & Coverage Map
 on:
   push:
     branches: [main]
