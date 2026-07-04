@@ -118,21 +118,25 @@ def main():
             continue
 
         try:
-            fragment = json.loads(result.stdout)
+            parsed = json.loads(result.stdout)
         except json.JSONDecodeError as e:
             errors.append(f"{name}: invalid JSON — {e}")
             continue
 
-        ve = validate_source(fragment, name)
-        if ve:
-            errors.extend(ve)
-            continue
+        # Accept both a single source object and an array of sources
+        items = parsed if isinstance(parsed, list) else [parsed]
 
-        # stamp last_checked for update_check
-        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-        fragment["update_check"]["last_checked"] = now
+        for fragment in items:
+            ve = validate_source(fragment, name)
+            if ve:
+                errors.extend(ve)
+                continue
 
-        fragments.append(fragment)
+            # stamp last_checked for update_check
+            now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            fragment["update_check"]["last_checked"] = now
+
+            fragments.append(fragment)
 
     # Build index
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
