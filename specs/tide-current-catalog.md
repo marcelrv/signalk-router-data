@@ -32,7 +32,7 @@ Each entry in the `sources` array describes one upstream data provider and its d
 |-------|------|----------|-------------|
 | `id` | String | Yes | Unique stable identifier for this source |
 | `source` | String | Yes | Machine-readable provider code for grouping/filtering (e.g. `"noaa"`, `"opencpn"`) |
-| `type` | String | Yes | Data format: `"harmonic"` for XTide/OpenCPN harmonic files, `"grib2"` for GRIB2 gridded forecasts |
+| `type` | String | Yes | Data format: `"harmonic"` for XTide/OpenCPN harmonic files, `"grib2"` for GRIB2 gridded forecasts, `"utcef"` for UTCEF datasets (see `specs/utcef-specification.md`) |
 | `name` | String | Yes | Human-readable source name |
 | `description` | String | Yes | Longer description of the data and its coverage |
 | `contributor` | String | Yes | Organization that provides the data |
@@ -115,6 +115,7 @@ Standardized tags for the tide/current catalog:
 |-----|-------------|
 | `harmonic` | XTide/OpenCPN ASCII harmonic constituents |
 | `grib2` | GRIB2 gridded forecast fields |
+| `utcef` | UTCEF datasets (ZIP container with harmonic current/height stations) |
 | `global` | Global coverage |
 | `regional` | Regional sub-region coverage |
 | `gridded` | Gridded/interpolated data model |

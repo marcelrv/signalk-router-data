@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Marcel Verpaalen
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Licensed under the GNU General Public License v3.0 or later.
+# See the LICENSE file in the repository root, or <https://www.gnu.org/licenses/>.
 """Collector: discover UTCEF region files and yield one source entry per file."""
 import glob
 import hashlib

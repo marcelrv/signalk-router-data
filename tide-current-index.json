@@ -1,7 +1,7 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-04T13:56:15Z",
+  "generated": "2026-07-05T14:54:50Z",
   "source_count": 5,
   "sources": [
     {
@@ -25,9 +25,9 @@
         "name": "US coastal waters, Arctic, Tropical Pacific",
         "bounding_box": {
           "min_lat": -39.5,
-          "min_lon": -180,
+          "min_lon": -180.0,
           "max_lat": 85.15,
-          "max_lon": 180
+          "max_lon": 180.0
         },
         "boundary_geometry": {
           "type": "MultiPolygon",
@@ -470,8 +470,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-04T13:56:15Z",
-        "latest_cycle": "2026-07-04T00:00:00Z"
+        "last_checked": "2026-07-05T14:54:50Z",
+        "latest_cycle": "2026-07-05T00:00:00Z"
       },
       "files": [
         {
@@ -1797,7 +1797,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-04T13:56:15Z"
+        "last_checked": "2026-07-05T14:54:50Z"
       },
       "files": [
         {
@@ -1867,7 +1867,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-04T13:56:15Z"
+        "last_checked": "2026-07-05T14:54:50Z"
       },
       "files": [
         {
@@ -1930,7 +1930,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-04T13:56:15Z"
+        "last_checked": "2026-07-05T14:54:50Z"
       },
       "files": [
         {
@@ -1993,7 +1993,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-04T13:56:15Z"
+        "last_checked": "2026-07-05T14:54:50Z"
       },
       "files": [
         {

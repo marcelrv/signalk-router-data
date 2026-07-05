@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
+# Copyright (C) 2026 Marcel Verpaalen
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Licensed under the GNU General Public License v3.0 or later.
+# See the LICENSE file in the repository root, or <https://www.gnu.org/licenses/>.
 """
-Source collector: NOAA RTOFS Regional Ocean Currents (GRIB2). 
+Source collector: NOAA RTOFS Regional Ocean Currents (GRIB2).
 
 Discovers the latest available forecast cycle on NOAA NOMADS via HEAD
 requests, dynamically negotiating between RTOFS v2.5 and v3.0 filename formats,
@@ -83,6 +87,18 @@ def _load_region_bounds() -> dict:
                 ]],
             }
     return result
+
+
+def _bbox_of_polygons(poly_coords: List) -> dict:
+    """Compute the overall lat/lon bounding box spanning a list of polygon coordinate rings."""
+    lons = [pt[0] for poly in poly_coords for ring in poly for pt in ring]
+    lats = [pt[1] for poly in poly_coords for ring in poly for pt in ring]
+    return {
+        "min_lat": min(lats),
+        "min_lon": min(lons),
+        "max_lat": max(lats),
+        "max_lon": max(lons),
+    }
 
 
 _REGION_BOUNDS = _load_region_bounds()
@@ -253,12 +269,7 @@ def main():
         ],
         "region": {
             "name": "US coastal waters, Arctic, Tropical Pacific",
-            "bounding_box": {
-                "min_lat": -39.5,
-                "min_lon": -180,
-                "max_lat": 85.15,
-                "max_lon": 180,
-            },
+            "bounding_box": _bbox_of_polygons(all_poly_coords),
             "boundary_geometry": {
                 "type": "MultiPolygon",
                 "coordinates": all_poly_coords,
