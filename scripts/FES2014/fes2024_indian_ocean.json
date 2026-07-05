@@ -1,0 +1,385 @@
+{
+  "catalog_id": "fes2024_indian_ocean",
+  "version": "1.0.0",
+  "basin": "Indian Ocean",
+  "description": "FES2024 harmonic tidal current predictions for Indian Ocean, Red Sea, and adjacent waters",
+  "last_updated": "2026-07-05T00:00:00Z",
+  "total_regions": 8,
+  "phase": "phase_1",
+  "regions": [
+    {
+      "region_id": "ion_persian_gulf",
+      "name": "Persian Gulf & Gulf of Oman",
+      "description": "Oil shipping critical - Strait of Hormuz gateway",
+      "bounding_box": {
+        "min_lat": 23.0,
+        "min_lon": 48.0,
+        "max_lat": 28.0,
+        "max_lon": 60.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              48.0,
+              23.0
+            ],
+            [
+              60.0,
+              23.0
+            ],
+            [
+              60.0,
+              28.0
+            ],
+            [
+              48.0,
+              28.0
+            ],
+            [
+              48.0,
+              23.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "critical"
+    },
+    {
+      "region_id": "ion_red_sea",
+      "name": "Red Sea & Bab al Mandab [coarse]",
+      "description": "Red Sea, narrow straits - shipping critical chokepoint",
+      "bounding_box": {
+        "min_lat": 12.0,
+        "min_lon": 35.0,
+        "max_lat": 28.0,
+        "max_lon": 45.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              35.0,
+              12.0
+            ],
+            [
+              45.0,
+              12.0
+            ],
+            [
+              45.0,
+              28.0
+            ],
+            [
+              35.0,
+              28.0
+            ],
+            [
+              35.0,
+              12.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "very_high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_arabian_sea",
+      "name": "Arabian Sea & SW Asia [coarse]",
+      "description": "Arabian Peninsula waters, monsoon shipping lanes",
+      "bounding_box": {
+        "min_lat": 5.0,
+        "min_lon": 45.0,
+        "max_lat": 25.0,
+        "max_lon": 70.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              45.0,
+              5.0
+            ],
+            [
+              70.0,
+              5.0
+            ],
+            [
+              70.0,
+              25.0
+            ],
+            [
+              45.0,
+              25.0
+            ],
+            [
+              45.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_eastern_africa",
+      "name": "East Africa & Madagascar [coarse]",
+      "description": "Kenya, Tanzania, Mozambique, Madagascar coast",
+      "bounding_box": {
+        "min_lat": -25.0,
+        "min_lon": 30.0,
+        "max_lat": 5.0,
+        "max_lon": 60.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30.0,
+              -25.0
+            ],
+            [
+              60.0,
+              -25.0
+            ],
+            [
+              60.0,
+              5.0
+            ],
+            [
+              30.0,
+              5.0
+            ],
+            [
+              30.0,
+              -25.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_bay_bengal",
+      "name": "Bay of Bengal & Bangladesh [coarse]",
+      "description": "Bay of Bengal, monsoon critical region",
+      "bounding_box": {
+        "min_lat": 5.0,
+        "min_lon": 85.0,
+        "max_lat": 25.0,
+        "max_lon": 100.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              85.0,
+              5.0
+            ],
+            [
+              100.0,
+              5.0
+            ],
+            [
+              100.0,
+              25.0
+            ],
+            [
+              85.0,
+              25.0
+            ],
+            [
+              85.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_strait_malacca",
+      "name": "Strait of Malacca & Singapore",
+      "description": "World's busiest strait - Singapore gateway to Pacific",
+      "bounding_box": {
+        "min_lat": 0.0,
+        "min_lon": 95.0,
+        "max_lat": 5.0,
+        "max_lon": 105.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              95.0,
+              0.0
+            ],
+            [
+              105.0,
+              0.0
+            ],
+            [
+              105.0,
+              5.0
+            ],
+            [
+              95.0,
+              5.0
+            ],
+            [
+              95.0,
+              0.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "critical"
+    },
+    {
+      "region_id": "ion_andaman_sea",
+      "name": "Andaman Sea & Thailand [coarse]",
+      "description": "Andaman Sea, Thailand, Myanmar coast - tourism and shipping",
+      "bounding_box": {
+        "min_lat": 5.0,
+        "min_lon": 95.0,
+        "max_lat": 15.0,
+        "max_lon": 100.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              95.0,
+              5.0
+            ],
+            [
+              100.0,
+              5.0
+            ],
+            [
+              100.0,
+              15.0
+            ],
+            [
+              95.0,
+              15.0
+            ],
+            [
+              95.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_central_indian",
+      "name": "Central Indian Ocean [coarse]",
+      "description": "Deep Indian Ocean - open water, sparse shipping",
+      "bounding_box": {
+        "min_lat": -20.0,
+        "min_lon": 50.0,
+        "max_lat": 20.0,
+        "max_lon": 85.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.0,
+              -20.0
+            ],
+            [
+              85.0,
+              -20.0
+            ],
+            [
+              85.0,
+              20.0
+            ],
+            [
+              50.0,
+              20.0
+            ],
+            [
+              50.0,
+              -20.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    }
+  ],
+  "phase_2_expansion": {
+    "description": "Future subdivision of high-traffic straits",
+    "planned_regions": [
+      {
+        "region_id": "ion_hormuz_detailed",
+        "name": "Strait of Hormuz (Detailed)",
+        "description": "Fine resolution critical strait area",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      }
+    ],
+    "note": "Strait regions may be split into finer subdivisions if detailed tidal prediction is needed"
+  }
+}

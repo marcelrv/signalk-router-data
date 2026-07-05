@@ -1,0 +1,256 @@
+{
+  "catalog_id": "fes2024_pacific_south",
+  "version": "1.0.0",
+  "basin": "Pacific South & Oceania",
+  "description": "FES2024 harmonic tidal current predictions for South Pacific, Oceania, Australia, and New Zealand",
+  "last_updated": "2026-07-05T00:00:00Z",
+  "total_regions": 5,
+  "phase": "phase_1",
+  "regions": [
+    {
+      "region_id": "pts_australia_nz",
+      "name": "Australia & New Zealand [coarse]",
+      "description": "Australia, New Zealand, Tasman Sea - major Pacific ports",
+      "bounding_box": {
+        "min_lat": -47.0,
+        "min_lon": 110.0,
+        "max_lat": -10.0,
+        "max_lon": 180.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110.0,
+              -47.0
+            ],
+            [
+              180.0,
+              -47.0
+            ],
+            [
+              180.0,
+              -10.0
+            ],
+            [
+              110.0,
+              -10.0
+            ],
+            [
+              110.0,
+              -47.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "pts_tasmania_strait",
+      "name": "Bass Strait & Tasmania [coarse]",
+      "description": "Bass Strait, Tasmania - critical traffic separation zone",
+      "bounding_box": {
+        "min_lat": -44.0,
+        "min_lon": 140.0,
+        "max_lat": -40.0,
+        "max_lon": 150.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              140.0,
+              -44.0
+            ],
+            [
+              150.0,
+              -44.0
+            ],
+            [
+              150.0,
+              -40.0
+            ],
+            [
+              140.0,
+              -40.0
+            ],
+            [
+              140.0,
+              -44.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_samoa_fiji",
+      "name": "Samoa, Fiji & South Pacific Islands [coarse]",
+      "description": "Island nations, tropics - sparse shipping, tourism",
+      "bounding_box": {
+        "min_lat": -20.0,
+        "min_lon": 170.0,
+        "max_lat": -5.0,
+        "max_lon": -170.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              170.0,
+              -20.0
+            ],
+            [
+              180.0,
+              -20.0
+            ],
+            [
+              180.0,
+              -5.0
+            ],
+            [
+              170.0,
+              -5.0
+            ],
+            [
+              170.0,
+              -20.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_hawaii",
+      "name": "Hawaiian Islands",
+      "description": "Hawaii - tourism, military bases, refueling",
+      "bounding_box": {
+        "min_lat": 18.0,
+        "min_lon": -160.0,
+        "max_lat": 23.0,
+        "max_lon": -155.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -160.0,
+              18.0
+            ],
+            [
+              -155.0,
+              18.0
+            ],
+            [
+              -155.0,
+              23.0
+            ],
+            [
+              -160.0,
+              23.0
+            ],
+            [
+              -160.0,
+              18.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "moderate"
+    },
+    {
+      "region_id": "pts_south_pacific_open",
+      "name": "South Pacific Open Ocean [coarse]",
+      "description": "Open South Pacific - sparse shipping, long routes",
+      "bounding_box": {
+        "min_lat": -50.0,
+        "min_lon": -180.0,
+        "max_lat": -10.0,
+        "max_lon": 110.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -180.0,
+              -50.0
+            ],
+            [
+              110.0,
+              -50.0
+            ],
+            [
+              110.0,
+              -10.0
+            ],
+            [
+              -180.0,
+              -10.0
+            ],
+            [
+              -180.0,
+              -50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    }
+  ],
+  "phase_2_expansion": {
+    "description": "Future fine subdivisions",
+    "planned_regions": [
+      {
+        "region_id": "pts_sydney_detailed",
+        "name": "Sydney Harbor (Detailed)",
+        "description": "Fine resolution Sydney and approach",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      },
+      {
+        "region_id": "pts_melbourne_detailed",
+        "name": "Melbourne Port (Detailed)",
+        "description": "Fine resolution Melbourne and Port Phillip",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      }
+    ],
+    "note": "Major Australian ports will be subdivided in Phase 2 for detailed coverage"
+  }
+}

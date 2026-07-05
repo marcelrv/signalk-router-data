@@ -1,0 +1,170 @@
+{
+  "catalog_id": "fes2024_europe_mediterranean",
+  "version": "1.0.0",
+  "basin": "Europe & Mediterranean",
+  "description": "FES2024 harmonic tidal current predictions for European and Mediterranean waters (North Sea, Baltic, Mediterranean, Black Sea)",
+  "last_updated": "2026-07-05T00:00:00Z",
+  "total_regions": 3,
+  "phase": "phase_1",
+  "regions": [
+    {
+      "region_id": "med_mediterranean",
+      "name": "Mediterranean Sea",
+      "description": "Mediterranean basin - ancient trade routes, high maritime density",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": -6.0,
+        "max_lat": 46.0,
+        "max_lon": 42.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -6.0,
+              30.0
+            ],
+            [
+              42.0,
+              30.0
+            ],
+            [
+              42.0,
+              46.0
+            ],
+            [
+              -6.0,
+              46.0
+            ],
+            [
+              -6.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "6-8",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "med_black_sea",
+      "name": "Black Sea & Bosporus [coarse]",
+      "description": "Black Sea, Turkey Straits, Marmara - critical narrow straits",
+      "bounding_box": {
+        "min_lat": 40.0,
+        "min_lon": 25.0,
+        "max_lat": 47.0,
+        "max_lon": 42.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              25.0,
+              40.0
+            ],
+            [
+              42.0,
+              40.0
+            ],
+            [
+              42.0,
+              47.0
+            ],
+            [
+              25.0,
+              47.0
+            ],
+            [
+              25.0,
+              40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "med_baltic",
+      "name": "Baltic Sea & Approaches [coarse]",
+      "description": "Baltic Sea, Denmark, Northern Europe - winter navigation challenges",
+      "bounding_box": {
+        "min_lat": 53.0,
+        "min_lon": 8.0,
+        "max_lat": 67.0,
+        "max_lon": 30.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              8.0,
+              53.0
+            ],
+            [
+              30.0,
+              53.0
+            ],
+            [
+              30.0,
+              67.0
+            ],
+            [
+              8.0,
+              67.0
+            ],
+            [
+              8.0,
+              53.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    }
+  ],
+  "phase_2_expansion": {
+    "description": "Mediterranean subdivisions by sub-basin",
+    "planned_regions": [
+      {
+        "region_id": "med_western",
+        "name": "Western Mediterranean",
+        "description": "Spain, France, Italy west - fine resolution subdivision",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      },
+      {
+        "region_id": "med_central",
+        "name": "Central Mediterranean",
+        "description": "Italy, Sicily, Malta - fine resolution subdivision",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      },
+      {
+        "region_id": "med_eastern",
+        "name": "Eastern Mediterranean",
+        "description": "Greece, Cyprus, Levant coast - fine resolution subdivision",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      }
+    ],
+    "note": "Mediterranean will be split into 3 sub-regions by longitude in Phase 2"
+  }
+}

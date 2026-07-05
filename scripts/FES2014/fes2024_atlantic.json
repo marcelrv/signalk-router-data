@@ -1,0 +1,790 @@
+{
+  "catalog_id": "fes2024_atlantic",
+  "version": "1.0.0",
+  "basin": "Atlantic",
+  "description": "FES2024 harmonic tidal current predictions for Atlantic Ocean basin (North, Central, and South)",
+  "last_updated": "2026-07-05T00:00:00Z",
+  "total_regions": 14,
+  "phase": "phase_1",
+  "regions": [
+    {
+      "region_id": "atn_north_sea",
+      "name": "North Sea & Skagerrak",
+      "description": "North Sea, Skagerrak, Kattegat - high-traffic shipping lanes",
+      "bounding_box": {
+        "min_lat": 50.0,
+        "min_lon": 0.0,
+        "max_lat": 60.0,
+        "max_lon": 15.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              50.0
+            ],
+            [
+              15.0,
+              50.0
+            ],
+            [
+              15.0,
+              60.0
+            ],
+            [
+              0.0,
+              60.0
+            ],
+            [
+              0.0,
+              50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "high"
+    },
+    {
+      "region_id": "atn_british_isles",
+      "name": "British Isles & English Channel",
+      "description": "UK, Ireland, English Channel, Celtic Sea - critical shipping lanes",
+      "bounding_box": {
+        "min_lat": 50.0,
+        "min_lon": -10.0,
+        "max_lat": 58.0,
+        "max_lon": 2.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.0,
+              50.0
+            ],
+            [
+              2.0,
+              50.0
+            ],
+            [
+              2.0,
+              58.0
+            ],
+            [
+              -10.0,
+              58.0
+            ],
+            [
+              -10.0,
+              50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "atn_scandinavia",
+      "name": "Scandinavian Coast & North [coarse]",
+      "description": "Norwegian coast, Sweden, Finland, Arctic entrance",
+      "bounding_box": {
+        "min_lat": 58.0,
+        "min_lon": 0.0,
+        "max_lat": 70.0,
+        "max_lon": 30.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              58.0
+            ],
+            [
+              30.0,
+              58.0
+            ],
+            [
+              30.0,
+              70.0
+            ],
+            [
+              0.0,
+              70.0
+            ],
+            [
+              0.0,
+              58.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_bay_of_biscay",
+      "name": "Bay of Biscay [coarse]",
+      "description": "Atlantic coast of France, Spain - significant wave hazard",
+      "bounding_box": {
+        "min_lat": 42.0,
+        "min_lon": -10.0,
+        "max_lat": 49.0,
+        "max_lon": 0.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.0,
+              42.0
+            ],
+            [
+              0.0,
+              42.0
+            ],
+            [
+              0.0,
+              49.0
+            ],
+            [
+              -10.0,
+              49.0
+            ],
+            [
+              -10.0,
+              42.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_iberian_coast",
+      "name": "Iberian Peninsula & Gibraltar",
+      "description": "Spain, Portugal, Gibraltar Strait - Mediterranean approach",
+      "bounding_box": {
+        "min_lat": 35.0,
+        "min_lon": -10.0,
+        "max_lat": 42.0,
+        "max_lon": 0.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.0,
+              35.0
+            ],
+            [
+              0.0,
+              35.0
+            ],
+            [
+              0.0,
+              42.0
+            ],
+            [
+              -10.0,
+              42.0
+            ],
+            [
+              -10.0,
+              35.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "high"
+    },
+    {
+      "region_id": "atn_azores_madeira",
+      "name": "Azores & Mid-Atlantic Islands [coarse]",
+      "description": "Azores, Madeira, Cape Verde - isolated island groups",
+      "bounding_box": {
+        "min_lat": 15.0,
+        "min_lon": -35.0,
+        "max_lat": 42.0,
+        "max_lon": -10.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -35.0,
+              15.0
+            ],
+            [
+              -10.0,
+              15.0
+            ],
+            [
+              -10.0,
+              42.0
+            ],
+            [
+              -35.0,
+              42.0
+            ],
+            [
+              -35.0,
+              15.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_central_atlantic",
+      "name": "Central North Atlantic [coarse]",
+      "description": "Open North Atlantic - transatlantic shipping lanes",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": -50.0,
+        "max_lat": 45.0,
+        "max_lon": -20.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -50.0,
+              30.0
+            ],
+            [
+              -20.0,
+              30.0
+            ],
+            [
+              -20.0,
+              45.0
+            ],
+            [
+              -50.0,
+              45.0
+            ],
+            [
+              -50.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atc_us_east_coast",
+      "name": "US East Coast",
+      "description": "Maine to Florida - major US ports and racing",
+      "bounding_box": {
+        "min_lat": 25.0,
+        "min_lon": -85.0,
+        "max_lat": 45.0,
+        "max_lon": -70.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -85.0,
+              25.0
+            ],
+            [
+              -70.0,
+              25.0
+            ],
+            [
+              -70.0,
+              45.0
+            ],
+            [
+              -85.0,
+              45.0
+            ],
+            [
+              -85.0,
+              25.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "atc_gulf_of_mexico",
+      "name": "Gulf of Mexico",
+      "description": "Texas to Florida - oil platforms, shipping",
+      "bounding_box": {
+        "min_lat": 20.0,
+        "min_lon": -100.0,
+        "max_lat": 30.0,
+        "max_lon": -80.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -100.0,
+              20.0
+            ],
+            [
+              -80.0,
+              20.0
+            ],
+            [
+              -80.0,
+              30.0
+            ],
+            [
+              -100.0,
+              30.0
+            ],
+            [
+              -100.0,
+              20.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "atc_caribbean",
+      "name": "Caribbean & Greater Antilles",
+      "description": "Caribbean islands, tourist routes",
+      "bounding_box": {
+        "min_lat": 10.0,
+        "min_lon": -85.0,
+        "max_lat": 20.0,
+        "max_lon": -60.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -85.0,
+              10.0
+            ],
+            [
+              -60.0,
+              10.0
+            ],
+            [
+              -60.0,
+              20.0
+            ],
+            [
+              -85.0,
+              20.0
+            ],
+            [
+              -85.0,
+              10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "high"
+    },
+    {
+      "region_id": "atc_bahamas_florida",
+      "name": "Bahamas & South Florida",
+      "description": "Shallow waters, sensitive navigation",
+      "bounding_box": {
+        "min_lat": 23.0,
+        "min_lon": -85.0,
+        "max_lat": 27.0,
+        "max_lon": -75.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -85.0,
+              23.0
+            ],
+            [
+              -75.0,
+              23.0
+            ],
+            [
+              -75.0,
+              27.0
+            ],
+            [
+              -85.0,
+              27.0
+            ],
+            [
+              -85.0,
+              23.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "high"
+    },
+    {
+      "region_id": "atc_central_caribbean",
+      "name": "Lesser Antilles & Windward [coarse]",
+      "description": "Island chains, moderate traffic",
+      "bounding_box": {
+        "min_lat": 10.0,
+        "min_lon": -65.0,
+        "max_lat": 16.0,
+        "max_lon": -60.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -65.0,
+              10.0
+            ],
+            [
+              -60.0,
+              10.0
+            ],
+            [
+              -60.0,
+              16.0
+            ],
+            [
+              -65.0,
+              16.0
+            ],
+            [
+              -65.0,
+              10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atc_equatorial_atlantic",
+      "name": "Equatorial Atlantic [coarse]",
+      "description": "Open Atlantic, low traffic",
+      "bounding_box": {
+        "min_lat": -10.0,
+        "min_lon": -50.0,
+        "max_lat": 10.0,
+        "max_lon": -10.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -50.0,
+              -10.0
+            ],
+            [
+              -10.0,
+              -10.0
+            ],
+            [
+              -10.0,
+              10.0
+            ],
+            [
+              -50.0,
+              10.0
+            ],
+            [
+              -50.0,
+              -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_south_america",
+      "name": "South American Coast [coarse]",
+      "description": "Brazil, Venezuela coast - river approaches, ports",
+      "bounding_box": {
+        "min_lat": -30.0,
+        "min_lon": -75.0,
+        "max_lat": 5.0,
+        "max_lon": -35.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.0,
+              -30.0
+            ],
+            [
+              -35.0,
+              -30.0
+            ],
+            [
+              -35.0,
+              5.0
+            ],
+            [
+              -75.0,
+              5.0
+            ],
+            [
+              -75.0,
+              -30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_central_south",
+      "name": "Central South Atlantic [coarse]",
+      "description": "Open South Atlantic ocean",
+      "bounding_box": {
+        "min_lat": -40.0,
+        "min_lon": -50.0,
+        "max_lat": -10.0,
+        "max_lon": 0.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -50.0,
+              -40.0
+            ],
+            [
+              0.0,
+              -40.0
+            ],
+            [
+              0.0,
+              -10.0
+            ],
+            [
+              -50.0,
+              -10.0
+            ],
+            [
+              -50.0,
+              -40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_south_africa",
+      "name": "South Africa & Cape [coarse]",
+      "description": "South Africa coast, Cape of Good Hope - major shipping route",
+      "bounding_box": {
+        "min_lat": -35.0,
+        "min_lon": 0.0,
+        "max_lat": -27.0,
+        "max_lon": 35.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              -35.0
+            ],
+            [
+              35.0,
+              -35.0
+            ],
+            [
+              35.0,
+              -27.0
+            ],
+            [
+              0.0,
+              -27.0
+            ],
+            [
+              0.0,
+              -35.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_gulf_guinea",
+      "name": "Gulf of Guinea [coarse]",
+      "description": "West African coast, oil production",
+      "bounding_box": {
+        "min_lat": -10.0,
+        "min_lon": -10.0,
+        "max_lat": 10.0,
+        "max_lon": 15.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -10.0,
+              -10.0
+            ],
+            [
+              15.0,
+              -10.0
+            ],
+            [
+              15.0,
+              10.0
+            ],
+            [
+              -10.0,
+              10.0
+            ],
+            [
+              -10.0,
+              -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    }
+  ],
+  "phase_2_expansion": {
+    "description": "Future refinements and subdivisions",
+    "planned_regions": [
+      {
+        "region_id": "atn_channel_detailed",
+        "name": "English Channel (Detailed)",
+        "description": "Fine resolution English Channel split from atn_british_isles",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      },
+      {
+        "region_id": "ats_cape_fine",
+        "name": "Cape of Good Hope (Detailed)",
+        "description": "Fine resolution Cape area split from ats_south_africa",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      }
+    ],
+    "note": "Phase 2 expansions will subdivide high-traffic areas for finer resolution coverage"
+  }
+}

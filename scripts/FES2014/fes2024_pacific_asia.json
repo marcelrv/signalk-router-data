@@ -1,0 +1,503 @@
+{
+  "catalog_id": "fes2024_pacific_asia",
+  "version": "1.0.0",
+  "basin": "Pacific North & Asia",
+  "description": "FES2024 harmonic tidal current predictions for North Pacific, Asia-Pacific, and Asian shipping regions",
+  "last_updated": "2026-07-05T00:00:00Z",
+  "total_regions": 10,
+  "phase": "phase_1",
+  "regions": [
+    {
+      "region_id": "ptn_japan_korea",
+      "name": "Japan & Korea",
+      "description": "Japan, Korea, East China Sea - high maritime traffic",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": 125.0,
+        "max_lat": 45.0,
+        "max_lon": 145.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              125.0,
+              30.0
+            ],
+            [
+              145.0,
+              30.0
+            ],
+            [
+              145.0,
+              45.0
+            ],
+            [
+              125.0,
+              45.0
+            ],
+            [
+              125.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "ptn_northwest_pacific",
+      "name": "Northwest Pacific [coarse]",
+      "description": "Northern Japan, Russia Far East - shipping lanes to Asia",
+      "bounding_box": {
+        "min_lat": 40.0,
+        "min_lon": 130.0,
+        "max_lat": 55.0,
+        "max_lon": 160.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              130.0,
+              40.0
+            ],
+            [
+              160.0,
+              40.0
+            ],
+            [
+              160.0,
+              55.0
+            ],
+            [
+              130.0,
+              55.0
+            ],
+            [
+              130.0,
+              40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_us_west_coast",
+      "name": "US West Coast",
+      "description": "California, Oregon, Washington - major Pacific ports",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": -135.0,
+        "max_lat": 50.0,
+        "max_lon": -115.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -135.0,
+              30.0
+            ],
+            [
+              -115.0,
+              30.0
+            ],
+            [
+              -115.0,
+              50.0
+            ],
+            [
+              -135.0,
+              50.0
+            ],
+            [
+              -135.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "ptn_california_bight",
+      "name": "California Bight",
+      "description": "California coast detailed - dense shipping and activity",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": -125.0,
+        "max_lat": 42.0,
+        "max_lon": -115.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -125.0,
+              30.0
+            ],
+            [
+              -115.0,
+              30.0
+            ],
+            [
+              -115.0,
+              42.0
+            ],
+            [
+              -125.0,
+              42.0
+            ],
+            [
+              -125.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "ptn_gulf_alaska",
+      "name": "Gulf of Alaska [coarse]",
+      "description": "Alaska south coast - fishing and shipping",
+      "bounding_box": {
+        "min_lat": 50.0,
+        "min_lon": -165.0,
+        "max_lat": 62.0,
+        "max_lon": -135.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -165.0,
+              50.0
+            ],
+            [
+              -135.0,
+              50.0
+            ],
+            [
+              -135.0,
+              62.0
+            ],
+            [
+              -165.0,
+              62.0
+            ],
+            [
+              -165.0,
+              50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_aleutian_chain",
+      "name": "Aleutian Islands & Passages [coarse]",
+      "description": "Aleutian chain - extreme weather, northern shipping",
+      "bounding_box": {
+        "min_lat": 50.0,
+        "min_lon": -175.0,
+        "max_lat": 55.0,
+        "max_lon": -155.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -175.0,
+              50.0
+            ],
+            [
+              -155.0,
+              50.0
+            ],
+            [
+              -155.0,
+              55.0
+            ],
+            [
+              -175.0,
+              55.0
+            ],
+            [
+              -175.0,
+              50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_bering_sea",
+      "name": "Bering Sea [coarse]",
+      "description": "Bering Sea - fishing industry critical",
+      "bounding_box": {
+        "min_lat": 55.0,
+        "min_lon": 155.0,
+        "max_lat": 65.0,
+        "max_lon": -165.0
+      },
+      "boundary_geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                155.0,
+                55.0
+              ],
+              [
+                180.0,
+                55.0
+              ],
+              [
+                180.0,
+                65.0
+              ],
+              [
+                155.0,
+                65.0
+              ],
+              [
+                155.0,
+                55.0
+              ]
+            ]
+          ],
+          [
+            [
+              [
+                -180.0,
+                55.0
+              ],
+              [
+                -165.0,
+                55.0
+              ],
+              [
+                -165.0,
+                65.0
+              ],
+              [
+                -180.0,
+                65.0
+              ],
+              [
+                -180.0,
+                55.0
+              ]
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_philippines_indonesia",
+      "name": "Philippines & Southeast Asia Straits",
+      "description": "Philippines, Indonesia, complex strait system",
+      "bounding_box": {
+        "min_lat": 0.0,
+        "min_lon": 120.0,
+        "max_lat": 20.0,
+        "max_lon": 145.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              120.0,
+              0.0
+            ],
+            [
+              145.0,
+              0.0
+            ],
+            [
+              145.0,
+              20.0
+            ],
+            [
+              120.0,
+              20.0
+            ],
+            [
+              120.0,
+              0.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/16 degree (6.9 km)",
+      "resolution_code": "1/16",
+      "file_size_mb": "4-5",
+      "constituent_count": 34,
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "ptc_south_china_sea",
+      "name": "South China Sea [coarse]",
+      "description": "Major shipping chokepoint - Singapore to Hong Kong",
+      "bounding_box": {
+        "min_lat": 5.0,
+        "min_lon": 100.0,
+        "max_lat": 20.0,
+        "max_lon": 120.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              100.0,
+              5.0
+            ],
+            [
+              120.0,
+              5.0
+            ],
+            [
+              120.0,
+              20.0
+            ],
+            [
+              100.0,
+              20.0
+            ],
+            [
+              100.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "very_high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_north_pacific_open",
+      "name": "North Pacific Open [coarse]",
+      "description": "Open North Pacific - transatlantic shipping lanes",
+      "bounding_box": {
+        "min_lat": 40.0,
+        "min_lon": -180.0,
+        "max_lat": 60.0,
+        "max_lon": -120.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -180.0,
+              40.0
+            ],
+            [
+              -120.0,
+              40.0
+            ],
+            [
+              -120.0,
+              60.0
+            ],
+            [
+              -180.0,
+              60.0
+            ],
+            [
+              -180.0,
+              40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.8-1.2",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    }
+  ],
+  "phase_2_expansion": {
+    "description": "Subdivisions of high-traffic regions",
+    "planned_regions": [
+      {
+        "region_id": "ptn_tokyo_bay",
+        "name": "Tokyo Bay (Detailed)",
+        "description": "Fine resolution Tokyo Bay and approaches",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      },
+      {
+        "region_id": "ptn_busan_port",
+        "name": "Busan Port (Detailed)",
+        "description": "Fine resolution Busan and Korean coast",
+        "planned_resolution": "1/16 degree (6.9 km)"
+      }
+    ],
+    "note": "High-traffic Asian ports will be split for finer detail in Phase 2"
+  }
+}
