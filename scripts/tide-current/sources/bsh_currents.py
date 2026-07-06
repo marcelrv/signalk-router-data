@@ -284,14 +284,14 @@ def main():
         # Forecast days 1-3: VV=01/02/03, all type "forecast" for the same
         # region_id — `variant` is what keeps them distinct (see
         # build_file_entry's docstring for why they can't be bundled).
-        files.append(build_file_entry(region, 1, "forecast", ["00", "12"], variant="+24h"))
+        files.append(build_file_entry(region, 1, "forecast", ["12"], variant="+24h"))
         files.append(build_file_entry(region, 2, "forecast", ["12"], variant="+48h"))
         if region["forecast_days"] >= 3:
             files.append(build_file_entry(region, 3, "forecast", ["12"], variant="+72h"))
 
     update_check = {
         "method": "expiry",
-        "max_age_hours": 12,
+        "max_age_hours": 24,
         "last_checked": "",
     }
     if latest_cycle:
