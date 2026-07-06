@@ -4,7 +4,7 @@
   "basin": "Indian Ocean",
   "description": "FES2024 harmonic tidal current predictions for Indian Ocean, Red Sea, and adjacent waters",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 8,
+  "total_regions": 11,
   "phase": "phase_1",
   "regions": [
     {
@@ -143,13 +143,13 @@
       ]
     },
     {
-      "region_id": "ion_eastern_africa",
-      "name": "East Africa & Madagascar [coarse]",
-      "description": "Kenya, Tanzania, Mozambique, Madagascar coast",
+      "region_id": "ion_mozambique_channel",
+      "name": "Mozambique Channel & SE Africa [coarse]",
+      "description": "Mozambique, Madagascar, Tanzania coast - SE African sailing",
       "bounding_box": {
         "min_lat": -25.0,
         "min_lon": 30.0,
-        "max_lat": 5.0,
+        "max_lat": -10.0,
         "max_lon": 60.0
       },
       "boundary_geometry": {
@@ -166,11 +166,11 @@
             ],
             [
               60.0,
-              5.0
+              -10.0
             ],
             [
               30.0,
-              5.0
+              -10.0
             ],
             [
               30.0,
@@ -182,6 +182,98 @@
       "resolution": "1/8 degree (13.8 km)",
       "resolution_code": "1/8",
       "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_east_africa_north",
+      "name": "Kenya & Tanzania Coast [coarse]",
+      "description": "Kenya, Tanzania, Somalia coast - East Africa sailing",
+      "bounding_box": {
+        "min_lat": -10.0,
+        "min_lon": 30.0,
+        "max_lat": 5.0,
+        "max_lon": 60.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              30.0,
+              -10.0
+            ],
+            [
+              60.0,
+              -10.0
+            ],
+            [
+              60.0,
+              5.0
+            ],
+            [
+              30.0,
+              5.0
+            ],
+            [
+              30.0,
+              -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_sri_lanka",
+      "name": "Sri Lanka & Maldives [coarse]",
+      "description": "Sri Lanka, Maldives, Gulf of Mannar - Indian Ocean island routes",
+      "bounding_box": {
+        "min_lat": 3.0,
+        "min_lon": 72.0,
+        "max_lat": 12.0,
+        "max_lon": 84.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              72.0,
+              3.0
+            ],
+            [
+              84.0,
+              3.0
+            ],
+            [
+              84.0,
+              12.0
+            ],
+            [
+              72.0,
+              12.0
+            ],
+            [
+              72.0,
+              3.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "1-2",
       "constituent_count": 34,
       "traffic_level": "moderate",
       "tags": [
@@ -324,13 +416,13 @@
       ]
     },
     {
-      "region_id": "ion_central_indian",
-      "name": "Central Indian Ocean [coarse]",
-      "description": "Deep Indian Ocean - open water, sparse shipping",
+      "region_id": "ion_central_indian_south",
+      "name": "Central South Indian Ocean [coarse]",
+      "description": "Southern Indian Ocean - open water, trade routes",
       "bounding_box": {
         "min_lat": -20.0,
         "min_lon": 50.0,
-        "max_lat": 20.0,
+        "max_lat": 0.0,
         "max_lon": 85.0
       },
       "boundary_geometry": {
@@ -347,11 +439,11 @@
             ],
             [
               85.0,
-              20.0
+              0.0
             ],
             [
               50.0,
-              20.0
+              0.0
             ],
             [
               50.0,
@@ -362,9 +454,55 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
       "constituent_count": 34,
       "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ion_central_indian_north",
+      "name": "Central North Indian Ocean [coarse]",
+      "description": "Northern Indian Ocean - open water, monsoon shipping",
+      "bounding_box": {
+        "min_lat": 0.0,
+        "min_lon": 50.0,
+        "max_lat": 20.0,
+        "max_lon": 85.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              50.0,
+              0.0
+            ],
+            [
+              85.0,
+              0.0
+            ],
+            [
+              85.0,
+              20.0
+            ],
+            [
+              50.0,
+              20.0
+            ],
+            [
+              50.0,
+              0.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
       "tags": [
         "coarse"
       ]

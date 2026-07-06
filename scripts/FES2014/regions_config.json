@@ -129,7 +129,7 @@
     },
     "english_channel": {
       "title": "English Channel & Dover Strait — Tidal Currents",
-      "bbox": [-6.0, 48.5, 2.0, 51.5],
+      "bbox": [-6.0, 48.5, 3.0, 51.5],
       "stations": [
         {
           "id": "FR_PORT_CHE",
@@ -180,13 +180,13 @@
         {
           "id_prefix": "ECDOV",
           "lat_min": 50.70, "lat_max": 51.20,
-          "lon_min": 0.90, "lon_max": 2.00,
+          "lon_min": 0.90, "lon_max": 3.00,
           "step": 0.05
         },
         {
           "id_prefix": "EC",
           "lat_min": 48.80, "lat_max": 51.20,
-          "lon_min": -5.50, "lon_max": 1.80,
+          "lon_min": -5.50, "lon_max": 3.00,
           "step": 0.15
         }
       ]

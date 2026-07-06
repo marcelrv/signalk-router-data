@@ -4,7 +4,7 @@
   "basin": "Europe & Mediterranean",
   "description": "FES2024 harmonic tidal current predictions for European and Mediterranean waters (North Sea, Baltic, Mediterranean, Black Sea)",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 3,
+  "total_regions": 4,
   "phase": "phase_1",
   "regions": [
     {
@@ -129,6 +129,52 @@
             [
               8.0,
               53.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_iceland",
+      "name": "Iceland & Faroe Islands [coarse]",
+      "description": "Iceland, Faroe Islands, Denmark Strait - North Atlantic sailing routes",
+      "bounding_box": {
+        "min_lat": 60.0,
+        "min_lon": -30.0,
+        "max_lat": 68.0,
+        "max_lon": -6.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -30.0,
+              60.0
+            ],
+            [
+              -6.0,
+              60.0
+            ],
+            [
+              -6.0,
+              68.0
+            ],
+            [
+              -30.0,
+              68.0
+            ],
+            [
+              -30.0,
+              60.0
             ]
           ]
         ]

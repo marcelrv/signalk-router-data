@@ -122,6 +122,31 @@
       ],
       "region_id": "atn_iberian_coast",
       "basin": "Atlantic",
+      "traffic_level": "very_high",
+      "key_features": []
+    },
+    "atn_canada_east": {
+      "title": "Nova Scotia & Newfoundland [coarse]",
+      "description": "Bay of Fundy, Nova Scotia, Gulf of St. Lawrence, Newfoundland - major sailing and fishing",
+      "bbox": [
+        -72.0,
+        41.0,
+        -50.0,
+        52.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATN_CANADA_EAST",
+          "step": 0.125,
+          "lat_min": 41.0,
+          "lat_max": 52.0,
+          "lon_min": -72.0,
+          "lon_max": -50.0
+        }
+      ],
+      "region_id": "atn_canada_east",
+      "basin": "Atlantic",
       "traffic_level": "high",
       "key_features": []
     },
@@ -150,11 +175,36 @@
       "traffic_level": "low",
       "key_features": []
     },
-    "atn_central_atlantic": {
-      "title": "Central North Atlantic [coarse]",
-      "description": "Open North Atlantic - transatlantic shipping lanes",
+    "atn_central_west": {
+      "title": "Central NW Atlantic [coarse]",
+      "description": "Northwest Central Atlantic - Americas side",
       "bbox": [
         -50.0,
+        30.0,
+        -35.0,
+        45.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATN_CENTRAL_WEST",
+          "step": 0.25,
+          "lat_min": 30.0,
+          "lat_max": 45.0,
+          "lon_min": -50.0,
+          "lon_max": -35.0
+        }
+      ],
+      "region_id": "atn_central_west",
+      "basin": "Atlantic",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "atn_central_east": {
+      "title": "Central NE Atlantic [coarse]",
+      "description": "Northeast Central Atlantic - Europe/Africa side",
+      "bbox": [
+        -35.0,
         30.0,
         -20.0,
         45.0
@@ -162,15 +212,15 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "ATN_CENTRAL_ATLANTIC",
+          "id_prefix": "ATN_CENTRAL_EAST",
           "step": 0.25,
           "lat_min": 30.0,
           "lat_max": 45.0,
-          "lon_min": -50.0,
+          "lon_min": -35.0,
           "lon_max": -20.0
         }
       ],
-      "region_id": "atn_central_atlantic",
+      "region_id": "atn_central_east",
       "basin": "Atlantic",
       "traffic_level": "moderate",
       "key_features": []
@@ -232,7 +282,7 @@
         -85.0,
         10.0,
         -60.0,
-        20.0
+        23.0
       ],
       "stations": [],
       "current_grids": [
@@ -240,7 +290,7 @@
           "id_prefix": "ATC_CARIBBEAN",
           "step": 0.0625,
           "lat_min": 10.0,
-          "lat_max": 20.0,
+          "lat_max": 23.0,
           "lon_min": -85.0,
           "lon_max": -60.0
         }
@@ -300,11 +350,36 @@
       "traffic_level": "moderate",
       "key_features": []
     },
-    "atc_equatorial_atlantic": {
-      "title": "Equatorial Atlantic [coarse]",
-      "description": "Open Atlantic, low traffic",
+    "atc_equatorial_west": {
+      "title": "Equatorial West Atlantic [coarse]",
+      "description": "Western equatorial Atlantic - Americas side",
       "bbox": [
         -50.0,
+        -10.0,
+        -30.0,
+        10.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATC_EQUATORIAL_WEST",
+          "step": 0.25,
+          "lat_min": -10.0,
+          "lat_max": 10.0,
+          "lon_min": -50.0,
+          "lon_max": -30.0
+        }
+      ],
+      "region_id": "atc_equatorial_west",
+      "basin": "Atlantic",
+      "traffic_level": "low",
+      "key_features": []
+    },
+    "atc_equatorial_east": {
+      "title": "Equatorial East Atlantic [coarse]",
+      "description": "Eastern equatorial Atlantic - Africa side",
+      "bbox": [
+        -30.0,
         -10.0,
         -10.0,
         10.0
@@ -312,15 +387,15 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "ATC_EQUATORIAL_ATLANTIC",
+          "id_prefix": "ATC_EQUATORIAL_EAST",
           "step": 0.25,
           "lat_min": -10.0,
           "lat_max": 10.0,
-          "lon_min": -50.0,
+          "lon_min": -30.0,
           "lon_max": -10.0
         }
       ],
-      "region_id": "atc_equatorial_atlantic",
+      "region_id": "atc_equatorial_east",
       "basin": "Atlantic",
       "traffic_level": "low",
       "key_features": []
@@ -350,11 +425,36 @@
       "traffic_level": "moderate",
       "key_features": []
     },
-    "ats_central_south": {
-      "title": "Central South Atlantic [coarse]",
-      "description": "Open South Atlantic ocean",
+    "ats_south_atlantic_west": {
+      "title": "Southwest Atlantic [coarse]",
+      "description": "Southwestern Atlantic - Americas side",
       "bbox": [
         -50.0,
+        -40.0,
+        -25.0,
+        -10.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATS_SOUTH_ATLANTIC_WEST",
+          "step": 0.25,
+          "lat_min": -40.0,
+          "lat_max": -10.0,
+          "lon_min": -50.0,
+          "lon_max": -25.0
+        }
+      ],
+      "region_id": "ats_south_atlantic_west",
+      "basin": "Atlantic",
+      "traffic_level": "low",
+      "key_features": []
+    },
+    "ats_south_atlantic_east": {
+      "title": "Southeast Atlantic [coarse]",
+      "description": "Southeastern Atlantic - Africa side",
+      "bbox": [
+        -25.0,
         -40.0,
         0.0,
         -10.0
@@ -362,15 +462,15 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "ATS_CENTRAL_SOUTH",
+          "id_prefix": "ATS_SOUTH_ATLANTIC_EAST",
           "step": 0.25,
           "lat_min": -40.0,
           "lat_max": -10.0,
-          "lon_min": -50.0,
+          "lon_min": -25.0,
           "lon_max": 0.0
         }
       ],
-      "region_id": "ats_central_south",
+      "region_id": "ats_south_atlantic_east",
       "basin": "Atlantic",
       "traffic_level": "low",
       "key_features": []
@@ -421,6 +521,56 @@
         }
       ],
       "region_id": "ats_gulf_guinea",
+      "basin": "Atlantic",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ats_west_africa": {
+      "title": "West Africa Coast [coarse]",
+      "description": "Senegal, Gambia, Guinea, Sierra Leone, Liberia, Ivory Coast - tropical sailing",
+      "bbox": [
+        -20.0,
+        4.0,
+        0.0,
+        22.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATS_WEST_AFRICA",
+          "step": 0.125,
+          "lat_min": 4.0,
+          "lat_max": 22.0,
+          "lon_min": -20.0,
+          "lon_max": 0.0
+        }
+      ],
+      "region_id": "ats_west_africa",
+      "basin": "Atlantic",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ats_angola_namibia": {
+      "title": "Angola & Namibia Coast [coarse]",
+      "description": "Congo, Angola, Namibia coast - South Atlantic sailing route",
+      "bbox": [
+        0.0,
+        -27.0,
+        15.0,
+        -5.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATS_ANGOLA_NAMIBIA",
+          "step": 0.125,
+          "lat_min": -27.0,
+          "lat_max": -5.0,
+          "lon_min": 0.0,
+          "lon_max": 15.0
+        }
+      ],
+      "region_id": "ats_angola_namibia",
       "basin": "Atlantic",
       "traffic_level": "moderate",
       "key_features": []
@@ -500,6 +650,31 @@
       "traffic_level": "moderate",
       "key_features": []
     },
+    "atn_iceland": {
+      "title": "Iceland & Faroe Islands [coarse]",
+      "description": "Iceland, Faroe Islands, Denmark Strait - North Atlantic sailing routes",
+      "bbox": [
+        -30.0,
+        60.0,
+        -6.0,
+        68.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATN_ICELAND",
+          "step": 0.125,
+          "lat_min": 60.0,
+          "lat_max": 68.0,
+          "lon_min": -30.0,
+          "lon_max": -6.0
+        }
+      ],
+      "region_id": "atn_iceland",
+      "basin": "Europe & Mediterranean",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
     "ion_persian_gulf": {
       "title": "Persian Gulf & Gulf of Oman",
       "description": "Oil shipping critical - Strait of Hormuz gateway",
@@ -575,27 +750,77 @@
       "traffic_level": "high",
       "key_features": []
     },
-    "ion_eastern_africa": {
-      "title": "East Africa & Madagascar [coarse]",
-      "description": "Kenya, Tanzania, Mozambique, Madagascar coast",
+    "ion_mozambique_channel": {
+      "title": "Mozambique Channel & SE Africa [coarse]",
+      "description": "Mozambique, Madagascar, Tanzania coast - SE African sailing",
       "bbox": [
         30.0,
         -25.0,
+        60.0,
+        -10.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ION_MOZAMBIQUE_CHANNEL",
+          "step": 0.125,
+          "lat_min": -25.0,
+          "lat_max": -10.0,
+          "lon_min": 30.0,
+          "lon_max": 60.0
+        }
+      ],
+      "region_id": "ion_mozambique_channel",
+      "basin": "Indian Ocean",
+      "traffic_level": "high",
+      "key_features": []
+    },
+    "ion_east_africa_north": {
+      "title": "Kenya & Tanzania Coast [coarse]",
+      "description": "Kenya, Tanzania, Somalia coast - East Africa sailing",
+      "bbox": [
+        30.0,
+        -10.0,
         60.0,
         5.0
       ],
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "ION_EASTERN_AFRICA",
+          "id_prefix": "ION_EAST_AFRICA_NORTH",
           "step": 0.125,
-          "lat_min": -25.0,
+          "lat_min": -10.0,
           "lat_max": 5.0,
           "lon_min": 30.0,
           "lon_max": 60.0
         }
       ],
-      "region_id": "ion_eastern_africa",
+      "region_id": "ion_east_africa_north",
+      "basin": "Indian Ocean",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ion_sri_lanka": {
+      "title": "Sri Lanka & Maldives [coarse]",
+      "description": "Sri Lanka, Maldives, Gulf of Mannar - Indian Ocean island routes",
+      "bbox": [
+        72.0,
+        3.0,
+        84.0,
+        12.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ION_SRI_LANKA",
+          "step": 0.125,
+          "lat_min": 3.0,
+          "lat_max": 12.0,
+          "lon_min": 72.0,
+          "lon_max": 84.0
+        }
+      ],
+      "region_id": "ion_sri_lanka",
       "basin": "Indian Ocean",
       "traffic_level": "moderate",
       "key_features": []
@@ -675,29 +900,54 @@
       "traffic_level": "moderate",
       "key_features": []
     },
-    "ion_central_indian": {
-      "title": "Central Indian Ocean [coarse]",
-      "description": "Deep Indian Ocean - open water, sparse shipping",
+    "ion_central_indian_south": {
+      "title": "Central South Indian Ocean [coarse]",
+      "description": "Southern Indian Ocean - open water, trade routes",
       "bbox": [
         50.0,
         -20.0,
+        85.0,
+        0.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ION_CENTRAL_INDIAN_SOUTH",
+          "step": 0.25,
+          "lat_min": -20.0,
+          "lat_max": 0.0,
+          "lon_min": 50.0,
+          "lon_max": 85.0
+        }
+      ],
+      "region_id": "ion_central_indian_south",
+      "basin": "Indian Ocean",
+      "traffic_level": "low",
+      "key_features": []
+    },
+    "ion_central_indian_north": {
+      "title": "Central North Indian Ocean [coarse]",
+      "description": "Northern Indian Ocean - open water, monsoon shipping",
+      "bbox": [
+        50.0,
+        0.0,
         85.0,
         20.0
       ],
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "ION_CENTRAL_INDIAN",
+          "id_prefix": "ION_CENTRAL_INDIAN_NORTH",
           "step": 0.25,
-          "lat_min": -20.0,
+          "lat_min": 0.0,
           "lat_max": 20.0,
           "lon_min": 50.0,
           "lon_max": 85.0
         }
       ],
-      "region_id": "ion_central_indian",
+      "region_id": "ion_central_indian_north",
       "basin": "Indian Ocean",
-      "traffic_level": "low",
+      "traffic_level": "moderate",
       "key_features": []
     },
     "ptn_japan_korea": {
@@ -925,11 +1175,36 @@
       "traffic_level": "very_high",
       "key_features": []
     },
-    "ptn_north_pacific_open": {
-      "title": "North Pacific Open [coarse]",
-      "description": "Open North Pacific - transatlantic shipping lanes",
+    "ptn_north_pacific_east": {
+      "title": "North Pacific East [coarse]",
+      "description": "Eastern North Pacific - Americas side, trans-Pacific routes",
       "bbox": [
         -180.0,
+        40.0,
+        -150.0,
+        60.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTN_NORTH_PACIFIC_EAST",
+          "step": 0.25,
+          "lat_min": 40.0,
+          "lat_max": 60.0,
+          "lon_min": -180.0,
+          "lon_max": -150.0
+        }
+      ],
+      "region_id": "ptn_north_pacific_east",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ptn_north_pacific_west": {
+      "title": "North Pacific West [coarse]",
+      "description": "Western North Pacific - Asia side, trans-Pacific routes",
+      "bbox": [
+        -150.0,
         40.0,
         -120.0,
         60.0
@@ -937,24 +1212,124 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "PTN_NORTH_PACIFIC_OPEN",
+          "id_prefix": "PTN_NORTH_PACIFIC_WEST",
           "step": 0.25,
           "lat_min": 40.0,
           "lat_max": 60.0,
-          "lon_min": -180.0,
+          "lon_min": -150.0,
           "lon_max": -120.0
         }
       ],
-      "region_id": "ptn_north_pacific_open",
+      "region_id": "ptn_north_pacific_west",
       "basin": "Pacific North & Asia",
       "traffic_level": "moderate",
       "key_features": []
     },
-    "pts_australia_nz": {
-      "title": "Australia & New Zealand [coarse]",
-      "description": "Australia, New Zealand, Tasman Sea - major Pacific ports",
+    "ptn_canada_west": {
+      "title": "British Columbia & SE Alaska [coarse]",
+      "description": "Vancouver Island, BC coast, Haida Gwaii, SE Alaska - Inside Passage route",
+      "bbox": [
+        -140.0,
+        47.0,
+        -122.0,
+        55.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTN_CANADA_WEST",
+          "step": 0.125,
+          "lat_min": 47.0,
+          "lat_max": 55.0,
+          "lon_min": -140.0,
+          "lon_max": -122.0
+        }
+      ],
+      "region_id": "ptn_canada_west",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "high",
+      "key_features": []
+    },
+    "ptc_gulf_tonkin": {
+      "title": "Gulf of Tonkin & Vietnam Coast [coarse]",
+      "description": "Vietnam, Gulf of Tonkin, Hainan - Southeast Asia sailing",
+      "bbox": [
+        104.0,
+        14.0,
+        112.0,
+        23.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_GULF_TONKIN",
+          "step": 0.125,
+          "lat_min": 14.0,
+          "lat_max": 23.0,
+          "lon_min": 104.0,
+          "lon_max": 112.0
+        }
+      ],
+      "region_id": "ptc_gulf_tonkin",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ptn_sea_okhotsk": {
+      "title": "Sea of Okhotsk & Kamchatka [coarse]",
+      "description": "Sea of Okhotsk, Kamchatka Peninsula, Kuril Islands - Russian Far East",
+      "bbox": [
+        140.0,
+        44.0,
+        160.0,
+        60.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTN_SEA_OKHOTSK",
+          "step": 0.125,
+          "lat_min": 44.0,
+          "lat_max": 60.0,
+          "lon_min": 140.0,
+          "lon_max": 160.0
+        }
+      ],
+      "region_id": "ptn_sea_okhotsk",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "pts_west_south_australia": {
+      "title": "Western & South Australia [coarse]",
+      "description": "Western Australia, South Australia, Great Australian Bight",
       "bbox": [
         110.0,
+        -47.0,
+        150.0,
+        -10.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTS_WEST_SOUTH_AUSTRALIA",
+          "step": 0.125,
+          "lat_min": -47.0,
+          "lat_max": -10.0,
+          "lon_min": 110.0,
+          "lon_max": 150.0
+        }
+      ],
+      "region_id": "pts_west_south_australia",
+      "basin": "Pacific South & Oceania",
+      "traffic_level": "high",
+      "key_features": []
+    },
+    "pts_east_australia_nz": {
+      "title": "Eastern Australia & New Zealand [coarse]",
+      "description": "Queensland, NSW, Victoria, Tasmania, New Zealand, Tasman Sea",
+      "bbox": [
+        150.0,
         -47.0,
         180.0,
         -10.0
@@ -962,15 +1337,15 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "PTS_AUSTRALIA_NZ",
+          "id_prefix": "PTS_EAST_AUSTRALIA_NZ",
           "step": 0.125,
           "lat_min": -47.0,
           "lat_max": -10.0,
-          "lon_min": 110.0,
+          "lon_min": 150.0,
           "lon_max": 180.0
         }
       ],
-      "region_id": "pts_australia_nz",
+      "region_id": "pts_east_australia_nz",
       "basin": "Pacific South & Oceania",
       "traffic_level": "high",
       "key_features": []
@@ -1050,11 +1425,36 @@
       "traffic_level": "moderate",
       "key_features": []
     },
-    "pts_south_pacific_open": {
-      "title": "South Pacific Open Ocean [coarse]",
-      "description": "Open South Pacific - sparse shipping, long routes",
+    "pts_south_pacific_east": {
+      "title": "South Pacific East [coarse]",
+      "description": "Eastern South Pacific - Americas side, Chile to Galapagos",
       "bbox": [
         -180.0,
+        -50.0,
+        -75.0,
+        -10.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTS_SOUTH_PACIFIC_EAST",
+          "step": 0.25,
+          "lat_min": -50.0,
+          "lat_max": -10.0,
+          "lon_min": -180.0,
+          "lon_max": -75.0
+        }
+      ],
+      "region_id": "pts_south_pacific_east",
+      "basin": "Pacific South & Oceania",
+      "traffic_level": "low",
+      "key_features": []
+    },
+    "pts_south_pacific_central": {
+      "title": "Central South Pacific [coarse]",
+      "description": "Central South Pacific - French Polynesia, Pitcairn",
+      "bbox": [
+        -75.0,
         -50.0,
         110.0,
         -10.0
@@ -1062,17 +1462,92 @@
       "stations": [],
       "current_grids": [
         {
-          "id_prefix": "PTS_SOUTH_PACIFIC_OPEN",
+          "id_prefix": "PTS_SOUTH_PACIFIC_CENTRAL",
           "step": 0.25,
           "lat_min": -50.0,
           "lat_max": -10.0,
-          "lon_min": -180.0,
+          "lon_min": -75.0,
           "lon_max": 110.0
         }
       ],
-      "region_id": "pts_south_pacific_open",
+      "region_id": "pts_south_pacific_central",
       "basin": "Pacific South & Oceania",
       "traffic_level": "low",
+      "key_features": []
+    },
+    "pts_south_america_pacific": {
+      "title": "Chile & Peru Coast [coarse]",
+      "description": "Pacific coast of South America - Chile, Peru, Ecuador",
+      "bbox": [
+        -85.0,
+        -45.0,
+        -70.0,
+        5.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTS_SOUTH_AMERICA_PACIFIC",
+          "step": 0.125,
+          "lat_min": -45.0,
+          "lat_max": 5.0,
+          "lon_min": -85.0,
+          "lon_max": -70.0
+        }
+      ],
+      "region_id": "pts_south_america_pacific",
+      "basin": "Pacific South & Oceania",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ptc_central_america_pacific": {
+      "title": "Central America Pacific [coarse]",
+      "description": "Pacific coast of Central America - Mexico to Panama, popular cruising route",
+      "bbox": [
+        -95.0,
+        5.0,
+        -75.0,
+        22.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_CENTRAL_AMERICA_PACIFIC",
+          "step": 0.125,
+          "lat_min": 5.0,
+          "lat_max": 22.0,
+          "lon_min": -95.0,
+          "lon_max": -75.0
+        }
+      ],
+      "region_id": "ptc_central_america_pacific",
+      "basin": "Pacific South & Oceania",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ptc_melanesia": {
+      "title": "Melanesia & Coral Sea [coarse]",
+      "description": "Fiji, Vanuatu, Solomon Islands, New Caledonia, Coral Sea - South Pacific cruising",
+      "bbox": [
+        155.0,
+        -25.0,
+        180.0,
+        -5.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_MELANESIA",
+          "step": 0.125,
+          "lat_min": -25.0,
+          "lat_max": -5.0,
+          "lon_min": 155.0,
+          "lon_max": 180.0
+        }
+      ],
+      "region_id": "ptc_melanesia",
+      "basin": "Pacific South & Oceania",
+      "traffic_level": "moderate",
       "key_features": []
     }
   }

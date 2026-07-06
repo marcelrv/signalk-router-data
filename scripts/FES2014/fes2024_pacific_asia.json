@@ -4,7 +4,7 @@
   "basin": "Pacific North & Asia",
   "description": "FES2024 harmonic tidal current predictions for North Pacific, Asia-Pacific, and Asian shipping regions",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 10,
+  "total_regions": 14,
   "phase": "phase_1",
   "regions": [
     {
@@ -436,14 +436,14 @@
       ]
     },
     {
-      "region_id": "ptn_north_pacific_open",
-      "name": "North Pacific Open [coarse]",
-      "description": "Open North Pacific - transatlantic shipping lanes",
+      "region_id": "ptn_north_pacific_east",
+      "name": "North Pacific East [coarse]",
+      "description": "Eastern North Pacific - Americas side, trans-Pacific routes",
       "bounding_box": {
         "min_lat": 40.0,
         "min_lon": -180.0,
         "max_lat": 60.0,
-        "max_lon": -120.0
+        "max_lon": -150.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -454,11 +454,11 @@
               40.0
             ],
             [
-              -120.0,
+              -150.0,
               40.0
             ],
             [
-              -120.0,
+              -150.0,
               60.0
             ],
             [
@@ -474,7 +474,191 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_north_pacific_west",
+      "name": "North Pacific West [coarse]",
+      "description": "Western North Pacific - Asia side, trans-Pacific routes",
+      "bounding_box": {
+        "min_lat": 40.0,
+        "min_lon": -150.0,
+        "max_lat": 60.0,
+        "max_lon": -120.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -150.0,
+              40.0
+            ],
+            [
+              -120.0,
+              40.0
+            ],
+            [
+              -120.0,
+              60.0
+            ],
+            [
+              -150.0,
+              60.0
+            ],
+            [
+              -150.0,
+              40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_canada_west",
+      "name": "British Columbia & SE Alaska [coarse]",
+      "description": "Vancouver Island, BC coast, Haida Gwaii, SE Alaska - Inside Passage route",
+      "bounding_box": {
+        "min_lat": 47.0,
+        "min_lon": -140.0,
+        "max_lat": 55.0,
+        "max_lon": -122.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -140.0,
+              47.0
+            ],
+            [
+              -122.0,
+              47.0
+            ],
+            [
+              -122.0,
+              55.0
+            ],
+            [
+              -140.0,
+              55.0
+            ],
+            [
+              -140.0,
+              47.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_gulf_tonkin",
+      "name": "Gulf of Tonkin & Vietnam Coast [coarse]",
+      "description": "Vietnam, Gulf of Tonkin, Hainan - Southeast Asia sailing",
+      "bounding_box": {
+        "min_lat": 14.0,
+        "min_lon": 104.0,
+        "max_lat": 23.0,
+        "max_lon": 112.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              104.0,
+              14.0
+            ],
+            [
+              112.0,
+              14.0
+            ],
+            [
+              112.0,
+              23.0
+            ],
+            [
+              104.0,
+              23.0
+            ],
+            [
+              104.0,
+              14.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptn_sea_okhotsk",
+      "name": "Sea of Okhotsk & Kamchatka [coarse]",
+      "description": "Sea of Okhotsk, Kamchatka Peninsula, Kuril Islands - Russian Far East",
+      "bounding_box": {
+        "min_lat": 44.0,
+        "min_lon": 140.0,
+        "max_lat": 60.0,
+        "max_lon": 160.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              140.0,
+              44.0
+            ],
+            [
+              160.0,
+              44.0
+            ],
+            [
+              160.0,
+              60.0
+            ],
+            [
+              140.0,
+              60.0
+            ],
+            [
+              140.0,
+              44.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
       "constituent_count": 34,
       "traffic_level": "moderate",
       "tags": [

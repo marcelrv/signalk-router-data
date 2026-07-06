@@ -4,18 +4,18 @@
   "basin": "Pacific South & Oceania",
   "description": "FES2024 harmonic tidal current predictions for South Pacific, Oceania, Australia, and New Zealand",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 5,
+  "total_regions": 10,
   "phase": "phase_1",
   "regions": [
     {
-      "region_id": "pts_australia_nz",
-      "name": "Australia & New Zealand [coarse]",
-      "description": "Australia, New Zealand, Tasman Sea - major Pacific ports",
+      "region_id": "pts_west_south_australia",
+      "name": "Western & South Australia [coarse]",
+      "description": "Western Australia, South Australia, Great Australian Bight",
       "bounding_box": {
         "min_lat": -47.0,
         "min_lon": 110.0,
         "max_lat": -10.0,
-        "max_lon": 180.0
+        "max_lon": 150.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -26,6 +26,52 @@
               -47.0
             ],
             [
+              150.0,
+              -47.0
+            ],
+            [
+              150.0,
+              -10.0
+            ],
+            [
+              110.0,
+              -10.0
+            ],
+            [
+              110.0,
+              -47.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "pts_east_australia_nz",
+      "name": "Eastern Australia & New Zealand [coarse]",
+      "description": "Queensland, NSW, Victoria, Tasmania, New Zealand, Tasman Sea",
+      "bounding_box": {
+        "min_lat": -47.0,
+        "min_lon": 150.0,
+        "max_lat": -10.0,
+        "max_lon": 180.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              150.0,
+              -47.0
+            ],
+            [
               180.0,
               -47.0
             ],
@@ -34,11 +80,11 @@
               -10.0
             ],
             [
-              110.0,
+              150.0,
               -10.0
             ],
             [
-              110.0,
+              150.0,
               -47.0
             ]
           ]
@@ -189,14 +235,14 @@
       "traffic_level": "moderate"
     },
     {
-      "region_id": "pts_south_pacific_open",
-      "name": "South Pacific Open Ocean [coarse]",
-      "description": "Open South Pacific - sparse shipping, long routes",
+      "region_id": "pts_south_pacific_east",
+      "name": "South Pacific East [coarse]",
+      "description": "Eastern South Pacific - Americas side, Chile to Galapagos",
       "bounding_box": {
         "min_lat": -50.0,
         "min_lon": -180.0,
         "max_lat": -10.0,
-        "max_lon": 110.0
+        "max_lon": -75.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -207,11 +253,11 @@
               -50.0
             ],
             [
-              110.0,
+              -75.0,
               -50.0
             ],
             [
-              110.0,
+              -75.0,
               -10.0
             ],
             [
@@ -227,9 +273,193 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
       "constituent_count": 34,
       "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "pts_south_pacific_central",
+      "name": "Central South Pacific [coarse]",
+      "description": "Central South Pacific - French Polynesia, Pitcairn",
+      "bounding_box": {
+        "min_lat": -50.0,
+        "min_lon": -75.0,
+        "max_lat": -10.0,
+        "max_lon": 110.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -75.0,
+              -50.0
+            ],
+            [
+              110.0,
+              -50.0
+            ],
+            [
+              110.0,
+              -10.0
+            ],
+            [
+              -75.0,
+              -10.0
+            ],
+            [
+              -75.0,
+              -50.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "pts_south_america_pacific",
+      "name": "Chile & Peru Coast [coarse]",
+      "description": "Pacific coast of South America - Chile, Peru, Ecuador",
+      "bounding_box": {
+        "min_lat": -45.0,
+        "min_lon": -85.0,
+        "max_lat": 5.0,
+        "max_lon": -70.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -85.0,
+              -45.0
+            ],
+            [
+              -70.0,
+              -45.0
+            ],
+            [
+              -70.0,
+              5.0
+            ],
+            [
+              -85.0,
+              5.0
+            ],
+            [
+              -85.0,
+              -45.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_central_america_pacific",
+      "name": "Central America Pacific [coarse]",
+      "description": "Pacific coast of Central America - Mexico to Panama, popular cruising route",
+      "bounding_box": {
+        "min_lat": 5.0,
+        "min_lon": -95.0,
+        "max_lat": 22.0,
+        "max_lon": -75.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -95.0,
+              5.0
+            ],
+            [
+              -75.0,
+              5.0
+            ],
+            [
+              -75.0,
+              22.0
+            ],
+            [
+              -95.0,
+              22.0
+            ],
+            [
+              -95.0,
+              5.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_melanesia",
+      "name": "Melanesia & Coral Sea [coarse]",
+      "description": "Fiji, Vanuatu, Solomon Islands, New Caledonia, Coral Sea - South Pacific cruising",
+      "bounding_box": {
+        "min_lat": -25.0,
+        "min_lon": 155.0,
+        "max_lat": -5.0,
+        "max_lon": 180.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              155.0,
+              -25.0
+            ],
+            [
+              180.0,
+              -25.0
+            ],
+            [
+              180.0,
+              -5.0
+            ],
+            [
+              155.0,
+              -5.0
+            ],
+            [
+              155.0,
+              -25.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
       "tags": [
         "coarse"
       ]

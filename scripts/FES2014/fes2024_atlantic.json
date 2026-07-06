@@ -4,7 +4,7 @@
   "basin": "Atlantic",
   "description": "FES2024 harmonic tidal current predictions for Atlantic Ocean basin (North, Central, and South)",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 14,
+  "total_regions": 20,
   "phase": "phase_1",
   "regions": [
     {
@@ -226,7 +226,53 @@
       "resolution_code": "1/16",
       "file_size_mb": "4-5",
       "constituent_count": 34,
-      "traffic_level": "high"
+      "traffic_level": "very_high"
+    },
+    {
+      "region_id": "atn_canada_east",
+      "name": "Nova Scotia & Newfoundland [coarse]",
+      "description": "Bay of Fundy, Nova Scotia, Gulf of St. Lawrence, Newfoundland - major sailing and fishing",
+      "bounding_box": {
+        "min_lat": 41.0,
+        "min_lon": -72.0,
+        "max_lat": 52.0,
+        "max_lon": -50.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -72.0,
+              41.0
+            ],
+            [
+              -50.0,
+              41.0
+            ],
+            [
+              -50.0,
+              52.0
+            ],
+            [
+              -72.0,
+              52.0
+            ],
+            [
+              -72.0,
+              41.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
     },
     {
       "region_id": "atn_azores_madeira",
@@ -275,14 +321,14 @@
       ]
     },
     {
-      "region_id": "atn_central_atlantic",
-      "name": "Central North Atlantic [coarse]",
-      "description": "Open North Atlantic - transatlantic shipping lanes",
+      "region_id": "atn_central_west",
+      "name": "Central NW Atlantic [coarse]",
+      "description": "Northwest Central Atlantic - Americas side",
       "bounding_box": {
         "min_lat": 30.0,
         "min_lon": -50.0,
         "max_lat": 45.0,
-        "max_lon": -20.0
+        "max_lon": -35.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -293,11 +339,11 @@
               30.0
             ],
             [
-              -20.0,
+              -35.0,
               30.0
             ],
             [
-              -20.0,
+              -35.0,
               45.0
             ],
             [
@@ -313,7 +359,53 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_central_east",
+      "name": "Central NE Atlantic [coarse]",
+      "description": "Northeast Central Atlantic - Europe/Africa side",
+      "bounding_box": {
+        "min_lat": 30.0,
+        "min_lon": -35.0,
+        "max_lat": 45.0,
+        "max_lon": -20.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -35.0,
+              30.0
+            ],
+            [
+              -20.0,
+              30.0
+            ],
+            [
+              -20.0,
+              45.0
+            ],
+            [
+              -35.0,
+              45.0
+            ],
+            [
+              -35.0,
+              30.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
       "constituent_count": 34,
       "traffic_level": "moderate",
       "tags": [
@@ -413,7 +505,7 @@
       "bounding_box": {
         "min_lat": 10.0,
         "min_lon": -85.0,
-        "max_lat": 20.0,
+        "max_lat": 23.0,
         "max_lon": -60.0
       },
       "boundary_geometry": {
@@ -430,11 +522,11 @@
             ],
             [
               -60.0,
-              20.0
+              23.0
             ],
             [
               -85.0,
-              20.0
+              23.0
             ],
             [
               -85.0,
@@ -445,7 +537,7 @@
       },
       "resolution": "1/16 degree (6.9 km)",
       "resolution_code": "1/16",
-      "file_size_mb": "4-5",
+      "file_size_mb": "5-6",
       "constituent_count": 34,
       "traffic_level": "high"
     },
@@ -539,14 +631,14 @@
       ]
     },
     {
-      "region_id": "atc_equatorial_atlantic",
-      "name": "Equatorial Atlantic [coarse]",
-      "description": "Open Atlantic, low traffic",
+      "region_id": "atc_equatorial_west",
+      "name": "Equatorial West Atlantic [coarse]",
+      "description": "Western equatorial Atlantic - Americas side",
       "bounding_box": {
         "min_lat": -10.0,
         "min_lon": -50.0,
         "max_lat": 10.0,
-        "max_lon": -10.0
+        "max_lon": -30.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -557,11 +649,11 @@
               -10.0
             ],
             [
-              -10.0,
+              -30.0,
               -10.0
             ],
             [
-              -10.0,
+              -30.0,
               10.0
             ],
             [
@@ -577,7 +669,53 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atc_equatorial_east",
+      "name": "Equatorial East Atlantic [coarse]",
+      "description": "Eastern equatorial Atlantic - Africa side",
+      "bounding_box": {
+        "min_lat": -10.0,
+        "min_lon": -30.0,
+        "max_lat": 10.0,
+        "max_lon": -10.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -30.0,
+              -10.0
+            ],
+            [
+              -10.0,
+              -10.0
+            ],
+            [
+              -10.0,
+              10.0
+            ],
+            [
+              -30.0,
+              10.0
+            ],
+            [
+              -30.0,
+              -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
       "constituent_count": 34,
       "traffic_level": "low",
       "tags": [
@@ -631,14 +769,14 @@
       ]
     },
     {
-      "region_id": "ats_central_south",
-      "name": "Central South Atlantic [coarse]",
-      "description": "Open South Atlantic ocean",
+      "region_id": "ats_south_atlantic_west",
+      "name": "Southwest Atlantic [coarse]",
+      "description": "Southwestern Atlantic - Americas side",
       "bounding_box": {
         "min_lat": -40.0,
         "min_lon": -50.0,
         "max_lat": -10.0,
-        "max_lon": 0.0
+        "max_lon": -25.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -649,11 +787,11 @@
               -40.0
             ],
             [
-              0.0,
+              -25.0,
               -40.0
             ],
             [
-              0.0,
+              -25.0,
               -10.0
             ],
             [
@@ -669,7 +807,53 @@
       },
       "resolution": "1/4 degree (27.6 km)",
       "resolution_code": "1/4",
-      "file_size_mb": "0.8-1.2",
+      "file_size_mb": "0.5-0.8",
+      "constituent_count": 34,
+      "traffic_level": "low",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_south_atlantic_east",
+      "name": "Southeast Atlantic [coarse]",
+      "description": "Southeastern Atlantic - Africa side",
+      "bounding_box": {
+        "min_lat": -40.0,
+        "min_lon": -25.0,
+        "max_lat": -10.0,
+        "max_lon": 0.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -25.0,
+              -40.0
+            ],
+            [
+              0.0,
+              -40.0
+            ],
+            [
+              0.0,
+              -10.0
+            ],
+            [
+              -25.0,
+              -10.0
+            ],
+            [
+              -25.0,
+              -40.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/4 degree (27.6 km)",
+      "resolution_code": "1/4",
+      "file_size_mb": "0.5-0.8",
       "constituent_count": 34,
       "traffic_level": "low",
       "tags": [
@@ -755,6 +939,98 @@
             [
               -10.0,
               -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_west_africa",
+      "name": "West Africa Coast [coarse]",
+      "description": "Senegal, Gambia, Guinea, Sierra Leone, Liberia, Ivory Coast - tropical sailing",
+      "bounding_box": {
+        "min_lat": 4.0,
+        "min_lon": -20.0,
+        "max_lat": 22.0,
+        "max_lon": 0.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -20.0,
+              4.0
+            ],
+            [
+              0.0,
+              4.0
+            ],
+            [
+              0.0,
+              22.0
+            ],
+            [
+              -20.0,
+              22.0
+            ],
+            [
+              -20.0,
+              4.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_angola_namibia",
+      "name": "Angola & Namibia Coast [coarse]",
+      "description": "Congo, Angola, Namibia coast - South Atlantic sailing route",
+      "bounding_box": {
+        "min_lat": -27.0,
+        "min_lon": 0.0,
+        "max_lat": -5.0,
+        "max_lon": 15.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              0.0,
+              -27.0
+            ],
+            [
+              15.0,
+              -27.0
+            ],
+            [
+              15.0,
+              -5.0
+            ],
+            [
+              0.0,
+              -5.0
+            ],
+            [
+              0.0,
+              -27.0
             ]
           ]
         ]

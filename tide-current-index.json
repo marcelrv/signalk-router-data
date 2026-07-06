@@ -1,9 +1,2851 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-05T18:11:02Z",
-  "source_count": 48,
+  "generated": "2026-07-06T19:25:51Z",
+  "source_count": 68,
   "sources": [
+    {
+      "id": "bsh_currents",
+      "source": "bsh",
+      "type": "grib2",
+      "name": "BSH Surface Current Forecasts",
+      "description": "Regional surface current forecasts from the German Federal Maritime and Hydrographic Agency (BSH) in GRIB2 format. Covers the North Sea, Baltic Sea, and Elbe river with up to 3-day forecasts at 15-minute resolution.",
+      "contributor": "BSH (Bundesamt f\u00fcr Seeschifffahrt und Hydrographie)",
+      "url": "https://www.bsh.de/EN/DATA/Predictions/Currents/Surface_currents_for_sailors/surface_currents_for_sailors_node.html",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "bsh",
+        "ocean-currents",
+        "north-sea",
+        "baltic-sea",
+        "twice-daily"
+      ],
+      "region": {
+        "name": "North Sea, Baltic Sea, Elbe river",
+        "bounding_box": {
+          "min_lat": 48.6,
+          "min_lon": -3.92,
+          "max_lat": 65.85,
+          "max_lon": 30.25
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -3.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  48.6
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  9.5,
+                  53.225
+                ],
+                [
+                  9.5,
+                  56.45
+                ],
+                [
+                  6.167,
+                  56.45
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  9.0,
+                  53.225
+                ],
+                [
+                  9.0,
+                  54.25
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  7.75,
+                  53.225
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  7.75,
+                  54.242
+                ],
+                [
+                  9.0,
+                  54.242
+                ],
+                [
+                  9.0,
+                  55.25
+                ],
+                [
+                  7.75,
+                  55.25
+                ],
+                [
+                  7.75,
+                  54.242
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  6.167,
+                  54.25
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  8.917,
+                  53.6
+                ],
+                [
+                  30.25,
+                  53.6
+                ],
+                [
+                  30.25,
+                  65.85
+                ],
+                [
+                  8.917,
+                  65.85
+                ],
+                [
+                  8.917,
+                  53.6
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.194,
+                  53.225
+                ],
+                [
+                  14.917,
+                  53.225
+                ],
+                [
+                  14.917,
+                  56.45
+                ],
+                [
+                  9.194,
+                  56.45
+                ],
+                [
+                  9.194,
+                  53.225
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.833,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.3
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  10.75,
+                  53.9
+                ],
+                [
+                  12.528,
+                  53.9
+                ],
+                [
+                  12.528,
+                  54.75
+                ],
+                [
+                  10.75,
+                  54.75
+                ],
+                [
+                  10.75,
+                  53.9
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  12.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  53.225
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  12.167,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.1
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.5,
+                  54.7
+                ],
+                [
+                  11.306,
+                  54.7
+                ],
+                [
+                  11.306,
+                  56.0
+                ],
+                [
+                  9.5,
+                  56.0
+                ],
+                [
+                  9.5,
+                  54.7
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  8.305,
+                  53.85
+                ],
+                [
+                  8.75,
+                  53.85
+                ],
+                [
+                  8.75,
+                  54.04
+                ],
+                [
+                  8.305,
+                  54.04
+                ],
+                [
+                  8.305,
+                  53.85
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  8.68,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.82
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.2,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.65
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.3,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.5
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 12,
+        "last_checked": "2026-07-06T19:25:28Z",
+        "latest_cycle": "2026-07-06T00:00:00Z"
+      },
+      "files": [
+        {
+          "region_id": "north_sea",
+          "name": "North Sea",
+          "description": "North Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -3.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  48.6
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_no_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "north_sea",
+          "name": "North Sea",
+          "description": "North Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -3.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  48.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_no_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "north_sea",
+          "name": "North Sea",
+          "description": "North Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -3.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  48.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_no_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "north_sea",
+          "name": "North Sea",
+          "description": "North Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -3.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  48.6
+                ],
+                [
+                  8.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  60.65
+                ],
+                [
+                  -3.92,
+                  48.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_no_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "german_bight",
+          "name": "German Bight",
+          "description": "German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  9.5,
+                  53.225
+                ],
+                [
+                  9.5,
+                  56.45
+                ],
+                [
+                  6.167,
+                  56.45
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_db_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "german_bight",
+          "name": "German Bight",
+          "description": "German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  9.5,
+                  53.225
+                ],
+                [
+                  9.5,
+                  56.45
+                ],
+                [
+                  6.167,
+                  56.45
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_db_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "german_bight",
+          "name": "German Bight",
+          "description": "German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  9.5,
+                  53.225
+                ],
+                [
+                  9.5,
+                  56.45
+                ],
+                [
+                  6.167,
+                  56.45
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_db_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "german_bight",
+          "name": "German Bight",
+          "description": "German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  9.5,
+                  53.225
+                ],
+                [
+                  9.5,
+                  56.45
+                ],
+                [
+                  6.167,
+                  56.45
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_db_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "inner_german_bight",
+          "name": "Inner German Bight",
+          "description": "Inner German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  9.0,
+                  53.225
+                ],
+                [
+                  9.0,
+                  54.25
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  7.75,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_idb_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "inner_german_bight",
+          "name": "Inner German Bight",
+          "description": "Inner German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  9.0,
+                  53.225
+                ],
+                [
+                  9.0,
+                  54.25
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  7.75,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_idb_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "inner_german_bight",
+          "name": "Inner German Bight",
+          "description": "Inner German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  9.0,
+                  53.225
+                ],
+                [
+                  9.0,
+                  54.25
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  7.75,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_idb_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "inner_german_bight",
+          "name": "Inner German Bight",
+          "description": "Inner German Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  9.0,
+                  53.225
+                ],
+                [
+                  9.0,
+                  54.25
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  7.75,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_idb_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "north_frisian_islands",
+          "name": "North Frisian Islands",
+          "description": "Area of North Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  54.242
+                ],
+                [
+                  9.0,
+                  54.242
+                ],
+                [
+                  9.0,
+                  55.25
+                ],
+                [
+                  7.75,
+                  55.25
+                ],
+                [
+                  7.75,
+                  54.242
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_nfi_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "north_frisian_islands",
+          "name": "North Frisian Islands",
+          "description": "Area of North Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  54.242
+                ],
+                [
+                  9.0,
+                  54.242
+                ],
+                [
+                  9.0,
+                  55.25
+                ],
+                [
+                  7.75,
+                  55.25
+                ],
+                [
+                  7.75,
+                  54.242
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_nfi_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "north_frisian_islands",
+          "name": "North Frisian Islands",
+          "description": "Area of North Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  54.242
+                ],
+                [
+                  9.0,
+                  54.242
+                ],
+                [
+                  9.0,
+                  55.25
+                ],
+                [
+                  7.75,
+                  55.25
+                ],
+                [
+                  7.75,
+                  54.242
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_nfi_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "north_frisian_islands",
+          "name": "North Frisian Islands",
+          "description": "Area of North Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  7.75,
+                  54.242
+                ],
+                [
+                  9.0,
+                  54.242
+                ],
+                [
+                  9.0,
+                  55.25
+                ],
+                [
+                  7.75,
+                  55.25
+                ],
+                [
+                  7.75,
+                  54.242
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_nfi_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "east_frisian_islands",
+          "name": "East Frisian Islands",
+          "description": "Area of East Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  6.167,
+                  54.25
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_ofi_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "east_frisian_islands",
+          "name": "East Frisian Islands",
+          "description": "Area of East Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  6.167,
+                  54.25
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_ofi_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "east_frisian_islands",
+          "name": "East Frisian Islands",
+          "description": "Area of East Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  6.167,
+                  54.25
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_ofi_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "east_frisian_islands",
+          "name": "East Frisian Islands",
+          "description": "Area of East Frisian Islands fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  6.167,
+                  53.225
+                ],
+                [
+                  7.75,
+                  53.225
+                ],
+                [
+                  7.75,
+                  54.25
+                ],
+                [
+                  6.167,
+                  54.25
+                ],
+                [
+                  6.167,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Nordsee/Current_ofi_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "baltic_sea",
+          "name": "Baltic Sea",
+          "description": "Baltic Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.917,
+                  53.6
+                ],
+                [
+                  30.25,
+                  53.6
+                ],
+                [
+                  30.25,
+                  65.85
+                ],
+                [
+                  8.917,
+                  65.85
+                ],
+                [
+                  8.917,
+                  53.6
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_ba_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "baltic_sea",
+          "name": "Baltic Sea",
+          "description": "Baltic Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.917,
+                  53.6
+                ],
+                [
+                  30.25,
+                  53.6
+                ],
+                [
+                  30.25,
+                  65.85
+                ],
+                [
+                  8.917,
+                  65.85
+                ],
+                [
+                  8.917,
+                  53.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_ba_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "baltic_sea",
+          "name": "Baltic Sea",
+          "description": "Baltic Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.917,
+                  53.6
+                ],
+                [
+                  30.25,
+                  53.6
+                ],
+                [
+                  30.25,
+                  65.85
+                ],
+                [
+                  8.917,
+                  65.85
+                ],
+                [
+                  8.917,
+                  53.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_ba_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "baltic_sea",
+          "name": "Baltic Sea",
+          "description": "Baltic Sea coarse grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.917,
+                  53.6
+                ],
+                [
+                  30.25,
+                  53.6
+                ],
+                [
+                  30.25,
+                  65.85
+                ],
+                [
+                  8.917,
+                  65.85
+                ],
+                [
+                  8.917,
+                  53.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_ba_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "western_baltic",
+          "name": "Western Baltic Sea",
+          "description": "Western Baltic Sea fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.194,
+                  53.225
+                ],
+                [
+                  14.917,
+                  53.225
+                ],
+                [
+                  14.917,
+                  56.45
+                ],
+                [
+                  9.194,
+                  56.45
+                ],
+                [
+                  9.194,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_wb_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "western_baltic",
+          "name": "Western Baltic Sea",
+          "description": "Western Baltic Sea fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.194,
+                  53.225
+                ],
+                [
+                  14.917,
+                  53.225
+                ],
+                [
+                  14.917,
+                  56.45
+                ],
+                [
+                  9.194,
+                  56.45
+                ],
+                [
+                  9.194,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_wb_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "western_baltic",
+          "name": "Western Baltic Sea",
+          "description": "Western Baltic Sea fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.194,
+                  53.225
+                ],
+                [
+                  14.917,
+                  53.225
+                ],
+                [
+                  14.917,
+                  56.45
+                ],
+                [
+                  9.194,
+                  56.45
+                ],
+                [
+                  9.194,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_wb_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "western_baltic",
+          "name": "Western Baltic Sea",
+          "description": "Western Baltic Sea fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.194,
+                  53.225
+                ],
+                [
+                  14.917,
+                  53.225
+                ],
+                [
+                  14.917,
+                  56.45
+                ],
+                [
+                  9.194,
+                  56.45
+                ],
+                [
+                  9.194,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_wb_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "kiel_bight",
+          "name": "Kiel Bight",
+          "description": "Kiel Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.833,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.3
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_kbu_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "kiel_bight",
+          "name": "Kiel Bight",
+          "description": "Kiel Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.833,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.3
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_kbu_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "kiel_bight",
+          "name": "Kiel Bight",
+          "description": "Kiel Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.833,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.3
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_kbu_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "kiel_bight",
+          "name": "Kiel Bight",
+          "description": "Kiel Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.833,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.3
+                ],
+                [
+                  11.333,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.833
+                ],
+                [
+                  9.833,
+                  54.3
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_kbu_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "luebeck_bight",
+          "name": "L\u00fcbeck Bight",
+          "description": "L\u00fcbeck Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.75,
+                  53.9
+                ],
+                [
+                  12.528,
+                  53.9
+                ],
+                [
+                  12.528,
+                  54.75
+                ],
+                [
+                  10.75,
+                  54.75
+                ],
+                [
+                  10.75,
+                  53.9
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_mbu_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "luebeck_bight",
+          "name": "L\u00fcbeck Bight",
+          "description": "L\u00fcbeck Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.75,
+                  53.9
+                ],
+                [
+                  12.528,
+                  53.9
+                ],
+                [
+                  12.528,
+                  54.75
+                ],
+                [
+                  10.75,
+                  54.75
+                ],
+                [
+                  10.75,
+                  53.9
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_mbu_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "luebeck_bight",
+          "name": "L\u00fcbeck Bight",
+          "description": "L\u00fcbeck Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.75,
+                  53.9
+                ],
+                [
+                  12.528,
+                  53.9
+                ],
+                [
+                  12.528,
+                  54.75
+                ],
+                [
+                  10.75,
+                  54.75
+                ],
+                [
+                  10.75,
+                  53.9
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_mbu_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "luebeck_bight",
+          "name": "L\u00fcbeck Bight",
+          "description": "L\u00fcbeck Bight fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.75,
+                  53.9
+                ],
+                [
+                  12.528,
+                  53.9
+                ],
+                [
+                  12.528,
+                  54.75
+                ],
+                [
+                  10.75,
+                  54.75
+                ],
+                [
+                  10.75,
+                  53.9
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_mbu_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "ruegen",
+          "name": "Area around R\u00fcgen",
+          "description": "Area around the Isle of R\u00fcgen fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_rgn_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "ruegen",
+          "name": "Area around R\u00fcgen",
+          "description": "Area around the Isle of R\u00fcgen fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_rgn_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "ruegen",
+          "name": "Area around R\u00fcgen",
+          "description": "Area around the Isle of R\u00fcgen fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_rgn_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "ruegen",
+          "name": "Area around R\u00fcgen",
+          "description": "Area around the Isle of R\u00fcgen fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  53.225
+                ],
+                [
+                  14.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  55.0
+                ],
+                [
+                  12.5,
+                  53.225
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_rgn_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_sound",
+          "name": "The Sound",
+          "description": "The Sound (\u00d6resund) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.167,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.1
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_snd_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "the_sound",
+          "name": "The Sound",
+          "description": "The Sound (\u00d6resund) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.167,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.1
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_snd_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_sound",
+          "name": "The Sound",
+          "description": "The Sound (\u00d6resund) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.167,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.1
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_snd_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_sound",
+          "name": "The Sound",
+          "description": "The Sound (\u00d6resund) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.167,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.1
+                ],
+                [
+                  13.097,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.3
+                ],
+                [
+                  12.167,
+                  56.1
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_snd_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_belts",
+          "name": "The Belts",
+          "description": "The Belts (Storeb\u00e6lt / Lilleb\u00e6lt) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.5,
+                  54.7
+                ],
+                [
+                  11.306,
+                  54.7
+                ],
+                [
+                  11.306,
+                  56.0
+                ],
+                [
+                  9.5,
+                  56.0
+                ],
+                [
+                  9.5,
+                  54.7
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_blt_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "the_belts",
+          "name": "The Belts",
+          "description": "The Belts (Storeb\u00e6lt / Lilleb\u00e6lt) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.5,
+                  54.7
+                ],
+                [
+                  11.306,
+                  54.7
+                ],
+                [
+                  11.306,
+                  56.0
+                ],
+                [
+                  9.5,
+                  56.0
+                ],
+                [
+                  9.5,
+                  54.7
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_blt_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_belts",
+          "name": "The Belts",
+          "description": "The Belts (Storeb\u00e6lt / Lilleb\u00e6lt) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.5,
+                  54.7
+                ],
+                [
+                  11.306,
+                  54.7
+                ],
+                [
+                  11.306,
+                  56.0
+                ],
+                [
+                  9.5,
+                  56.0
+                ],
+                [
+                  9.5,
+                  54.7
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_blt_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "the_belts",
+          "name": "The Belts",
+          "description": "The Belts (Storeb\u00e6lt / Lilleb\u00e6lt) fine grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.5,
+                  54.7
+                ],
+                [
+                  11.306,
+                  54.7
+                ],
+                [
+                  11.306,
+                  56.0
+                ],
+                [
+                  9.5,
+                  56.0
+                ],
+                [
+                  9.5,
+                  54.7
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Ostsee/Current_blt_{YYYYMMDD}{HH}_03.grb2",
+          "forecast_hours": [
+            72
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_outer",
+          "name": "Elbe: Outer Elbe to Altenbruch",
+          "description": "Elbe river section from the Outer Elbe to Altenbruch, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.305,
+                  53.85
+                ],
+                [
+                  8.75,
+                  53.85
+                ],
+                [
+                  8.75,
+                  54.04
+                ],
+                [
+                  8.305,
+                  54.04
+                ],
+                [
+                  8.305,
+                  53.85
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_AusAlt_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "elbe_outer",
+          "name": "Elbe: Outer Elbe to Altenbruch",
+          "description": "Elbe river section from the Outer Elbe to Altenbruch, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.305,
+                  53.85
+                ],
+                [
+                  8.75,
+                  53.85
+                ],
+                [
+                  8.75,
+                  54.04
+                ],
+                [
+                  8.305,
+                  54.04
+                ],
+                [
+                  8.305,
+                  53.85
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_AusAlt_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_outer",
+          "name": "Elbe: Outer Elbe to Altenbruch",
+          "description": "Elbe river section from the Outer Elbe to Altenbruch, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.305,
+                  53.85
+                ],
+                [
+                  8.75,
+                  53.85
+                ],
+                [
+                  8.75,
+                  54.04
+                ],
+                [
+                  8.305,
+                  54.04
+                ],
+                [
+                  8.305,
+                  53.85
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_AusAlt_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_cuxhaven_brunsbuettel",
+          "name": "Elbe: Cuxhaven to Brunsb\u00fcttel",
+          "description": "Elbe river section from Cuxhaven to Brunsb\u00fcttel, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.68,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.82
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_CuxBru_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "elbe_cuxhaven_brunsbuettel",
+          "name": "Elbe: Cuxhaven to Brunsb\u00fcttel",
+          "description": "Elbe river section from Cuxhaven to Brunsb\u00fcttel, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.68,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.82
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_CuxBru_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_cuxhaven_brunsbuettel",
+          "name": "Elbe: Cuxhaven to Brunsb\u00fcttel",
+          "description": "Elbe river section from Cuxhaven to Brunsb\u00fcttel, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.68,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.82
+                ],
+                [
+                  9.25,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.95
+                ],
+                [
+                  8.68,
+                  53.82
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_CuxBru_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_brunsbuettel_pagensand",
+          "name": "Elbe: Brunsb\u00fcttel to Pagensand",
+          "description": "Elbe river section from Brunsb\u00fcttel to Pagensand, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.2,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.65
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_BruPag_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "elbe_brunsbuettel_pagensand",
+          "name": "Elbe: Brunsb\u00fcttel to Pagensand",
+          "description": "Elbe river section from Brunsb\u00fcttel to Pagensand, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.2,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.65
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_BruPag_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_brunsbuettel_pagensand",
+          "name": "Elbe: Brunsb\u00fcttel to Pagensand",
+          "description": "Elbe river section from Brunsb\u00fcttel to Pagensand, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.2,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.65
+                ],
+                [
+                  9.583,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.9
+                ],
+                [
+                  9.2,
+                  53.65
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_BruPag_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_pagensand_hamburg",
+          "name": "Elbe: Pagensand to Hamburg",
+          "description": "Elbe river section from Pagensand to Hamburg, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.3,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.5
+                ]
+              ]
+            ]
+          },
+          "type": "nowcast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_PagHam_{YYYYMMDD}{HH}_00.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "elbe_pagensand_hamburg",
+          "name": "Elbe: Pagensand to Hamburg",
+          "description": "Elbe river section from Pagensand to Hamburg, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.3,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_PagHam_{YYYYMMDD}{HH}_01.grb2",
+          "forecast_hours": [
+            24
+          ],
+          "cycle_hours": [
+            "00",
+            "12"
+          ]
+        },
+        {
+          "region_id": "elbe_pagensand_hamburg",
+          "name": "Elbe: Pagensand to Hamburg",
+          "description": "Elbe river section from Pagensand to Hamburg, 90m grid",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.3,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.5
+                ],
+                [
+                  9.9,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.7
+                ],
+                [
+                  9.3,
+                  53.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "ftp://ftp.bsh.de/Stroemungsvorhersagen/grib2/Elbe/Current_PagHam_{YYYYMMDD}{HH}_02.grb2",
+          "forecast_hours": [
+            48
+          ],
+          "cycle_hours": [
+            "12"
+          ]
+        }
+      ]
+    },
     {
       "id": "noaa_rtofs",
       "source": "noaa",
@@ -470,8 +3312,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-05T18:10:37Z",
-        "latest_cycle": "2026-07-05T00:00:00Z"
+        "last_checked": "2026-07-06T19:25:29Z",
+        "latest_cycle": "2026-07-06T00:00:00Z"
       },
       "files": [
         {
@@ -1797,7 +4639,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:10:38Z"
+        "last_checked": "2026-07-06T19:25:30Z"
       },
       "files": [
         {
@@ -1867,12 +4709,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_bahamas_florida.utcef",
-          "sha256": "cbc4afea6db2bdb1ec30ab6b4a7321d5bbb78a66599fbad409a751b9de049250",
+          "sha256": "420fabc62396a952caa434578c8f88c7fce21f7354e7ac1680499ccc6373f8f9",
           "size_bytes": 1236471
         }
       ]
@@ -1897,7 +4739,7 @@
         "bounding_box": {
           "min_lat": 10.0,
           "min_lon": -85.0,
-          "max_lat": 20.0,
+          "max_lat": 23.0,
           "max_lon": -60.0
         },
         "boundary_geometry": {
@@ -1914,11 +4756,11 @@
               ],
               [
                 -60.0,
-                20.0
+                23.0
               ],
               [
                 -85.0,
-                20.0
+                23.0
               ],
               [
                 -85.0,
@@ -1930,13 +4772,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_caribbean.utcef",
-          "sha256": "3a72ca920d7ebf4ba8836e635a5432b24448d56be390cf93b392c161b8901ec8",
-          "size_bytes": 6600060
+          "sha256": "b63f0b0152fc9d62e6ac9fac5966e90464a791158b50faffe9804cb74d65f68e",
+          "size_bytes": 8474508
         }
       ]
     },
@@ -1993,21 +4835,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_central_caribbean.utcef",
-          "sha256": "30520813e8c7a9ea52add2aebe451cd1ba68bd5e034d7a908392474b80daff00",
+          "sha256": "32e29e844f9ad57d84e9b0aaa833a2ed282665e95bad2f36ea87397421265895",
           "size_bytes": 238170
         }
       ]
     },
     {
-      "id": "utcef_atc_equatorial_atlantic",
+      "id": "utcef_atc_equatorial_east",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Equatorial Atlantic [coarse]",
+      "name": "Equatorial East Atlantic [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -2019,12 +4861,75 @@
         "regional"
       ],
       "region": {
-        "name": "Equatorial Atlantic [coarse]",
+        "name": "Equatorial East Atlantic [coarse]",
+        "bounding_box": {
+          "min_lat": -10.0,
+          "min_lon": -30.0,
+          "max_lat": 10.0,
+          "max_lon": -10.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -30.0,
+                -10.0
+              ],
+              [
+                -10.0,
+                -10.0
+              ],
+              [
+                -10.0,
+                10.0
+              ],
+              [
+                -30.0,
+                10.0
+              ],
+              [
+                -30.0,
+                -10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/atc_equatorial_east.utcef",
+          "sha256": "b8c25a10842e7a157994654ecf21369c85e7f3e2f645c5e8a7a6560571c3f963",
+          "size_bytes": 747612
+        }
+      ]
+    },
+    {
+      "id": "utcef_atc_equatorial_west",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Equatorial West Atlantic [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Equatorial West Atlantic [coarse]",
         "bounding_box": {
           "min_lat": -10.0,
           "min_lon": -50.0,
           "max_lat": 10.0,
-          "max_lon": -10.0
+          "max_lon": -30.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -2035,11 +4940,11 @@
                 -10.0
               ],
               [
-                -10.0,
+                -30.0,
                 -10.0
               ],
               [
-                -10.0,
+                -30.0,
                 10.0
               ],
               [
@@ -2056,13 +4961,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/atlantic/atc_equatorial_atlantic.utcef",
-          "sha256": "6ce23c62e67a7cfde580b7db1a23da31595ea3defec3ff7d328bccf4cf968b9a",
-          "size_bytes": 1301396
+          "filename": "regions/atlantic/atc_equatorial_west.utcef",
+          "sha256": "fa6f080609d32bd3a48d2ade56b12b6cc71c06dca2107a575776f86539914bb5",
+          "size_bytes": 564284
         }
       ]
     },
@@ -2119,13 +5024,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_gulf_of_mexico.utcef",
-          "sha256": "4790d224ce742306c30c7e5bb538e9bc0dc8adf8214d064bb0e9ccb50afd5bbb",
-          "size_bytes": 4674944
+          "sha256": "1b9cb22abaf7bde14a6f22f3b5384d392cd963c43200bf44d8b822b546ff3b38",
+          "size_bytes": 4674946
         }
       ]
     },
@@ -2182,12 +5087,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_us_east_coast.utcef",
-          "sha256": "666873b6d1a70192872e785dfda0379272b6b2fdfcd213be9833459b1c6ce9dc",
+          "sha256": "031db5e4a37ceb2f1082114711ce3ae27de7ad58cff76b76b7d49b5995a9b769",
           "size_bytes": 4306902
         }
       ]
@@ -2245,12 +5150,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_azores_madeira.utcef",
-          "sha256": "ab965d4034fa4ccd3c9e6f9d75484d02a9214ef3455e4f1a4f290b4e9739af3e",
+          "sha256": "494e1b6c8d9c0bf4b78c81b4e33bf69804878c586fb4cf854c0953b1bc29ad16",
           "size_bytes": 1153567
         }
       ]
@@ -2308,12 +5213,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_bay_of_biscay.utcef",
-          "sha256": "2dc7916f5dfa65209669379d9d22bf9debba41ac46e41d891778a26d5a177e21",
+          "sha256": "97845da8fc179e1e6599969e9c977b44a7a218cb6fcfc6ea7d7ea6fab3542ed1",
           "size_bytes": 380703
         }
       ]
@@ -2371,21 +5276,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_british_isles.utcef",
-          "sha256": "72f0d2599801ce4da6e268321601d8f77dd899070f65cb5a98274044b7b84b3d",
-          "size_bytes": 1917983
+          "sha256": "01f5a5d0e321e2fb96522b1e6305c9b3db74a87f580ba6db79879f17f7a97ada",
+          "size_bytes": 1917982
         }
       ]
     },
     {
-      "id": "utcef_atn_central_atlantic",
+      "id": "utcef_atn_canada_east",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Central North Atlantic [coarse]",
+      "name": "Nova Scotia & Newfoundland [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -2397,12 +5302,138 @@
         "regional"
       ],
       "region": {
-        "name": "Central North Atlantic [coarse]",
+        "name": "Nova Scotia & Newfoundland [coarse]",
+        "bounding_box": {
+          "min_lat": 41.0,
+          "min_lon": -72.0,
+          "max_lat": 52.0,
+          "max_lon": -50.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -72.0,
+                41.0
+              ],
+              [
+                -50.0,
+                41.0
+              ],
+              [
+                -50.0,
+                52.0
+              ],
+              [
+                -72.0,
+                52.0
+              ],
+              [
+                -72.0,
+                41.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/atn_canada_east.utcef",
+          "sha256": "e49a7ac818165b8914ad1d5fc7c490af87cd9d9d752afada9a63ef5ce2951e95",
+          "size_bytes": 1312507
+        }
+      ]
+    },
+    {
+      "id": "utcef_atn_central_east",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Central NE Atlantic [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Central NE Atlantic [coarse]",
+        "bounding_box": {
+          "min_lat": 30.0,
+          "min_lon": -35.0,
+          "max_lat": 45.0,
+          "max_lon": -20.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -35.0,
+                30.0
+              ],
+              [
+                -20.0,
+                30.0
+              ],
+              [
+                -20.0,
+                45.0
+              ],
+              [
+                -35.0,
+                45.0
+              ],
+              [
+                -35.0,
+                30.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/atn_central_east.utcef",
+          "sha256": "70f66b3fa74bbb5189920718fb3ce614a87a30d438748d70fa2c830670b558e6",
+          "size_bytes": 449518
+        }
+      ]
+    },
+    {
+      "id": "utcef_atn_central_west",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Central NW Atlantic [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Central NW Atlantic [coarse]",
         "bounding_box": {
           "min_lat": 30.0,
           "min_lon": -50.0,
           "max_lat": 45.0,
-          "max_lon": -20.0
+          "max_lon": -35.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -2413,11 +5444,11 @@
                 30.0
               ],
               [
-                -20.0,
+                -35.0,
                 30.0
               ],
               [
-                -20.0,
+                -35.0,
                 45.0
               ],
               [
@@ -2434,13 +5465,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/atlantic/atn_central_atlantic.utcef",
-          "sha256": "6c1857360f7695a49fb668df9ead8621305cff3ac42942ec6b7660883efba5e0",
-          "size_bytes": 873980
+          "filename": "regions/atlantic/atn_central_west.utcef",
+          "sha256": "10bb6d674ca79403cc7d625b7dcc5247d41307e756679388ec42160b3470bbed",
+          "size_bytes": 434013
         }
       ]
     },
@@ -2497,13 +5528,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_iberian_coast.utcef",
-          "sha256": "9258550b8ddc52c1daa504a0878ddde618100da60b84c82abae49cfa9a398d9a",
-          "size_bytes": 763224
+          "sha256": "3865ae82a5654790287673371a6f10f634a24d249d354233acaaeba6b83dacae",
+          "size_bytes": 763223
         }
       ]
     },
@@ -2560,13 +5591,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_north_sea.utcef",
-          "sha256": "695426270fb50eb3d7b488bcd1289cc2678745e01dc01c9a3073c9f666a1841b",
-          "size_bytes": 2475906
+          "sha256": "6809e82056db2c793027024c1324031a7674694cfdcd71b18ff96d77a6423ad7",
+          "size_bytes": 2475907
         }
       ]
     },
@@ -2623,21 +5654,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_scandinavia.utcef",
-          "sha256": "c66f4923c21d33ba155377a87273eaa999ed589271765899b37855ce71450506",
+          "sha256": "66143d4518f768706327167bcdc2ed54e7f4b2157ad059118ba7738e1901886e",
           "size_bytes": 1310752
         }
       ]
     },
     {
-      "id": "utcef_ats_central_south",
+      "id": "utcef_ats_angola_namibia",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Central South Atlantic [coarse]",
+      "name": "Angola & Namibia Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -2649,36 +5680,36 @@
         "regional"
       ],
       "region": {
-        "name": "Central South Atlantic [coarse]",
+        "name": "Angola & Namibia Coast [coarse]",
         "bounding_box": {
-          "min_lat": -40.0,
-          "min_lon": -50.0,
-          "max_lat": -10.0,
-          "max_lon": 0.0
+          "min_lat": -27.0,
+          "min_lon": 0.0,
+          "max_lat": -5.0,
+          "max_lon": 15.0
         },
         "boundary_geometry": {
           "type": "Polygon",
           "coordinates": [
             [
               [
-                -50.0,
-                -40.0
+                0.0,
+                -27.0
+              ],
+              [
+                15.0,
+                -27.0
+              ],
+              [
+                15.0,
+                -5.0
               ],
               [
                 0.0,
-                -40.0
+                -5.0
               ],
               [
                 0.0,
-                -10.0
-              ],
-              [
-                -50.0,
-                -10.0
-              ],
-              [
-                -50.0,
-                -40.0
+                -27.0
               ]
             ]
           ]
@@ -2686,13 +5717,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/atlantic/ats_central_south.utcef",
-          "sha256": "3c3128bb4b6d62324901cb23047d8e445d585414ece04b132fc6be9731cbba4e",
-          "size_bytes": 2511349
+          "filename": "regions/atlantic/ats_angola_namibia.utcef",
+          "sha256": "1d7c1e3db786300b015fa12ac484c2224b507ce13d7e6a5da5ae63776d031273",
+          "size_bytes": 2019135
         }
       ]
     },
@@ -2749,12 +5780,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_gulf_guinea.utcef",
-          "sha256": "b6dba98a5e249b0ead5dd5b140dc0530b596e6d27331cba12dd60ac33c63425e",
+          "sha256": "7b422c79a74ae3b406633fff360e45c06dfce83e05b2b6eda1516fd54322c21b",
           "size_bytes": 2187149
         }
       ]
@@ -2812,12 +5843,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_africa.utcef",
-          "sha256": "ee5dea1d96fc0a0d3781a41b0b568dd84aa93ada310dcccd62007954591fcccc",
+          "sha256": "ea2881462a1eef357cf4a2e8dc0e969f2e32d472437cda1aba77921dabb93ce3",
           "size_bytes": 1413960
         }
       ]
@@ -2875,13 +5906,202 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_america.utcef",
-          "sha256": "bb16b12e62f68b96d179f5737dae81460a58eac9dc71f8e9c96359e27e97d643",
+          "sha256": "0d54084d857a120dedec7413fd5d3585b71ab74a595a12692a24a7bf57dc9e97",
           "size_bytes": 2499471
+        }
+      ]
+    },
+    {
+      "id": "utcef_ats_south_atlantic_east",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Southeast Atlantic [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Southeast Atlantic [coarse]",
+        "bounding_box": {
+          "min_lat": -40.0,
+          "min_lon": -25.0,
+          "max_lat": -10.0,
+          "max_lon": 0.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -25.0,
+                -40.0
+              ],
+              [
+                0.0,
+                -40.0
+              ],
+              [
+                0.0,
+                -10.0
+              ],
+              [
+                -25.0,
+                -10.0
+              ],
+              [
+                -25.0,
+                -40.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/ats_south_atlantic_east.utcef",
+          "sha256": "26ef37651f42c5c6581afbc9501d899935f47cd1dce246516de162fcf25648ea",
+          "size_bytes": 1415079
+        }
+      ]
+    },
+    {
+      "id": "utcef_ats_south_atlantic_west",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Southwest Atlantic [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Southwest Atlantic [coarse]",
+        "bounding_box": {
+          "min_lat": -40.0,
+          "min_lon": -50.0,
+          "max_lat": -10.0,
+          "max_lon": -25.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -50.0,
+                -40.0
+              ],
+              [
+                -25.0,
+                -40.0
+              ],
+              [
+                -25.0,
+                -10.0
+              ],
+              [
+                -50.0,
+                -10.0
+              ],
+              [
+                -50.0,
+                -40.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/ats_south_atlantic_west.utcef",
+          "sha256": "3922a8e5f3d6c3ee51dd9fb81c1553e65f022f0679761f4465371a22402d09b8",
+          "size_bytes": 1131753
+        }
+      ]
+    },
+    {
+      "id": "utcef_ats_west_africa",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "West Africa Coast [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "West Africa Coast [coarse]",
+        "bounding_box": {
+          "min_lat": 4.0,
+          "min_lon": -20.0,
+          "max_lat": 22.0,
+          "max_lon": 0.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -20.0,
+                4.0
+              ],
+              [
+                0.0,
+                4.0
+              ],
+              [
+                0.0,
+                22.0
+              ],
+              [
+                -20.0,
+                22.0
+              ],
+              [
+                -20.0,
+                4.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/ats_west_africa.utcef",
+          "sha256": "e3416666d768a7ed36f16ea9de7b6ab4c8bc5ed5a09778b8d3748ea4790ebb0a",
+          "size_bytes": 841187
         }
       ]
     },
@@ -2906,7 +6126,7 @@
           "min_lat": 48.5,
           "min_lon": -6.0,
           "max_lat": 51.5,
-          "max_lon": 2.0
+          "max_lon": 3.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -2917,11 +6137,11 @@
                 48.5
               ],
               [
-                2.0,
+                3.0,
                 48.5
               ],
               [
-                2.0,
+                3.0,
                 51.5
               ],
               [
@@ -2938,13 +6158,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/europe/english_channel.utcef",
-          "sha256": "07c6a6b0e1a28d38213ff6ebf30d25e2fff4e2c59b39d6fa5037ba48c4b3fc85",
-          "size_bytes": 150343
+          "sha256": "b9fe0e82bcfafb1227a3b7522a2a5cd9c047fee76df1edc9afad1411c580c758",
+          "size_bytes": 157269
         }
       ]
     },
@@ -3001,7 +6221,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
@@ -3064,7 +6284,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
@@ -3127,12 +6347,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_andaman_sea.utcef",
-          "sha256": "f5fb6abd464fa3ff414e998bed78b8d4bff06d520472d1e73aba9403aa45b5d0",
+          "sha256": "1f92cec4403c111782d9a79379035dbab438d077291cc8b91d71e8171da230ea",
           "size_bytes": 340233
         }
       ]
@@ -3190,12 +6410,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_arabian_sea.utcef",
-          "sha256": "1fc78c9b01d3dab6f95ba8e07461cbc7b3d8b44113ba511ad4b7f8ef03df4f40",
+          "sha256": "7e184e9ba9d100a405764b0a1f1afd9460da7bebb540126e9dcb06b415d908f7",
           "size_bytes": 2574318
         }
       ]
@@ -3253,21 +6473,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_bay_bengal.utcef",
-          "sha256": "483fc884619939c30e0d560508b2c3c741886b8891d403887d48ed6826a1db66",
+          "sha256": "e9b7c3877b75434e4c88a575cd573881362a7f96cde61429fe8f96a421ec8d01",
           "size_bytes": 1524823
         }
       ]
     },
     {
-      "id": "utcef_ion_central_indian",
+      "id": "utcef_ion_central_indian_north",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Central Indian Ocean [coarse]",
+      "name": "Central North Indian Ocean [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -3279,11 +6499,74 @@
         "regional"
       ],
       "region": {
-        "name": "Central Indian Ocean [coarse]",
+        "name": "Central North Indian Ocean [coarse]",
+        "bounding_box": {
+          "min_lat": 0.0,
+          "min_lon": 50.0,
+          "max_lat": 20.0,
+          "max_lon": 85.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                50.0,
+                0.0
+              ],
+              [
+                85.0,
+                0.0
+              ],
+              [
+                85.0,
+                20.0
+              ],
+              [
+                50.0,
+                20.0
+              ],
+              [
+                50.0,
+                0.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/indian_ocean/ion_central_indian_north.utcef",
+          "sha256": "61d05c61e5c4630ca13a1f1e29be035e25c29151f6809bf6705ec1f50b8700c7",
+          "size_bytes": 1177459
+        }
+      ]
+    },
+    {
+      "id": "utcef_ion_central_indian_south",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Central South Indian Ocean [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Central South Indian Ocean [coarse]",
         "bounding_box": {
           "min_lat": -20.0,
           "min_lon": 50.0,
-          "max_lat": 20.0,
+          "max_lat": 0.0,
           "max_lon": 85.0
         },
         "boundary_geometry": {
@@ -3300,11 +6583,11 @@
               ],
               [
                 85.0,
-                20.0
+                0.0
               ],
               [
                 50.0,
-                20.0
+                0.0
               ],
               [
                 50.0,
@@ -3316,21 +6599,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/indian_ocean/ion_central_indian.utcef",
-          "sha256": "7e6bc4276957cf41668eeadbb915fe39d35bfebffbe7047bc5f856a6e0bc4cf4",
-          "size_bytes": 2516548
+          "filename": "regions/indian_ocean/ion_central_indian_south.utcef",
+          "sha256": "c607660043b4b9e6276565aaf50173304faafacbbf71a99c28af37670f17107b",
+          "size_bytes": 1371671
         }
       ]
     },
     {
-      "id": "utcef_ion_eastern_africa",
+      "id": "utcef_ion_east_africa_north",
       "source": "fes2014",
       "type": "utcef",
-      "name": "East Africa & Madagascar [coarse]",
+      "name": "Kenya & Tanzania Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -3342,11 +6625,74 @@
         "regional"
       ],
       "region": {
-        "name": "East Africa & Madagascar [coarse]",
+        "name": "Kenya & Tanzania Coast [coarse]",
+        "bounding_box": {
+          "min_lat": -10.0,
+          "min_lon": 30.0,
+          "max_lat": 5.0,
+          "max_lon": 60.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                30.0,
+                -10.0
+              ],
+              [
+                60.0,
+                -10.0
+              ],
+              [
+                60.0,
+                5.0
+              ],
+              [
+                30.0,
+                5.0
+              ],
+              [
+                30.0,
+                -10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/indian_ocean/ion_east_africa_north.utcef",
+          "sha256": "12b7416ab3fdd73be0b12010150b8013ea5122c051fe8d44849cff28a7a4877e",
+          "size_bytes": 2038114
+        }
+      ]
+    },
+    {
+      "id": "utcef_ion_mozambique_channel",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Mozambique Channel & SE Africa [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Mozambique Channel & SE Africa [coarse]",
         "bounding_box": {
           "min_lat": -25.0,
           "min_lon": 30.0,
-          "max_lat": 5.0,
+          "max_lat": -10.0,
           "max_lon": 60.0
         },
         "boundary_geometry": {
@@ -3363,11 +6709,11 @@
               ],
               [
                 60.0,
-                5.0
+                -10.0
               ],
               [
                 30.0,
-                5.0
+                -10.0
               ],
               [
                 30.0,
@@ -3379,13 +6725,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/indian_ocean/ion_eastern_africa.utcef",
-          "sha256": "6239dcbe17eddd877ec992b1f8b0157e1d0754c6da15dd19403678703f1d127e",
-          "size_bytes": 4232241
+          "filename": "regions/indian_ocean/ion_mozambique_channel.utcef",
+          "sha256": "7b7e578a0457b5d93492c34844237edb5acd1395c961fb3cb9ab9e623107a828",
+          "size_bytes": 2233673
         }
       ]
     },
@@ -3442,12 +6788,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_persian_gulf.utcef",
-          "sha256": "79da1d2034a4d572704b359cf78c3b1dd7ff3ce58f64b444cb6c9ba82ea02c6d",
+          "sha256": "075ac0675c37a928071eb985f195422faa21dd4da916c9b71fea090d3bacb3f6",
           "size_bytes": 851968
         }
       ]
@@ -3505,13 +6851,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_red_sea.utcef",
-          "sha256": "7b2de97204a29b52756d308e55f00c8eb7f71785860338e30f47cae16c798155",
+          "sha256": "87a1243cfbeec25c394dde30d8860fdfe11db99c9485ea1f535b80c129c5847b",
           "size_bytes": 307940
+        }
+      ]
+    },
+    {
+      "id": "utcef_ion_sri_lanka",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Sri Lanka & Maldives [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Sri Lanka & Maldives [coarse]",
+        "bounding_box": {
+          "min_lat": 3.0,
+          "min_lon": 72.0,
+          "max_lat": 12.0,
+          "max_lon": 84.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                72.0,
+                3.0
+              ],
+              [
+                84.0,
+                3.0
+              ],
+              [
+                84.0,
+                12.0
+              ],
+              [
+                72.0,
+                12.0
+              ],
+              [
+                72.0,
+                3.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/indian_ocean/ion_sri_lanka.utcef",
+          "sha256": "72e2b7912bc57e653ee87bd1521d5016a04265a1d89826105d2ea213caf0fdda",
+          "size_bytes": 749672
         }
       ]
     },
@@ -3568,13 +6977,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_strait_malacca.utcef",
-          "sha256": "4a9c06549f1a4b8846a02197c72f2d195f8ab0188bc3e354a2dfa4b77448bd2a",
+          "sha256": "c0035f5119ce72783469bce008168684e2a8d7422c67dce1e8361dde0bf7fdeb",
           "size_bytes": 918543
+        }
+      ]
+    },
+    {
+      "id": "utcef_atn_iceland",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Iceland & Faroe Islands [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Iceland & Faroe Islands [coarse]",
+        "bounding_box": {
+          "min_lat": 60.0,
+          "min_lon": -30.0,
+          "max_lat": 68.0,
+          "max_lon": -6.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -30.0,
+                60.0
+              ],
+              [
+                -6.0,
+                60.0
+              ],
+              [
+                -6.0,
+                68.0
+              ],
+              [
+                -30.0,
+                68.0
+              ],
+              [
+                -30.0,
+                60.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/mediterranean/atn_iceland.utcef",
+          "sha256": "6b8835c5155708bcf0bc99f0b40551523d6700a774fcccad11d19eb2da7783c3",
+          "size_bytes": 1475328
         }
       ]
     },
@@ -3631,12 +7103,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_baltic.utcef",
-          "sha256": "853f8a8db77180a7a0a48dba82dd8b37dea022432c5ea11046713efed587a6b1",
+          "sha256": "ff4c9e6001ac784c10e355da061770c8dce0b663e0bbe95c289a5d8b77ea7f59",
           "size_bytes": 697867
         }
       ]
@@ -3694,12 +7166,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_black_sea.utcef",
-          "sha256": "c97c7f43197388b6f16190b7208f105059776a9a3ecf93a97a482119bef4d485",
+          "sha256": "5ae19ad209a018e388def64ea992c20a81d48257ede4eb2fd59a47aaff59806a",
           "size_bytes": 373791
         }
       ]
@@ -3757,13 +7229,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_mediterranean.utcef",
-          "sha256": "3ba538733dcdd630e285252ddfcc9545c9b3110ee807e8a9851334b91e0bd0d9",
+          "sha256": "3b7bb02ac5f17cbc27aa963fdc14be4b0403e80e75b8e247b6e6c694b38ea80f",
           "size_bytes": 9207741
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_gulf_tonkin",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Gulf of Tonkin & Vietnam Coast [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Gulf of Tonkin & Vietnam Coast [coarse]",
+        "bounding_box": {
+          "min_lat": 14.0,
+          "min_lon": 104.0,
+          "max_lat": 23.0,
+          "max_lon": 112.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                104.0,
+                14.0
+              ],
+              [
+                112.0,
+                14.0
+              ],
+              [
+                112.0,
+                23.0
+              ],
+              [
+                104.0,
+                23.0
+              ],
+              [
+                104.0,
+                14.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptc_gulf_tonkin.utcef",
+          "sha256": "bab2bebb0e031f14decf20326062f7b68642a744d25b5e4eb0791e0f78c3f215",
+          "size_bytes": 288787
         }
       ]
     },
@@ -3820,12 +7355,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptc_philippines_indonesia.utcef",
-          "sha256": "8f5cdaf4669a69558ce3913e264731185ff6e9a4de1911fb4ab721a351c595c7",
+          "sha256": "de3144ff96d010e44a23cd295077cd9c9613627c1e6378fea20e964e08a9bb1b",
           "size_bytes": 14285475
         }
       ]
@@ -3883,13 +7418,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptc_south_china_sea.utcef",
-          "sha256": "28692c7c34e1e79899f03636d7f7d6f680e518ec9c01b7d00e7c5828db323227",
-          "size_bytes": 1840980
+          "sha256": "110b30e35d8566ea0f40afafce68b2afbe39f036922fc1db764a2892fe211b22",
+          "size_bytes": 1840979
         }
       ]
     },
@@ -3946,13 +7481,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_aleutian_chain.utcef",
-          "sha256": "4bced0f89b3a7dbf9b424ce70b6aec59044397b3c397a111b230538d25af821d",
-          "size_bytes": 797352
+          "sha256": "259d515f7d70f5990d9a8e36aeeb7be551734b770051feced698567aee40080e",
+          "size_bytes": 797351
         }
       ]
     },
@@ -4009,13 +7544,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_bering_sea.utcef",
-          "sha256": "34e07a99d399fd3646576b84c01dd9086237fb6f79d47a467420e938d685f2e9",
-          "size_bytes": 946
+          "sha256": "d56dd5ba91e3c0bff7d9e7ba1d3b6c8aa4ef48eadf64ca7221bebfb31e21bc4b",
+          "size_bytes": 947
         }
       ]
     },
@@ -4072,13 +7607,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_california_bight.utcef",
-          "sha256": "66241a4d2a761ffa958eaee780283dabffe350e297b24824dfbbe05b0f86de0f",
-          "size_bytes": 1558889
+          "sha256": "d53ad73a58caeee758f96178e756a07b4028fe5e62e322be2412bd374f04ad8e",
+          "size_bytes": 1558890
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptn_canada_west",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "British Columbia & SE Alaska [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "British Columbia & SE Alaska [coarse]",
+        "bounding_box": {
+          "min_lat": 47.0,
+          "min_lon": -140.0,
+          "max_lat": 55.0,
+          "max_lon": -122.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -140.0,
+                47.0
+              ],
+              [
+                -122.0,
+                47.0
+              ],
+              [
+                -122.0,
+                55.0
+              ],
+              [
+                -140.0,
+                55.0
+              ],
+              [
+                -140.0,
+                47.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptn_canada_west.utcef",
+          "sha256": "399e9a3c69f787cc47af1eb594453fd94d99fba0b0ef54219c9c56a5951ff7e1",
+          "size_bytes": 764248
         }
       ]
     },
@@ -4135,13 +7733,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_gulf_alaska.utcef",
-          "sha256": "880bedc4269378306ff1f4ee0a89fe71966c3adbfb00e2aa869c759635241b9c",
-          "size_bytes": 2159435
+          "sha256": "9cd6472974b964efd1d8065f781b775e05fc4e3de92808dfef9794631cf9c8f3",
+          "size_bytes": 2159436
         }
       ]
     },
@@ -4198,21 +7796,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_japan_korea.utcef",
-          "sha256": "d659ef801134dcb8fe3ab5b742281500d484c341f8ee53d679b706d4c73c9362",
+          "sha256": "f9eae518353fca60dc7fe5241657a101b4bafde07e779cc626d0a42019053da0",
           "size_bytes": 6641764
         }
       ]
     },
     {
-      "id": "utcef_ptn_north_pacific_open",
+      "id": "utcef_ptn_north_pacific_east",
       "source": "fes2014",
       "type": "utcef",
-      "name": "North Pacific Open [coarse]",
+      "name": "North Pacific East [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -4224,12 +7822,12 @@
         "regional"
       ],
       "region": {
-        "name": "North Pacific Open [coarse]",
+        "name": "North Pacific East [coarse]",
         "bounding_box": {
           "min_lat": 40.0,
           "min_lon": -180.0,
           "max_lat": 60.0,
-          "max_lon": -120.0
+          "max_lon": -150.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -4240,11 +7838,11 @@
                 40.0
               ],
               [
-                -120.0,
+                -150.0,
                 40.0
               ],
               [
-                -120.0,
+                -150.0,
                 60.0
               ],
               [
@@ -4261,13 +7859,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/pacific_asia/ptn_north_pacific_open.utcef",
-          "sha256": "714f3128e3dadf585ef6467abf786507fe320aa1b012202f4873184872ed729c",
-          "size_bytes": 1994121
+          "filename": "regions/pacific_asia/ptn_north_pacific_east.utcef",
+          "sha256": "23e82eaf548d9a77d1db90667f613ec74c3dddd6349f197e39841c88a69b6090",
+          "size_bytes": 1151738
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptn_north_pacific_west",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "North Pacific West [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "North Pacific West [coarse]",
+        "bounding_box": {
+          "min_lat": 40.0,
+          "min_lon": -150.0,
+          "max_lat": 60.0,
+          "max_lon": -120.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -150.0,
+                40.0
+              ],
+              [
+                -120.0,
+                40.0
+              ],
+              [
+                -120.0,
+                60.0
+              ],
+              [
+                -150.0,
+                60.0
+              ],
+              [
+                -150.0,
+                40.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptn_north_pacific_west.utcef",
+          "sha256": "35583764a8b255b6c05e2304eacd84bbc90e9fdeb6579853b79d5711755369b9",
+          "size_bytes": 853971
         }
       ]
     },
@@ -4324,13 +7985,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_northwest_pacific.utcef",
-          "sha256": "18ee07fb5464f434660e6a8779a6d739c67e4e28dbab20babd3e203c26aca480",
+          "sha256": "5a13ba80e48787a62d352ef94ca83dff9f30b09efb135d187019752a6a00c501",
           "size_bytes": 2509776
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptn_sea_okhotsk",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Sea of Okhotsk & Kamchatka [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Sea of Okhotsk & Kamchatka [coarse]",
+        "bounding_box": {
+          "min_lat": 44.0,
+          "min_lon": 140.0,
+          "max_lat": 60.0,
+          "max_lon": 160.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                140.0,
+                44.0
+              ],
+              [
+                160.0,
+                44.0
+              ],
+              [
+                160.0,
+                60.0
+              ],
+              [
+                140.0,
+                60.0
+              ],
+              [
+                140.0,
+                44.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptn_sea_okhotsk.utcef",
+          "sha256": "1fd9fff5fc049644d12a660aea788e3d252b491559413b97ed5014bfce0fe271",
+          "size_bytes": 2285438
         }
       ]
     },
@@ -4387,13 +8111,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_us_west_coast.utcef",
-          "sha256": "18cad85ef50549be04b6bb468efb238a868cffcaee2e19294747a3ca65678d1a",
-          "size_bytes": 7105173
+          "sha256": "b898fc51d4cb3c870e810ed4164ae089cf316aa8442a1341f52415b77d1a2adf",
+          "size_bytes": 7105174
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_central_america_pacific",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Central America Pacific [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Central America Pacific [coarse]",
+        "bounding_box": {
+          "min_lat": 5.0,
+          "min_lon": -95.0,
+          "max_lat": 22.0,
+          "max_lon": -75.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -95.0,
+                5.0
+              ],
+              [
+                -75.0,
+                5.0
+              ],
+              [
+                -75.0,
+                22.0
+              ],
+              [
+                -95.0,
+                22.0
+              ],
+              [
+                -95.0,
+                5.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/ptc_central_america_pacific.utcef",
+          "sha256": "0b3e60bbbf2da10bf245b65a84557a84f8be7dc49cbf2b470066ccec4f37f977",
+          "size_bytes": 2016338
         }
       ]
     },
@@ -4450,13 +8237,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_hawaii.utcef",
-          "sha256": "838eda52f12faef1e610c0ee50aeb0c2392f690ed688233eef4f858406c6425b",
+          "sha256": "bf90ac69d06e2eb3951d3725b711c16b261523ff195857ec7c858ade41c9e817",
           "size_bytes": 753636
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_melanesia",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Melanesia & Coral Sea [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Melanesia & Coral Sea [coarse]",
+        "bounding_box": {
+          "min_lat": -25.0,
+          "min_lon": 155.0,
+          "max_lat": -5.0,
+          "max_lon": 180.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                155.0,
+                -25.0
+              ],
+              [
+                180.0,
+                -25.0
+              ],
+              [
+                180.0,
+                -5.0
+              ],
+              [
+                155.0,
+                -5.0
+              ],
+              [
+                155.0,
+                -25.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/ptc_melanesia.utcef",
+          "sha256": "99a5c000e2ef2e9d53e3a41c8b969ec3c427310cf50632bcbdc08d04af3c3697",
+          "size_bytes": 3891000
         }
       ]
     },
@@ -4513,21 +8363,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_samoa_fiji.utcef",
-          "sha256": "2293e0f0233dc208ef87d9cace9debfe7fcafd2c7cc911528e07b96a64bf430b",
-          "size_bytes": 964
+          "sha256": "03cc209fc1a9aa13aa6feb4aeb9c06a7d3876c05da79811aef83055b09d569aa",
+          "size_bytes": 965
         }
       ]
     },
     {
-      "id": "utcef_pts_australia_nz",
+      "id": "utcef_pts_east_australia_nz",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Australia & New Zealand [coarse]",
+      "name": "Eastern Australia & New Zealand [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -4539,10 +8389,10 @@
         "regional"
       ],
       "region": {
-        "name": "Australia & New Zealand [coarse]",
+        "name": "Eastern Australia & New Zealand [coarse]",
         "bounding_box": {
           "min_lat": -47.0,
-          "min_lon": 110.0,
+          "min_lon": 150.0,
           "max_lat": -10.0,
           "max_lon": 180.0
         },
@@ -4551,7 +8401,7 @@
           "coordinates": [
             [
               [
-                110.0,
+                150.0,
                 -47.0
               ],
               [
@@ -4563,11 +8413,11 @@
                 -10.0
               ],
               [
-                110.0,
+                150.0,
                 -10.0
               ],
               [
-                110.0,
+                150.0,
                 -47.0
               ]
             ]
@@ -4576,21 +8426,21 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/pacific_oceania/pts_australia_nz.utcef",
-          "sha256": "cdfef0d5a09094fd1b6732338b74fc7f47c643d6de3bc14e80a94e8cd52278fc",
-          "size_bytes": 14492907
+          "filename": "regions/pacific_oceania/pts_east_australia_nz.utcef",
+          "sha256": "e1f3b7a31f26b211d582d44218a0d04019809eb4d76942a0f22e7cc42c2f7b72",
+          "size_bytes": 8298511
         }
       ]
     },
     {
-      "id": "utcef_pts_south_pacific_open",
+      "id": "utcef_pts_south_america_pacific",
       "source": "fes2014",
       "type": "utcef",
-      "name": "South Pacific Open Ocean [coarse]",
+      "name": "Chile & Peru Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -4602,12 +8452,138 @@
         "regional"
       ],
       "region": {
-        "name": "South Pacific Open Ocean [coarse]",
+        "name": "Chile & Peru Coast [coarse]",
+        "bounding_box": {
+          "min_lat": -45.0,
+          "min_lon": -85.0,
+          "max_lat": 5.0,
+          "max_lon": -70.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -85.0,
+                -45.0
+              ],
+              [
+                -70.0,
+                -45.0
+              ],
+              [
+                -70.0,
+                5.0
+              ],
+              [
+                -85.0,
+                5.0
+              ],
+              [
+                -85.0,
+                -45.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/pts_south_america_pacific.utcef",
+          "sha256": "2d935ecf903a595e3a145eaeb078cb650fe1432787968a475d4a19784e8099d5",
+          "size_bytes": 3771965
+        }
+      ]
+    },
+    {
+      "id": "utcef_pts_south_pacific_central",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Central South Pacific [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Central South Pacific [coarse]",
+        "bounding_box": {
+          "min_lat": -50.0,
+          "min_lon": -75.0,
+          "max_lat": -10.0,
+          "max_lon": 110.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -75.0,
+                -50.0
+              ],
+              [
+                110.0,
+                -50.0
+              ],
+              [
+                110.0,
+                -10.0
+              ],
+              [
+                -75.0,
+                -10.0
+              ],
+              [
+                -75.0,
+                -50.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/pts_south_pacific_central.utcef",
+          "sha256": "5b5ccd6f7d942722c95010247c47f64a9a6d4c9c7d8b549ec0b5dc4416f7ba4d",
+          "size_bytes": 11421858
+        }
+      ]
+    },
+    {
+      "id": "utcef_pts_south_pacific_east",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "South Pacific East [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "South Pacific East [coarse]",
         "bounding_box": {
           "min_lat": -50.0,
           "min_lon": -180.0,
           "max_lat": -10.0,
-          "max_lon": 110.0
+          "max_lon": -75.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -4618,11 +8594,11 @@
                 -50.0
               ],
               [
-                110.0,
+                -75.0,
                 -50.0
               ],
               [
-                110.0,
+                -75.0,
                 -10.0
               ],
               [
@@ -4639,13 +8615,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
-          "filename": "regions/pacific_oceania/pts_south_pacific_open.utcef",
-          "sha256": "5d1d9c07ac3141b1a1b276f650e2265be26aac663dadc00af6568f7e6372a161",
-          "size_bytes": 18942917
+          "filename": "regions/pacific_oceania/pts_south_pacific_east.utcef",
+          "sha256": "1f8848095698fca37fefc8a5c2d169878534be34b07b9cf31d4c5a79b0486b45",
+          "size_bytes": 7631665
         }
       ]
     },
@@ -4702,13 +8678,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-05T18:11:02Z"
+        "last_checked": "2026-07-06T19:25:51Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_tasmania_strait.utcef",
-          "sha256": "1c72c04be2617fc51a6ccbeb9f7c69aa9b57b48b0587f36a6ea0573f02f8e1ab",
+          "sha256": "92c7850081ae6c4e39c0575a00ae2601bb60d828075009c67a173524ff7d8013",
           "size_bytes": 276346
+        }
+      ]
+    },
+    {
+      "id": "utcef_pts_west_south_australia",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Western & South Australia [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Western & South Australia [coarse]",
+        "bounding_box": {
+          "min_lat": -47.0,
+          "min_lon": 110.0,
+          "max_lat": -10.0,
+          "max_lon": 150.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                110.0,
+                -47.0
+              ],
+              [
+                150.0,
+                -47.0
+              ],
+              [
+                150.0,
+                -10.0
+              ],
+              [
+                110.0,
+                -10.0
+              ],
+              [
+                110.0,
+                -47.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T19:25:51Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/pts_west_south_australia.utcef",
+          "sha256": "f01b4888ad359e539d23b15e18fd275048337e10c59db73c4b9b77caf94cfd47",
+          "size_bytes": 6327686
         }
       ]
     }
