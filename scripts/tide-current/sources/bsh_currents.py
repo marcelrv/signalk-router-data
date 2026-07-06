@@ -232,10 +232,21 @@ def find_latest_cycle() -> Optional[Tuple[str, str]]:
     return None
 
 
-def build_file_entry(region: dict, vv: int, label: str, cycle_hours: list[str]) -> dict:
-    """Build a single file entry for a given VV (forecast day) value."""
+def build_file_entry(
+    region: dict, vv: int, label: str, cycle_hours: list[str], variant: Optional[str] = None,
+) -> dict:
+    """Build a single file entry for a given VV (forecast day) value.
+
+    `variant` disambiguates multiple entries that would otherwise share the
+    same `region_id` + `type` — BSH publishes each forecast day as a
+    separate physical file with its own cycle availability (day+1 at both
+    00Z/12Z, day+2/day+3 only at 12Z), so they can't be bundled into one
+    templated `forecast_hours` array the way a single-cycle source can (see
+    specs/tide-current-catalog.md §3.3). Omitted for nowcast, which is
+    always exactly one file per region and needs no disambiguation.
+    """
     b = region["bounds"]
-    return {
+    entry = {
         "region_id": region["region_id"],
         "name": region["name"],
         "description": region["description"],
@@ -248,6 +259,9 @@ def build_file_entry(region: dict, vv: int, label: str, cycle_hours: list[str]) 
         "forecast_hours": [vv * 24],
         "cycle_hours": cycle_hours,
     }
+    if variant:
+        entry["variant"] = variant
+    return entry
 
 
 def main():
@@ -264,18 +278,16 @@ def main():
         poly = _polygon_from_bounds(b)
         all_poly_coords.append(poly["coordinates"])
 
-        # Nowcast: VV=00 (00Z cycle only)
+        # Nowcast: VV=00 (00Z cycle only) — always exactly one per region, no variant needed.
         files.append(build_file_entry(region, 0, "nowcast", ["00"]))
 
-        # Forecast day 1: VV=01 (both cycles)
-        files.append(build_file_entry(region, 1, "forecast", ["00", "12"]))
-
-        # Forecast day 2: VV=02 (12Z cycle only)
-        files.append(build_file_entry(region, 2, "forecast", ["12"]))
-
-        # Forecast day 3: VV=03 (12Z cycle only, Nordsee/Ostsee only)
+        # Forecast days 1-3: VV=01/02/03, all type "forecast" for the same
+        # region_id — `variant` is what keeps them distinct (see
+        # build_file_entry's docstring for why they can't be bundled).
+        files.append(build_file_entry(region, 1, "forecast", ["00", "12"], variant="+24h"))
+        files.append(build_file_entry(region, 2, "forecast", ["12"], variant="+48h"))
         if region["forecast_days"] >= 3:
-            files.append(build_file_entry(region, 3, "forecast", ["12"]))
+            files.append(build_file_entry(region, 3, "forecast", ["12"], variant="+72h"))
 
     update_check = {
         "method": "expiry",

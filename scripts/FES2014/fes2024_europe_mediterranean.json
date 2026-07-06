@@ -144,13 +144,13 @@
     },
     {
       "region_id": "atn_iceland",
-      "name": "Iceland & Faroe Islands [coarse]",
-      "description": "Iceland, Faroe Islands, Denmark Strait - North Atlantic sailing routes",
+      "name": "Iceland, Faroe & Shetland [coarse]",
+      "description": "Iceland, Faroe Islands, Shetland, Denmark Strait - North Atlantic sailing routes",
       "bounding_box": {
         "min_lat": 60.0,
         "min_lon": -30.0,
         "max_lat": 68.0,
-        "max_lon": -6.0
+        "max_lon": -2.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -161,11 +161,11 @@
               60.0
             ],
             [
-              -6.0,
+              -2.0,
               60.0
             ],
             [
-              -6.0,
+              -2.0,
               68.0
             ],
             [

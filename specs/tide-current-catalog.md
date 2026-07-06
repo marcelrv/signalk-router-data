@@ -81,9 +81,23 @@ Files can be either **static** (direct URL with integrity hash) or **template-ba
 | `description` | String | Yes | Description of the sub-region |
 | `boundary_geometry` | Object | Yes | GeoJSON polygon of the sub-region for map rendering |
 | `type` | String | Yes | `"forecast"` or `"nowcast"` |
+| `variant` | String | No | Disambiguates multiple files that would otherwise share `region_id` + `type` (see below) |
 | `url_template` | String | Yes | URL template with `{YYYYMMDD}`, `{HH}`, `{hour:03d}` variables |
 | `forecast_hours` | Array | Yes | Array of forecast hour offsets (e.g. `[24, 48, 72]`) |
 | `cycle_hours` | Array | Yes | Array of cycle hours (e.g. `["00"]`) |
+
+**`region_id` + `type` + `variant` together must be unique within a source.** A source normally
+bundles every forecast horizon it publishes into ONE template file (`forecast_hours: [24, 48,
+72]` with one `url_template` parameterized by `{hour:03d}`) — that's the preferred shape, and
+`variant` should be omitted (defaults to absent). Only use `variant` when a source genuinely
+cannot bundle its horizons into one file/cycle — e.g. BSH publishes each forecast day as a
+separate physical file with its own cycle-availability (day+1 at both the 00Z and 12Z cycles,
+day+2/day+3 only at 12Z), which a single shared `cycle_hours` can't express. In that case, emit
+one template file entry per horizon with the SAME `region_id`/`type` and a distinct `variant`
+(e.g. `"+24h"`, `"+48h"`, `"+72h"`) so consumers can tell them apart and download/track each one
+independently. A consumer that predates `variant` will still see these as ambiguous — this is an
+additive, backward-compatible field, not a `catalog_schema_version` major bump, but producers
+should prefer bundling over `variant` whenever the upstream data allows it.
 
 ## 4. URL Template Variables
 

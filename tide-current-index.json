@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-06T19:25:51Z",
-  "source_count": 68,
+  "generated": "2026-07-06T20:50:25Z",
+  "source_count": 73,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 12,
-        "last_checked": "2026-07-06T19:25:28Z",
+        "last_checked": "2026-07-06T20:50:01Z",
         "latest_cycle": "2026-07-06T00:00:00Z"
       },
       "files": [
@@ -507,7 +507,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "north_sea",
@@ -547,7 +548,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "north_sea",
@@ -587,7 +589,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "german_bight",
@@ -668,7 +671,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "german_bight",
@@ -708,7 +712,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "german_bight",
@@ -748,7 +753,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "inner_german_bight",
@@ -829,7 +835,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "inner_german_bight",
@@ -869,7 +876,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "inner_german_bight",
@@ -909,7 +917,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "north_frisian_islands",
@@ -990,7 +999,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "north_frisian_islands",
@@ -1030,7 +1040,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "north_frisian_islands",
@@ -1070,7 +1081,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "east_frisian_islands",
@@ -1151,7 +1163,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "east_frisian_islands",
@@ -1191,7 +1204,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "east_frisian_islands",
@@ -1231,7 +1245,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "baltic_sea",
@@ -1312,7 +1327,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "baltic_sea",
@@ -1352,7 +1368,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "baltic_sea",
@@ -1392,7 +1409,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "western_baltic",
@@ -1473,7 +1491,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "western_baltic",
@@ -1513,7 +1532,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "western_baltic",
@@ -1553,7 +1573,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "kiel_bight",
@@ -1634,7 +1655,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "kiel_bight",
@@ -1674,7 +1696,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "kiel_bight",
@@ -1714,7 +1737,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "luebeck_bight",
@@ -1795,7 +1819,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "luebeck_bight",
@@ -1835,7 +1860,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "luebeck_bight",
@@ -1875,7 +1901,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "ruegen",
@@ -1956,7 +1983,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "ruegen",
@@ -1996,7 +2024,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "ruegen",
@@ -2036,7 +2065,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "the_sound",
@@ -2117,7 +2147,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "the_sound",
@@ -2157,7 +2188,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "the_sound",
@@ -2197,7 +2229,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "the_belts",
@@ -2278,7 +2311,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "the_belts",
@@ -2318,7 +2352,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "the_belts",
@@ -2358,7 +2393,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+72h"
         },
         {
           "region_id": "elbe_outer",
@@ -2439,7 +2475,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "elbe_outer",
@@ -2479,7 +2516,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "elbe_cuxhaven_brunsbuettel",
@@ -2560,7 +2598,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "elbe_cuxhaven_brunsbuettel",
@@ -2600,7 +2639,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "elbe_brunsbuettel_pagensand",
@@ -2681,7 +2721,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "elbe_brunsbuettel_pagensand",
@@ -2721,7 +2762,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         },
         {
           "region_id": "elbe_pagensand_hamburg",
@@ -2802,7 +2844,8 @@
           "cycle_hours": [
             "00",
             "12"
-          ]
+          ],
+          "variant": "+24h"
         },
         {
           "region_id": "elbe_pagensand_hamburg",
@@ -2842,7 +2885,8 @@
           ],
           "cycle_hours": [
             "12"
-          ]
+          ],
+          "variant": "+48h"
         }
       ]
     },
@@ -3312,7 +3356,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-06T19:25:29Z",
+        "last_checked": "2026-07-06T20:50:02Z",
         "latest_cycle": "2026-07-06T00:00:00Z"
       },
       "files": [
@@ -4639,7 +4683,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:30Z"
+        "last_checked": "2026-07-06T20:50:02Z"
       },
       "files": [
         {
@@ -4709,12 +4753,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_bahamas_florida.utcef",
-          "sha256": "420fabc62396a952caa434578c8f88c7fce21f7354e7ac1680499ccc6373f8f9",
+          "sha256": "32f47d3ceed0bed0d87f0856f18cda58c104c248240648d8cf90fc5650d2cbc7",
           "size_bytes": 1236471
         }
       ]
@@ -4772,12 +4816,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_caribbean.utcef",
-          "sha256": "b63f0b0152fc9d62e6ac9fac5966e90464a791158b50faffe9804cb74d65f68e",
+          "sha256": "ec9f167ce7ec44e9bb24b82471e2771b68492fa6072ae656261fadb42c96fa91",
           "size_bytes": 8474508
         }
       ]
@@ -4803,7 +4847,7 @@
           "min_lat": 10.0,
           "min_lon": -65.0,
           "max_lat": 16.0,
-          "max_lon": -60.0
+          "max_lon": -58.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -4814,11 +4858,11 @@
                 10.0
               ],
               [
-                -60.0,
+                -58.0,
                 10.0
               ],
               [
-                -60.0,
+                -58.0,
                 16.0
               ],
               [
@@ -4835,13 +4879,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_central_caribbean.utcef",
-          "sha256": "32e29e844f9ad57d84e9b0aaa833a2ed282665e95bad2f36ea87397421265895",
-          "size_bytes": 238170
+          "sha256": "d3f3d6494289e9389c03eebb2ec5b02da1298f4cf597002ddca63eef91274bd9",
+          "size_bytes": 333932
         }
       ]
     },
@@ -4898,13 +4942,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_equatorial_east.utcef",
-          "sha256": "b8c25a10842e7a157994654ecf21369c85e7f3e2f645c5e8a7a6560571c3f963",
-          "size_bytes": 747612
+          "sha256": "c9e69855320476bc7bd2874d534d1366dc94c42b49070a6c45ddee1dd2481192",
+          "size_bytes": 747611
         }
       ]
     },
@@ -4961,12 +5005,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_equatorial_west.utcef",
-          "sha256": "fa6f080609d32bd3a48d2ade56b12b6cc71c06dca2107a575776f86539914bb5",
+          "sha256": "d3da87e912c8814a0d7d72f21cff607614ddf0ec9c8deb358a0698f07f677cb6",
           "size_bytes": 564284
         }
       ]
@@ -5024,12 +5068,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_gulf_of_mexico.utcef",
-          "sha256": "1b9cb22abaf7bde14a6f22f3b5384d392cd963c43200bf44d8b822b546ff3b38",
+          "sha256": "23a7a1822abda19904f1a337468ce9c15d36248627e4d45b5fb8e7a78807907f",
           "size_bytes": 4674946
         }
       ]
@@ -5087,12 +5131,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_us_east_coast.utcef",
-          "sha256": "031db5e4a37ceb2f1082114711ce3ae27de7ad58cff76b76b7d49b5995a9b769",
+          "sha256": "863e43d8e724161be754c697e6a15627990cef9adcc02b2dc4deeb1265125c69",
           "size_bytes": 4306902
         }
       ]
@@ -5150,12 +5194,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_azores_madeira.utcef",
-          "sha256": "494e1b6c8d9c0bf4b78c81b4e33bf69804878c586fb4cf854c0953b1bc29ad16",
+          "sha256": "d19054c73d4dd76f50e0eb1f6ef31366d4ce123c6b80995c7dc6757d7f669304",
           "size_bytes": 1153567
         }
       ]
@@ -5213,12 +5257,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_bay_of_biscay.utcef",
-          "sha256": "97845da8fc179e1e6599969e9c977b44a7a218cb6fcfc6ea7d7ea6fab3542ed1",
+          "sha256": "974aa2e5ad8bfa91dec03349b700f961d47e72944c1657911d1f5b1574453592",
           "size_bytes": 380703
         }
       ]
@@ -5276,12 +5320,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_british_isles.utcef",
-          "sha256": "01f5a5d0e321e2fb96522b1e6305c9b3db74a87f580ba6db79879f17f7a97ada",
+          "sha256": "a9cce14d6c38f90f8aa8100ed0b85269ef7c00e674ff7459032448a229c401aa",
           "size_bytes": 1917982
         }
       ]
@@ -5339,12 +5383,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_canada_east.utcef",
-          "sha256": "e49a7ac818165b8914ad1d5fc7c490af87cd9d9d752afada9a63ef5ce2951e95",
+          "sha256": "9e529e7494f8481f54fc74413032adb47765def038a507d0562cc8886eb7cd18",
           "size_bytes": 1312507
         }
       ]
@@ -5402,12 +5446,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_central_east.utcef",
-          "sha256": "70f66b3fa74bbb5189920718fb3ce614a87a30d438748d70fa2c830670b558e6",
+          "sha256": "d7e023885d69002efdfa88f6035f9f6ba7ea38050d0fe4e8dd13b843cbb36d83",
           "size_bytes": 449518
         }
       ]
@@ -5465,12 +5509,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_central_west.utcef",
-          "sha256": "10bb6d674ca79403cc7d625b7dcc5247d41307e756679388ec42160b3470bbed",
+          "sha256": "df048f682b3b676c513ad7a22126559228f50e32bd6ae7e3a0301fe1b970049c",
           "size_bytes": 434013
         }
       ]
@@ -5528,13 +5572,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_iberian_coast.utcef",
-          "sha256": "3865ae82a5654790287673371a6f10f634a24d249d354233acaaeba6b83dacae",
+          "sha256": "557759f2c0a5bbe5f22d4b927c26a0d625f4591f636e19eb2315317141b3afab",
           "size_bytes": 763223
+        }
+      ]
+    },
+    {
+      "id": "utcef_atn_labrador",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Labrador & Hudson Strait [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Labrador & Hudson Strait [coarse]",
+        "bounding_box": {
+          "min_lat": 52.0,
+          "min_lon": -68.0,
+          "max_lat": 65.0,
+          "max_lon": -45.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -68.0,
+                52.0
+              ],
+              [
+                -45.0,
+                52.0
+              ],
+              [
+                -45.0,
+                65.0
+              ],
+              [
+                -68.0,
+                65.0
+              ],
+              [
+                -68.0,
+                52.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T20:50:25Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/atn_labrador.utcef",
+          "sha256": "0a4768b91d521b1ec4af80248c3f11f8dbaff892ac7c384085f3eaa521c64f61",
+          "size_bytes": 1683691
         }
       ]
     },
@@ -5591,12 +5698,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_north_sea.utcef",
-          "sha256": "6809e82056db2c793027024c1324031a7674694cfdcd71b18ff96d77a6423ad7",
+          "sha256": "4a0fb7a9ed695e7213870d177bc4348ba62b9113b3a8a55b9503eb614adeefce",
           "size_bytes": 2475907
         }
       ]
@@ -5654,12 +5761,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_scandinavia.utcef",
-          "sha256": "66143d4518f768706327167bcdc2ed54e7f4b2157ad059118ba7738e1901886e",
+          "sha256": "b912f74388866621493bdefcad8ce7b1cf1054753eb27fbd23b87e8ed5bc7619",
           "size_bytes": 1310752
         }
       ]
@@ -5717,13 +5824,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_angola_namibia.utcef",
-          "sha256": "1d7c1e3db786300b015fa12ac484c2224b507ce13d7e6a5da5ae63776d031273",
+          "sha256": "3c1abae688a73c8d0c065b9b5a4c00765333b75cf31df1c1d4d39bdcc08221c0",
           "size_bytes": 2019135
+        }
+      ]
+    },
+    {
+      "id": "utcef_ats_argentina",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Argentina & Patagonia [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Argentina & Patagonia [coarse]",
+        "bounding_box": {
+          "min_lat": -55.0,
+          "min_lon": -70.0,
+          "max_lat": -30.0,
+          "max_lon": -50.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -70.0,
+                -55.0
+              ],
+              [
+                -50.0,
+                -55.0
+              ],
+              [
+                -50.0,
+                -30.0
+              ],
+              [
+                -70.0,
+                -30.0
+              ],
+              [
+                -70.0,
+                -55.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T20:50:25Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/ats_argentina.utcef",
+          "sha256": "4c80d991df3e89fa6c2df05eb54494f7228e87218bc870564168711aafceb0e2",
+          "size_bytes": 2511240
         }
       ]
     },
@@ -5780,12 +5950,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_gulf_guinea.utcef",
-          "sha256": "7b422c79a74ae3b406633fff360e45c06dfce83e05b2b6eda1516fd54322c21b",
+          "sha256": "b3f1c9cc52162632555eab6a2334b546586bc4e3d1b19aecf40eac9a97221fdf",
           "size_bytes": 2187149
         }
       ]
@@ -5843,12 +6013,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_africa.utcef",
-          "sha256": "ea2881462a1eef357cf4a2e8dc0e969f2e32d472437cda1aba77921dabb93ce3",
+          "sha256": "706e2b7d2f7560efca1427e7015eea3c6bb8bc5cbda741df43b07f8c47d1ec13",
           "size_bytes": 1413960
         }
       ]
@@ -5857,7 +6027,7 @@
       "id": "utcef_ats_south_america",
       "source": "fes2014",
       "type": "utcef",
-      "name": "South American Coast [coarse]",
+      "name": "South America NE Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -5869,11 +6039,11 @@
         "regional"
       ],
       "region": {
-        "name": "South American Coast [coarse]",
+        "name": "South America NE Coast [coarse]",
         "bounding_box": {
           "min_lat": -30.0,
           "min_lon": -75.0,
-          "max_lat": 5.0,
+          "max_lat": 13.0,
           "max_lon": -35.0
         },
         "boundary_geometry": {
@@ -5890,11 +6060,11 @@
               ],
               [
                 -35.0,
-                5.0
+                13.0
               ],
               [
                 -75.0,
-                5.0
+                13.0
               ],
               [
                 -75.0,
@@ -5906,13 +6076,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_america.utcef",
-          "sha256": "0d54084d857a120dedec7413fd5d3585b71ab74a595a12692a24a7bf57dc9e97",
-          "size_bytes": 2499471
+          "sha256": "a576c8dfbc78c5619c4bad4147b37065712620eda769c743b587990fb27125e1",
+          "size_bytes": 4122092
         }
       ]
     },
@@ -5969,12 +6139,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_atlantic_east.utcef",
-          "sha256": "26ef37651f42c5c6581afbc9501d899935f47cd1dce246516de162fcf25648ea",
+          "sha256": "1f4318d83dacef1931c041f638f64cbc7b5a379717bc2aec549240896e082ae4",
           "size_bytes": 1415079
         }
       ]
@@ -6032,13 +6202,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_south_atlantic_west.utcef",
-          "sha256": "3922a8e5f3d6c3ee51dd9fb81c1553e65f022f0679761f4465371a22402d09b8",
-          "size_bytes": 1131753
+          "sha256": "8f39ee1b620763c5e5755fe787f6329b8b63d0004607d5d46ee3e4de2ad70b6c",
+          "size_bytes": 1131754
         }
       ]
     },
@@ -6046,7 +6216,7 @@
       "id": "utcef_ats_west_africa",
       "source": "fes2014",
       "type": "utcef",
-      "name": "West Africa Coast [coarse]",
+      "name": "West Africa & Morocco Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -6058,11 +6228,11 @@
         "regional"
       ],
       "region": {
-        "name": "West Africa Coast [coarse]",
+        "name": "West Africa & Morocco Coast [coarse]",
         "bounding_box": {
           "min_lat": 4.0,
           "min_lon": -20.0,
-          "max_lat": 22.0,
+          "max_lat": 36.0,
           "max_lon": 0.0
         },
         "boundary_geometry": {
@@ -6079,11 +6249,11 @@
               ],
               [
                 0.0,
-                22.0
+                36.0
               ],
               [
                 -20.0,
-                22.0
+                36.0
               ],
               [
                 -20.0,
@@ -6095,13 +6265,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_west_africa.utcef",
-          "sha256": "e3416666d768a7ed36f16ea9de7b6ab4c8bc5ed5a09778b8d3748ea4790ebb0a",
-          "size_bytes": 841187
+          "sha256": "542756c35e110028acb628bd1fa3421a0b3517094be137baf06c441e6ea96c43",
+          "size_bytes": 1802557
         }
       ]
     },
@@ -6158,7 +6328,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
@@ -6221,7 +6391,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
@@ -6284,7 +6454,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
@@ -6347,12 +6517,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_andaman_sea.utcef",
-          "sha256": "1f92cec4403c111782d9a79379035dbab438d077291cc8b91d71e8171da230ea",
+          "sha256": "f72c5f69410414a4c978da1e90a1bf4cabc185ad770ae1a59e4f855356093168",
           "size_bytes": 340233
         }
       ]
@@ -6410,12 +6580,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_arabian_sea.utcef",
-          "sha256": "7e184e9ba9d100a405764b0a1f1afd9460da7bebb540126e9dcb06b415d908f7",
+          "sha256": "1f4d99321d235b57cc352a66666106df6a20d97c2f939153d92149a21127f185",
           "size_bytes": 2574318
         }
       ]
@@ -6473,12 +6643,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_bay_bengal.utcef",
-          "sha256": "e9b7c3877b75434e4c88a575cd573881362a7f96cde61429fe8f96a421ec8d01",
+          "sha256": "51b2c418a4c84ef670c1db5061c763b453275efca9ff9b6431f32c22bcd6f394",
           "size_bytes": 1524823
         }
       ]
@@ -6536,12 +6706,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_central_indian_north.utcef",
-          "sha256": "61d05c61e5c4630ca13a1f1e29be035e25c29151f6809bf6705ec1f50b8700c7",
+          "sha256": "8c5ed20469b2d9eb7d10103de1d445ca1d730a71a46720c1daa40ead72e7a9dc",
           "size_bytes": 1177459
         }
       ]
@@ -6599,13 +6769,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_central_indian_south.utcef",
-          "sha256": "c607660043b4b9e6276565aaf50173304faafacbbf71a99c28af37670f17107b",
-          "size_bytes": 1371671
+          "sha256": "931ca3054a5403ef57726b3dac9e9e8f455b5d56bd308b0a80aa7eff35ced1c8",
+          "size_bytes": 1371672
         }
       ]
     },
@@ -6662,12 +6832,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_east_africa_north.utcef",
-          "sha256": "12b7416ab3fdd73be0b12010150b8013ea5122c051fe8d44849cff28a7a4877e",
+          "sha256": "f21ba66d7e4ea3a349e07b93c28d4ea025b655f2600f723a0edd5327f4651dec",
           "size_bytes": 2038114
         }
       ]
@@ -6725,12 +6895,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_mozambique_channel.utcef",
-          "sha256": "7b7e578a0457b5d93492c34844237edb5acd1395c961fb3cb9ab9e623107a828",
+          "sha256": "c8a4fd8adc97e0c51dd922b54dfa407bbf1cb0c174824031ebf8388d15bb3901",
           "size_bytes": 2233673
         }
       ]
@@ -6755,7 +6925,7 @@
         "bounding_box": {
           "min_lat": 23.0,
           "min_lon": 48.0,
-          "max_lat": 28.0,
+          "max_lat": 30.5,
           "max_lon": 60.0
         },
         "boundary_geometry": {
@@ -6772,11 +6942,11 @@
               ],
               [
                 60.0,
-                28.0
+                30.5
               ],
               [
                 48.0,
-                28.0
+                30.5
               ],
               [
                 48.0,
@@ -6788,13 +6958,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_persian_gulf.utcef",
-          "sha256": "075ac0675c37a928071eb985f195422faa21dd4da916c9b71fea090d3bacb3f6",
-          "size_bytes": 851968
+          "sha256": "2d22a9d18007187b26b79fe889f892239d2d6509914c8ca9dca4a3ab23922b49",
+          "size_bytes": 1033844
         }
       ]
     },
@@ -6816,8 +6986,8 @@
       "region": {
         "name": "Red Sea & Bab al Mandab [coarse]",
         "bounding_box": {
-          "min_lat": 12.0,
-          "min_lon": 35.0,
+          "min_lat": 10.0,
+          "min_lon": 33.0,
           "max_lat": 28.0,
           "max_lon": 45.0
         },
@@ -6826,24 +6996,24 @@
           "coordinates": [
             [
               [
-                35.0,
-                12.0
+                33.0,
+                10.0
               ],
               [
                 45.0,
-                12.0
+                10.0
               ],
               [
                 45.0,
                 28.0
               ],
               [
-                35.0,
+                33.0,
                 28.0
               ],
               [
-                35.0,
-                12.0
+                33.0,
+                10.0
               ]
             ]
           ]
@@ -6851,13 +7021,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_red_sea.utcef",
-          "sha256": "87a1243cfbeec25c394dde30d8860fdfe11db99c9485ea1f535b80c129c5847b",
-          "size_bytes": 307940
+          "sha256": "6db2f9a8c693d15218a2fc39dc2cdec5cb484ef66d9ac68c7cafc91e2bd0d633",
+          "size_bytes": 346022
         }
       ]
     },
@@ -6914,12 +7084,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_sri_lanka.utcef",
-          "sha256": "72e2b7912bc57e653ee87bd1521d5016a04265a1d89826105d2ea213caf0fdda",
+          "sha256": "453b3416a65326f19cb446a9a55ea8cfc0e3b181ef981e7eeb523616e6aa3374",
           "size_bytes": 749672
         }
       ]
@@ -6977,12 +7147,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/indian_ocean/ion_strait_malacca.utcef",
-          "sha256": "c0035f5119ce72783469bce008168684e2a8d7422c67dce1e8361dde0bf7fdeb",
+          "sha256": "2980f0efe187d654bf6d7db07a8aa7f79f5e5f9f39c0ba0bd00d9bb5e2e05692",
           "size_bytes": 918543
         }
       ]
@@ -6991,7 +7161,7 @@
       "id": "utcef_atn_iceland",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Iceland & Faroe Islands [coarse]",
+      "name": "Iceland, Faroe & Shetland [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -7003,12 +7173,12 @@
         "regional"
       ],
       "region": {
-        "name": "Iceland & Faroe Islands [coarse]",
+        "name": "Iceland, Faroe & Shetland [coarse]",
         "bounding_box": {
           "min_lat": 60.0,
           "min_lon": -30.0,
           "max_lat": 68.0,
-          "max_lon": -6.0
+          "max_lon": -2.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -7019,11 +7189,11 @@
                 60.0
               ],
               [
-                -6.0,
+                -2.0,
                 60.0
               ],
               [
-                -6.0,
+                -2.0,
                 68.0
               ],
               [
@@ -7040,13 +7210,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/atn_iceland.utcef",
-          "sha256": "6b8835c5155708bcf0bc99f0b40551523d6700a774fcccad11d19eb2da7783c3",
-          "size_bytes": 1475328
+          "sha256": "56a357e8e3104b4587a5e7a65bf32089cfc7b795ff75c3e305cf3b94e23593c7",
+          "size_bytes": 1735041
         }
       ]
     },
@@ -7103,12 +7273,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_baltic.utcef",
-          "sha256": "ff4c9e6001ac784c10e355da061770c8dce0b663e0bbe95c289a5d8b77ea7f59",
+          "sha256": "82a8d1571a17627423d8663656681c011ebef2e7888605df2e22546d3a2b71e7",
           "size_bytes": 697867
         }
       ]
@@ -7166,12 +7336,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_black_sea.utcef",
-          "sha256": "5ae19ad209a018e388def64ea992c20a81d48257ede4eb2fd59a47aaff59806a",
+          "sha256": "fc2b0a0ba2419487702b9806495d40966bd9ab6f9d54be29875b8603e8b5fd84",
           "size_bytes": 373791
         }
       ]
@@ -7229,13 +7399,139 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_mediterranean.utcef",
-          "sha256": "3b7bb02ac5f17cbc27aa963fdc14be4b0403e80e75b8e247b6e6c694b38ea80f",
+          "sha256": "1ead32d305abb031cf7a8df2e6b9713f4f54f8a33104a7f20911a73523b460d1",
           "size_bytes": 9207741
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_china_east_taiwan",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "China East Coast & Taiwan [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "China East Coast & Taiwan [coarse]",
+        "bounding_box": {
+          "min_lat": 20.0,
+          "min_lon": 110.0,
+          "max_lat": 40.0,
+          "max_lon": 125.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                110.0,
+                20.0
+              ],
+              [
+                125.0,
+                20.0
+              ],
+              [
+                125.0,
+                40.0
+              ],
+              [
+                110.0,
+                40.0
+              ],
+              [
+                110.0,
+                20.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T20:50:25Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptc_china_east_taiwan.utcef",
+          "sha256": "716db3e3ee84734c79b08d57c60c5cbb586f14c58f1097fc3fea9f826bd9917c",
+          "size_bytes": 1055780
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_gulf_california",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Gulf of California & Baja [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Gulf of California & Baja [coarse]",
+        "bounding_box": {
+          "min_lat": 22.0,
+          "min_lon": -118.0,
+          "max_lat": 32.0,
+          "max_lon": -105.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -118.0,
+                22.0
+              ],
+              [
+                -105.0,
+                22.0
+              ],
+              [
+                -105.0,
+                32.0
+              ],
+              [
+                -118.0,
+                32.0
+              ],
+              [
+                -118.0,
+                22.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T20:50:25Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptc_gulf_california.utcef",
+          "sha256": "5697056f3cd5ff8994edb8ead13959c9487c3624f96a5d35f20faad33e919abf",
+          "size_bytes": 558537
         }
       ]
     },
@@ -7292,12 +7588,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptc_gulf_tonkin.utcef",
-          "sha256": "bab2bebb0e031f14decf20326062f7b68642a744d25b5e4eb0791e0f78c3f215",
+          "sha256": "0f98e0655bd532d62124e6af5d70a140592d8a92b416cb50e4ba3cd326306473",
           "size_bytes": 288787
         }
       ]
@@ -7306,7 +7602,7 @@
       "id": "utcef_ptc_philippines_indonesia",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Philippines & Southeast Asia Straits",
+      "name": "Philippines, Indonesia & Marianas",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -7318,12 +7614,12 @@
         "regional"
       ],
       "region": {
-        "name": "Philippines & Southeast Asia Straits",
+        "name": "Philippines, Indonesia & Marianas",
         "bounding_box": {
-          "min_lat": 0.0,
+          "min_lat": -10.0,
           "min_lon": 120.0,
           "max_lat": 20.0,
-          "max_lon": 145.0
+          "max_lon": 146.0
         },
         "boundary_geometry": {
           "type": "Polygon",
@@ -7331,14 +7627,14 @@
             [
               [
                 120.0,
-                0.0
+                -10.0
               ],
               [
-                145.0,
-                0.0
+                146.0,
+                -10.0
               ],
               [
-                145.0,
+                146.0,
                 20.0
               ],
               [
@@ -7347,7 +7643,7 @@
               ],
               [
                 120.0,
-                0.0
+                -10.0
               ]
             ]
           ]
@@ -7355,13 +7651,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptc_philippines_indonesia.utcef",
-          "sha256": "de3144ff96d010e44a23cd295077cd9c9613627c1e6378fea20e964e08a9bb1b",
-          "size_bytes": 14285475
+          "sha256": "bb82a3508d9e7fbaefa612ddd14eab4bfea6679eef54ba574ed19f601e77a759",
+          "size_bytes": 21234904
         }
       ]
     },
@@ -7418,13 +7714,76 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptc_south_china_sea.utcef",
-          "sha256": "110b30e35d8566ea0f40afafce68b2afbe39f036922fc1db764a2892fe211b22",
+          "sha256": "bf8d43b9b5f22925c63aeb8a3ca78df4d24ca7d366f6d717ec7eb420de91bd64",
           "size_bytes": 1840979
+        }
+      ]
+    },
+    {
+      "id": "utcef_ptc_western_indonesia",
+      "source": "fes2014",
+      "type": "utcef",
+      "name": "Western Indonesia [coarse]",
+      "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
+      "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "fes2014",
+        "regional"
+      ],
+      "region": {
+        "name": "Western Indonesia [coarse]",
+        "bounding_box": {
+          "min_lat": -10.0,
+          "min_lon": 95.0,
+          "max_lat": 5.0,
+          "max_lon": 120.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                95.0,
+                -10.0
+              ],
+              [
+                120.0,
+                -10.0
+              ],
+              [
+                120.0,
+                5.0
+              ],
+              [
+                95.0,
+                5.0
+              ],
+              [
+                95.0,
+                -10.0
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-06T20:50:25Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/ptc_western_indonesia.utcef",
+          "sha256": "6e0305bc9553e74baab783af2d5dbcbc4db891a9d0d3394c619a18f3648d0d41",
+          "size_bytes": 2166330
         }
       ]
     },
@@ -7481,13 +7840,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_aleutian_chain.utcef",
-          "sha256": "259d515f7d70f5990d9a8e36aeeb7be551734b770051feced698567aee40080e",
-          "size_bytes": 797351
+          "sha256": "8a7007c2a43b7affb3a025e380a01da73f2f9a767fe346052c6878bd79620a91",
+          "size_bytes": 797352
         }
       ]
     },
@@ -7544,13 +7903,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_bering_sea.utcef",
-          "sha256": "d56dd5ba91e3c0bff7d9e7ba1d3b6c8aa4ef48eadf64ca7221bebfb31e21bc4b",
-          "size_bytes": 947
+          "sha256": "bac44f4532614d178a1ed15880ca3e79aa92ffae871e12effa17a557054c3878",
+          "size_bytes": 946
         }
       ]
     },
@@ -7607,13 +7966,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_california_bight.utcef",
-          "sha256": "d53ad73a58caeee758f96178e756a07b4028fe5e62e322be2412bd374f04ad8e",
-          "size_bytes": 1558890
+          "sha256": "ed0c4e6e9fb62183a1bc73d9d7a277611aa541e965533df9cd3fc6d42b7cc2c0",
+          "size_bytes": 1558889
         }
       ]
     },
@@ -7670,13 +8029,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_canada_west.utcef",
-          "sha256": "399e9a3c69f787cc47af1eb594453fd94d99fba0b0ef54219c9c56a5951ff7e1",
-          "size_bytes": 764248
+          "sha256": "01f37022c353f953685423166506888f4a3b316b7c13a4237e1a926a0b1dcfc4",
+          "size_bytes": 764247
         }
       ]
     },
@@ -7733,13 +8092,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_gulf_alaska.utcef",
-          "sha256": "9cd6472974b964efd1d8065f781b775e05fc4e3de92808dfef9794631cf9c8f3",
-          "size_bytes": 2159436
+          "sha256": "51cb18eb43f743fbb22f12539b8d01215826a6abe8c069a982b30b0aa6bc8ee4",
+          "size_bytes": 2159435
         }
       ]
     },
@@ -7796,12 +8155,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_japan_korea.utcef",
-          "sha256": "f9eae518353fca60dc7fe5241657a101b4bafde07e779cc626d0a42019053da0",
+          "sha256": "11e14b5432a7a86ef45276608d339548ab496d241ce48628584f6f4c5cc6b5cf",
           "size_bytes": 6641764
         }
       ]
@@ -7859,12 +8218,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_north_pacific_east.utcef",
-          "sha256": "23e82eaf548d9a77d1db90667f613ec74c3dddd6349f197e39841c88a69b6090",
+          "sha256": "a8b58afd7b6a268a857607c59f213c352fde6c45367f8da91466ae1856c2c4eb",
           "size_bytes": 1151738
         }
       ]
@@ -7922,12 +8281,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_north_pacific_west.utcef",
-          "sha256": "35583764a8b255b6c05e2304eacd84bbc90e9fdeb6579853b79d5711755369b9",
+          "sha256": "350501e25773a169d920d0c2b8e50ef7069daa0780a23ad7a216ab29a67aced1",
           "size_bytes": 853971
         }
       ]
@@ -7985,12 +8344,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_northwest_pacific.utcef",
-          "sha256": "5a13ba80e48787a62d352ef94ca83dff9f30b09efb135d187019752a6a00c501",
+          "sha256": "403d6dae16dba6b8406c79dd4a63f62b637f7e00960cb10ccdc466fe60bdffde",
           "size_bytes": 2509776
         }
       ]
@@ -8048,12 +8407,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_sea_okhotsk.utcef",
-          "sha256": "1fd9fff5fc049644d12a660aea788e3d252b491559413b97ed5014bfce0fe271",
+          "sha256": "39d681fd725fc4a5fd89850532a649491b797eebff63139c0dba273da93361b4",
           "size_bytes": 2285438
         }
       ]
@@ -8111,12 +8470,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_us_west_coast.utcef",
-          "sha256": "b898fc51d4cb3c870e810ed4164ae089cf316aa8442a1341f52415b77d1a2adf",
+          "sha256": "2caf211eb63c44197c1dc5c11f26d736718f88df4774b6c3cb99de996292aa73",
           "size_bytes": 7105174
         }
       ]
@@ -8125,7 +8484,7 @@
       "id": "utcef_ptc_central_america_pacific",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Central America Pacific [coarse]",
+      "name": "Central America Pacific Coast [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -8137,10 +8496,10 @@
         "regional"
       ],
       "region": {
-        "name": "Central America Pacific [coarse]",
+        "name": "Central America Pacific Coast [coarse]",
         "bounding_box": {
           "min_lat": 5.0,
-          "min_lon": -95.0,
+          "min_lon": -110.0,
           "max_lat": 22.0,
           "max_lon": -75.0
         },
@@ -8149,7 +8508,7 @@
           "coordinates": [
             [
               [
-                -95.0,
+                -110.0,
                 5.0
               ],
               [
@@ -8161,11 +8520,11 @@
                 22.0
               ],
               [
-                -95.0,
+                -110.0,
                 22.0
               ],
               [
-                -95.0,
+                -110.0,
                 5.0
               ]
             ]
@@ -8174,13 +8533,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_central_america_pacific.utcef",
-          "sha256": "0b3e60bbbf2da10bf245b65a84557a84f8be7dc49cbf2b470066ccec4f37f977",
-          "size_bytes": 2016338
+          "sha256": "518ed5c1ef0cbc4b7c9558b9b7fad1004aa69f58339733ce7b1178bd3b4ff63b",
+          "size_bytes": 3545066
         }
       ]
     },
@@ -8237,12 +8596,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_hawaii.utcef",
-          "sha256": "bf90ac69d06e2eb3951d3725b711c16b261523ff195857ec7c858ade41c9e817",
+          "sha256": "ef437d50106876ad2f0fb2f8ecd6386daff17640a82b176778da4a9f778b4a09",
           "size_bytes": 753636
         }
       ]
@@ -8266,8 +8625,8 @@
         "name": "Melanesia & Coral Sea [coarse]",
         "bounding_box": {
           "min_lat": -25.0,
-          "min_lon": 155.0,
-          "max_lat": -5.0,
+          "min_lon": 140.0,
+          "max_lat": 8.0,
           "max_lon": 180.0
         },
         "boundary_geometry": {
@@ -8275,7 +8634,7 @@
           "coordinates": [
             [
               [
-                155.0,
+                140.0,
                 -25.0
               ],
               [
@@ -8284,14 +8643,14 @@
               ],
               [
                 180.0,
-                -5.0
+                8.0
               ],
               [
-                155.0,
-                -5.0
+                140.0,
+                8.0
               ],
               [
-                155.0,
+                140.0,
                 -25.0
               ]
             ]
@@ -8300,13 +8659,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_melanesia.utcef",
-          "sha256": "99a5c000e2ef2e9d53e3a41c8b969ec3c427310cf50632bcbdc08d04af3c3697",
-          "size_bytes": 3891000
+          "sha256": "f0e124b74dd53df2e2f787512b21166cc6e68f321d0eface04b7179ef5b55509",
+          "size_bytes": 9079254
         }
       ]
     },
@@ -8314,7 +8673,7 @@
       "id": "utcef_ptc_samoa_fiji",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Samoa, Fiji & South Pacific Islands [coarse]",
+      "name": "Pacific Islands & Micronesia [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -8326,11 +8685,11 @@
         "regional"
       ],
       "region": {
-        "name": "Samoa, Fiji & South Pacific Islands [coarse]",
+        "name": "Pacific Islands & Micronesia [coarse]",
         "bounding_box": {
           "min_lat": -20.0,
           "min_lon": 170.0,
-          "max_lat": -5.0,
+          "max_lat": 10.0,
           "max_lon": -170.0
         },
         "boundary_geometry": {
@@ -8347,11 +8706,11 @@
               ],
               [
                 -170.0,
-                -5.0
+                10.0
               ],
               [
                 170.0,
-                -5.0
+                10.0
               ],
               [
                 170.0,
@@ -8363,13 +8722,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_samoa_fiji.utcef",
-          "sha256": "03cc209fc1a9aa13aa6feb4aeb9c06a7d3876c05da79811aef83055b09d569aa",
-          "size_bytes": 965
+          "sha256": "86242879c56566ac0f16faee81fa816e4ba7b3114207c3d6e45b9826ddd411ee",
+          "size_bytes": 959
         }
       ]
     },
@@ -8426,12 +8785,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_east_australia_nz.utcef",
-          "sha256": "e1f3b7a31f26b211d582d44218a0d04019809eb4d76942a0f22e7cc42c2f7b72",
+          "sha256": "0029a620da1646d2c0da5a7bb8dc487a7bb6177c1ac7d8967830fafa4a2cbef6",
           "size_bytes": 8298511
         }
       ]
@@ -8440,7 +8799,7 @@
       "id": "utcef_pts_south_america_pacific",
       "source": "fes2014",
       "type": "utcef",
-      "name": "Chile & Peru Coast [coarse]",
+      "name": "South America Pacific & Galapagos [coarse]",
       "description": "FES2014-derived tidal current database generated by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). The underlying FES2014 model is produced by Noveltis, Legos and CLS and distributed by AVISO+. This derived dataset is NOT endorsed by, affiliated with, or supported by AVISO, CNES, or any FES2014 copyright owner. To download or review the raw global FES2014 dataset, visit AVISO+ at: https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
       "contributor": "Underlying FES2014 data: Copyright \u00a9 2014-ongoing Legos/Noveltis/Cnes/CLS. Derived database packaging: see repository license.",
       "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
@@ -8452,10 +8811,10 @@
         "regional"
       ],
       "region": {
-        "name": "Chile & Peru Coast [coarse]",
+        "name": "South America Pacific & Galapagos [coarse]",
         "bounding_box": {
-          "min_lat": -45.0,
-          "min_lon": -85.0,
+          "min_lat": -55.0,
+          "min_lon": -92.0,
           "max_lat": 5.0,
           "max_lon": -70.0
         },
@@ -8464,24 +8823,24 @@
           "coordinates": [
             [
               [
-                -85.0,
-                -45.0
+                -92.0,
+                -55.0
               ],
               [
                 -70.0,
-                -45.0
+                -55.0
               ],
               [
                 -70.0,
                 5.0
               ],
               [
-                -85.0,
+                -92.0,
                 5.0
               ],
               [
-                -85.0,
-                -45.0
+                -92.0,
+                -55.0
               ]
             ]
           ]
@@ -8489,13 +8848,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_south_america_pacific.utcef",
-          "sha256": "2d935ecf903a595e3a145eaeb078cb650fe1432787968a475d4a19784e8099d5",
-          "size_bytes": 3771965
+          "sha256": "b37f2807118a4adde199db2ef641dd9d885338b7182ecf99452d522aeaea8095",
+          "size_bytes": 7523482
         }
       ]
     },
@@ -8552,12 +8911,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_south_pacific_central.utcef",
-          "sha256": "5b5ccd6f7d942722c95010247c47f64a9a6d4c9c7d8b549ec0b5dc4416f7ba4d",
+          "sha256": "0bdadb97ebe1ebbf38524846033f428aa011ef12a03f532336331b58005f5512",
           "size_bytes": 11421858
         }
       ]
@@ -8615,12 +8974,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_south_pacific_east.utcef",
-          "sha256": "1f8848095698fca37fefc8a5c2d169878534be34b07b9cf31d4c5a79b0486b45",
+          "sha256": "df62b6e72ac803cb90afdfbab86a06493f6c0b3aee77b1f0bfb47741e7b21a24",
           "size_bytes": 7631665
         }
       ]
@@ -8678,12 +9037,12 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_tasmania_strait.utcef",
-          "sha256": "92c7850081ae6c4e39c0575a00ae2601bb60d828075009c67a173524ff7d8013",
+          "sha256": "1bbbee0aa374f29d06f68010fe90bc57fa725524a7e3d4a9d59d1df2fdb2731c",
           "size_bytes": 276346
         }
       ]
@@ -8741,13 +9100,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-06T19:25:51Z"
+        "last_checked": "2026-07-06T20:50:25Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/pts_west_south_australia.utcef",
-          "sha256": "f01b4888ad359e539d23b15e18fd275048337e10c59db73c4b9b77caf94cfd47",
-          "size_bytes": 6327686
+          "sha256": "48719e59086885bfb326e700a61b92610aef857f44033ee605d984b5bb77be93",
+          "size_bytes": 6327688
         }
       ]
     }

@@ -10,11 +10,11 @@
     {
       "region_id": "ion_persian_gulf",
       "name": "Persian Gulf & Gulf of Oman",
-      "description": "Oil shipping critical - Strait of Hormuz gateway",
+      "description": "Oil shipping critical - Strait of Hormuz gateway, Kuwait to Oman",
       "bounding_box": {
         "min_lat": 23.0,
         "min_lon": 48.0,
-        "max_lat": 28.0,
+        "max_lat": 30.5,
         "max_lon": 60.0
       },
       "boundary_geometry": {
@@ -31,11 +31,11 @@
             ],
             [
               60.0,
-              28.0
+              30.5
             ],
             [
               48.0,
-              28.0
+              30.5
             ],
             [
               48.0,
@@ -53,10 +53,10 @@
     {
       "region_id": "ion_red_sea",
       "name": "Red Sea & Bab al Mandab [coarse]",
-      "description": "Red Sea, narrow straits - shipping critical chokepoint",
+      "description": "Red Sea, Gulf of Aden, Djibouti to Egypt - shipping critical chokepoint",
       "bounding_box": {
-        "min_lat": 12.0,
-        "min_lon": 35.0,
+        "min_lat": 10.0,
+        "min_lon": 33.0,
         "max_lat": 28.0,
         "max_lon": 45.0
       },
@@ -65,24 +65,24 @@
         "coordinates": [
           [
             [
-              35.0,
-              12.0
+              33.0,
+              10.0
             ],
             [
               45.0,
-              12.0
+              10.0
             ],
             [
               45.0,
               28.0
             ],
             [
-              35.0,
+              33.0,
               28.0
             ],
             [
-              35.0,
-              12.0
+              33.0,
+              10.0
             ]
           ]
         ]

@@ -150,6 +150,31 @@
       "traffic_level": "high",
       "key_features": []
     },
+    "atn_labrador": {
+      "title": "Labrador & Hudson Strait [coarse]",
+      "description": "Labrador coast, Hudson Strait, Ungava Bay, south Greenland - northern Atlantic sailing",
+      "bbox": [
+        -68.0,
+        52.0,
+        -45.0,
+        65.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATN_LABRADOR",
+          "step": 0.125,
+          "lat_min": 52.0,
+          "lat_max": 65.0,
+          "lon_min": -68.0,
+          "lon_max": -45.0
+        }
+      ],
+      "region_id": "atn_labrador",
+      "basin": "Atlantic",
+      "traffic_level": "low",
+      "key_features": []
+    },
     "atn_azores_madeira": {
       "title": "Azores & Mid-Atlantic Islands [coarse]",
       "description": "Azores, Madeira, Cape Verde - isolated island groups",
@@ -327,11 +352,11 @@
     },
     "atc_central_caribbean": {
       "title": "Lesser Antilles & Windward [coarse]",
-      "description": "Island chains, moderate traffic",
+      "description": "Lesser Antilles, Barbados, Windward Islands - Caribbean island chain traffic",
       "bbox": [
         -65.0,
         10.0,
-        -60.0,
+        -58.0,
         16.0
       ],
       "stations": [],
@@ -342,7 +367,7 @@
           "lat_min": 10.0,
           "lat_max": 16.0,
           "lon_min": -65.0,
-          "lon_max": -60.0
+          "lon_max": -58.0
         }
       ],
       "region_id": "atc_central_caribbean",
@@ -401,13 +426,13 @@
       "key_features": []
     },
     "ats_south_america": {
-      "title": "South American Coast [coarse]",
-      "description": "Brazil, Venezuela coast - river approaches, ports",
+      "title": "South America NE Coast [coarse]",
+      "description": "Brazil, Venezuela, Guianas coast - river approaches, ports",
       "bbox": [
         -75.0,
         -30.0,
         -35.0,
-        5.0
+        13.0
       ],
       "stations": [],
       "current_grids": [
@@ -415,7 +440,7 @@
           "id_prefix": "ATS_SOUTH_AMERICA",
           "step": 0.125,
           "lat_min": -30.0,
-          "lat_max": 5.0,
+          "lat_max": 13.0,
           "lon_min": -75.0,
           "lon_max": -35.0
         }
@@ -526,13 +551,13 @@
       "key_features": []
     },
     "ats_west_africa": {
-      "title": "West Africa Coast [coarse]",
-      "description": "Senegal, Gambia, Guinea, Sierra Leone, Liberia, Ivory Coast - tropical sailing",
+      "title": "West Africa & Morocco Coast [coarse]",
+      "description": "Morocco, Western Sahara, Senegal to Liberia - Atlantic Africa coast, includes Canary Islands",
       "bbox": [
         -20.0,
         4.0,
         0.0,
-        22.0
+        36.0
       ],
       "stations": [],
       "current_grids": [
@@ -540,7 +565,7 @@
           "id_prefix": "ATS_WEST_AFRICA",
           "step": 0.125,
           "lat_min": 4.0,
-          "lat_max": 22.0,
+          "lat_max": 36.0,
           "lon_min": -20.0,
           "lon_max": 0.0
         }
@@ -571,6 +596,31 @@
         }
       ],
       "region_id": "ats_angola_namibia",
+      "basin": "Atlantic",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ats_argentina": {
+      "title": "Argentina & Patagonia [coarse]",
+      "description": "Argentina, Uruguay, Patagonia, Falklands, Tierra del Fuego - South Atlantic shipping and cruising",
+      "bbox": [
+        -70.0,
+        -55.0,
+        -50.0,
+        -30.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "ATS_ARGENTINA",
+          "step": 0.125,
+          "lat_min": -55.0,
+          "lat_max": -30.0,
+          "lon_min": -70.0,
+          "lon_max": -50.0
+        }
+      ],
+      "region_id": "ats_argentina",
       "basin": "Atlantic",
       "traffic_level": "moderate",
       "key_features": []
@@ -651,12 +701,12 @@
       "key_features": []
     },
     "atn_iceland": {
-      "title": "Iceland & Faroe Islands [coarse]",
-      "description": "Iceland, Faroe Islands, Denmark Strait - North Atlantic sailing routes",
+      "title": "Iceland, Faroe & Shetland [coarse]",
+      "description": "Iceland, Faroe Islands, Shetland, Denmark Strait - North Atlantic sailing routes",
       "bbox": [
         -30.0,
         60.0,
-        -6.0,
+        -2.0,
         68.0
       ],
       "stations": [],
@@ -667,7 +717,7 @@
           "lat_min": 60.0,
           "lat_max": 68.0,
           "lon_min": -30.0,
-          "lon_max": -6.0
+          "lon_max": -2.0
         }
       ],
       "region_id": "atn_iceland",
@@ -677,12 +727,12 @@
     },
     "ion_persian_gulf": {
       "title": "Persian Gulf & Gulf of Oman",
-      "description": "Oil shipping critical - Strait of Hormuz gateway",
+      "description": "Oil shipping critical - Strait of Hormuz gateway, Kuwait to Oman",
       "bbox": [
         48.0,
         23.0,
         60.0,
-        28.0
+        30.5
       ],
       "stations": [],
       "current_grids": [
@@ -690,7 +740,7 @@
           "id_prefix": "ION_PERSIAN_GULF",
           "step": 0.0625,
           "lat_min": 23.0,
-          "lat_max": 28.0,
+          "lat_max": 30.5,
           "lon_min": 48.0,
           "lon_max": 60.0
         }
@@ -702,10 +752,10 @@
     },
     "ion_red_sea": {
       "title": "Red Sea & Bab al Mandab [coarse]",
-      "description": "Red Sea, narrow straits - shipping critical chokepoint",
+      "description": "Red Sea, Gulf of Aden, Djibouti to Egypt - shipping critical chokepoint",
       "bbox": [
-        35.0,
-        12.0,
+        33.0,
+        10.0,
         45.0,
         28.0
       ],
@@ -714,9 +764,9 @@
         {
           "id_prefix": "ION_RED_SEA",
           "step": 0.125,
-          "lat_min": 12.0,
+          "lat_min": 10.0,
           "lat_max": 28.0,
-          "lon_min": 35.0,
+          "lon_min": 33.0,
           "lon_max": 45.0
         }
       ],
@@ -1050,6 +1100,31 @@
       "traffic_level": "very_high",
       "key_features": []
     },
+    "ptc_gulf_california": {
+      "title": "Gulf of California & Baja [coarse]",
+      "description": "Sea of Cortez, Baja California peninsula, Mazatlan - popular cruising destination",
+      "bbox": [
+        -118.0,
+        22.0,
+        -105.0,
+        32.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_GULF_CALIFORNIA",
+          "step": 0.125,
+          "lat_min": 22.0,
+          "lat_max": 32.0,
+          "lon_min": -118.0,
+          "lon_max": -105.0
+        }
+      ],
+      "region_id": "ptc_gulf_california",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "moderate",
+      "key_features": []
+    },
     "ptn_gulf_alaska": {
       "title": "Gulf of Alaska [coarse]",
       "description": "Alaska south coast - fishing and shipping",
@@ -1126,12 +1201,12 @@
       "key_features": []
     },
     "ptc_philippines_indonesia": {
-      "title": "Philippines & Southeast Asia Straits",
-      "description": "Philippines, Indonesia, complex strait system",
+      "title": "Philippines, Indonesia & Marianas",
+      "description": "Philippines, Indonesia, Micronesia, Marianas - complex strait system, major shipping and cruising",
       "bbox": [
         120.0,
-        0.0,
-        145.0,
+        -10.0,
+        146.0,
         20.0
       ],
       "stations": [],
@@ -1139,10 +1214,10 @@
         {
           "id_prefix": "PTC_PHILIPPINES_INDONESIA",
           "step": 0.0625,
-          "lat_min": 0.0,
+          "lat_min": -10.0,
           "lat_max": 20.0,
           "lon_min": 120.0,
-          "lon_max": 145.0
+          "lon_max": 146.0
         }
       ],
       "region_id": "ptc_philippines_indonesia",
@@ -1173,6 +1248,31 @@
       "region_id": "ptc_south_china_sea",
       "basin": "Pacific North & Asia",
       "traffic_level": "very_high",
+      "key_features": []
+    },
+    "ptc_western_indonesia": {
+      "title": "Western Indonesia [coarse]",
+      "description": "Sumatra, Java, western Borneo - Cocomo cruising route, Sunda Strait, Lombok Strait",
+      "bbox": [
+        95.0,
+        -10.0,
+        120.0,
+        5.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_WESTERN_INDONESIA",
+          "step": 0.125,
+          "lat_min": -10.0,
+          "lat_max": 5.0,
+          "lon_min": 95.0,
+          "lon_max": 120.0
+        }
+      ],
+      "region_id": "ptc_western_indonesia",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "high",
       "key_features": []
     },
     "ptn_north_pacific_east": {
@@ -1273,6 +1373,31 @@
       "region_id": "ptc_gulf_tonkin",
       "basin": "Pacific North & Asia",
       "traffic_level": "moderate",
+      "key_features": []
+    },
+    "ptc_china_east_taiwan": {
+      "title": "China East Coast & Taiwan [coarse]",
+      "description": "China east coast (Shanghai to Tianjin), Taiwan Strait, Bohai/Yellow Sea - major shipping and cruising",
+      "bbox": [
+        110.0,
+        20.0,
+        125.0,
+        40.0
+      ],
+      "stations": [],
+      "current_grids": [
+        {
+          "id_prefix": "PTC_CHINA_EAST_TAIWAN",
+          "step": 0.125,
+          "lat_min": 20.0,
+          "lat_max": 40.0,
+          "lon_min": 110.0,
+          "lon_max": 125.0
+        }
+      ],
+      "region_id": "ptc_china_east_taiwan",
+      "basin": "Pacific North & Asia",
+      "traffic_level": "very_high",
       "key_features": []
     },
     "ptn_sea_okhotsk": {
@@ -1376,13 +1501,13 @@
       "key_features": []
     },
     "ptc_samoa_fiji": {
-      "title": "Samoa, Fiji & South Pacific Islands [coarse]",
-      "description": "Island nations, tropics - sparse shipping, tourism",
+      "title": "Pacific Islands & Micronesia [coarse]",
+      "description": "Fiji, Samoa, Tonga, Kiribati, Marshall Islands, Micronesia - tropical Pacific island routes",
       "bbox": [
         170.0,
         -20.0,
         -170.0,
-        -5.0
+        10.0
       ],
       "stations": [],
       "current_grids": [
@@ -1390,7 +1515,7 @@
           "id_prefix": "PTC_SAMOA_FIJI",
           "step": 0.125,
           "lat_min": -20.0,
-          "lat_max": -5.0,
+          "lat_max": 10.0,
           "lon_min": 170.0,
           "lon_max": -170.0
         }
@@ -1476,11 +1601,11 @@
       "key_features": []
     },
     "pts_south_america_pacific": {
-      "title": "Chile & Peru Coast [coarse]",
-      "description": "Pacific coast of South America - Chile, Peru, Ecuador",
+      "title": "South America Pacific & Galapagos [coarse]",
+      "description": "Pacific coast of South America - Chile, Peru, Ecuador, Galapagos, Patagonia, Tierra del Fuego",
       "bbox": [
-        -85.0,
-        -45.0,
+        -92.0,
+        -55.0,
         -70.0,
         5.0
       ],
@@ -1489,9 +1614,9 @@
         {
           "id_prefix": "PTS_SOUTH_AMERICA_PACIFIC",
           "step": 0.125,
-          "lat_min": -45.0,
+          "lat_min": -55.0,
           "lat_max": 5.0,
-          "lon_min": -85.0,
+          "lon_min": -92.0,
           "lon_max": -70.0
         }
       ],
@@ -1501,10 +1626,10 @@
       "key_features": []
     },
     "ptc_central_america_pacific": {
-      "title": "Central America Pacific [coarse]",
-      "description": "Pacific coast of Central America - Mexico to Panama, popular cruising route",
+      "title": "Central America Pacific Coast [coarse]",
+      "description": "Pacific coast of Mexico and Central America - Acapulco to Panama, popular cruising route",
       "bbox": [
-        -95.0,
+        -110.0,
         5.0,
         -75.0,
         22.0
@@ -1516,7 +1641,7 @@
           "step": 0.125,
           "lat_min": 5.0,
           "lat_max": 22.0,
-          "lon_min": -95.0,
+          "lon_min": -110.0,
           "lon_max": -75.0
         }
       ],
@@ -1527,12 +1652,12 @@
     },
     "ptc_melanesia": {
       "title": "Melanesia & Coral Sea [coarse]",
-      "description": "Fiji, Vanuatu, Solomon Islands, New Caledonia, Coral Sea - South Pacific cruising",
+      "description": "Papua New Guinea, Solomon Islands, Vanuatu, Fiji, New Caledonia, Coral Sea, Micronesia - South Pacific cruising",
       "bbox": [
-        155.0,
+        140.0,
         -25.0,
         180.0,
-        -5.0
+        8.0
       ],
       "stations": [],
       "current_grids": [
@@ -1540,8 +1665,8 @@
           "id_prefix": "PTC_MELANESIA",
           "step": 0.125,
           "lat_min": -25.0,
-          "lat_max": -5.0,
-          "lon_min": 155.0,
+          "lat_max": 8.0,
+          "lon_min": 140.0,
           "lon_max": 180.0
         }
       ],

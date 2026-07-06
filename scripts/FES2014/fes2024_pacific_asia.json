@@ -4,7 +4,7 @@
   "basin": "Pacific North & Asia",
   "description": "FES2024 harmonic tidal current predictions for North Pacific, Asia-Pacific, and Asian shipping regions",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 14,
+  "total_regions": 17,
   "phase": "phase_1",
   "regions": [
     {
@@ -183,6 +183,52 @@
       "traffic_level": "very_high"
     },
     {
+      "region_id": "ptc_gulf_california",
+      "name": "Gulf of California & Baja [coarse]",
+      "description": "Sea of Cortez, Baja California peninsula, Mazatlan - popular cruising destination",
+      "bounding_box": {
+        "min_lat": 22.0,
+        "min_lon": -118.0,
+        "max_lat": 32.0,
+        "max_lon": -105.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -118.0,
+              22.0
+            ],
+            [
+              -105.0,
+              22.0
+            ],
+            [
+              -105.0,
+              32.0
+            ],
+            [
+              -118.0,
+              32.0
+            ],
+            [
+              -118.0,
+              22.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
       "region_id": "ptn_gulf_alaska",
       "name": "Gulf of Alaska [coarse]",
       "description": "Alaska south coast - fishing and shipping",
@@ -347,48 +393,48 @@
       ]
     },
     {
-      "region_id": "ptc_philippines_indonesia",
-      "name": "Philippines & Southeast Asia Straits",
-      "description": "Philippines, Indonesia, complex strait system",
-      "bounding_box": {
-        "min_lat": 0.0,
-        "min_lon": 120.0,
-        "max_lat": 20.0,
-        "max_lon": 145.0
-      },
-      "boundary_geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
+        "region_id": "ptc_philippines_indonesia",
+        "name": "Philippines, Indonesia & Marianas",
+        "description": "Philippines, Indonesia, Micronesia, Marianas - complex strait system, major shipping and cruising",
+        "bounding_box": {
+          "min_lat": -10.0,
+          "min_lon": 120.0,
+          "max_lat": 20.0,
+          "max_lon": 146.0
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
             [
-              120.0,
-              0.0
-            ],
-            [
-              145.0,
-              0.0
-            ],
-            [
-              145.0,
-              20.0
-            ],
-            [
-              120.0,
-              20.0
-            ],
-            [
-              120.0,
-              0.0
+              [
+                120.0,
+                -10.0
+              ],
+              [
+                146.0,
+                -10.0
+              ],
+              [
+                146.0,
+                20.0
+              ],
+              [
+                120.0,
+                20.0
+              ],
+              [
+                120.0,
+                -10.0
+              ]
             ]
           ]
-        ]
+        },
+        "resolution": "1/16 degree (6.9 km)",
+        "resolution_code": "1/16",
+        "file_size_mb": "6-8",
+        "constituent_count": 34,
+        "traffic_level": "very_high"
       },
-      "resolution": "1/16 degree (6.9 km)",
-      "resolution_code": "1/16",
-      "file_size_mb": "4-5",
-      "constituent_count": 34,
-      "traffic_level": "very_high"
-    },
     {
       "region_id": "ptc_south_china_sea",
       "name": "South China Sea [coarse]",
@@ -431,6 +477,52 @@
       "file_size_mb": "2-3",
       "constituent_count": 34,
       "traffic_level": "very_high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_western_indonesia",
+      "name": "Western Indonesia [coarse]",
+      "description": "Sumatra, Java, western Borneo - Cocomo cruising route, Sunda Strait, Lombok Strait",
+      "bounding_box": {
+        "min_lat": -10.0,
+        "min_lon": 95.0,
+        "max_lat": 5.0,
+        "max_lon": 120.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              95.0,
+              -10.0
+            ],
+            [
+              120.0,
+              -10.0
+            ],
+            [
+              120.0,
+              5.0
+            ],
+            [
+              95.0,
+              5.0
+            ],
+            [
+              95.0,
+              -10.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "high",
       "tags": [
         "coarse"
       ]
@@ -615,6 +707,52 @@
       "file_size_mb": "2-3",
       "constituent_count": 34,
       "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ptc_china_east_taiwan",
+      "name": "China East Coast & Taiwan [coarse]",
+      "description": "China east coast (Shanghai to Tianjin), Taiwan Strait, Bohai/Yellow Sea - major shipping and cruising",
+      "bounding_box": {
+        "min_lat": 20.0,
+        "min_lon": 110.0,
+        "max_lat": 40.0,
+        "max_lon": 125.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              110.0,
+              20.0
+            ],
+            [
+              125.0,
+              20.0
+            ],
+            [
+              125.0,
+              40.0
+            ],
+            [
+              110.0,
+              40.0
+            ],
+            [
+              110.0,
+              20.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "very_high",
       "tags": [
         "coarse"
       ]

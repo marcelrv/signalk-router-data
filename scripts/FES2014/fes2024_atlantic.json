@@ -4,7 +4,7 @@
   "basin": "Atlantic",
   "description": "FES2024 harmonic tidal current predictions for Atlantic Ocean basin (North, Central, and South)",
   "last_updated": "2026-07-05T00:00:00Z",
-  "total_regions": 20,
+  "total_regions": 22,
   "phase": "phase_1",
   "regions": [
     {
@@ -270,6 +270,52 @@
       "file_size_mb": "2-3",
       "constituent_count": 34,
       "traffic_level": "high",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "atn_labrador",
+      "name": "Labrador & Hudson Strait [coarse]",
+      "description": "Labrador coast, Hudson Strait, Ungava Bay, south Greenland - northern Atlantic sailing",
+      "bounding_box": {
+        "min_lat": 52.0,
+        "min_lon": -68.0,
+        "max_lat": 65.0,
+        "max_lon": -45.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -68.0,
+              52.0
+            ],
+            [
+              -45.0,
+              52.0
+            ],
+            [
+              -45.0,
+              65.0
+            ],
+            [
+              -68.0,
+              65.0
+            ],
+            [
+              -68.0,
+              52.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "low",
       "tags": [
         "coarse"
       ]
@@ -587,12 +633,12 @@
     {
       "region_id": "atc_central_caribbean",
       "name": "Lesser Antilles & Windward [coarse]",
-      "description": "Island chains, moderate traffic",
+      "description": "Lesser Antilles, Barbados, Windward Islands - Caribbean island chain traffic",
       "bounding_box": {
         "min_lat": 10.0,
         "min_lon": -65.0,
         "max_lat": 16.0,
-        "max_lon": -60.0
+        "max_lon": -58.0
       },
       "boundary_geometry": {
         "type": "Polygon",
@@ -603,11 +649,11 @@
               10.0
             ],
             [
-              -60.0,
+              -58.0,
               10.0
             ],
             [
-              -60.0,
+              -58.0,
               16.0
             ],
             [
@@ -724,12 +770,12 @@
     },
     {
       "region_id": "ats_south_america",
-      "name": "South American Coast [coarse]",
-      "description": "Brazil, Venezuela coast - river approaches, ports",
+      "name": "South America NE Coast [coarse]",
+      "description": "Brazil, Venezuela, Guianas coast - river approaches, ports",
       "bounding_box": {
         "min_lat": -30.0,
         "min_lon": -75.0,
-        "max_lat": 5.0,
+        "max_lat": 13.0,
         "max_lon": -35.0
       },
       "boundary_geometry": {
@@ -746,11 +792,11 @@
             ],
             [
               -35.0,
-              5.0
+              13.0
             ],
             [
               -75.0,
-              5.0
+              13.0
             ],
             [
               -75.0,
@@ -954,12 +1000,12 @@
     },
     {
       "region_id": "ats_west_africa",
-      "name": "West Africa Coast [coarse]",
-      "description": "Senegal, Gambia, Guinea, Sierra Leone, Liberia, Ivory Coast - tropical sailing",
+      "name": "West Africa & Morocco Coast [coarse]",
+      "description": "Morocco, Western Sahara, Senegal to Liberia - Atlantic Africa coast, includes Canary Islands",
       "bounding_box": {
         "min_lat": 4.0,
         "min_lon": -20.0,
-        "max_lat": 22.0,
+        "max_lat": 36.0,
         "max_lon": 0.0
       },
       "boundary_geometry": {
@@ -976,11 +1022,11 @@
             ],
             [
               0.0,
-              22.0
+              36.0
             ],
             [
               -20.0,
-              22.0
+              36.0
             ],
             [
               -20.0,
@@ -1031,6 +1077,52 @@
             [
               0.0,
               -27.0
+            ]
+          ]
+        ]
+      },
+      "resolution": "1/8 degree (13.8 km)",
+      "resolution_code": "1/8",
+      "file_size_mb": "2-3",
+      "constituent_count": 34,
+      "traffic_level": "moderate",
+      "tags": [
+        "coarse"
+      ]
+    },
+    {
+      "region_id": "ats_argentina",
+      "name": "Argentina & Patagonia [coarse]",
+      "description": "Argentina, Uruguay, Patagonia, Falklands, Tierra del Fuego - South Atlantic shipping and cruising",
+      "bounding_box": {
+        "min_lat": -55.0,
+        "min_lon": -70.0,
+        "max_lat": -30.0,
+        "max_lon": -50.0
+      },
+      "boundary_geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -70.0,
+              -55.0
+            ],
+            [
+              -50.0,
+              -55.0
+            ],
+            [
+              -50.0,
+              -30.0
+            ],
+            [
+              -70.0,
+              -30.0
+            ],
+            [
+              -70.0,
+              -55.0
             ]
           ]
         ]

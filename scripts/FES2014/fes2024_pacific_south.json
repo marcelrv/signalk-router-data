@@ -147,44 +147,40 @@
     },
     {
       "region_id": "ptc_samoa_fiji",
-      "name": "Samoa, Fiji & South Pacific Islands [coarse]",
-      "description": "Island nations, tropics - sparse shipping, tourism",
+      "name": "Pacific Islands & Micronesia [coarse]",
+      "description": "Fiji, Samoa, Tonga, Kiribati, Marshall Islands, Micronesia - tropical Pacific island routes",
       "bounding_box": {
         "min_lat": -20.0,
         "min_lon": 170.0,
-        "max_lat": -5.0,
+        "max_lat": 10.0,
         "max_lon": -170.0
       },
       "boundary_geometry": {
-        "type": "Polygon",
+        "type": "MultiPolygon",
         "coordinates": [
           [
             [
-              170.0,
-              -20.0
-            ],
+              [170.0, -20.0],
+              [180.0, -20.0],
+              [180.0, 10.0],
+              [170.0, 10.0],
+              [170.0, -20.0]
+            ]
+          ],
+          [
             [
-              180.0,
-              -20.0
-            ],
-            [
-              180.0,
-              -5.0
-            ],
-            [
-              170.0,
-              -5.0
-            ],
-            [
-              170.0,
-              -20.0
+              [-180.0, -20.0],
+              [-170.0, -20.0],
+              [-170.0, 10.0],
+              [-180.0, 10.0],
+              [-180.0, -20.0]
             ]
           ]
         ]
       },
       "resolution": "1/8 degree (13.8 km)",
       "resolution_code": "1/8",
-      "file_size_mb": "2-3",
+      "file_size_mb": "4-5",
       "constituent_count": 34,
       "traffic_level": "low",
       "tags": [
@@ -328,11 +324,11 @@
     },
     {
       "region_id": "pts_south_america_pacific",
-      "name": "Chile & Peru Coast [coarse]",
-      "description": "Pacific coast of South America - Chile, Peru, Ecuador",
+      "name": "South America Pacific & Galapagos [coarse]",
+      "description": "Pacific coast of South America - Chile, Peru, Ecuador, Galapagos, Patagonia, Tierra del Fuego",
       "bounding_box": {
-        "min_lat": -45.0,
-        "min_lon": -85.0,
+        "min_lat": -55.0,
+        "min_lon": -92.0,
         "max_lat": 5.0,
         "max_lon": -70.0
       },
@@ -341,24 +337,24 @@
         "coordinates": [
           [
             [
-              -85.0,
-              -45.0
+              -92.0,
+              -55.0
             ],
             [
               -70.0,
-              -45.0
+              -55.0
             ],
             [
               -70.0,
               5.0
             ],
             [
-              -85.0,
+              -92.0,
               5.0
             ],
             [
-              -85.0,
-              -45.0
+              -92.0,
+              -55.0
             ]
           ]
         ]
@@ -374,11 +370,11 @@
     },
     {
       "region_id": "ptc_central_america_pacific",
-      "name": "Central America Pacific [coarse]",
-      "description": "Pacific coast of Central America - Mexico to Panama, popular cruising route",
+      "name": "Central America Pacific Coast [coarse]",
+      "description": "Pacific coast of Mexico and Central America - Acapulco to Panama, popular cruising route",
       "bounding_box": {
         "min_lat": 5.0,
-        "min_lon": -95.0,
+        "min_lon": -110.0,
         "max_lat": 22.0,
         "max_lon": -75.0
       },
@@ -387,7 +383,7 @@
         "coordinates": [
           [
             [
-              -95.0,
+              -110.0,
               5.0
             ],
             [
@@ -399,11 +395,11 @@
               22.0
             ],
             [
-              -95.0,
+              -110.0,
               22.0
             ],
             [
-              -95.0,
+              -110.0,
               5.0
             ]
           ]
@@ -421,11 +417,11 @@
     {
       "region_id": "ptc_melanesia",
       "name": "Melanesia & Coral Sea [coarse]",
-      "description": "Fiji, Vanuatu, Solomon Islands, New Caledonia, Coral Sea - South Pacific cruising",
+      "description": "Papua New Guinea, Solomon Islands, Vanuatu, Fiji, New Caledonia, Coral Sea, Micronesia - South Pacific cruising",
       "bounding_box": {
         "min_lat": -25.0,
-        "min_lon": 155.0,
-        "max_lat": -5.0,
+        "min_lon": 140.0,
+        "max_lat": 8.0,
         "max_lon": 180.0
       },
       "boundary_geometry": {
@@ -433,7 +429,7 @@
         "coordinates": [
           [
             [
-              155.0,
+              140.0,
               -25.0
             ],
             [
@@ -442,14 +438,14 @@
             ],
             [
               180.0,
-              -5.0
+              8.0
             ],
             [
-              155.0,
-              -5.0
+              140.0,
+              8.0
             ],
             [
-              155.0,
+              140.0,
               -25.0
             ]
           ]
