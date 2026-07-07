@@ -215,17 +215,26 @@ def head_ftp(url: str, timeout: int = 10) -> bool:
 
 
 def find_latest_cycle() -> Optional[Tuple[str, str]]:
-    """Scan the BSH FTP to locate the latest valid cycle."""
+    """Scan the BSH FTP to locate the latest valid cycle.
+
+    BSH publishes the 00Z cycle first (around 04:30 UTC), then updates
+    individual regions throughout the morning.  The 00Z nowcast file
+    (Current_no_{ymd}00_00.grb2) appears earliest.  Check it first, and
+    only fall back to 12Z if no 00Z file is found.
+    """
     today = date.today()
     for offset in range(3):
         d = today - timedelta(days=offset)
         ymd = d.strftime("%Y%m%d")
 
+        # 00Z cycle — ALL VV values (nowcast + forecast days) are published
+        # at the 00Z cycle for Nordsee and Ostsee.
         url_00 = f"{BSH_BASE}/{BASIN_NORDSEE}/Current_no_{ymd}00_00.grb2"
         if head_ftp(url_00):
             return d.strftime("%Y-%m-%dT00:00:00Z"), "00"
 
-        url_12 = f"{BSH_BASE}/{BASIN_NORDSEE}/Current_no_{ymd}12_01.grb2"
+        # 12Z cycle — Elbe-only files sometimes appear at 12Z.
+        url_12 = f"{BSH_BASE}/{BASIN_NORDSEE}/Current_no_{ymd}12_00.grb2"
         if head_ftp(url_12):
             return d.strftime("%Y-%m-%dT12:00:00Z"), "12"
 
@@ -239,9 +248,9 @@ def build_file_entry(
 
     `variant` disambiguates multiple entries that would otherwise share the
     same `region_id` + `type` — BSH publishes each forecast day as a
-    separate physical file with its own cycle availability (day+1 at both
-    00Z/12Z, day+2/day+3 only at 12Z), so they can't be bundled into one
-    templated `forecast_hours` array the way a single-cycle source can (see
+    separate physical file with its own cycle availability (all VV values at
+    00Z, Elbe also at 12Z), so they can't be bundled into one templated
+    `forecast_hours` array the way a single-cycle source can (see
     specs/tide-current-catalog.md §3.3). Omitted for nowcast, which is
     always exactly one file per region and needs no disambiguation.
     """
@@ -278,16 +287,19 @@ def main():
         poly = _polygon_from_bounds(b)
         all_poly_coords.append(poly["coordinates"])
 
-        # Nowcast: VV=00 (00Z cycle only) — always exactly one per region, no variant needed.
-        files.append(build_file_entry(region, 0, "nowcast", ["00"]))
+        # Nowcast: VV=00 — always exactly one per region, no variant needed.
+        # BSH publishes nowcast at both 00Z and 12Z cycles; Nordsee/Ostsee
+        # have both, Elbe sometimes only 12Z.
+        files.append(build_file_entry(region, 0, "nowcast", ["00", "12"]))
 
-        # Forecast days 1-3: VV=01/02/03, all type "forecast" for the same
+        # Forecast days 1-2: VV=01/02, all type "forecast" for the same
         # region_id — `variant` is what keeps them distinct (see
         # build_file_entry's docstring for why they can't be bundled).
-        files.append(build_file_entry(region, 1, "forecast", ["12"], variant="+24h"))
-        files.append(build_file_entry(region, 2, "forecast", ["12"], variant="+48h"))
-        if region["forecast_days"] >= 3:
-            files.append(build_file_entry(region, 3, "forecast", ["12"], variant="+72h"))
+        # BSH publishes forecast-day files at the 00Z cycle (Nordsee/Ostsee)
+        # and occasionally also at 12Z (Elbe).  VV=03 (+72h) is NOT published
+        # by BSH — only VV=00/01/02 exist on the FTP.
+        files.append(build_file_entry(region, 1, "forecast", ["00", "12"], variant="+24h"))
+        files.append(build_file_entry(region, 2, "forecast", ["00", "12"], variant="+48h"))
 
     update_check = {
         "method": "expiry",
