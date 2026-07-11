@@ -26,8 +26,9 @@ Tidal/current data comes from three kinds of upstream sources, each suited to a 
 | `type` | Source | What it provides |
 |--------|--------|-------------------|
 | `harmonic` | OpenCPN / XTide | ASCII harmonic constituents for named stations — small, static files, no refresh needed |
-| `grib2` | NOAA RTOFS | Regional gridded ocean current *forecasts* (24/48/72h), refreshed daily; covers 11 named NOAA regions (US coasts, Alaska/Arctic, tropical Pacific/Hawaii/Guam/Samoa) |
+| `grib2` | NOAA RTOFS | Regional gridded ocean current *forecasts* (24/48/72h), refreshed daily; covers 11 named NOAA regions (US coasts, Alaska/Arctic, tropical Pacific/Hawaii/Guam/Samoa). **Note: RTOFS is a non-tidal circulation model** — it does not resolve tidal streams in coastal waters |
 | `utcef` | FES2014 (via AVISO+) | Dense-grid harmonic tidal current predictions derived from the FES2014 global tide model — static, no refresh needed |
+| `utcef` | NOAA CO-OPS | Official harmonic constituents of ~850 NOAA current-prediction reference stations (US East/West Coast, Gulf of Mexico, Alaska, Hawaii, Puerto Rico), converted by [scripts/NOAA](scripts/NOAA/) — static, astronomical predictions valid for years |
 
 See [specs/tide-current-catalog.md](specs/tide-current-catalog.md) for the full catalog schema and [specs/utcef-specification.md](specs/utcef-specification.md) for the UTCEF file format.
 
@@ -70,6 +71,7 @@ Each database file may have its own licensing terms as documented in its `metada
 ### Tidal/current data
 
 - **NOAA RTOFS** (`grib2` sources): public domain, U.S. Government work.
+- **NOAA CO-OPS current stations** (`utcef` sources under `regions/*/noaa_*.utcef`): derived from the official [NOAA Tides & Currents](https://tidesandcurrents.noaa.gov/) harmonic constituents — public domain, U.S. Government work (17 U.S.C. §105). Predictions are astronomical only; actual currents deviate with weather and river flow. Not an official NOAA product.
 - **OpenCPN / XTide harmonics** (`harmonic` sources): see the [OpenCPN project](https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata) for licensing of the underlying station data.
 - **UTCEF / FES2014-derived datasets** (`utcef` sources, e.g. files under [`regions/europe`](regions/europe)): derived from the FES2014 global tide model, produced by Noveltis, LEGOS and CLS and distributed by AVISO+, with support from CNES. Redistribution follows the [AVISO+ License Agreement](https://www.aviso.altimetry.fr/fileadmin/documents/data/License_Aviso.pdf) (scientific and non-commercial use).
 

@@ -11,3 +11,6 @@ scripts/tide-current/sources/_tools/
 
 # Tide models (generated from FES2014)
 tide_models/
+
+# Cached NOAA CO-OPS API responses (scripts/NOAA/noaa_currents_to_utcef.py)
+scripts/NOAA/cache/

@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-07T08:18:32Z",
-  "source_count": 73,
+  "generated": "2026-07-11T08:11:22Z",
+  "source_count": 79,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,8 +424,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-07T08:18:06Z",
-        "latest_cycle": "2026-07-07T00:00:00Z"
+        "last_checked": "2026-07-11T08:10:57Z",
+        "latest_cycle": "2026-07-11T00:00:00Z"
       },
       "files": [
         {
@@ -2896,8 +2896,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-07T08:18:06Z",
-        "latest_cycle": "2026-07-06T00:00:00Z"
+        "last_checked": "2026-07-11T08:10:58Z",
+        "latest_cycle": "2026-07-10T00:00:00Z"
       },
       "files": [
         {
@@ -4223,7 +4223,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:07Z"
+        "last_checked": "2026-07-11T08:10:59Z"
       },
       "files": [
         {
@@ -4293,7 +4293,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4356,7 +4356,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4419,7 +4419,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4482,7 +4482,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4545,7 +4545,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4608,7 +4608,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4671,7 +4671,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4734,7 +4734,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4797,7 +4797,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4860,7 +4860,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4923,7 +4923,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -4986,7 +4986,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5049,7 +5049,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5112,7 +5112,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5175,7 +5175,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5238,7 +5238,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5301,7 +5301,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5364,7 +5364,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5427,7 +5427,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5490,7 +5490,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5553,7 +5553,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5616,7 +5616,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5679,7 +5679,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5742,7 +5742,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5805,13 +5805,208 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_west_africa.utcef",
           "sha256": "542756c35e110028acb628bd1fa3421a0b3517094be137baf06c441e6ea96c43",
           "size_bytes": 1802557
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_gulf_of_mexico",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
+      "description": "Harmonic tidal current predictions for 68 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
+        "bounding_box": {
+          "min_lat": 23.97,
+          "min_lon": -97.81,
+          "max_lat": 30.79,
+          "max_lon": -81.3
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -97.81,
+                23.97
+              ],
+              [
+                -81.3,
+                23.97
+              ],
+              [
+                -81.3,
+                30.79
+              ],
+              [
+                -97.81,
+                30.79
+              ],
+              [
+                -97.81,
+                23.97
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/noaa_gulf_of_mexico.utcef",
+          "sha256": "ec08dc59c62ed256b0c45606fdc8dc3c4015f61db6f2f156846556293b85d4e3",
+          "size_bytes": 35006
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_puerto_rico",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
+      "description": "Harmonic tidal current predictions for 1 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
+        "bounding_box": {
+          "min_lat": 17.69,
+          "min_lon": -66.12,
+          "max_lat": 18.69,
+          "max_lon": -65.12
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -66.12,
+                17.69
+              ],
+              [
+                -65.12,
+                17.69
+              ],
+              [
+                -65.12,
+                18.69
+              ],
+              [
+                -66.12,
+                18.69
+              ],
+              [
+                -66.12,
+                17.69
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/noaa_puerto_rico.utcef",
+          "sha256": "043ca34d271bcd87c7d4cd3cf2a6e74364518606051aed9f28f094a76b2acfdf",
+          "size_bytes": 1346
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_us_east_coast",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 US East Coast",
+      "description": "Harmonic tidal current predictions for 323 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 US East Coast",
+        "bounding_box": {
+          "min_lat": 24.1,
+          "min_lon": -82.3,
+          "max_lat": 45.58,
+          "max_lon": -66.5
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -82.3,
+                24.1
+              ],
+              [
+                -66.5,
+                24.1
+              ],
+              [
+                -66.5,
+                45.58
+              ],
+              [
+                -82.3,
+                45.58
+              ],
+              [
+                -82.3,
+                24.1
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/atlantic/noaa_us_east_coast.utcef",
+          "sha256": "3dca75e0166734b0fef92c20e43e8d2e60d5a556f0875391c0cd294fff27c49b",
+          "size_bytes": 150652
         }
       ]
     },
@@ -5868,7 +6063,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5931,7 +6126,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -5994,7 +6189,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6057,7 +6252,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6120,7 +6315,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6183,7 +6378,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6246,7 +6441,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6309,7 +6504,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6372,7 +6567,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6435,7 +6630,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6498,7 +6693,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6561,7 +6756,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6624,7 +6819,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6687,7 +6882,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6750,7 +6945,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6813,7 +7008,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6876,7 +7071,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -6939,13 +7134,143 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_mediterranean.utcef",
           "sha256": "1ead32d305abb031cf7a8df2e6b9713f4f54f8a33104a7f20911a73523b460d1",
           "size_bytes": 9207741
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_alaska",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Alaska & Aleutians",
+      "description": "Harmonic tidal current predictions for 244 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Alaska & Aleutians",
+        "bounding_box": {
+          "min_lat": 52.83,
+          "min_lon": -168.4,
+          "max_lat": 61.78,
+          "max_lon": -131.1
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -168.4,
+                52.83
+              ],
+              [
+                -131.1,
+                52.83
+              ],
+              [
+                -131.1,
+                61.78
+              ],
+              [
+                -168.4,
+                61.78
+              ],
+              [
+                -168.4,
+                52.83
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/noaa_alaska.utcef",
+          "sha256": "cbebffa5f82e7557e65919bdcf4a280eefb24dcad1c0c9169d796f0f0b5e74a7",
+          "size_bytes": 113396
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_us_west_coast",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 US West Coast & Puget Sound",
+      "description": "Harmonic tidal current predictions for 200 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 US West Coast & Puget Sound",
+        "bounding_box": {
+          "min_lat": 32.18,
+          "min_lon": -125.08,
+          "max_lat": 49.44,
+          "max_lon": -116.73
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -125.08,
+                32.18
+              ],
+              [
+                -116.73,
+                32.18
+              ],
+              [
+                -116.73,
+                49.44
+              ],
+              [
+                -125.08,
+                49.44
+              ],
+              [
+                -125.08,
+                32.18
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_asia/noaa_us_west_coast.utcef",
+          "sha256": "2b089f7c2bbd5595aec82b0840533d873ddeb0f3a1e2420abd5503d9049fe117",
+          "size_bytes": 97845
         }
       ]
     },
@@ -7002,7 +7327,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7065,7 +7390,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7128,7 +7453,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7191,7 +7516,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7254,7 +7579,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7317,7 +7642,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7380,7 +7705,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7443,7 +7768,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7506,7 +7831,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7569,7 +7894,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7632,7 +7957,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7695,7 +8020,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7758,7 +8083,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7821,7 +8146,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7884,7 +8209,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -7947,7 +8272,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8010,13 +8335,78 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_us_west_coast.utcef",
           "sha256": "2caf211eb63c44197c1dc5c11f26d736718f88df4774b6c3cb99de996292aa73",
           "size_bytes": 7105174
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_hawaii",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
+      "description": "Harmonic tidal current predictions for 14 NOAA CO-OPS reference stations, converted from the official NOAA harmonic constituents (tidesandcurrents.noaa.gov) by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
+        "bounding_box": {
+          "min_lat": 19.77,
+          "min_lon": -158.63,
+          "max_lat": 22.23,
+          "max_lon": -155.4
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -158.63,
+                19.77
+              ],
+              [
+                -155.4,
+                19.77
+              ],
+              [
+                -155.4,
+                22.23
+              ],
+              [
+                -158.63,
+                22.23
+              ],
+              [
+                -158.63,
+                19.77
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-07-11T08:11:22Z"
+      },
+      "files": [
+        {
+          "filename": "regions/pacific_oceania/noaa_hawaii.utcef",
+          "sha256": "b7e7f6d8b7635593e6a0b95ccda709d81c8228cc7c26eb472ba2c80c3d73390b",
+          "size_bytes": 7982
         }
       ]
     },
@@ -8073,7 +8463,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8136,7 +8526,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8199,7 +8589,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8262,7 +8652,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8325,7 +8715,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8388,7 +8778,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8451,7 +8841,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8514,7 +8904,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8577,7 +8967,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {
@@ -8640,7 +9030,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-07T08:18:32Z"
+        "last_checked": "2026-07-11T08:11:22Z"
       },
       "files": [
         {

@@ -69,6 +69,7 @@ Every UTCEF file is structured as a single JSON object containing two main keys:
 | `data_sources` | Array | **Yes** | List of source organizations, agencies, or models (e.g., FES2014, UKHO). |
 | `copyright` | String | **Yes** | Legal copyright/attribution statement. |
 | `license` | String | **Yes** | Data-sharing terms (e.g., `"CC-BY-4.0"`, `"Proprietary"`). |
+| `catalog` | Object | No | Optional, non-normative hints for catalog builders (ignored by prediction engines): `source` (provider code, e.g. `"noaa"`), `contributor`, `url` and `tags` for the generated catalog entry. Used by `scripts/tide-current/sources/utcef_regions.py`; absent → the collector's historical FES2014 defaults apply. |
 
 ### 4.2 Feature Identity & Properties Block (`dataset.features[i]`)
 

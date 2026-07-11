@@ -44,15 +44,21 @@ def main():
         size = os.path.getsize(path)
         region_id = os.path.splitext(os.path.basename(path))[0]
 
+        # Optional per-file catalog hints (metadata.catalog, written by the
+        # generator — e.g. scripts/NOAA/): provider code, attribution URL,
+        # contributor and tags. Absent (all FES2014-era files) -> the
+        # historical FES2014 defaults below.
+        cat = meta.get("catalog") or {}
+
         sources.append({
             "id": f"utcef_{region_id}",
-            "source": "fes2014",
+            "source": cat.get("source", "fes2014"),
             "type": "utcef",
             "name": meta.get("title", region_id),
             "description": meta.get("description", ""),
-            "contributor": meta.get("copyright", "CNES/CLS"),
-            "url": "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html",
-            "tags": ["utcef", "tidal", "currents", "fes2014", "regional"],
+            "contributor": cat.get("contributor", meta.get("copyright", "CNES/CLS")),
+            "url": cat.get("url", "https://www.aviso.altimetry.fr/en/data/products/auxiliary-products/global-tide-fes.html"),
+            "tags": cat.get("tags", ["utcef", "tidal", "currents", "fes2014", "regional"]),
             "region": {
                 "name": meta.get("title", region_id),
                 "bounding_box": {
