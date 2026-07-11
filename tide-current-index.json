@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-11T08:11:22Z",
-  "source_count": 79,
+  "generated": "2026-07-11T08:30:48Z",
+  "source_count": 78,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-11T08:10:57Z",
+        "last_checked": "2026-07-11T08:30:26Z",
         "latest_cycle": "2026-07-11T00:00:00Z"
       },
       "files": [
@@ -2431,1744 +2431,6 @@
       ]
     },
     {
-      "id": "noaa_rtofs",
-      "source": "noaa",
-      "type": "grib2",
-      "name": "NOAA RTOFS Regional Ocean Currents",
-      "description": "Regional ocean current forecasts from NOAA's Real-Time Ocean Forecast System (RTOFS) in GRIB2 format",
-      "contributor": "NOAA/NCEP",
-      "url": "https://www.ncei.noaa.gov/products/weather-climate-models/real-time-ocean-forecast",
-      "tags": [
-        "grib2",
-        "regional",
-        "gridded",
-        "forecast",
-        "noaa",
-        "ocean-currents",
-        "daily"
-      ],
-      "region": {
-        "name": "US coastal waters, Arctic, Tropical Pacific",
-        "bounding_box": {
-          "min_lat": -39.5,
-          "min_lon": -180.0,
-          "max_lat": 85.15,
-          "max_lon": 180.0
-        },
-        "boundary_geometry": {
-          "type": "MultiPolygon",
-          "coordinates": [
-            [
-              [
-                [
-                  -100.0400697,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  9.9599078
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -150.0400641,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  9.9599359
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -165.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  40.25
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  139.8495702,
-                  40.15
-                ],
-                [
-                  180.0,
-                  40.15
-                ],
-                [
-                  180.0,
-                  85.15
-                ],
-                [
-                  139.8495702,
-                  85.15
-                ],
-                [
-                  139.8495702,
-                  40.15
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  40.15
-                ],
-                [
-                  -114.85,
-                  40.15
-                ],
-                [
-                  -114.85,
-                  85.15
-                ],
-                [
-                  -180.0,
-                  85.15
-                ],
-                [
-                  -180.0,
-                  40.15
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  154.9599428,
-                  39.959882
-                ],
-                [
-                  180.0,
-                  39.959882
-                ],
-                [
-                  180.0,
-                  67.240118
-                ],
-                [
-                  154.9599428,
-                  67.240118
-                ],
-                [
-                  154.9599428,
-                  39.959882
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  39.959882
-                ],
-                [
-                  -148.96,
-                  39.959882
-                ],
-                [
-                  -148.96,
-                  67.240118
-                ],
-                [
-                  -180.0,
-                  67.240118
-                ],
-                [
-                  -180.0,
-                  39.959882
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  159.9599579,
-                  59.9598394
-                ],
-                [
-                  180.0,
-                  59.9598394
-                ],
-                [
-                  180.0,
-                  80.0401606
-                ],
-                [
-                  159.9599579,
-                  80.0401606
-                ],
-                [
-                  159.9599579,
-                  59.9598394
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  59.9598394
-                ],
-                [
-                  -123.96000000000001,
-                  59.9598394
-                ],
-                [
-                  -123.96000000000001,
-                  80.0401606
-                ],
-                [
-                  -180.0,
-                  80.0401606
-                ],
-                [
-                  -180.0,
-                  59.9598394
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -109.1253823,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  39.8741722
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  129.5,
-                  -39.5
-                ],
-                [
-                  180.0,
-                  -39.5
-                ],
-                [
-                  180.0,
-                  40.5
-                ],
-                [
-                  129.5,
-                  40.5
-                ],
-                [
-                  129.5,
-                  -39.5
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  -39.5
-                ],
-                [
-                  -110.5,
-                  -39.5
-                ],
-                [
-                  -110.5,
-                  40.5
-                ],
-                [
-                  -180.0,
-                  40.5
-                ],
-                [
-                  -180.0,
-                  -39.5
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  179.9599359,
-                  -0.0400802
-                ],
-                [
-                  180.0,
-                  -0.0400802
-                ],
-                [
-                  180.0,
-                  40.0400802
-                ],
-                [
-                  179.9599359,
-                  40.0400802
-                ],
-                [
-                  179.9599359,
-                  -0.0400802
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  -0.0400802
-                ],
-                [
-                  -129.96,
-                  -0.0400802
-                ],
-                [
-                  -129.96,
-                  40.0400802
-                ],
-                [
-                  -180.0,
-                  40.0400802
-                ],
-                [
-                  -180.0,
-                  -0.0400802
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  129.9599359,
-                  -0.040107
-                ],
-                [
-                  180.0,
-                  -0.040107
-                ],
-                [
-                  180.0,
-                  30.040107
-                ],
-                [
-                  129.9599359,
-                  30.040107
-                ],
-                [
-                  129.9599359,
-                  -0.040107
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  -0.040107
-                ],
-                [
-                  -179.9599359,
-                  -0.040107
-                ],
-                [
-                  -179.9599359,
-                  30.040107
-                ],
-                [
-                  -180.0,
-                  30.040107
-                ],
-                [
-                  -180.0,
-                  -0.040107
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  169.9599284,
-                  -30.040107
-                ],
-                [
-                  180.0,
-                  -30.040107
-                ],
-                [
-                  180.0,
-                  0.040106
-                ],
-                [
-                  169.9599284,
-                  0.040106
-                ],
-                [
-                  169.9599284,
-                  -30.040107
-                ]
-              ]
-            ],
-            [
-              [
-                [
-                  -180.0,
-                  -30.040107
-                ],
-                [
-                  -145.16,
-                  -30.040107
-                ],
-                [
-                  -145.16,
-                  0.040106
-                ],
-                [
-                  -180.0,
-                  0.040106
-                ],
-                [
-                  -180.0,
-                  -30.040107
-                ]
-              ]
-            ]
-          ]
-        }
-      },
-      "update_check": {
-        "method": "expiry",
-        "max_age_hours": 24,
-        "last_checked": "2026-07-11T08:10:58Z",
-        "latest_cycle": "2026-07-10T00:00:00Z"
-      },
-      "files": [
-        {
-          "region_id": "west_atl",
-          "name": "Western Atlantic",
-          "description": "US East Coast / Gulf of Mexico / Caribbean",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -100.0400697,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  9.9599078
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_west_atl_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "west_atl",
-          "name": "Western Atlantic",
-          "description": "US East Coast / Gulf of Mexico / Caribbean",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -100.0400697,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  9.9599078
-                ],
-                [
-                  -53.9599303,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  44.8400922
-                ],
-                [
-                  -100.0400697,
-                  9.9599078
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_west_atl_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "west_conus",
-          "name": "Western CONUS",
-          "description": "US West Coast (California/Oregon/Washington)",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -150.0400641,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  9.9599359
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_west_conus_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "west_conus",
-          "name": "Western CONUS",
-          "description": "US West Coast (California/Oregon/Washington)",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -150.0400641,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  9.9599359
-                ],
-                [
-                  -99.9599359,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  60.0400641
-                ],
-                [
-                  -150.0400641,
-                  9.9599359
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_west_conus_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "gulf_alaska",
-          "name": "Gulf of Alaska",
-          "description": "Gulf of Alaska",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -165.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  40.25
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_gulf_alaska_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "gulf_alaska",
-          "name": "Gulf of Alaska",
-          "description": "Gulf of Alaska",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -165.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  40.25
-                ],
-                [
-                  -123.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  62.75
-                ],
-                [
-                  -165.25,
-                  40.25
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_gulf_alaska_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "alaska",
-          "name": "Alaska",
-          "description": "Bering Sea / Aleutian Islands",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    139.8495702,
-                    40.15
-                  ],
-                  [
-                    180.0,
-                    40.15
-                  ],
-                  [
-                    180.0,
-                    85.15
-                  ],
-                  [
-                    139.8495702,
-                    85.15
-                  ],
-                  [
-                    139.8495702,
-                    40.15
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    40.15
-                  ],
-                  [
-                    -114.85,
-                    40.15
-                  ],
-                  [
-                    -114.85,
-                    85.15
-                  ],
-                  [
-                    -180.0,
-                    85.15
-                  ],
-                  [
-                    -180.0,
-                    40.15
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_alaska_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "alaska",
-          "name": "Alaska",
-          "description": "Bering Sea / Aleutian Islands",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    139.8495702,
-                    40.15
-                  ],
-                  [
-                    180.0,
-                    40.15
-                  ],
-                  [
-                    180.0,
-                    85.15
-                  ],
-                  [
-                    139.8495702,
-                    85.15
-                  ],
-                  [
-                    139.8495702,
-                    40.15
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    40.15
-                  ],
-                  [
-                    -114.85,
-                    40.15
-                  ],
-                  [
-                    -114.85,
-                    85.15
-                  ],
-                  [
-                    -180.0,
-                    85.15
-                  ],
-                  [
-                    -180.0,
-                    40.15
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_alaska_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "bering",
-          "name": "Bering Sea",
-          "description": "Bering Sea / Bering Strait",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    154.9599428,
-                    39.959882
-                  ],
-                  [
-                    180.0,
-                    39.959882
-                  ],
-                  [
-                    180.0,
-                    67.240118
-                  ],
-                  [
-                    154.9599428,
-                    67.240118
-                  ],
-                  [
-                    154.9599428,
-                    39.959882
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    39.959882
-                  ],
-                  [
-                    -148.96,
-                    39.959882
-                  ],
-                  [
-                    -148.96,
-                    67.240118
-                  ],
-                  [
-                    -180.0,
-                    67.240118
-                  ],
-                  [
-                    -180.0,
-                    39.959882
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_bering_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "bering",
-          "name": "Bering Sea",
-          "description": "Bering Sea / Bering Strait",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    154.9599428,
-                    39.959882
-                  ],
-                  [
-                    180.0,
-                    39.959882
-                  ],
-                  [
-                    180.0,
-                    67.240118
-                  ],
-                  [
-                    154.9599428,
-                    67.240118
-                  ],
-                  [
-                    154.9599428,
-                    39.959882
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    39.959882
-                  ],
-                  [
-                    -148.96,
-                    39.959882
-                  ],
-                  [
-                    -148.96,
-                    67.240118
-                  ],
-                  [
-                    -180.0,
-                    67.240118
-                  ],
-                  [
-                    -180.0,
-                    39.959882
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_bering_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "arctic",
-          "name": "Arctic",
-          "description": "Beaufort / Chukchi Seas",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    159.9599579,
-                    59.9598394
-                  ],
-                  [
-                    180.0,
-                    59.9598394
-                  ],
-                  [
-                    180.0,
-                    80.0401606
-                  ],
-                  [
-                    159.9599579,
-                    80.0401606
-                  ],
-                  [
-                    159.9599579,
-                    59.9598394
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    59.9598394
-                  ],
-                  [
-                    -123.96000000000001,
-                    59.9598394
-                  ],
-                  [
-                    -123.96000000000001,
-                    80.0401606
-                  ],
-                  [
-                    -180.0,
-                    80.0401606
-                  ],
-                  [
-                    -180.0,
-                    59.9598394
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_arctic_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "arctic",
-          "name": "Arctic",
-          "description": "Beaufort / Chukchi Seas",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    159.9599579,
-                    59.9598394
-                  ],
-                  [
-                    180.0,
-                    59.9598394
-                  ],
-                  [
-                    180.0,
-                    80.0401606
-                  ],
-                  [
-                    159.9599579,
-                    80.0401606
-                  ],
-                  [
-                    159.9599579,
-                    59.9598394
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    59.9598394
-                  ],
-                  [
-                    -123.96000000000001,
-                    59.9598394
-                  ],
-                  [
-                    -123.96000000000001,
-                    80.0401606
-                  ],
-                  [
-                    -180.0,
-                    80.0401606
-                  ],
-                  [
-                    -180.0,
-                    59.9598394
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_arctic_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "hudson_baffin",
-          "name": "Hudson Bay / Baffin Bay",
-          "description": "Hudson Bay / Davis Strait / Baffin Bay",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -109.1253823,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  39.8741722
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_hudson_baffin_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "hudson_baffin",
-          "name": "Hudson Bay / Baffin Bay",
-          "description": "Hudson Bay / Davis Strait / Baffin Bay",
-          "boundary_geometry": {
-            "type": "Polygon",
-            "coordinates": [
-              [
-                [
-                  -109.1253823,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  39.8741722
-                ],
-                [
-                  -26.8746177,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  78.1258278
-                ],
-                [
-                  -109.1253823,
-                  39.8741722
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_hudson_baffin_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "trop_paci_lowres",
-          "name": "Tropical Pacific (low-res)",
-          "description": "Tropical Pacific Ocean",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    129.5,
-                    -39.5
-                  ],
-                  [
-                    180.0,
-                    -39.5
-                  ],
-                  [
-                    180.0,
-                    40.5
-                  ],
-                  [
-                    129.5,
-                    40.5
-                  ],
-                  [
-                    129.5,
-                    -39.5
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -39.5
-                  ],
-                  [
-                    -110.5,
-                    -39.5
-                  ],
-                  [
-                    -110.5,
-                    40.5
-                  ],
-                  [
-                    -180.0,
-                    40.5
-                  ],
-                  [
-                    -180.0,
-                    -39.5
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_trop_paci_lowres_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "trop_paci_lowres",
-          "name": "Tropical Pacific (low-res)",
-          "description": "Tropical Pacific Ocean",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    129.5,
-                    -39.5
-                  ],
-                  [
-                    180.0,
-                    -39.5
-                  ],
-                  [
-                    180.0,
-                    40.5
-                  ],
-                  [
-                    129.5,
-                    40.5
-                  ],
-                  [
-                    129.5,
-                    -39.5
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -39.5
-                  ],
-                  [
-                    -110.5,
-                    -39.5
-                  ],
-                  [
-                    -110.5,
-                    40.5
-                  ],
-                  [
-                    -180.0,
-                    40.5
-                  ],
-                  [
-                    -180.0,
-                    -39.5
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_trop_paci_lowres_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "honolulu",
-          "name": "Hawaii (Honolulu)",
-          "description": "Hawaiian Islands region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    179.9599359,
-                    -0.0400802
-                  ],
-                  [
-                    180.0,
-                    -0.0400802
-                  ],
-                  [
-                    180.0,
-                    40.0400802
-                  ],
-                  [
-                    179.9599359,
-                    40.0400802
-                  ],
-                  [
-                    179.9599359,
-                    -0.0400802
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -0.0400802
-                  ],
-                  [
-                    -129.96,
-                    -0.0400802
-                  ],
-                  [
-                    -129.96,
-                    40.0400802
-                  ],
-                  [
-                    -180.0,
-                    40.0400802
-                  ],
-                  [
-                    -180.0,
-                    -0.0400802
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_honolulu_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "honolulu",
-          "name": "Hawaii (Honolulu)",
-          "description": "Hawaiian Islands region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    179.9599359,
-                    -0.0400802
-                  ],
-                  [
-                    180.0,
-                    -0.0400802
-                  ],
-                  [
-                    180.0,
-                    40.0400802
-                  ],
-                  [
-                    179.9599359,
-                    40.0400802
-                  ],
-                  [
-                    179.9599359,
-                    -0.0400802
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -0.0400802
-                  ],
-                  [
-                    -129.96,
-                    -0.0400802
-                  ],
-                  [
-                    -129.96,
-                    40.0400802
-                  ],
-                  [
-                    -180.0,
-                    40.0400802
-                  ],
-                  [
-                    -180.0,
-                    -0.0400802
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_honolulu_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "guam",
-          "name": "Guam / Mariana Islands",
-          "description": "Guam / Mariana Islands region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    129.9599359,
-                    -0.040107
-                  ],
-                  [
-                    180.0,
-                    -0.040107
-                  ],
-                  [
-                    180.0,
-                    30.040107
-                  ],
-                  [
-                    129.9599359,
-                    30.040107
-                  ],
-                  [
-                    129.9599359,
-                    -0.040107
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -0.040107
-                  ],
-                  [
-                    -179.9599359,
-                    -0.040107
-                  ],
-                  [
-                    -179.9599359,
-                    30.040107
-                  ],
-                  [
-                    -180.0,
-                    30.040107
-                  ],
-                  [
-                    -180.0,
-                    -0.040107
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_guam_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "guam",
-          "name": "Guam / Mariana Islands",
-          "description": "Guam / Mariana Islands region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    129.9599359,
-                    -0.040107
-                  ],
-                  [
-                    180.0,
-                    -0.040107
-                  ],
-                  [
-                    180.0,
-                    30.040107
-                  ],
-                  [
-                    129.9599359,
-                    30.040107
-                  ],
-                  [
-                    129.9599359,
-                    -0.040107
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -0.040107
-                  ],
-                  [
-                    -179.9599359,
-                    -0.040107
-                  ],
-                  [
-                    -179.9599359,
-                    30.040107
-                  ],
-                  [
-                    -180.0,
-                    30.040107
-                  ],
-                  [
-                    -180.0,
-                    -0.040107
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_guam_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "samoa",
-          "name": "American Samoa",
-          "description": "American Samoa region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    169.9599284,
-                    -30.040107
-                  ],
-                  [
-                    180.0,
-                    -30.040107
-                  ],
-                  [
-                    180.0,
-                    0.040106
-                  ],
-                  [
-                    169.9599284,
-                    0.040106
-                  ],
-                  [
-                    169.9599284,
-                    -30.040107
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -30.040107
-                  ],
-                  [
-                    -145.16,
-                    -30.040107
-                  ],
-                  [
-                    -145.16,
-                    0.040106
-                  ],
-                  [
-                    -180.0,
-                    0.040106
-                  ],
-                  [
-                    -180.0,
-                    -30.040107
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "forecast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.f{hour:03d}_samoa_std.grb2",
-          "forecast_hours": [
-            24,
-            48,
-            72
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        },
-        {
-          "region_id": "samoa",
-          "name": "American Samoa",
-          "description": "American Samoa region",
-          "boundary_geometry": {
-            "type": "MultiPolygon",
-            "coordinates": [
-              [
-                [
-                  [
-                    169.9599284,
-                    -30.040107
-                  ],
-                  [
-                    180.0,
-                    -30.040107
-                  ],
-                  [
-                    180.0,
-                    0.040106
-                  ],
-                  [
-                    169.9599284,
-                    0.040106
-                  ],
-                  [
-                    169.9599284,
-                    -30.040107
-                  ]
-                ]
-              ],
-              [
-                [
-                  [
-                    -180.0,
-                    -30.040107
-                  ],
-                  [
-                    -145.16,
-                    -30.040107
-                  ],
-                  [
-                    -145.16,
-                    0.040106
-                  ],
-                  [
-                    -180.0,
-                    0.040106
-                  ],
-                  [
-                    -180.0,
-                    -30.040107
-                  ]
-                ]
-              ]
-            ]
-          },
-          "type": "nowcast",
-          "url_template": "https://nomads.ncep.noaa.gov/pub/data/nccf/com/rtofs/prod/rtofs.{YYYYMMDD}/rtofs_glo.t{HH}z.n024_samoa_std.grb2",
-          "forecast_hours": [
-            24
-          ],
-          "cycle_hours": [
-            "00"
-          ]
-        }
-      ]
-    },
-    {
       "id": "opencpn_xtide_harmonics",
       "source": "opencpn",
       "type": "harmonic",
@@ -4223,7 +2485,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:10:59Z"
+        "last_checked": "2026-07-11T08:30:26Z"
       },
       "files": [
         {
@@ -4293,13 +2555,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_bahamas_florida.utcef",
-          "sha256": "32f47d3ceed0bed0d87f0856f18cda58c104c248240648d8cf90fc5650d2cbc7",
-          "size_bytes": 1236471
+          "sha256": "70ce669abb7bfd1cedecb63918eb656a92e9f9b621145daf6d6b14d27f02140f",
+          "size_bytes": 1200588
         }
       ]
     },
@@ -4356,13 +2618,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_caribbean.utcef",
-          "sha256": "ec9f167ce7ec44e9bb24b82471e2771b68492fa6072ae656261fadb42c96fa91",
-          "size_bytes": 8474508
+          "sha256": "d5405bb3a038059e76146460910c59af33a6bd3a8721350e7f6ab89fabce9e4b",
+          "size_bytes": 8410515
         }
       ]
     },
@@ -4419,7 +2681,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4482,7 +2744,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4545,7 +2807,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4608,13 +2870,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_gulf_of_mexico.utcef",
-          "sha256": "23a7a1822abda19904f1a337468ce9c15d36248627e4d45b5fb8e7a78807907f",
-          "size_bytes": 4674946
+          "sha256": "9599f5e225815a1a2cf00dc32551fd2429ae9db018488eb4a62178cd0bd6bf7f",
+          "size_bytes": 4578379
         }
       ]
     },
@@ -4671,13 +2933,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atc_us_east_coast.utcef",
-          "sha256": "863e43d8e724161be754c697e6a15627990cef9adcc02b2dc4deeb1265125c69",
-          "size_bytes": 4306902
+          "sha256": "796c1b904fc3111d57bca0cb314f3b738f58baa3c2d94a0931944567d1dab919",
+          "size_bytes": 4181964
         }
       ]
     },
@@ -4734,7 +2996,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4797,7 +3059,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4860,7 +3122,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -4923,13 +3185,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/atn_canada_east.utcef",
-          "sha256": "9e529e7494f8481f54fc74413032adb47765def038a507d0562cc8886eb7cd18",
-          "size_bytes": 1312507
+          "sha256": "2fc4865244f796a62715a59fd4bd68b6d8b7145bdb19ac96576a78a428247fa4",
+          "size_bytes": 1294424
         }
       ]
     },
@@ -4986,7 +3248,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5049,7 +3311,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5112,7 +3374,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5175,7 +3437,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5238,7 +3500,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5301,7 +3563,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5364,7 +3626,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5427,7 +3689,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5490,7 +3752,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5553,7 +3815,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5616,7 +3878,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5679,7 +3941,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5742,7 +4004,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5805,7 +4067,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5870,7 +4132,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -5935,7 +4197,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6000,7 +4262,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6063,7 +4325,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6126,7 +4388,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6189,7 +4451,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6252,7 +4514,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6315,7 +4577,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6378,7 +4640,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6441,7 +4703,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6504,7 +4766,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6567,7 +4829,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6630,7 +4892,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6693,7 +4955,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6756,7 +5018,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6819,7 +5081,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6882,7 +5144,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -6945,7 +5207,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7008,7 +5270,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7071,7 +5333,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7134,7 +5396,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7199,7 +5461,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7264,7 +5526,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7327,7 +5589,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7390,7 +5652,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7453,7 +5715,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7516,7 +5778,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7579,7 +5841,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7642,7 +5904,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7705,13 +5967,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_aleutian_chain.utcef",
-          "sha256": "8a7007c2a43b7affb3a025e380a01da73f2f9a767fe346052c6878bd79620a91",
-          "size_bytes": 797352
+          "sha256": "923be69166e98c023e62cecef5d1e1e7146f8a8ce552a0c594c5f33d1f8c87d1",
+          "size_bytes": 779157
         }
       ]
     },
@@ -7768,7 +6030,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -7831,13 +6093,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_california_bight.utcef",
-          "sha256": "ed0c4e6e9fb62183a1bc73d9d7a277611aa541e965533df9cd3fc6d42b7cc2c0",
-          "size_bytes": 1558889
+          "sha256": "60fcff3cec0891bfd182d730e379570886d54d3bb41a8429d7b76003a9bfbcf6",
+          "size_bytes": 1515153
         }
       ]
     },
@@ -7894,13 +6156,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_canada_west.utcef",
-          "sha256": "01f37022c353f953685423166506888f4a3b316b7c13a4237e1a926a0b1dcfc4",
-          "size_bytes": 764247
+          "sha256": "e59a4e45575578e622263fb3776d87465a39a2c7f50f83206a7b86bc8565f866",
+          "size_bytes": 752002
         }
       ]
     },
@@ -7957,13 +6219,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_gulf_alaska.utcef",
-          "sha256": "51cb18eb43f743fbb22f12539b8d01215826a6abe8c069a982b30b0aa6bc8ee4",
-          "size_bytes": 2159435
+          "sha256": "00c9f8d49ca495f1f6de675b813d9c3dfd4574dfa09ebbea9ad396acd257c254",
+          "size_bytes": 2088880
         }
       ]
     },
@@ -8020,7 +6282,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8083,13 +6345,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_north_pacific_east.utcef",
-          "sha256": "a8b58afd7b6a268a857607c59f213c352fde6c45367f8da91466ae1856c2c4eb",
-          "size_bytes": 1151738
+          "sha256": "7731d29f21d26e78e80c8be1efbb9a1c904a646f2e3c984e6f9802960bfc9e77",
+          "size_bytes": 1119568
         }
       ]
     },
@@ -8146,13 +6408,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_north_pacific_west.utcef",
-          "sha256": "350501e25773a169d920d0c2b8e50ef7069daa0780a23ad7a216ab29a67aced1",
-          "size_bytes": 853971
+          "sha256": "d54998116dfe0b40a34a8fbac4cc2b5422ae10bf97094bfba380eab36f0abb9a",
+          "size_bytes": 826608
         }
       ]
     },
@@ -8209,7 +6471,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8272,7 +6534,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8335,13 +6597,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_us_west_coast.utcef",
-          "sha256": "2caf211eb63c44197c1dc5c11f26d736718f88df4774b6c3cb99de996292aa73",
-          "size_bytes": 7105174
+          "sha256": "f56ac6ec31c838e9a06b6afe3a8b69d4c2aeb8e2d60b9bb63dc9fbd12e71ccf6",
+          "size_bytes": 6938619
         }
       ]
     },
@@ -8400,7 +6662,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8463,7 +6725,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8526,13 +6788,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
           "filename": "regions/pacific_oceania/ptc_hawaii.utcef",
-          "sha256": "ef437d50106876ad2f0fb2f8ecd6386daff17640a82b176778da4a9f778b4a09",
-          "size_bytes": 753636
+          "sha256": "c6813ff0f164e51539b5c108a58e65460da15f26a4d770c379df156f1538c6e6",
+          "size_bytes": 726299
         }
       ]
     },
@@ -8589,7 +6851,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8652,7 +6914,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8715,7 +6977,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8778,7 +7040,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8841,7 +7103,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8904,7 +7166,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -8967,7 +7229,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
@@ -9030,7 +7292,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-11T08:11:22Z"
+        "last_checked": "2026-07-11T08:30:48Z"
       },
       "files": [
         {
