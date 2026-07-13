@@ -4,73 +4,35 @@ Thank you for contributing routing data! This repository hosts pre-compiled naut
 
 ## Database Format
 
-Each region is a standard SQLite database (gzip-compressed to `.sqlite.gz`). The schema is defined below — any tool that produces a compatible database is welcome.
+Each region is a standard SQLite database (gzip-compressed to `.sqlite.gz`).
+The full schema — tables, node/POI ID hashing, source-tier provenance,
+navmesh regions, and what a consuming router must do with each — is
+specified in
+[`specs/routing-database-format-specification.md`](specs/routing-database-format-specification.md).
+Any tool producing a database matching that schema is welcome; this
+document does not duplicate it to avoid the two drifting apart.
 
-### Tables
+At minimum: `schema_version` must be set to the version defined in that
+spec (currently `1`), `boundary_geometry` must be a valid GeoJSON
+polygon/convex hull covering the graph, and node IDs must use the
+deterministic coordinate-hashing scheme documented there for cross-region
+merge compatibility.
 
-**`metadata`** — one row describing the data source:
-| Column | Type | Description |
-|--------|------|-------------|
-| `country` | TEXT | ISO 3166-1 alpha-2 code |
-| `name` | TEXT | Human-readable region name |
-| `description` | TEXT | Coverage area and data sources |
-| `last_update_date` | TEXT | ISO 8601 date of last update |
-| `tags` | TEXT | JSON array of tags (e.g. `["enc","coastal"]`) |
-| `contributor` | TEXT | GitHub username or organization |
-| `url` | TEXT | Link to original data source / license |
-| `bounding_box` | TEXT | JSON `{"min_lat":..., "min_lon":..., "max_lat":..., "max_lon":...}` |
-| `boundary_geometry` | TEXT | GeoJSON polygon of the region's convex hull |
-| `schema_version` | INTEGER | Must be `2` or higher |
-| `region_id` | INTEGER | Unique auto-increment ID |
+## Contributing a Fix to One Location (Overrides)
 
-**`nodes`** — routing graph vertices:
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INTEGER | Globally unique: `(type * 648_000_000_000_000) + (lat_int * 36_000_000) + lon_int` |
-| `lat` | REAL | Latitude (degrees) |
-| `lon` | REAL | Longitude (degrees) |
-| `region_id` | INTEGER | References `metadata.region_id` |
-
-Node IDs encode the node type: `Math.floor(id / 648000000000000)` gives 0 (coastal) or 1 (inland). The `lat` and `lon` are snapped to 5 decimal places. This scheme allows merging databases from multiple regions without ID collisions.
-
-**`edges`** — connections between nodes:
-| Column | Type | Description |
-|--------|------|-------------|
-| `source` | INTEGER | Source node ID |
-| `target` | INTEGER | Target node ID |
-| `distance` | REAL | Edge length in metres |
-| `edge_type` | TEXT | `'coastal'` or `'inland'` |
-
-**`pois`** — points of interest (marinas, anchorages, etc.):
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | TEXT | Deterministic MD5 hash of `"{type}_{round(lat,5)}_{round(lon,5)}"` (13 hex chars) |
-| `type` | TEXT | POI category |
-| `name` | TEXT | Display name |
-| `lat` | REAL | Latitude |
-| `lon` | REAL | Longitude |
-| `region_id` | INTEGER | References `metadata.region_id` |
-
-POI IDs use `INSERT OR IGNORE` so duplicates from overlapping regions are skipped.
-
-### File Format
-
-- Stored as `.sqlite.gz` in the repo (gzip-compressed).
-- The download handler on the plugin side decompresses automatically.
-- SHA-256 of the `.sqlite.gz` file is recorded in `routing-index.json` for integrity checks.
-
-### Requirements
-
-- `schema_version` must be `2` or higher.
-- `boundary_geometry` must be a valid GeoJSON polygon/convex hull covering the graph (used for coverage map rendering).
-- `bounding_box` must be `{"min_lat": ..., "min_lon": ..., "max_lat": ..., "max_lon": ...}`.
-- Node IDs must use the deterministic coordinate-hashing scheme above for cross-region merge compatibility.
+For a specific wrong lock passage, missing bridge clearance, or similar
+local correction, you don't need to run a full pipeline or submit a whole
+region. Open a PR adding a file under `overrides/{continent}/{country}/{region}/`
+— see `specs/routing-database-format-specification.md` §2.11 for the
+required fields (`reason`, `evidence`, `contributor`). A maintainer
+reviews and merges it as a Tier-5 correction; it's picked up automatically
+by the next rebuild of that region and never lost to a regeneration.
 
 ## Adding a New Region
 
 ### 1. Generate the Database
 
-The recommended tool is the [nautical_routing_pipeline.py](https://github.com/marcelrv/signalk-autoroute) from the autoroute project. Note that this pipeline was built for Dutch waters and may need adaptation for other regions. If it doesn't suit your data, you can write your own generator — any tool producing a database matching the [schema above](#database-format) is accepted.
+The recommended tool is [signalk-router-pipeline](https://github.com/marcelrv/signalk-router-pipeline), which builds a schema-compatible database from free NOAA/ENC/IENC/OSM/bathymetry sources for US and European waters. If it doesn't suit your data, you can write your own generator — any tool producing a database matching the [format spec](specs/routing-database-format-specification.md) is accepted.
 
 Example (pipeline-specific):
 
@@ -88,7 +50,7 @@ python3 nautical_routing_pipeline.py \
 
 ### 2. Deploy with the Script (Recommended)
 
-Use the deploy script from the autoroute project:
+Use the deploy script from signalk-router-pipeline:
 
 ```bash
 python3 backend/deploy_to_data_repo.py \
@@ -146,4 +108,4 @@ To update a region (e.g., with newer ENC data):
 
 ## Getting Help
 
-Open an issue on the [autoroute project](https://github.com/marcelrv/signalk-autoroute) for questions about the pipeline or database format.
+Open an issue on [signalk-router-pipeline](https://github.com/marcelrv/signalk-router-pipeline) for questions about the pipeline, or on this repository for questions about the database format or catalog.

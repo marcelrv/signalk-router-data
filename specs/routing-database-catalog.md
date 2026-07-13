@@ -2,6 +2,12 @@
 
 This document defines the schema of `routing-index.json` — the machine-readable catalog of pre-compiled nautical routing graph databases used by [SignalK Autoroute](https://github.com/marcelrv/signalk-autoroute).
 
+This document covers the catalog (which files exist, where to fetch them,
+top-level stats). For the internal schema of a single `.sqlite` file —
+tables, source-tier provenance, navmesh regions, and how a routing engine
+must consume them — see
+[`routing-database-format-specification.md`](routing-database-format-specification.md).
+
 ## 1. Format Overview
 
 ```json
@@ -46,6 +52,9 @@ Each entry in the `regions` array represents a single `.sqlite.gz` routing graph
 | `url` | String | Yes | Link to the original data source or license information |
 | `bounding_box` | Object | Yes | Geographic bounding box (`min_lat`, `min_lon`, `max_lat`, `max_lon`) |
 | `boundary_geometry` | Object | Yes | GeoJSON Polygon or MultiPolygon of the region's coverage area |
+| `architecture` | String | No | Copied from the database's `metadata.architecture` — identifies the structural approach used (e.g. `"navmesh-hybrid"`, `"point-graph"`). Informational only; absent is legal and simply means the producer didn't set it. |
+| `license` | String | No | Copied from `metadata.license`. Falls back to this repository's default (`LICENSE-DATA.md`) when absent. |
+| `copyright` | String | No | Copied from `metadata.copyright` — ready-to-display attribution string, see `routing-database-format-specification.md` §8. |
 | `stats` | Object | Yes | Graph statistics object |
 
 ### 3.1 `stats` Object
@@ -57,6 +66,9 @@ Each entry in the `regions` array represents a single `.sqlite.gz` routing graph
 | `pois` | Integer | Number of points of interest |
 | `coastal_nodes` | Integer | Number of nodes classified as coastal (type 0) |
 | `inland_nodes` | Integer | Number of nodes classified as inland (type 1) |
+| `navmesh_regions` | Integer | Number of `navmesh_regions` rows (0 for point-graph-only databases) |
+| `override_count` | Integer | Number of rows in `override_provenance` (tier-5 corrections included in this build) |
+| `tier_counts` | Object | Optional map of source tier (`"1"`–`"6"`) to combined node+edge+poi row count, for a quick data-quality-mix summary without opening the database |
 
 ## 4. Tag Taxonomy
 
@@ -71,6 +83,10 @@ Standardized tags for the routing database catalog:
 | `coastal` | Contains coastal navmesh |
 | `experimental` | Work in progress |
 | `rws` | Rijkswaterstaat source data |
+| `navmesh` | Contains one or more `navmesh_regions` |
+| `osm-fused` | Includes OpenStreetMap/OpenSeaMap data as a Tier-3 fallback layer |
+| `bathymetry-filled` | Includes GEBCO/EMODnet Tier-4 depth fill where chart soundings are absent |
+| `community-overrides` | Includes one or more human/AI-reviewed Tier-5 overrides from `overrides/` |
 
 ## 5. Filesystem Layout Convention
 
