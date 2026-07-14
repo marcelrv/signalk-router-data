@@ -3,7 +3,7 @@
 [![Generate Routing Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml)
 [![Generate Tide/Current Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml)
 
-Pre-compiled nautical routing graphs for the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute) and tidal/current data sources for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin.
+Pre-compiled nautical routing graphs for the [SignalK RouteIQ nautical route planner](https://github.com/marcelrv/signalk-routeiq) and tidal/current data sources for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin.
 
 **Licensing:** Code and tooling are [GPLv3](LICENSE). Original/compiled data catalogs and databases are [CC-BY-NC-4.0](LICENSE-DATA.md). Third-party data sources (NOAA, BSH, FES2014, OpenCPN) follow their own upstream terms — see the [License & Attribution](#license--attribution) section below.
 
@@ -44,8 +44,8 @@ See [specs/tide-current-catalog.md](specs/tide-current-catalog.md) for the full 
 
 ## Quick Start
 
-### Autoroute (Routing)
-1. Install the [SignalK Autoroute nautical route planner](https://github.com/marcelrv/signalk-autoroute)
+### RouteIQ (Routing)
+1. Install the [SignalK RouteIQ nautical route planner](https://github.com/marcelrv/signalk-routeiq)
 2. Set `routingDataDir` in the plugin config to a directory on your server
 3. Download the `.sqlite.gz` file(s) for your region(s) from [the regions folder](regions/) or use the plugin's built-in "Manage Routing Data" dialog
 4. The plugin automatically decompresses `.sqlite.gz` files on download — just use the dialog
@@ -80,4 +80,4 @@ Each database file may have its own licensing terms as documented in its `metada
 
 ---
 
-*Maintained by the SignalK Autoroute and Tidal Currents community.*
+*Maintained by the SignalK RouteIQ and Tidal Currents community.*

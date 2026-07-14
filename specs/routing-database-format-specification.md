@@ -11,7 +11,7 @@ Any tool producing a database matching this schema is a valid producer —
 [signalk-router-pipeline](https://github.com/marcelrv/signalk-router-pipeline)
 is the reference implementation, not a requirement. Any engine that reads a
 schema-compatible database correctly is a valid consumer —
-[SignalK Autoroute](https://github.com/marcelrv/signalk-autoroute) is the
+[SignalK RouteIQ](https://github.com/marcelrv/signalk-routeiq) is the
 reference implementation, not the only one.
 
 ## 1. Schema Version
@@ -342,7 +342,7 @@ each source's legal terms.
 including [signalk-router-pipeline](https://github.com/marcelrv/signalk-router-pipeline).
 
 **Consumer**: any routing engine, including
-[SignalK Autoroute](https://github.com/marcelrv/signalk-autoroute), which
+[SignalK RouteIQ](https://github.com/marcelrv/signalk-routeiq), which
 must implement at minimum: node/edge/poi loading and ID-based merging
 (§§2.7, 2.10), the overlay merge (§4), tier-based routability (§5), and
 either full or minimum-viable navmesh-region handling (§6) — a database
