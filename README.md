@@ -27,10 +27,9 @@ Tidal/current data comes from three kinds of upstream sources, each suited to a 
 |--------|--------|-------------------|
 | `harmonic` | OpenCPN / XTide | ASCII harmonic constituents for named stations — small, static files, no refresh needed |
 | `grib2` | BSH | Regional gridded current *forecasts* (tide + weather + river forcing) for the North Sea, Baltic and Elbe, refreshed per model cycle |
+| `grib2` | NOAA NOS OFS | Regional gridded current *forecasts* for US waters (tide + weather + river forcing) from the NOS Operational Forecast Systems (currently Chesapeake Bay, San Francisco Bay, Salish Sea & Columbia River, northern Gulf of Mexico, West Coast), extracted from model output and re-encoded as compact GRIB2 by [scripts/tide-current](scripts/tide-current/), refreshed daily via the rolling [`ofs-currents-latest`](https://github.com/marcelrv/signalk-router-data/releases/tag/ofs-currents-latest) release |
 | `utcef` | FES2014 (via AVISO+) | Dense-grid harmonic tidal current predictions derived from the FES2014 global tide model — static, no refresh needed |
 | `utcef` | NOAA CO-OPS | Official harmonic constituents of ~850 NOAA current-prediction reference stations (US East/West Coast, Gulf of Mexico, Alaska, Hawaii, Puerto Rico), converted by [scripts/NOAA](scripts/NOAA/) — static, astronomical predictions valid for years |
-
-> **Removed (July 2026): NOAA RTOFS `grib2` forecasts.** Global RTOFS is a non-tidal ocean circulation model — its currents do not represent tidal streams in coastal waters and were misleading next to real tidal predictions. US coastal waters are covered by the NOAA CO-OPS station harmonics above; a tide-resolving gridded US source (NOS OFS models) is tracked in [#4](https://github.com/marcelrv/signalk-router-data/issues/4).
 
 See [specs/tide-current-catalog.md](specs/tide-current-catalog.md) for the full catalog schema and [specs/utcef-specification.md](specs/utcef-specification.md) for the UTCEF file format.
 
@@ -73,6 +72,7 @@ Each database file may have its own licensing terms as documented in its `metada
 ### Tidal/current data
 
 - **NOAA CO-OPS current stations** (`utcef` sources under `regions/*/noaa_*.utcef`): derived from the official [NOAA Tides & Currents](https://tidesandcurrents.noaa.gov/) harmonic constituents — public domain, U.S. Government work (17 U.S.C. §105). Predictions are astronomical only; actual currents deviate with weather and river flow. Not an official NOAA product.
+- **NOAA NOS OFS surface currents** (`grib2` files on the [`ofs-currents-latest`](https://github.com/marcelrv/signalk-router-data/releases/tag/ofs-currents-latest) release): surface u/v extracted and re-encoded from official [NOAA NOS Operational Forecast System](https://tidesandcurrents.noaa.gov/ofs/) model guidance — public domain, U.S. Government work (17 U.S.C. §105). These files are subsampled, repackaged model guidance produced by this repository — **not an official NOAA product** and not endorsed by NOAA; do not use for primary navigation.
 - **OpenCPN / XTide harmonics** (`harmonic` sources): see the [OpenCPN project](https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata) for licensing of the underlying station data.
 - **UTCEF / FES2014-derived datasets** (`utcef` sources, e.g. files under [`regions/europe`](regions/europe)): derived from the FES2014 global tide model, produced by Noveltis, LEGOS and CLS and distributed by AVISO+, with support from CNES. Redistribution follows the [AVISO+ License Agreement](https://www.aviso.altimetry.fr/fileadmin/documents/data/License_Aviso.pdf) (scientific and non-commercial use).
 

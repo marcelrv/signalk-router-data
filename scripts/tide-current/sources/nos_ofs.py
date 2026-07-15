@@ -146,8 +146,13 @@ def main() -> None:
         "id": "nos_ofs",
         "source": "noaa",
         "type": "grib2",
-        "name": "NOAA NOS Operational Forecast Systems Surface Currents",
-        "description": "Surface current forecasts from NOAA NOS OFS models in GRIB2 format.",
+        "name": "Surface Current Forecasts — US Waters (NOAA OFS)",
+        "description": "Gridded surface current forecasts (tidal + weather + river forcing) for "
+                       "US waters, extracted and re-encoded from official NOAA NOS Operational "
+                       "Forecast System model guidance by signalk-router-data scripts "
+                       "(https://github.com/marcelrv/signalk-router-data). NOAA data is public "
+                       "domain (U.S. Government work); this repackaging is NOT an official NOAA "
+                       "product and is not endorsed by NOAA.",
         "contributor": "NOAA National Ocean Service (NOS)",
         "url": "https://tidesandcurrents.noaa.gov/ofs/",
         "tags": ["grib2", "regional", "gridded", "forecast", "noaa", "ocean-currents", "daily"],
