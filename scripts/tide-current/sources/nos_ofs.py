@@ -40,7 +40,7 @@ import sys
 # been validated in production.
 PUBLISH_TO_CATALOG = False
 
-GITHUB_RELEASE_BASE = "https://github.com/anomalyco/signalk-router-data/releases/download/ofs-currents-latest"
+GITHUB_RELEASE_BASE = "https://github.com/marcelrv/signalk-router-data/releases/download/ofs-currents-latest"
 
 MODELS = {
     "sfbofs": {
