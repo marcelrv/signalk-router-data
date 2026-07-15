@@ -58,7 +58,7 @@ jobs:
                   gh release create ofs-currents-latest "$f" \
                     --repo "${{ github.repository }}" \
                     --title "Surface Current Forecasts — US Waters (NOAA OFS)" \
-                    --notes "Rolling data release: gridded surface current forecasts for US waters, regenerated daily from NOAA NOS Operational Forecast System (OFS) model guidance (https://tidesandcurrents.noaa.gov/ofs/) — surface u/v only, subsampled and re-encoded as compact GRIB2. Assets are overwritten in place each run; download URLs are stable. NOAA data is public domain (U.S. Government work); these repackaged files are NOT an official NOAA product and are not endorsed by NOAA — do not use for primary navigation. Consumed by the signalk-tidal-currents plugin via tide-current-index.json." \
+                    --notes "(placeholder — the region table is filled in by the 'Update release notes' step below)" \
                     --latest=false
                 else
                   echo "Upload FAILED for $(basename $f):"
@@ -68,3 +68,17 @@ jobs:
               }
           done
           exit $failed
+
+      # Regenerated from sources/nos_ofs.py MODELS every run so the region
+      # table (files, coverage, resolution, horizons) never drifts from
+      # what the pipeline actually produces — adding a model updates the
+      # release page automatically.
+      - name: Update release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/tide-current/ofs_release_notes.py > /tmp/ofs_notes.md
+          gh release edit ofs-currents-latest \
+            --repo "${{ github.repository }}" \
+            --title "Surface Current Forecasts — US Waters (NOAA OFS)" \
+            --notes-file /tmp/ofs_notes.md
