@@ -38,6 +38,10 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Per-file isolation: a failed upload must not block the remaining
+          # regions' uploads (each asset is independent) — collect failures
+          # and fail the job at the END instead of aborting mid-loop.
+          failed=0
           for f in ./ofs-gribs/*.grb2; do
             [ -f "$f" ] || continue
             echo "Uploading $(basename $f)..."
@@ -53,8 +57,10 @@ jobs:
                     --notes "Rolling data release: gridded surface current forecasts for US waters, regenerated daily from NOAA NOS Operational Forecast System (OFS) model guidance (https://tidesandcurrents.noaa.gov/ofs/) — surface u/v only, subsampled and re-encoded as compact GRIB2. Assets are overwritten in place each run; download URLs are stable. NOAA data is public domain (U.S. Government work); these repackaged files are NOT an official NOAA product and are not endorsed by NOAA — do not use for primary navigation. Consumed by the signalk-tidal-currents plugin via tide-current-index.json." \
                     --latest=false
                 else
+                  echo "Upload FAILED for $(basename $f):"
                   cat /tmp/gh_upload_err.txt
-                  exit 1
+                  failed=1
                 fi
               }
           done
+          exit $failed

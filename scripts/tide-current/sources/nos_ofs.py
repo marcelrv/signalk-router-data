@@ -42,6 +42,15 @@ PUBLISH_TO_CATALOG = False
 
 GITHUB_RELEASE_BASE = "https://github.com/marcelrv/signalk-router-data/releases/download/ofs-currents-latest"
 
+# target_res_deg: the per-model output grid resolution that
+# generate_ofs_gribs.py block-pools the native model grid down to. Chosen
+# per model rather than a single global floor: fine (~1-2 km) inside the
+# estuary/sound models where boats actually navigate — SFBOFS and SSCOFS in
+# particular have narrow channels (Golden Gate, Tacoma Narrows) that a
+# coarse grid can miss entirely — and coarser offshore where the model only
+# needs to support open-water transit routing. Downloads/output files stay
+# small either way because each model's request is already limited to its
+# own regional bounds below.
 MODELS = {
     "sfbofs": {
         "name": "San Francisco Bay Operational Forecast System",
@@ -54,6 +63,7 @@ MODELS = {
         # borderline nowcast/forecast boundary file).
         "first_forecast_hour": 1,
         "bounds": {"min_lat": 37.4, "max_lat": 38.3, "min_lon": -123.1, "max_lon": -121.6},
+        "target_res_deg": 0.01,
     },
     "cbofs": {
         "name": "Chesapeake Bay Operational Forecast System",
@@ -64,6 +74,7 @@ MODELS = {
         # f000 does not exist for CBOFS — files start at f001.
         "first_forecast_hour": 1,
         "bounds": {"min_lat": 36.1, "max_lat": 39.7, "min_lon": -77.4, "max_lon": -74.7},
+        "target_res_deg": 0.02,
     },
     "ngofs2": {
         "name": "Northern Gulf Of Mexico Operational Forecast System",
@@ -73,6 +84,7 @@ MODELS = {
         "forecast_step_hours": 3,
         "first_forecast_hour": 3,
         "bounds": {"min_lat": 21.7, "max_lat": 30.9, "min_lon": -97.9, "max_lon": -85.7},
+        "target_res_deg": 0.05,
     },
     "sscofs": {
         "name": "Salish Sea and Columbia River Operational Forecast System",
@@ -80,10 +92,15 @@ MODELS = {
                        "Juan de Fuca) and the Columbia River, extending along the Washington "
                        "and Oregon coast.",
         "cycles": ["03", "09", "15", "21"],
-        "forecast_hours": 72,
+        # NOAA publishes 72 h, but at 0.02 deg the full-length file measured
+        # 14.6 MB — capped to 48 h (~9.8 MB, in line with the other estuary
+        # models' horizons) rather than giving up spatial precision: Puget
+        # Sound's narrow channels are exactly where the fine grid matters.
+        "forecast_hours": 48,
         "forecast_step_hours": 1,
         "first_forecast_hour": 1,
         "bounds": {"min_lat": 44.3, "max_lat": 52.2, "min_lon": -129.6, "max_lon": -121.9},
+        "target_res_deg": 0.02,
     },
     "wcofs": {
         "name": "West Coast Operational Forecast System",
@@ -94,6 +111,7 @@ MODELS = {
         # f000 does not exist for WCOFS — files start at f003 (3-hourly).
         "first_forecast_hour": 3,
         "bounds": {"min_lat": 18.4, "max_lat": 55.8, "min_lon": -145.4, "max_lon": -112.0},
+        "target_res_deg": 0.16,
     },
 }
 

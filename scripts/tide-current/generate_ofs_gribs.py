@@ -6,9 +6,11 @@
 GRIB2 generator for NOAA NOS OFS surface currents.
 
 Fetches surface current data from the NOAA NOS THREDDS DAP server,
-extracts surface u/v, subsamples to ~0.05 deg, and encodes as a
-multi-message GRIB2 file per model (grid_simple packing, discipline 10
-"oceanographic" / category 1 "currents", params 2=u/3=v).
+extracts surface u/v, wet-aware block-pools each model's native grid down
+to its own target_res_deg (see MODELS in sources/nos_ofs.py — fine inside
+estuaries/sounds, coarser offshore), and encodes as a multi-message GRIB2
+file per model (grid_simple packing, discipline 10 "oceanographic" /
+category 1 "currents", params 2=u/3=v).
 
 GRIB2 files go to --output-dir. This script only writes files — it does
 NOT upload them or touch the catalog. Uploading to the rolling GitHub
@@ -47,6 +49,8 @@ MODELS = nos_ofs.MODELS
 THREDDS_BASE = "https://opendap.co-ops.nos.noaa.gov/thredds"
 THREDDS_DODS = f"{THREDDS_BASE}/dodsC"
 THREDDS_CAT = f"{THREDDS_BASE}/catalog"
+# Fallback target resolution used only if a model in MODELS is missing
+# target_res_deg — every current model sets it explicitly (see nos_ofs.py).
 DEFAULT_RES_DEG = 0.05
 # Sentinel written at masked/non-finite grid points. eccodes excludes any
 # point equal to this value from the packed data section and builds the
@@ -84,12 +88,69 @@ def _extract_uv(ds: xr.Dataset) -> tuple:
     return u, v
 
 
-def _subsample_step(lat: np.ndarray, res: float) -> int:
-    ny = lat.shape[0]
-    lat_span = abs(float(lat[-1, 0]) - float(lat[0, 0]))
-    if lat_span < 1e-10 or ny < 2:
+def _native_spacing(lat: np.ndarray, lon: np.ndarray, mid: str) -> float:
+    """Native grid spacing in degrees, verifying lat and lon spacing agree
+    (block pooling below assumes a single uniform step works for both
+    axes — see module docstring / spec: "native lat/lon spacing are equal
+    in these files")."""
+    ny, nx = lat.shape
+    nr_lat = abs(float(lat[-1, 0]) - float(lat[0, 0])) / max(ny - 1, 1)
+    nr_lon = abs(float(lon[0, -1]) - float(lon[0, 0])) / max(nx - 1, 1)
+    if nr_lat > 0 and nr_lon > 0:
+        rel_dev = abs(nr_lat - nr_lon) / max(nr_lat, nr_lon)
+        if rel_dev > UNIFORMITY_TOLERANCE_FRACTION:
+            raise ValueError(
+                f"{mid}: native latitude spacing ({nr_lat:.6f} deg) and "
+                f"longitude spacing ({nr_lon:.6f} deg) differ by "
+                f"{rel_dev:.1%}, exceeding tolerance "
+                f"{UNIFORMITY_TOLERANCE_FRACTION:.0%} — cannot pool with a "
+                f"single step"
+            )
+    nr = nr_lat if nr_lat > 0 else nr_lon
+    _check_uniform(lat[:, 0], nr_lat, "native latitude", mid)
+    _check_uniform(lon[0, :], nr_lon, "native longitude", mid)
+    return nr
+
+
+def _pool_step(native_spacing_deg: float, target_res_deg: float) -> int:
+    """Number of native grid cells per pooled output cell."""
+    if native_spacing_deg <= 0:
         return 1
-    return max(1, int(round(res / lat_span * (ny - 1))))
+    return max(1, int(round(target_res_deg / native_spacing_deg)))
+
+
+def _pool_mean(arr: np.ndarray, step: int) -> np.ndarray:
+    """Plain (unweighted) step x step block-mean pool, truncating to whole
+    blocks. Used for the lat/lon coordinate arrays, which are always
+    defined (never masked) on these regulargrid files — the block mean of
+    a uniform axis is exactly the block center."""
+    ny, nx = arr.shape
+    ny2, nx2 = (ny // step) * step, (nx // step) * step
+    pny, pnx = ny2 // step, nx2 // step
+    return arr[:ny2, :nx2].reshape(pny, step, pnx, step).mean(axis=(1, 3))
+
+
+def _pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
+    """Wet-aware step x step block-mean pool: averages only the native
+    points where `valid` is True (mask AND per-hour isfinite — see
+    caller), truncating to whole blocks. A dry/land native cell in a
+    mostly-wet block does not drag the mean toward zero, and a channel
+    narrower than one output cell still contributes its wet points to that
+    cell's mean instead of vanishing entirely.
+
+    Returns (mean, wet_count) both shaped (ny // step, nx // step); mean is
+    NaN wherever wet_count is 0 (the caller must treat those as missing —
+    NaN is never itself a valid packed value)."""
+    ny, nx = arr.shape
+    ny2, nx2 = (ny // step) * step, (nx // step) * step
+    pny, pnx = ny2 // step, nx2 // step
+    arr_t = arr[:ny2, :nx2].reshape(pny, step, pnx, step)
+    valid_t = valid[:ny2, :nx2].reshape(pny, step, pnx, step)
+    count = valid_t.sum(axis=(1, 3))
+    total = np.where(valid_t, arr_t, 0.0).sum(axis=(1, 3))
+    with np.errstate(invalid="ignore", divide="ignore"):
+        mean = np.where(count > 0, total / np.maximum(count, 1), np.nan)
+    return mean, count
 
 
 def _check_uniform(coords_1d: np.ndarray, inc: float, axis_name: str, model_id: str) -> None:
@@ -157,14 +218,9 @@ def _write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, t
         ec.codes_release(gid)
 
 
-def _encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_mask, hours, bd, bt, path):
+def _encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u, all_valid_v, hours, bd, bt, path):
     with open(path, "wb") as f:
-        for h, u, v, mask in zip(hours, all_u, all_v, all_mask):
-            # Land AND non-finite values (even at points the mask calls
-            # wet) are both treated as missing — a masked-wet point with a
-            # NaN/Inf fill value should not be encoded as a real sample.
-            valid_u = mask & np.isfinite(u)
-            valid_v = mask & np.isfinite(v)
+        for h, u, v, valid_u, valid_v in zip(hours, all_u, all_v, all_valid_u, all_valid_v):
             _write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True)
             _write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False)
 
@@ -177,12 +233,13 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
     hours = list(range(first_h, max_h + 1, step))
     out = os.path.join(out_dir, f"{mid}_currents.grb2")
 
-    lat_s = lon_s = mask_s = None
-    sub_step = None
+    mask = None  # native-resolution, flip-applied land/sea mask
+    pool_step = None
     flip_j = flip_i = False
+    lat_p = lon_p = None
     inc_lat = inc_lon = None
 
-    au, av, am, ah = [], [], [], []
+    au, av, avu, avv, ah = [], [], [], [], []
 
     for h in hours:
         url = _dods_url(mid, upper, ch, d, h)
@@ -192,43 +249,46 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
             print(f"    SKIP +{h:03d}h: {e}", file=sys.stderr)
             continue
         try:
-            if lat_s is None:
+            if mask is None:
                 # Grid geometry is identical across every hour of a cycle —
                 # fetched exactly once, not re-downloaded per file.
                 lat, lon, mask = _extract_grid(ds)
-                ny = lat.shape[0]
-                nr = abs(lat[-1, 0] - lat[0, 0]) / max(ny - 1, 1)
-                res_u = max(DEFAULT_RES_DEG, nr * 4)
-                sub_step = _subsample_step(lat, res_u)
-                lat_s = lat[::sub_step, ::sub_step]
-                lon_s = lon[::sub_step, ::sub_step]
-                if lat_s.shape[0] * lat_s.shape[1] > 200_000:
-                    res_u = DEFAULT_RES_DEG
-                    sub_step = _subsample_step(lat, res_u)
-                    lat_s = lat[::sub_step, ::sub_step]
-                    lon_s = lon[::sub_step, ::sub_step]
-                mask_s = mask[::sub_step, ::sub_step]
+                nr = _native_spacing(lat, lon, mid)
 
                 # Defensive: encode as ascending south->north / west->east
                 # regardless of the source's storage order (regulargrid
                 # files verified ascending in practice, but don't assume it
-                # forever — flip the arrays rather than branching flags).
-                flip_j = lat_s.shape[0] > 1 and lat_s[-1, 0] < lat_s[0, 0]
+                # forever). Flip the NATIVE arrays here, before pooling, so
+                # block boundaries fall the same way regardless of source
+                # order — flip AFTER pooling would pool mismatched blocks.
+                flip_j = lat.shape[0] > 1 and lat[-1, 0] < lat[0, 0]
                 if flip_j:
-                    lat_s = lat_s[::-1, :]
-                    lon_s = lon_s[::-1, :]
-                    mask_s = mask_s[::-1, :]
-                flip_i = lat_s.shape[1] > 1 and lon_s[0, -1] < lon_s[0, 0]
+                    lat = lat[::-1, :]
+                    lon = lon[::-1, :]
+                    mask = mask[::-1, :]
+                flip_i = lat.shape[1] > 1 and lon[0, -1] < lon[0, 0]
                 if flip_i:
-                    lat_s = lat_s[:, ::-1]
-                    lon_s = lon_s[:, ::-1]
-                    mask_s = mask_s[:, ::-1]
+                    lat = lat[:, ::-1]
+                    lon = lon[:, ::-1]
+                    mask = mask[:, ::-1]
 
-                nj, ni = lat_s.shape
-                inc_lat = (lat_s[-1, 0] - lat_s[0, 0]) / (nj - 1) if nj > 1 else 0.0
-                inc_lon = (lon_s[0, -1] - lon_s[0, 0]) / (ni - 1) if ni > 1 else 0.0
-                _check_uniform(lat_s[:, 0], inc_lat, "latitude", mid)
-                _check_uniform(lon_s[0, :], inc_lon, "longitude", mid)
+                target_res = m.get("target_res_deg", DEFAULT_RES_DEG)
+                pool_step = _pool_step(nr, target_res)
+                lat_p = _pool_mean(lat, pool_step)
+                lon_p = _pool_mean(lon, pool_step)
+                # Safety cap: if the pooled grid is still unreasonably
+                # large (e.g. target_res_deg finer than expected relative
+                # to native spacing), coarsen further.
+                while lat_p.size > 200_000:
+                    pool_step *= 2
+                    lat_p = _pool_mean(lat, pool_step)
+                    lon_p = _pool_mean(lon, pool_step)
+
+                nj, ni = lat_p.shape
+                inc_lat = (lat_p[-1, 0] - lat_p[0, 0]) / (nj - 1) if nj > 1 else 0.0
+                inc_lon = (lon_p[0, -1] - lon_p[0, 0]) / (ni - 1) if ni > 1 else 0.0
+                _check_uniform(lat_p[:, 0], inc_lat, "latitude", mid)
+                _check_uniform(lon_p[0, :], inc_lon, "longitude", mid)
 
             u, v = _extract_uv(ds)
         except Exception as e:
@@ -237,27 +297,38 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
         finally:
             ds.close()
 
-        us = u[::sub_step, ::sub_step]
-        vs = v[::sub_step, ::sub_step]
         if flip_j:
-            us = us[::-1, :]
-            vs = vs[::-1, :]
+            u = u[::-1, :]
+            v = v[::-1, :]
         if flip_i:
-            us = us[:, ::-1]
-            vs = vs[:, ::-1]
-        au.append(us)
-        av.append(vs)
-        am.append(mask_s)
+            u = u[:, ::-1]
+            v = v[:, ::-1]
+
+        # Land AND non-finite values (even at points the static mask calls
+        # wet) are both treated as missing before pooling — a masked-wet
+        # native point with a NaN/Inf fill value must not contaminate a
+        # block's mean or falsely mark that block wet. Wetness is
+        # per-hour: a block is wet in the output iff at least one native
+        # point inside it is both mask-wet and finite at that hour.
+        valid_u = mask & np.isfinite(u)
+        valid_v = mask & np.isfinite(v)
+        u_p, count_u = _pool_weighted(u, valid_u, pool_step)
+        v_p, count_v = _pool_weighted(v, valid_v, pool_step)
+
+        au.append(u_p)
+        av.append(v_p)
+        avu.append(count_u > 0)
+        avv.append(count_v > 0)
         ah.append(h)
 
     if not au:
         return None
     bd = int(d.strftime("%Y%m%d"))
     bt = int(ch) * 100
-    nj, ni = lat_s.shape
+    nj, ni = lat_p.shape
     _encode_grib2(
-        float(lat_s[0, 0]), float(lon_s[0, 0]), inc_lat, inc_lon, ni, nj,
-        au, av, am, ah, bd, bt, out,
+        float(lat_p[0, 0]), float(lon_p[0, 0]), inc_lat, inc_lon, ni, nj,
+        au, av, avu, avv, ah, bd, bt, out,
     )
     return out
 
