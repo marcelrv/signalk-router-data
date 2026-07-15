@@ -1,0 +1,60 @@
+name: Generate OFS Current GRIB2 Files
+
+on:
+  schedule:
+    - cron: '30 5 * * *'   # daily 05:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ofs-gribs
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -q numpy xarray netCDF4 eccodes
+
+      - name: Generate OFS GRIB2 files
+        run: |
+          python scripts/tide-current/generate_ofs_gribs.py \
+            --output-dir ./ofs-gribs
+          echo "---"
+          echo "GRIB2 files:"
+          ls -lh ./ofs-gribs/
+
+      - name: Upload GRIB2 files to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for f in ./ofs-gribs/*.grb2; do
+            [ -f "$f" ] || continue
+            echo "Uploading $(basename $f)..."
+            gh release upload ofs-currents-latest "$f" \
+              --clobber \
+              --repo "${{ github.repository }}" \
+              2>/tmp/gh_upload_err.txt || {
+                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
+                  echo "Release does not exist — creating..."
+                  gh release create ofs-currents-latest "$f" \
+                    --repo "${{ github.repository }}" \
+                    --title "OFS Currents Latest" \
+                    --notes "Rolling release of NOAA NOS OFS surface current GRIB2 files." \
+                    --latest=false
+                else
+                  cat /tmp/gh_upload_err.txt
+                  exit 1
+                fi
+              }
+          done

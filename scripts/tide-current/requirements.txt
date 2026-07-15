@@ -1,2 +1,7 @@
 # Dependencies for tide/current index scripts.
-# All collector scripts use only stdlib — no extra deps needed.
+# All collector scripts (sources/*.py, including nos_ofs.py) use only
+# stdlib — no extra deps needed.
+#
+# generate_ofs_gribs.py (the daily OFS GRIB2 generator, not run by the
+# weekly index generator) additionally requires:
+#   numpy xarray netCDF4 eccodes
