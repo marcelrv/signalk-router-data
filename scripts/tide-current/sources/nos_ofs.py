@@ -32,13 +32,12 @@ bounds set from them (rounded outward to ~0.1 degree). In particular:
 import json
 import sys
 
-# Gate for the catalog entry (issue #4): the daily GRIB2 pipeline runs and
+# Gate for the catalog entry (issue #4): the GRIB2 pipeline runs and
 # uploads release assets either way, but the source is only advertised in
-# tide-current-index.json once this is True. While False, this collector
-# emits an empty source list ([]), which generate_index.py accepts as
-# "nothing to add" — flip to True to publish once the release assets have
-# been validated in production.
-PUBLISH_TO_CATALOG = False
+# tide-current-index.json while this is True. Enabled 2026-07-15 after
+# production validation of the release assets (see issue #4); set back to
+# False to unpublish without stopping the pipeline.
+PUBLISH_TO_CATALOG = True
 
 GITHUB_RELEASE_BASE = "https://github.com/marcelrv/signalk-router-data/releases/download/ofs-currents-latest"
 
