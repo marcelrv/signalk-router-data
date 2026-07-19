@@ -1,7 +1,7 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-15T20:54:52Z",
+  "generated": "2026-07-19T06:57:38Z",
   "source_count": 79,
   "sources": [
     {
@@ -424,8 +424,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-15T20:54:18Z",
-        "latest_cycle": "2026-07-15T00:00:00Z"
+        "last_checked": "2026-07-19T06:57:03Z",
+        "latest_cycle": "2026-07-19T00:00:00Z"
       },
       "files": [
         {
@@ -2584,7 +2584,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-15T20:54:18Z"
+        "last_checked": "2026-07-19T06:57:03Z"
       },
       "files": [
         {
@@ -2856,7 +2856,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:19Z"
+        "last_checked": "2026-07-19T06:57:04Z"
       },
       "files": [
         {
@@ -2926,7 +2926,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -2989,7 +2989,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3052,7 +3052,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3115,7 +3115,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3178,7 +3178,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3241,7 +3241,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3304,7 +3304,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3367,7 +3367,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3430,7 +3430,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3493,7 +3493,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3556,7 +3556,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3619,7 +3619,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3682,7 +3682,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3745,7 +3745,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3808,7 +3808,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3871,7 +3871,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3934,7 +3934,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -3997,7 +3997,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4060,7 +4060,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4123,7 +4123,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4186,7 +4186,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4249,7 +4249,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4312,7 +4312,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4375,7 +4375,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4438,7 +4438,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4503,7 +4503,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4568,7 +4568,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4633,7 +4633,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4696,7 +4696,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4759,7 +4759,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4822,7 +4822,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4885,7 +4885,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -4948,7 +4948,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5011,7 +5011,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5074,7 +5074,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5137,7 +5137,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5200,7 +5200,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5263,7 +5263,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5326,7 +5326,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5389,7 +5389,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5452,7 +5452,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5515,7 +5515,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5578,7 +5578,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5641,7 +5641,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5704,7 +5704,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5767,7 +5767,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5832,7 +5832,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5897,7 +5897,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -5960,7 +5960,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6023,7 +6023,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6086,7 +6086,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6149,7 +6149,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6212,7 +6212,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6275,7 +6275,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6338,7 +6338,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6401,7 +6401,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6464,7 +6464,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6527,7 +6527,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6590,7 +6590,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6653,7 +6653,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6716,7 +6716,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6779,7 +6779,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6842,7 +6842,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6905,7 +6905,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -6968,7 +6968,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7033,7 +7033,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7096,7 +7096,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7159,7 +7159,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7222,7 +7222,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7285,7 +7285,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7348,7 +7348,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7411,7 +7411,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7474,7 +7474,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7537,7 +7537,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7600,7 +7600,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
@@ -7663,7 +7663,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-15T20:54:52Z"
+        "last_checked": "2026-07-19T06:57:38Z"
       },
       "files": [
         {
