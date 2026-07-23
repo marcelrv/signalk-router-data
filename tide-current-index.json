@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-23T16:28:43Z",
-  "source_count": 81,
+  "generated": "2026-07-23T18:17:00Z",
+  "source_count": 82,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T16:28:19Z",
+        "last_checked": "2026-07-23T18:16:28Z",
         "latest_cycle": "2026-07-23T00:00:00Z"
       },
       "files": [
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T16:28:19Z"
+        "last_checked": "2026-07-23T18:16:28Z"
       },
       "files": [
         {
@@ -2723,6 +2723,688 @@
           ],
           "cycle_hours": [
             "15"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cmems_med",
+      "source": "copernicus",
+      "type": "grib2",
+      "name": "Surface Current Forecasts \u2014 Mediterranean Sea (Copernicus Marine CMEMS MED)",
+      "description": "Gridded surface current forecasts (tidal + weather forcing) for the Mediterranean Sea, extracted from the Copernicus Marine Service MED analysis-and-forecast model and re-encoded as compact GRIB2 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Generated using E.U. Copernicus Marine Service Information (https://doi.org/10.48670/mds-00359); this repackaging is NOT an official Copernicus product and is not endorsed by CMCC or Mercator Ocean International.",
+      "contributor": "Copernicus Marine Service / CMCC (Italy)",
+      "url": "https://data.marine.copernicus.eu/product/MEDSEA_ANALYSISFORECAST_PHY_006_013/description",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "copernicus",
+        "cmems",
+        "ocean-currents",
+        "daily",
+        "mediterranean",
+        "europe"
+      ],
+      "region": {
+        "name": "Mediterranean Sea",
+        "bounding_box": {
+          "min_lat": 34.0,
+          "min_lon": -5.5,
+          "max_lat": 45.9,
+          "max_lon": 36.2
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -5.5,
+                  35.7
+                ],
+                [
+                  -1.0,
+                  35.7
+                ],
+                [
+                  -1.0,
+                  37.0
+                ],
+                [
+                  -5.5,
+                  37.0
+                ],
+                [
+                  -5.5,
+                  35.7
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -1.3,
+                  36.8
+                ],
+                [
+                  4.5,
+                  36.8
+                ],
+                [
+                  4.5,
+                  42.5
+                ],
+                [
+                  -1.3,
+                  42.5
+                ],
+                [
+                  -1.3,
+                  36.8
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  3.0,
+                  41.0
+                ],
+                [
+                  9.5,
+                  41.0
+                ],
+                [
+                  9.5,
+                  44.0
+                ],
+                [
+                  3.0,
+                  44.0
+                ],
+                [
+                  3.0,
+                  41.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  8.0,
+                  42.0
+                ],
+                [
+                  11.0,
+                  42.0
+                ],
+                [
+                  11.0,
+                  44.5
+                ],
+                [
+                  8.0,
+                  44.5
+                ],
+                [
+                  8.0,
+                  42.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  8.0,
+                  38.0
+                ],
+                [
+                  15.0,
+                  38.0
+                ],
+                [
+                  15.0,
+                  43.0
+                ],
+                [
+                  8.0,
+                  43.0
+                ],
+                [
+                  8.0,
+                  38.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  10.5,
+                  35.5
+                ],
+                [
+                  16.0,
+                  35.5
+                ],
+                [
+                  16.0,
+                  38.5
+                ],
+                [
+                  10.5,
+                  38.5
+                ],
+                [
+                  10.5,
+                  35.5
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  12.0,
+                  39.5
+                ],
+                [
+                  20.0,
+                  39.5
+                ],
+                [
+                  20.0,
+                  45.9
+                ],
+                [
+                  12.0,
+                  45.9
+                ],
+                [
+                  12.0,
+                  39.5
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  15.5,
+                  36.0
+                ],
+                [
+                  22.3,
+                  36.0
+                ],
+                [
+                  22.3,
+                  40.0
+                ],
+                [
+                  15.5,
+                  40.0
+                ],
+                [
+                  15.5,
+                  36.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  21.8,
+                  34.5
+                ],
+                [
+                  28.5,
+                  34.5
+                ],
+                [
+                  28.5,
+                  41.0
+                ],
+                [
+                  21.8,
+                  41.0
+                ],
+                [
+                  21.8,
+                  34.5
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  26.0,
+                  34.0
+                ],
+                [
+                  36.2,
+                  34.0
+                ],
+                [
+                  36.2,
+                  40.5
+                ],
+                [
+                  26.0,
+                  40.5
+                ],
+                [
+                  26.0,
+                  34.0
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 24,
+        "last_checked": "2026-07-23T18:16:28Z"
+      },
+      "files": [
+        {
+          "region_id": "med_alboran",
+          "name": "Alboran Sea & Costa del Sol",
+          "description": "Surface current forecasts for the Alboran Sea, from the Strait of Gibraltar through the Costa del Sol to Almeria.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -5.5,
+                  35.7
+                ],
+                [
+                  -1.0,
+                  35.7
+                ],
+                [
+                  -1.0,
+                  37.0
+                ],
+                [
+                  -5.5,
+                  37.0
+                ],
+                [
+                  -5.5,
+                  35.7
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_alboran_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_balearics_costa",
+          "name": "Balearics, Costa Blanca & Costa Brava",
+          "description": "Surface current forecasts for Spain's Mediterranean coast (Cartagena to the French border) and the Balearic Islands.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -1.3,
+                  36.8
+                ],
+                [
+                  4.5,
+                  36.8
+                ],
+                [
+                  4.5,
+                  42.5
+                ],
+                [
+                  -1.3,
+                  42.5
+                ],
+                [
+                  -1.3,
+                  36.8
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_balearics_costa_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_gulf_lion",
+          "name": "Gulf of Lion & French Riviera",
+          "description": "Surface current forecasts for the Gulf of Lion and the French Riviera, from the Spanish border to Monaco.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.0,
+                  41.0
+                ],
+                [
+                  9.5,
+                  41.0
+                ],
+                [
+                  9.5,
+                  44.0
+                ],
+                [
+                  3.0,
+                  44.0
+                ],
+                [
+                  3.0,
+                  41.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_gulf_lion_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_liguria_nw_italy",
+          "name": "Liguria & NW Italy",
+          "description": "Surface current forecasts for the Ligurian coast, from Genoa through the Cinque Terre to Tuscany.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.0,
+                  42.0
+                ],
+                [
+                  11.0,
+                  42.0
+                ],
+                [
+                  11.0,
+                  44.5
+                ],
+                [
+                  8.0,
+                  44.5
+                ],
+                [
+                  8.0,
+                  42.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_liguria_nw_italy_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_tyrrhenian",
+          "name": "Tyrrhenian Sea (Sardinia, Corsica & Naples)",
+          "description": "Surface current forecasts for the Tyrrhenian Sea \u2014 Sardinia, Corsica's east coast, Rome/Civitavecchia and Naples.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  8.0,
+                  38.0
+                ],
+                [
+                  15.0,
+                  38.0
+                ],
+                [
+                  15.0,
+                  43.0
+                ],
+                [
+                  8.0,
+                  43.0
+                ],
+                [
+                  8.0,
+                  38.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_tyrrhenian_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_sicily_malta",
+          "name": "Sicily & Malta",
+          "description": "Surface current forecasts for Sicily, Malta and the Sicilian Channel.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  10.5,
+                  35.5
+                ],
+                [
+                  16.0,
+                  35.5
+                ],
+                [
+                  16.0,
+                  38.5
+                ],
+                [
+                  10.5,
+                  38.5
+                ],
+                [
+                  10.5,
+                  35.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_sicily_malta_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_adriatic",
+          "name": "Adriatic Sea",
+          "description": "Surface current forecasts for the Adriatic Sea \u2014 Croatia, Montenegro, Albania, and Italy's east coast up to Venice.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.0,
+                  39.5
+                ],
+                [
+                  20.0,
+                  39.5
+                ],
+                [
+                  20.0,
+                  45.9
+                ],
+                [
+                  12.0,
+                  45.9
+                ],
+                [
+                  12.0,
+                  39.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_adriatic_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_ionian",
+          "name": "Ionian Sea (Western Greece & Puglia)",
+          "description": "Surface current forecasts for the Ionian Sea \u2014 western Greece (Corfu, Zakynthos) and Italy's Puglia/heel.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  15.5,
+                  36.0
+                ],
+                [
+                  22.3,
+                  36.0
+                ],
+                [
+                  22.3,
+                  40.0
+                ],
+                [
+                  15.5,
+                  40.0
+                ],
+                [
+                  15.5,
+                  36.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_ionian_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_aegean",
+          "name": "Aegean Sea",
+          "description": "Surface current forecasts for the Aegean Sea \u2014 the Cyclades, Dodecanese, Crete and Athens.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  21.8,
+                  34.5
+                ],
+                [
+                  28.5,
+                  34.5
+                ],
+                [
+                  28.5,
+                  41.0
+                ],
+                [
+                  21.8,
+                  41.0
+                ],
+                [
+                  21.8,
+                  34.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_aegean_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
+          ]
+        },
+        {
+          "region_id": "med_turkey_east",
+          "name": "Turkish Coast & Eastern Mediterranean",
+          "description": "Surface current forecasts for the Turkish Aegean/Mediterranean coast and Cyprus.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  26.0,
+                  34.0
+                ],
+                [
+                  36.2,
+                  34.0
+                ],
+                [
+                  36.2,
+                  40.5
+                ],
+                [
+                  26.0,
+                  40.5
+                ],
+                [
+                  26.0,
+                  34.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/med-currents-latest/med_turkey_east_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "17"
           ]
         }
       ]
@@ -3051,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T16:28:19Z"
+        "last_checked": "2026-07-23T18:16:28Z"
       },
       "files": [
         {
@@ -3930,7 +4612,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T16:28:19Z"
+        "last_checked": "2026-07-23T18:16:28Z"
       },
       "files": [
         {
@@ -4632,7 +5314,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:20Z"
+        "last_checked": "2026-07-23T18:16:29Z"
       },
       "files": [
         {
@@ -4702,7 +5384,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -4765,7 +5447,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -4828,7 +5510,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -4891,7 +5573,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -4954,7 +5636,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5017,7 +5699,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5080,7 +5762,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5143,7 +5825,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5206,7 +5888,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5269,7 +5951,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5332,7 +6014,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5395,7 +6077,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5458,7 +6140,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5521,7 +6203,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5584,7 +6266,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5647,7 +6329,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5710,7 +6392,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5773,7 +6455,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5836,7 +6518,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5899,7 +6581,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -5962,7 +6644,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6025,7 +6707,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6088,7 +6770,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6151,7 +6833,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6214,7 +6896,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6279,7 +6961,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6344,7 +7026,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6409,7 +7091,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6472,7 +7154,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6535,7 +7217,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6598,7 +7280,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6661,7 +7343,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6724,7 +7406,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6787,7 +7469,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6850,7 +7532,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6913,7 +7595,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -6976,7 +7658,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7039,7 +7721,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7102,7 +7784,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7165,7 +7847,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7228,7 +7910,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7291,7 +7973,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7354,7 +8036,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7417,7 +8099,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7480,7 +8162,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7543,7 +8225,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7608,7 +8290,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7673,7 +8355,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7736,7 +8418,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7799,7 +8481,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7862,7 +8544,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7925,7 +8607,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -7988,7 +8670,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8051,7 +8733,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8114,7 +8796,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8177,7 +8859,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8240,7 +8922,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8303,7 +8985,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8366,7 +9048,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8429,7 +9111,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8492,7 +9174,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8555,7 +9237,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8618,7 +9300,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8681,7 +9363,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8744,7 +9426,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8809,7 +9491,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8872,7 +9554,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8935,7 +9617,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -8998,7 +9680,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9061,7 +9743,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9124,7 +9806,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9187,7 +9869,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9250,7 +9932,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9313,7 +9995,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9376,7 +10058,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
@@ -9439,7 +10121,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T16:28:43Z"
+        "last_checked": "2026-07-23T18:17:00Z"
       },
       "files": [
         {
