@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-23T13:24:18Z",
-  "source_count": 79,
+  "generated": "2026-07-23T15:04:32Z",
+  "source_count": 80,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T13:23:45Z",
+        "last_checked": "2026-07-23T15:03:58Z",
         "latest_cycle": "2026-07-23T00:00:00Z"
       },
       "files": [
@@ -2431,6 +2431,175 @@
       ]
     },
     {
+      "id": "cmems_ibi",
+      "source": "copernicus",
+      "type": "grib2",
+      "name": "Surface Current Forecasts \u2014 Iberia/Biscay (Copernicus Marine CMEMS IBI)",
+      "description": "Gridded surface current forecasts (tidal + weather + river forcing) for the NE Atlantic / Bay of Biscay / Iberian Peninsula, extracted from the Copernicus Marine Service IBI analysis-and-forecast model and re-encoded as compact GRIB2 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Generated using E.U. Copernicus Marine Service Information (https://doi.org/10.48670/moi-00027); this repackaging is NOT an official Copernicus product and is not endorsed by Mercator Ocean International.",
+      "contributor": "Copernicus Marine Service / Mercator Ocean International",
+      "url": "https://data.marine.copernicus.eu/product/IBI_ANALYSISFORECAST_PHY_005_001/description",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "copernicus",
+        "cmems",
+        "ocean-currents",
+        "daily",
+        "europe"
+      ],
+      "region": {
+        "name": "NE Atlantic \u2014 Bay of Biscay, NW Iberia",
+        "bounding_box": {
+          "min_lat": 41.5,
+          "min_lon": -9.5,
+          "max_lat": 47.0,
+          "max_lon": -1.0
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -9.5,
+                  41.5
+                ],
+                [
+                  -8.0,
+                  41.5
+                ],
+                [
+                  -8.0,
+                  43.7
+                ],
+                [
+                  -9.5,
+                  43.7
+                ],
+                [
+                  -9.5,
+                  41.5
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -4.5,
+                  43.0
+                ],
+                [
+                  -1.0,
+                  43.0
+                ],
+                [
+                  -1.0,
+                  47.0
+                ],
+                [
+                  -4.5,
+                  47.0
+                ],
+                [
+                  -4.5,
+                  43.0
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 24,
+        "last_checked": "2026-07-23T15:03:58Z"
+      },
+      "files": [
+        {
+          "region_id": "ibi_galicia",
+          "name": "NW Iberia / Galicia (Rias Baixas)",
+          "description": "Surface current forecasts for the Galician coast and Rias Baixas (NW Spain).",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -9.5,
+                  41.5
+                ],
+                [
+                  -8.0,
+                  41.5
+                ],
+                [
+                  -8.0,
+                  43.7
+                ],
+                [
+                  -9.5,
+                  43.7
+                ],
+                [
+                  -9.5,
+                  41.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ibi-currents-latest/ibi_galicia_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "15"
+          ]
+        },
+        {
+          "region_id": "ibi_biscay",
+          "name": "Bay of Biscay",
+          "description": "Surface current forecasts for the Bay of Biscay, from the French Atlantic coast down through the Spanish Cantabrian coast (Bilbao/San Sebastian).",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -4.5,
+                  43.0
+                ],
+                [
+                  -1.0,
+                  43.0
+                ],
+                [
+                  -1.0,
+                  47.0
+                ],
+                [
+                  -4.5,
+                  47.0
+                ],
+                [
+                  -4.5,
+                  43.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ibi-currents-latest/ibi_biscay_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "15"
+          ]
+        }
+      ]
+    },
+    {
       "id": "nos_ofs",
       "source": "noaa",
       "type": "grib2",
@@ -2824,7 +2993,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T13:23:45Z"
+        "last_checked": "2026-07-23T15:03:58Z"
       },
       "files": [
         {
@@ -3526,7 +3695,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:23:46Z"
+        "last_checked": "2026-07-23T15:03:59Z"
       },
       "files": [
         {
@@ -3596,7 +3765,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3659,7 +3828,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3722,7 +3891,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3785,7 +3954,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3848,7 +4017,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3911,7 +4080,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -3974,7 +4143,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4037,7 +4206,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4100,7 +4269,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4163,7 +4332,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4226,7 +4395,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4289,7 +4458,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4352,7 +4521,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4415,7 +4584,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4478,7 +4647,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4541,7 +4710,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4604,7 +4773,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4667,7 +4836,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4730,7 +4899,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4793,7 +4962,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4856,7 +5025,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4919,7 +5088,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -4982,7 +5151,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5045,7 +5214,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5108,7 +5277,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5173,7 +5342,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5238,7 +5407,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5303,7 +5472,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5366,7 +5535,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5429,7 +5598,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5492,7 +5661,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5555,7 +5724,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5618,7 +5787,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5681,7 +5850,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5744,7 +5913,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5807,7 +5976,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5870,7 +6039,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5933,7 +6102,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -5996,7 +6165,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6059,7 +6228,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6122,7 +6291,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6185,7 +6354,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6248,7 +6417,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6311,7 +6480,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6374,7 +6543,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6437,7 +6606,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6502,7 +6671,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6567,7 +6736,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6630,7 +6799,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6693,7 +6862,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6756,7 +6925,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6819,7 +6988,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6882,7 +7051,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -6945,7 +7114,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7008,7 +7177,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7071,7 +7240,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7134,7 +7303,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7197,7 +7366,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7260,7 +7429,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7323,7 +7492,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7386,7 +7555,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7449,7 +7618,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7512,7 +7681,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7575,7 +7744,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7638,7 +7807,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7703,7 +7872,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7766,7 +7935,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7829,7 +7998,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7892,7 +8061,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -7955,7 +8124,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8018,7 +8187,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8081,7 +8250,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8144,7 +8313,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8207,7 +8376,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8270,7 +8439,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
@@ -8333,7 +8502,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T13:24:18Z"
+        "last_checked": "2026-07-23T15:04:32Z"
       },
       "files": [
         {
