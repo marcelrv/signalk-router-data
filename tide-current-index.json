@@ -1,7 +1,7 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-07-23T11:43:07Z",
+  "generated": "2026-07-23T13:24:18Z",
   "source_count": 79,
   "sources": [
     {
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T11:42:35Z",
+        "last_checked": "2026-07-23T13:23:45Z",
         "latest_cycle": "2026-07-23T00:00:00Z"
       },
       "files": [
@@ -2769,6 +2769,54 @@
                   46.3
                 ]
               ]
+            ],
+            [
+              [
+                [
+                  -74.4,
+                  40.4
+                ],
+                [
+                  -73.7,
+                  40.4
+                ],
+                [
+                  -73.7,
+                  41.0
+                ],
+                [
+                  -74.4,
+                  41.0
+                ],
+                [
+                  -74.4,
+                  40.4
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -81.8,
+                  29.5
+                ],
+                [
+                  -81.3,
+                  29.5
+                ],
+                [
+                  -81.3,
+                  30.5
+                ],
+                [
+                  -81.8,
+                  30.5
+                ],
+                [
+                  -81.8,
+                  29.5
+                ]
+              ]
             ]
           ]
         }
@@ -2776,7 +2824,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-07-23T11:42:35Z"
+        "last_checked": "2026-07-23T13:23:45Z"
       },
       "files": [
         {
@@ -3334,6 +3382,92 @@
             "12",
             "18"
           ]
+        },
+        {
+          "region_id": "nyofs",
+          "name": "New York Harbor Operational Forecast System",
+          "description": "Surface current forecasts for New York Harbor and the East River (including Hell Gate).",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -74.4,
+                  40.4
+                ],
+                [
+                  -73.7,
+                  40.4
+                ],
+                [
+                  -73.7,
+                  41.0
+                ],
+                [
+                  -74.4,
+                  41.0
+                ],
+                [
+                  -74.4,
+                  40.4
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ofs-currents-latest/nyofs_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "05",
+            "11",
+            "17",
+            "23"
+          ]
+        },
+        {
+          "region_id": "sjrofs",
+          "name": "St. Johns River Operational Forecast System",
+          "description": "Surface current forecasts for the St. Johns River, Florida.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -81.8,
+                  29.5
+                ],
+                [
+                  -81.3,
+                  29.5
+                ],
+                [
+                  -81.3,
+                  30.5
+                ],
+                [
+                  -81.8,
+                  30.5
+                ],
+                [
+                  -81.8,
+                  29.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ofs-currents-latest/sjrofs_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "05",
+            "11",
+            "17",
+            "23"
+          ]
         }
       ]
     },
@@ -3392,7 +3526,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:42:36Z"
+        "last_checked": "2026-07-23T13:23:46Z"
       },
       "files": [
         {
@@ -3462,7 +3596,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3525,7 +3659,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3588,7 +3722,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3651,7 +3785,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3714,7 +3848,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3777,7 +3911,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3840,7 +3974,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3903,7 +4037,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -3966,7 +4100,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4029,7 +4163,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4092,7 +4226,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4155,7 +4289,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4218,7 +4352,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4281,7 +4415,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4344,7 +4478,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4407,7 +4541,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4470,7 +4604,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4533,7 +4667,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4596,7 +4730,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4659,7 +4793,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4722,7 +4856,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4785,7 +4919,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4848,7 +4982,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4911,7 +5045,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -4974,7 +5108,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5039,7 +5173,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5104,7 +5238,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5169,7 +5303,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5232,7 +5366,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5295,7 +5429,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5358,7 +5492,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5421,7 +5555,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5484,7 +5618,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5547,7 +5681,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5610,7 +5744,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5673,7 +5807,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5736,7 +5870,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5799,7 +5933,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5862,7 +5996,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5925,7 +6059,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -5988,7 +6122,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6051,7 +6185,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6114,7 +6248,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6177,7 +6311,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6240,7 +6374,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6303,7 +6437,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6368,7 +6502,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6433,7 +6567,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6496,7 +6630,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6559,7 +6693,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6622,7 +6756,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6685,7 +6819,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6748,7 +6882,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6811,7 +6945,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6874,7 +7008,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -6937,7 +7071,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7000,7 +7134,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7063,7 +7197,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7126,7 +7260,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7189,7 +7323,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7252,7 +7386,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7315,7 +7449,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7378,7 +7512,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7441,7 +7575,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7504,7 +7638,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7569,7 +7703,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7632,7 +7766,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7695,7 +7829,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7758,7 +7892,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7821,7 +7955,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7884,7 +8018,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -7947,7 +8081,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -8010,7 +8144,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -8073,7 +8207,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -8136,7 +8270,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
@@ -8199,7 +8333,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-07-23T11:43:07Z"
+        "last_checked": "2026-07-23T13:24:18Z"
       },
       "files": [
         {
