@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install -q numpy xarray netCDF4 eccodes
+          pip install -q numpy xarray netCDF4 eccodes scipy
 
       - name: Generate OFS GRIB2 files
         run: |

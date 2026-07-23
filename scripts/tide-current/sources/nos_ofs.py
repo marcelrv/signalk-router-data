@@ -33,6 +33,31 @@ The GOMOFS/DBOFS/TBOFS/CIOFS/LEOFS/LMHOFS/LOOFS/LSOFS entries were added
 method. The four Great Lakes models (LEOFS/LMHOFS/LOOFS/LSOFS) differ from
 every other model here: 120 h horizon (vs. 48-72 h) and f000 is a real
 forecast field rather than nowcast-only.
+
+CURVILINEAR_MODELS (NYOFS, SJROFS; added 2026-07-23, issue #4 phase 2) are
+a structurally different case: the issue's original premise was that both
+needed FVCOM unstructured-mesh regridding — checked live and that's wrong.
+Both publish only fields.{nowcast,forecast}.nc on a curvilinear structured
+grid (2D lon[ny,nx]/lat[ny,nx], POM for NYOFS / EFDC_3D for SJROFS), not
+the regulargrid product MODELS above assumes, so generate_ofs_gribs.py
+handles them via a separate process_curvilinear_model() that regrids onto
+a regular lat/lon output grid (scipy.interpolate.griddata) rather than
+block-pooling an already-regular native grid. Verified live 2026-07-23:
+  - u/v are standard_name eastward_/northward_sea_water_velocity already —
+    no grid-rotation step needed.
+  - sigma index 0 is the surface (positive: down — sigma 0 = top).
+  - The native lon/lat arrays contain 0.0/0.0 fill padding outside the
+    curvilinear domain (confirmed on SJROFS) — bounds and the regridder's
+    input points MUST be restricted to mask == 1 (wet) cells, never a raw
+    array-wide min/max, or the fill point at (0,0) (Gulf of Guinea)
+    corrupts both the bounding box and griddata's convex hull.
+  - time units/base_date differ per model (NYOFS: days since 2008-01-01;
+    SJROFS: days since 2016-01-01) — read from each file's own attributes,
+    never hardcoded.
+  - nowcast.nc and forecast.nc do NOT overlap or share a timestamp, but
+    they're also not perfectly hourly-contiguous across the boundary (a
+    1-2 h gap is normal) — concatenate each file's own timestamps as-is,
+    don't assume/fabricate a fixed hourly grid across the two files.
 """
 
 import json
@@ -213,6 +238,38 @@ MODELS = {
     },
 }
 
+# Curvilinear-grid models (issue #4 phase 2): fetched and regridded via
+# generate_ofs_gribs.py's process_curvilinear_model(), not process_model().
+# Bounds were computed from the wet-only (mask == 1) extent of the full
+# lon/lat arrays, not just the 4 corners — see module docstring for why a
+# corner-only or raw-array bound would be wrong here.
+CURVILINEAR_MODELS = {
+    "nyofs": {
+        "name": "New York Harbor Operational Forecast System",
+        "description": "Surface current forecasts for New York Harbor and the East River "
+                       "(including Hell Gate).",
+        "cycles": ["05", "11", "17", "23"],
+        "sigma_surface_index": 0,
+        "bounds": {"min_lat": 40.4, "max_lat": 41.0, "min_lon": -74.4, "max_lon": -73.7},
+        "target_res_deg": 0.005,
+        # Approximate — the fields.{nowcast,forecast}.nc files carry their
+        # own per-timestep times rather than a fixed hour count; these are
+        # for the release-notes table only (verified live 2026-07-23).
+        "nowcast_hours": 6,
+        "forecast_hours": 54,
+    },
+    "sjrofs": {
+        "name": "St. Johns River Operational Forecast System",
+        "description": "Surface current forecasts for the St. Johns River, Florida.",
+        "cycles": ["05", "11", "17", "23"],
+        "sigma_surface_index": 0,
+        "bounds": {"min_lat": 29.5, "max_lat": 30.5, "min_lon": -81.8, "max_lon": -81.3},
+        "target_res_deg": 0.005,
+        "nowcast_hours": 6,
+        "forecast_hours": 49,
+    },
+}
+
 
 def _polygon_from_bounds(b: dict) -> dict:
     return {"type": "Polygon", "coordinates": [[
@@ -238,7 +295,7 @@ def main() -> None:
     all_poly_coords = []
     files_entries = []
 
-    for mid, m in MODELS.items():
+    for mid, m in {**MODELS, **CURVILINEAR_MODELS}.items():
         b = m["bounds"]
         poly = _polygon_from_bounds(b)
         all_poly_coords.append(poly["coordinates"])

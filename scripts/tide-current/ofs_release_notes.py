@@ -36,6 +36,10 @@ def _forecast(m: dict) -> str:
     return f"+{m['forecast_hours']} h, {cadence}"
 
 
+def _forecast_curvilinear(m: dict) -> str:
+    return f"nowcast ~{m['nowcast_hours']} h + forecast ~{m['forecast_hours']} h, hourly"
+
+
 def _cycles(m: dict) -> str:
     return "/".join(m["cycles"]) + "Z"
 
@@ -45,19 +49,21 @@ def main() -> None:
         "Rolling data release: gridded **surface current forecasts for US waters** "
         "(tide + weather + river forcing), regenerated four times daily from "
         "[NOAA NOS Operational Forecast System (OFS)](https://tidesandcurrents.noaa.gov/ofs/) "
-        "model guidance — surface u/v only, block-pooled to a per-region resolution and "
-        "re-encoded as compact GRIB2.",
+        "model guidance — surface u/v only, block-pooled (or, for NYOFS/SJROFS, regridded "
+        "from a curvilinear native grid) to a per-region resolution and re-encoded as "
+        "compact GRIB2.",
         "",
         "| Region | Model | Download | Coverage | Resolution | Forecast | NOAA cycles |",
         "|--------|-------|----------|----------|------------|----------|-------------|",
     ]
-    for mid, m in nos_ofs.MODELS.items():
+    for mid, m in {**nos_ofs.MODELS, **nos_ofs.CURVILINEAR_MODELS}.items():
         fname = f"{mid}_currents.grb2"
         url = f"{nos_ofs.GITHUB_RELEASE_BASE}/{fname}"
         region = m["name"].replace(" Operational Forecast System", "")
+        forecast_desc = _forecast_curvilinear(m) if mid in nos_ofs.CURVILINEAR_MODELS else _forecast(m)
         lines.append(
             f"| {region} | {mid.upper()} | [{fname}]({url}) | {_coverage(m['bounds'])} "
-            f"| {_resolution(m['target_res_deg'])} | {_forecast(m)} | {_cycles(m)} |"
+            f"| {_resolution(m['target_res_deg'])} | {forecast_desc} | {_cycles(m)} |"
         )
     lines += [
         "",
