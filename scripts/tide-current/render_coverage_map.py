@@ -160,15 +160,15 @@ def main():
             if USE_CARTOPY:
                 # Plot the shapely geometry directly, letting Cartopy handle projection-aware boundary clipping
                 ax.add_geometries([geom], crs=ccrs.PlateCarree(),
-                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=1.5)
+                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=0.5)
             else:
                 if geom.geom_type == "Polygon":
                     xs, ys = geom.exterior.xy
-                    ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=1.5)
+                    ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=0.5)
                 elif geom.geom_type == "MultiPolygon":
                     for poly in geom.geoms:
                         xs, ys = poly.exterior.xy
-                        ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=1.5)
+                        ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=0.5)
         elif bbox:
             coords = [
                 [bbox["min_lon"], bbox["min_lat"]],
@@ -181,10 +181,10 @@ def main():
                 import shapely.geometry as sgeom
                 geom = sgeom.Polygon(coords)
                 ax.add_geometries([geom], crs=ccrs.PlateCarree(),
-                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=1.5)
+                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=0.5)
             else:
                 p = MplPolygon(coords, closed=True, facecolor=color, edgecolor=color,
-                               linewidth=1.5, alpha=0.3)
+                               linewidth=0.5, alpha=0.3)
                 ax.add_patch(p)
 
     # Legend
