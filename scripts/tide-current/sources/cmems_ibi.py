@@ -32,6 +32,36 @@ single near-shore point (Ria de Vigo mouth) that CESGA's coastline treats
 as wet and IBI's treats as land — an expected difference between two
 independently-run models' coastline masks, not a data quality issue with
 either.
+
+Issue #3 follow-up (2026-07-23): expanded south along the same coast with
+ibi_portugal and ibi_gulf_of_cadiz. The underlying IBI dataset's real extent
+is 26.17-56.08N / 19.08W-5.08E (confirmed live via `copernicusmarine
+describe` and a data probe, not just the product page — the product page's
+bare "5.08" reads like it could be 5.08W but is genuinely 5.08E: IBI's grid
+has non-trivial wet-cell data as far as the Balearic longitude, an open-
+boundary artifact of the model, not something we rely on here). These two
+new regions cover Portugal and the Gulf of Cadiz/Gibraltar Strait, well
+inside that box.
+
+Sizing: each new region's valid (wet) point count was measured with a live
+single-timestep probe against the real dataset, then scaled by the
+bytes/wet-point/hour rate back-calculated from the two existing regions'
+actual release file sizes (~6.4-6.9 bytes/wet-point/hour, consistent
+between them) to predict the 72h file size before committing to a bbox —
+same reasoning as the NOS OFS pooling decisions, adapted for a dataset that
+doesn't need pooling. ibi_portugal and ibi_gulf_of_cadiz are separate
+regions rather than one combined box for the same modularity reason
+galicia/biscay are separate: independently sized (~2.1 MB / ~0.9 MB)
+downloads a sailor can pick between, not a single ~4 MB Iberia-wide file
+covering areas most users only sail a fraction of. They overlap
+ibi_galicia and each other by ~0.2-0.5 deg at their shared edges so a
+route crossing a seam never falls into a gap.
+
+Deliberately NOT extended into ibi_biscay's latitude range (47N+) even
+though NWS's future box will start at 46N — that 1 degree of overlap
+between ibi_biscay's existing north edge and NWS's south edge is enough to
+avoid a seam gap without this repo maintaining two regional models over
+the same stretch of French coast.
 """
 
 import json
@@ -66,6 +96,30 @@ REGIONS = {
                        "Atlantic coast down through the Spanish Cantabrian coast "
                        "(Bilbao/San Sebastian).",
         "bounds": {"min_lat": 43.0, "max_lat": 47.0, "min_lon": -4.5, "max_lon": -1.0},
+        "target_res_deg": 0.0278,
+        "forecast_hours": 72,
+    },
+    "ibi_portugal": {
+        "name": "Portugal (Atlantic Coast & Algarve)",
+        "description": "Surface current forecasts for mainland Portugal, from the Minho/Galicia "
+                       "border down through Porto, Lisbon and the Algarve.",
+        # Overlaps ibi_galicia by 0.2 deg (41.5-41.7N) so a route crossing the
+        # Minho border doesn't fall into a seam gap. Measured 4443 wet points
+        # live -> ~2.1 MB at 72h, in between the two existing regions' sizes.
+        "bounds": {"min_lat": 36.9, "max_lat": 41.7, "min_lon": -9.6, "max_lon": -6.7},
+        "target_res_deg": 0.0278,
+        "forecast_hours": 72,
+    },
+    "ibi_gulf_of_cadiz": {
+        "name": "Gulf of Cadiz & Gibraltar Strait",
+        "description": "Surface current forecasts for the Gulf of Cadiz (Huelva, Cadiz) and the "
+                       "Strait of Gibraltar approach.",
+        # Overlaps ibi_portugal's SE corner (~-7.6..-6.7 lon, 36.9-37.3 lat) —
+        # deliberate, same seam-safety reasoning. min_lat dips to 35.75 to
+        # keep the full width of the Strait (both shores) in one region,
+        # since current through the Strait matters for anyone transiting it.
+        # Measured 1942 wet points live -> ~0.9 MB at 72h.
+        "bounds": {"min_lat": 35.75, "max_lat": 37.3, "min_lon": -7.6, "max_lon": -5.3},
         "target_res_deg": 0.0278,
         "forecast_hours": 72,
     },
@@ -122,7 +176,7 @@ def main() -> None:
         "id": "cmems_ibi",
         "source": "copernicus",
         "type": "grib2",
-        "name": "Surface Current Forecasts — Iberia/Biscay (Copernicus Marine CMEMS IBI)",
+        "name": "Surface Current Forecasts — Iberia/Biscay/Gibraltar (Copernicus Marine CMEMS IBI)",
         # Attribution wording follows the Copernicus Marine license's
         # required format for a "Value Added Product" / "Derivative Work"
         # (section 2.4(a) — applies here because the data is reformatted
@@ -144,7 +198,7 @@ def main() -> None:
         "tags": ["grib2", "regional", "gridded", "forecast", "copernicus", "cmems",
                  "ocean-currents", "daily", "europe"],
         "region": {
-            "name": "NE Atlantic — Bay of Biscay, NW Iberia",
+            "name": "NE Atlantic — Bay of Biscay, Iberian Peninsula, Gibraltar Strait",
             "bounding_box": _bbox_of_polygons(all_poly_coords) if all_poly_coords else {},
             "boundary_geometry": {"type": "MultiPolygon", "coordinates": all_poly_coords},
         },
