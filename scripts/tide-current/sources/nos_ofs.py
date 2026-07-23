@@ -27,6 +27,12 @@ bounds set from them (rounded outward to ~0.1 degree). In particular:
     25N). Confirmed grid corners: 21.77N/-97.88E to 30.80N/-85.72E.
   - WCOFS's regulargrid domain spans a much larger area than its name
     suggests (18.42N-55.78N, -145.38E to -112.10E) and is 3-hourly.
+
+The GOMOFS/DBOFS/TBOFS/CIOFS/LEOFS/LMHOFS/LOOFS/LSOFS entries were added
+2026-07-23 (issue #4 follow-on batch) using the same live-verification
+method. The four Great Lakes models (LEOFS/LMHOFS/LOOFS/LSOFS) differ from
+every other model here: 120 h horizon (vs. 48-72 h) and f000 is a real
+forecast field rather than nowcast-only.
 """
 
 import json
@@ -111,6 +117,99 @@ MODELS = {
         "first_forecast_hour": 3,
         "bounds": {"min_lat": 18.4, "max_lat": 55.8, "min_lon": -145.4, "max_lon": -112.0},
         "target_res_deg": 0.16,
+    },
+    # Follow-on batch (issue #4): these 8 models were verified in the
+    # 2026-07-15 issue comment to publish the same regulargrid product as
+    # the 5 models above, and re-verified live against the THREDDS catalog
+    # on 2026-07-23 (cycles/steps/bounds below) — grid corners fetched the
+    # same way as the original 5 (DAP .ascii endpoint, rounded outward to
+    # ~0.1 degree).
+    "gomofs": {
+        "name": "Gulf of Maine Operational Forecast System",
+        "description": "Surface current forecasts for the Gulf of Maine.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 72,
+        "forecast_step_hours": 3,
+        # f000 does not exist for GOMOFS — files start at f003 (3-hourly).
+        "first_forecast_hour": 3,
+        "bounds": {"min_lat": 38.5, "max_lat": 45.9, "min_lon": -71.9, "max_lon": -61.2},
+        "target_res_deg": 0.05,
+    },
+    "dbofs": {
+        "name": "Delaware Bay Operational Forecast System",
+        "description": "Surface current forecasts for Delaware Bay.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 48,
+        "forecast_step_hours": 1,
+        # f000 does not exist for DBOFS — files start at f001.
+        "first_forecast_hour": 1,
+        "bounds": {"min_lat": 37.7, "max_lat": 40.3, "min_lon": -75.9, "max_lon": -73.2},
+        "target_res_deg": 0.02,
+    },
+    "tbofs": {
+        "name": "Tampa Bay Operational Forecast System",
+        "description": "Surface current forecasts for Tampa Bay.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 48,
+        "forecast_step_hours": 1,
+        # f000 does not exist for TBOFS — files start at f001.
+        "first_forecast_hour": 1,
+        "bounds": {"min_lat": 27.0, "max_lat": 28.1, "min_lon": -83.2, "max_lon": -82.3},
+        "target_res_deg": 0.02,
+    },
+    "ciofs": {
+        "name": "Cook Inlet Operational Forecast System",
+        "description": "Surface current forecasts for Cook Inlet, Alaska.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 48,
+        "forecast_step_hours": 1,
+        # f000 does not exist for CIOFS — files start at f001.
+        "first_forecast_hour": 1,
+        "bounds": {"min_lat": 56.6, "max_lat": 61.6, "min_lon": -156.3, "max_lon": -148.9},
+        "target_res_deg": 0.05,
+    },
+    "leofs": {
+        "name": "Lake Erie Operational Forecast System",
+        "description": "Surface current forecasts for Lake Erie.",
+        "cycles": ["00", "06", "12", "18"],
+        # 120 h horizon (vs. 48 h for the coastal estuary models above) and
+        # f000 exists as a real forecast field here, unlike the coastal
+        # models — Great Lakes OFS quirk confirmed live 2026-07-23.
+        "forecast_hours": 120,
+        "forecast_step_hours": 1,
+        "first_forecast_hour": 0,
+        "bounds": {"min_lat": 41.3, "max_lat": 43.0, "min_lon": -83.5, "max_lon": -78.8},
+        "target_res_deg": 0.05,
+    },
+    "lmhofs": {
+        "name": "Lake Michigan-Huron Operational Forecast System",
+        "description": "Surface current forecasts for Lake Michigan and Lake Huron.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 120,
+        "forecast_step_hours": 1,
+        "first_forecast_hour": 0,
+        "bounds": {"min_lat": 41.6, "max_lat": 46.4, "min_lon": -88.1, "max_lon": -79.7},
+        "target_res_deg": 0.05,
+    },
+    "loofs": {
+        "name": "Lake Ontario Operational Forecast System",
+        "description": "Surface current forecasts for Lake Ontario.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 120,
+        "forecast_step_hours": 1,
+        "first_forecast_hour": 0,
+        "bounds": {"min_lat": 43.1, "max_lat": 44.3, "min_lon": -79.9, "max_lon": -76.0},
+        "target_res_deg": 0.05,
+    },
+    "lsofs": {
+        "name": "Lake Superior Operational Forecast System",
+        "description": "Surface current forecasts for Lake Superior.",
+        "cycles": ["00", "06", "12", "18"],
+        "forecast_hours": 120,
+        "forecast_step_hours": 1,
+        "first_forecast_hour": 0,
+        "bounds": {"min_lat": 46.3, "max_lat": 49.1, "min_lon": -92.2, "max_lon": -84.3},
+        "target_res_deg": 0.05,
     },
 }
 
