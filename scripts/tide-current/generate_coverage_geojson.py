@@ -16,6 +16,21 @@ GitHub Pages + Leaflet reading tide-current-index.json client-side), which
 is a bigger commitment (enabling Pages, maintaining a JS bundle) than this
 file, deliberately not attempted here.
 
+Per-feature color: GitHub's geojson renderer (like most GitHub/Mapbox-family
+tools) reads the "simplestyle-spec" properties (`fill`, `fill-opacity`,
+`stroke`, `stroke-opacity`) directly off each Feature — without them every
+polygon renders in one default color and grib2 vs utcef becomes
+indistinguishable by anything other than clicking each one individually.
+Colors/opacity come from source_type_labels.style_for(), the same table
+render_coverage_map.py uses, so the two maps agree. Feature order in the
+output array matters too, for the same reason draw_order matters in the
+PNG: GitHub's viewer paints array order back-to-front and exposes no
+z-index control, so features are sorted by draw_order before writing —
+otherwise the far more numerous utcef/harmonic polygons (which sort
+alphabetically after the grib2 sources in tide-current-index.json) would
+paint over the forecast regions again, the exact bug the PNG fix
+addressed.
+
 Two catalog shapes to handle, confirmed live against tide-current-index.json
 rather than assumed from the spec doc: multi-region grib2 sources (BSH,
 CMEMS IBI/NWS, NOS OFS) carry a distinct `boundary_geometry` on each
@@ -33,7 +48,7 @@ like `type` or `source` id directly.
 import json
 import sys
 
-from source_type_labels import label_for
+from source_type_labels import style_for
 
 
 def _is_global(bbox: dict) -> bool:
@@ -53,6 +68,17 @@ def _is_global(bbox: dict) -> bool:
     return lat_span > 150 and lon_span > 300
 
 
+def _style_properties(source_type: str) -> dict:
+    style = style_for(source_type)
+    return {
+        "stroke": style["color"],
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": style["color"],
+        "fill-opacity": style["alpha"],
+    }
+
+
 def main() -> None:
     import argparse
     parser = argparse.ArgumentParser()
@@ -65,7 +91,9 @@ def main() -> None:
 
     features = []
     for src in index.get("sources", []):
-        category = label_for(src.get("type", ""))
+        src_type = src.get("type", "")
+        style = style_for(src_type)
+        style_props = _style_properties(src_type)
         provider = src.get("contributor", src.get("name", ""))
         info_url = src.get("url", "")
 
@@ -83,11 +111,13 @@ def main() -> None:
                     "geometry": geom,
                     "properties": {
                         "region": file_entry.get("name", file_entry.get("region_id", "")),
-                        "category": category,
+                        "category": style["label"],
                         "provider": provider,
                         "description": file_entry.get("description") or src.get("description", ""),
                         "info_url": info_url,
+                        **style_props,
                     },
+                    "_draw_order": style["draw_order"],
                 })
         else:
             # utcef/harmonic source: one region, geometry only at the
@@ -101,12 +131,22 @@ def main() -> None:
                 "geometry": geom,
                 "properties": {
                     "region": src.get("region", {}).get("name", src.get("name", "")),
-                    "category": category,
+                    "category": style["label"],
                     "provider": provider,
                     "description": src.get("description", ""),
                     "info_url": info_url,
+                    **style_props,
                 },
+                "_draw_order": style["draw_order"],
             })
+
+    # Sort by draw_order (background types first) so GitHub's viewer, which
+    # paints array order back-to-front with no z-index control, keeps
+    # forecast regions visible on top — then strip the sort-only key before
+    # writing, since it isn't part of the GeoJSON spec.
+    features.sort(key=lambda f: f["_draw_order"])
+    for f in features:
+        del f["_draw_order"]
 
     collection = {"type": "FeatureCollection", "features": features}
 

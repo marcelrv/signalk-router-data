@@ -23,7 +23,7 @@ try:
 except ImportError:
     USE_CARTOPY = False
 
-from source_type_labels import label_for
+from source_type_labels import label_for, style_for
 
 
 def _polygon_area_deg(geom):
@@ -54,23 +54,8 @@ def main():
         print("  [SKIP] coverage map — no sources", file=sys.stderr)
         return
 
-    # draw_order: lower values are painted first (background), higher values
-    # last (foreground) — so the actively-refreshed forecast layers stay
-    # visible on top of the far more numerous, overlapping static
-    # tide-prediction polygons instead of being buried under them. alpha is
-    # per-type for the same reason: the tide-prediction layers cover huge,
-    # heavily-overlapping areas, so they need to be quite translucent
-    # individually or many stacked layers read as solid; the forecast layers
-    # are comparatively few and should stay clearly visible.
-    type_styles = {
-        "harmonic":              {"color": "#3b8fd4", "alpha": 0.15, "draw_order": 0},
-        "harmonic_constituents": {"color": "#3b8fd4", "alpha": 0.15, "draw_order": 0},
-        "utcef":                 {"color": "#f59e0b", "alpha": 0.10, "draw_order": 0},
-        "station":               {"color": "#8b5cf6", "alpha": 0.30, "draw_order": 1},
-        "grib2":                 {"color": "#22c55e", "alpha": 0.45, "draw_order": 2},
-        "forecast":              {"color": "#22c55e", "alpha": 0.45, "draw_order": 2},
-    }
-    DEFAULT_STYLE = {"color": "#64748b", "alpha": 0.3, "draw_order": 1}
+    # Colors/alpha/draw_order now live in source_type_labels.style_for() —
+    # single source of truth shared with generate_coverage_geojson.py.
 
     # Build shapely geometries for each source
     src_geoms = []
@@ -156,10 +141,10 @@ def main():
     # under stacks of overlapping tide-prediction polygons.
     rendered_types = set()
     ordered_bounded = sorted(
-        bounded, key=lambda s: type_styles.get(s.get("type", ""), DEFAULT_STYLE)["draw_order"]
+        bounded, key=lambda s: style_for(s.get("type", ""))["draw_order"]
     )
     for src in ordered_bounded:
-        style = type_styles.get(src.get("type", ""), DEFAULT_STYLE)
+        style = style_for(src.get("type", ""))
         color = style["color"]
         alpha = style["alpha"]
         rendered_types.add(src.get("type", ""))
@@ -208,7 +193,7 @@ def main():
     # background types still read clearly as colored swatches in the key.
     legend_patches = []
     for t in sorted(rendered_types):
-        st = type_styles.get(t, DEFAULT_STYLE)
+        st = style_for(t)
         legend_patches.append(Patch(color=st["color"], alpha=0.6, label=label_for(t)))
 
     if globals_list:
