@@ -15,6 +15,8 @@ Routing databases are stored as `.sqlite.gz` (gzip-compressed) to reduce downloa
 
 ![Tide/Current Coverage Map](tide-current-coverage.png)
 
+For an interactive version — pan, zoom, and click any region to see its name, provider, and description — open [`tide-current-coverage.geojson`](tide-current-coverage.geojson); GitHub renders `.geojson` files as a live map automatically.
+
 ### Routing Databases
 
 ![Coverage Map](coverage-map.png)

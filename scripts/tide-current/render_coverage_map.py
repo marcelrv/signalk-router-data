@@ -23,6 +23,8 @@ try:
 except ImportError:
     USE_CARTOPY = False
 
+from source_type_labels import label_for
+
 
 def _polygon_area_deg(geom):
     """Approximate planar area of a shapely geometry in square degrees."""
@@ -52,14 +54,23 @@ def main():
         print("  [SKIP] coverage map — no sources", file=sys.stderr)
         return
 
+    # draw_order: lower values are painted first (background), higher values
+    # last (foreground) — so the actively-refreshed forecast layers stay
+    # visible on top of the far more numerous, overlapping static
+    # tide-prediction polygons instead of being buried under them. alpha is
+    # per-type for the same reason: the tide-prediction layers cover huge,
+    # heavily-overlapping areas, so they need to be quite translucent
+    # individually or many stacked layers read as solid; the forecast layers
+    # are comparatively few and should stay clearly visible.
     type_styles = {
-        "harmonic":               {"color": "#3b8fd4", "label": "Harmonic constituents"},
-        "harmonic_constituents":  {"color": "#3b8fd4", "label": "Harmonic constituents"},
-        "grib2":                  {"color": "#22c55e", "label": "GRIB2 forecast"},
-        "forecast":               {"color": "#22c55e", "label": "Forecast"},
-        "utcef":                  {"color": "#f59e0b", "label": "UTCEF database"},
-        "station":                {"color": "#8b5cf6", "label": "Station data"},
+        "harmonic":              {"color": "#3b8fd4", "alpha": 0.15, "draw_order": 0},
+        "harmonic_constituents": {"color": "#3b8fd4", "alpha": 0.15, "draw_order": 0},
+        "utcef":                 {"color": "#f59e0b", "alpha": 0.10, "draw_order": 0},
+        "station":               {"color": "#8b5cf6", "alpha": 0.30, "draw_order": 1},
+        "grib2":                 {"color": "#22c55e", "alpha": 0.45, "draw_order": 2},
+        "forecast":              {"color": "#22c55e", "alpha": 0.45, "draw_order": 2},
     }
+    DEFAULT_STYLE = {"color": "#64748b", "alpha": 0.3, "draw_order": 1}
 
     # Build shapely geometries for each source
     src_geoms = []
@@ -140,11 +151,17 @@ def main():
             ax.set_ylim(extent_min_lat - margin_lat, extent_max_lat + margin_lat)
         ax.grid(True, alpha=0.3)
 
-    # Render each bounded source
+    # Render each bounded source, background types first (draw_order) so the
+    # sparser, higher-value forecast layers end up on top instead of buried
+    # under stacks of overlapping tide-prediction polygons.
     rendered_types = set()
-    for src in bounded:
-        style = type_styles.get(src.get("type", ""), {"color": "#64748b", "label": "Other"})
+    ordered_bounded = sorted(
+        bounded, key=lambda s: type_styles.get(s.get("type", ""), DEFAULT_STYLE)["draw_order"]
+    )
+    for src in ordered_bounded:
+        style = type_styles.get(src.get("type", ""), DEFAULT_STYLE)
         color = style["color"]
+        alpha = style["alpha"]
         rendered_types.add(src.get("type", ""))
         geom_data = src.get("region", {}).get("boundary_geometry")
         bbox = src.get("region", {}).get("bounding_box")
@@ -156,19 +173,19 @@ def main():
                 continue
             if geom.is_empty:
                 continue
-            
+
             if USE_CARTOPY:
                 # Plot the shapely geometry directly, letting Cartopy handle projection-aware boundary clipping
                 ax.add_geometries([geom], crs=ccrs.PlateCarree(),
-                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=0.5)
+                                  facecolor=color, edgecolor=color, alpha=alpha, linewidth=0.5)
             else:
                 if geom.geom_type == "Polygon":
                     xs, ys = geom.exterior.xy
-                    ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=0.5)
+                    ax.fill(xs, ys, color=color, alpha=alpha, edgecolor=color, linewidth=0.5)
                 elif geom.geom_type == "MultiPolygon":
                     for poly in geom.geoms:
                         xs, ys = poly.exterior.xy
-                        ax.fill(xs, ys, color=color, alpha=0.3, edgecolor=color, linewidth=0.5)
+                        ax.fill(xs, ys, color=color, alpha=alpha, edgecolor=color, linewidth=0.5)
         elif bbox:
             coords = [
                 [bbox["min_lon"], bbox["min_lat"]],
@@ -181,17 +198,18 @@ def main():
                 import shapely.geometry as sgeom
                 geom = sgeom.Polygon(coords)
                 ax.add_geometries([geom], crs=ccrs.PlateCarree(),
-                                  facecolor=color, edgecolor=color, alpha=0.3, linewidth=0.5)
+                                  facecolor=color, edgecolor=color, alpha=alpha, linewidth=0.5)
             else:
                 p = MplPolygon(coords, closed=True, facecolor=color, edgecolor=color,
-                               linewidth=0.5, alpha=0.3)
+                               linewidth=0.5, alpha=alpha)
                 ax.add_patch(p)
 
-    # Legend
+    # Legend — fixed alpha regardless of each type's map alpha, so faint
+    # background types still read clearly as colored swatches in the key.
     legend_patches = []
     for t in sorted(rendered_types):
-        st = type_styles.get(t, {"color": "#64748b", "label": "Other"})
-        legend_patches.append(Patch(color=st["color"], alpha=0.5, label=st["label"]))
+        st = type_styles.get(t, DEFAULT_STYLE)
+        legend_patches.append(Patch(color=st["color"], alpha=0.6, label=label_for(t)))
 
     if globals_list:
         names = ", ".join(s["name"] for s in globals_list)

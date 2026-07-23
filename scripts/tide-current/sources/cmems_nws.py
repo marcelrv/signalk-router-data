@@ -75,12 +75,24 @@ overlapped but didn't (-7.3 is west of -6.5, leaving St George's Channel —
 the Ireland-Wales route — uncovered). Fixed by extending both Ireland
 regions' east edge to -6.3.
 
-Deliberately NOT covering the whole shelf in this pass — Orkney/Shetland/
-Pentland Firth (the gap between nws_scotland_north's east edge, -4.3, and
-nws_uk_scotland_e's west edge, -2.5, above ~58.5N) and Norway are left for
-a follow-up if there's demand. nws_uk_scotland_e/nws_uk_ne_england's west
-edge (-2.2/-2.5) overlaps BSH's North Sea coarse grid (starts -3.92E) with
-a wide margin, so there's no seam gap against BSH.
+Follow-up (2026-07-23): added nws_orkney_shetland to close the
+Orkney/Shetland/Pentland Firth gap noted above. Tried widening
+nws_scotland_north or nws_uk_scotland_e to swallow it first — both blew
+back up to the same size class the 11-way split was built to avoid
+(27.7 MB and 22.8 MB respectively, measured), for the same reason: NWS's
+point density means "just extend the bbox a bit" is never free. A
+standalone region measured at 10.6 MB instead (real generate_nws_gribs.py
+run) — close to nws_irish_sea's 10.3 MB, and correct on its own terms
+(Shetland is a genuinely separate cruising ground from both mainland NW
+Scotland and the Firth of Forth, not a natural extension of either file).
+Overlaps nws_scotland_north by 0.2 deg (lon) / 1.2 deg (lat) and
+nws_uk_scotland_e by 2.0 deg (lon) / 0.7 deg (lat).
+
+Norway remains out of scope — outside NWS's domain entirely (max 62.74N
+only reaches southern Norway at the very edge, and even that edge isn't
+requested here). nws_uk_scotland_e/nws_uk_ne_england's west edge
+(-2.2/-2.5) overlaps BSH's North Sea coarse grid (starts -3.92E) with a
+wide margin, so there's no seam gap against BSH.
 """
 
 import json
@@ -192,6 +204,15 @@ REGIONS = {
         "description": "Surface current forecasts for the east coast of Scotland, from the "
                        "Firth of Forth through Aberdeen to the Moray Firth.",
         "bounds": {"min_lat": 55.8, "max_lat": 59.0, "min_lon": -2.5, "max_lon": 0.3},
+        "target_res_lat_deg": 0.013513511183571681,
+        "target_res_lon_deg": 0.030303030303030304,
+        "forecast_hours": 72,
+    },
+    "nws_orkney_shetland": {
+        "name": "Orkney, Shetland & Pentland Firth",
+        "description": "Surface current forecasts for Orkney, Shetland, the Pentland Firth "
+                       "and the far north Scottish mainland coast.",
+        "bounds": {"min_lat": 58.3, "max_lat": 61.0, "min_lon": -4.5, "max_lon": -0.5},
         "target_res_lat_deg": 0.013513511183571681,
         "target_res_lon_deg": 0.030303030303030304,
         "forecast_hours": 72,

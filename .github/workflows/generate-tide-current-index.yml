@@ -40,8 +40,11 @@ jobs:
       - name: Render coverage map
         run: python scripts/tide-current/render_coverage_map.py --index tide-current-index.json --output tide-current-coverage.png
 
+      - name: Generate interactive coverage GeoJSON
+        run: python scripts/tide-current/generate_coverage_geojson.py --index tide-current-index.json --output tide-current-coverage.geojson
+
       - name: Commit updates
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "Auto-update tide-current-index.json and coverage map"
-          file_pattern: tide-current-index.json tide-current-coverage.png
+          file_pattern: tide-current-index.json tide-current-coverage.png tide-current-coverage.geojson
