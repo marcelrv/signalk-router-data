@@ -1,0 +1,71 @@
+name: Generate CMEMS IBI Current GRIB2 Files
+
+on:
+  schedule:
+    # Once daily — the anfc dataset updates ~14:00 UTC (per the Copernicus
+    # Marine product page), unlike NOS OFS's multiple daily model cycles.
+    - cron: '30 15 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ibi-gribs
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -q copernicusmarine numpy xarray netCDF4 eccodes
+
+      - name: Generate IBI GRIB2 files
+        env:
+          COPERNICUSMARINE_SERVICE_USERNAME: ${{ secrets.COPERNICUSMARINE_SERVICE_USERNAME }}
+          COPERNICUSMARINE_SERVICE_PASSWORD: ${{ secrets.COPERNICUSMARINE_SERVICE_PASSWORD }}
+        run: |
+          python scripts/tide-current/generate_ibi_gribs.py \
+            --output-dir ./ibi-gribs
+          echo "---"
+          echo "GRIB2 files:"
+          ls -lh ./ibi-gribs/
+
+      - name: Upload GRIB2 files to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Per-file isolation: a failed upload must not block the remaining
+          # regions' uploads (each asset is independent) — collect failures
+          # and fail the job at the END instead of aborting mid-loop.
+          failed=0
+          for f in ./ibi-gribs/*.grb2; do
+            [ -f "$f" ] || continue
+            echo "Uploading $(basename $f)..."
+            gh release upload ibi-currents-latest "$f" \
+              --clobber \
+              --repo "${{ github.repository }}" \
+              2>/tmp/gh_upload_err.txt || {
+                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
+                  echo "Release does not exist — creating..."
+                  gh release create ibi-currents-latest "$f" \
+                    --repo "${{ github.repository }}" \
+                    --title "Surface Current Forecasts — Iberia/Biscay (Copernicus Marine CMEMS IBI)" \
+                    --notes "Gridded surface current forecasts (tide + weather + river forcing) for the Bay of Biscay and NW Iberia, regenerated daily from the Copernicus Marine Service IBI analysis-and-forecast model (dataset cmems_mod_ibi_phy_anfc_0.027deg-2D_PT1H-m). Generated using E.U. Copernicus Marine Service Information (https://doi.org/10.48670/moi-00027). NOT an official Copernicus product; not endorsed by Mercator Ocean International. See https://github.com/marcelrv/signalk-router-data/issues/3 for background." \
+                    --latest=false
+                else
+                  echo "Upload FAILED for $(basename $f):"
+                  cat /tmp/gh_upload_err.txt
+                  failed=1
+                fi
+              }
+          done
+          exit $failed

@@ -44,6 +44,8 @@ import xarray as xr
 from scipy.interpolate import griddata
 from scipy.spatial import cKDTree
 
+from grib2_writer import UNIFORMITY_TOLERANCE_FRACTION, check_uniform, encode_grib2
+
 # sources/nos_ofs.py is the single source of truth for the NOS OFS model
 # metadata (MODELS) and the shared polygon/bbox helpers — it is stdlib-only
 # and lives in the sibling sources/ directory alongside the other weekly
@@ -66,15 +68,6 @@ THREDDS_CAT = f"{THREDDS_BASE}/catalog"
 # Fallback target resolution used only if a model in MODELS is missing
 # target_res_deg — every current model sets it explicitly (see nos_ofs.py).
 DEFAULT_RES_DEG = 0.05
-# Sentinel written at masked/non-finite grid points. eccodes excludes any
-# point equal to this value from the packed data section and builds the
-# GRIB2 bitmap accordingly (bitmapPresent=1) — the plugin's parser then
-# decodes those points as NaN via the bitmap, not as a fake 0.0 current.
-MISSING_VALUE = -9999.0
-# Max deviation from perfectly uniform spacing we tolerate in a subsampled
-# coordinate axis, as a fraction of the computed increment, before treating
-# the grid as non-uniform and aborting that model.
-UNIFORMITY_TOLERANCE_FRACTION = 0.03
 
 
 def _dods_url(model_id: str, upper: str, cycle: str, d: date, hour: int) -> str:
@@ -121,8 +114,8 @@ def _native_spacing(lat: np.ndarray, lon: np.ndarray, mid: str) -> float:
                 f"single step"
             )
     nr = nr_lat if nr_lat > 0 else nr_lon
-    _check_uniform(lat[:, 0], nr_lat, "native latitude", mid)
-    _check_uniform(lon[0, :], nr_lon, "native longitude", mid)
+    check_uniform(lat[:, 0], nr_lat, "native latitude", mid)
+    check_uniform(lon[0, :], nr_lon, "native longitude", mid)
     return nr
 
 
@@ -165,78 +158,6 @@ def _pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
     with np.errstate(invalid="ignore", divide="ignore"):
         mean = np.where(count > 0, total / np.maximum(count, 1), np.nan)
     return mean, count
-
-
-def _check_uniform(coords_1d: np.ndarray, inc: float, axis_name: str, model_id: str) -> None:
-    """Sanity check that a subsampled coordinate axis is (close to)
-    uniformly spaced. Encoding a non-uniform axis as a regular_ll grid with
-    a single increment would silently mislocate every sample past the first
-    non-uniform gap, so we abort the model with a clear error instead."""
-    if len(coords_1d) < 2:
-        return
-    diffs = np.diff(coords_1d)
-    max_dev = float(np.max(np.abs(diffs - inc)))
-    tol = max(abs(inc) * UNIFORMITY_TOLERANCE_FRACTION, 1e-9)
-    if max_dev > tol:
-        raise ValueError(
-            f"{model_id}: {axis_name} spacing not uniform after subsampling "
-            f"(max deviation {max_dev:.6f} deg exceeds tolerance {tol:.6f} deg) — aborting"
-        )
-
-
-def _write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, time_val, step, is_u):
-    import eccodes as ec
-
-    gid = ec.codes_grib_new_from_samples("GRIB2")
-    try:
-        ec.codes_set(gid, "centre", 7)  # NCEP/US (NOAA-derived data)
-        ec.codes_set(gid, "dataDate", date_val)
-        ec.codes_set(gid, "dataTime", time_val)
-        ec.codes_set(gid, "stepRange", step)
-        ec.codes_set(gid, "stepType", "instant")
-        ec.codes_set(gid, "typeOfLevel", "surface")
-        ec.codes_set(gid, "level", 0)
-        ec.codes_set(gid, "gridType", "regular_ll")
-        ec.codes_set(gid, "Ni", ni)
-        ec.codes_set(gid, "Nj", nj)
-        ec.codes_set(gid, "latitudeOfFirstGridPointInDegrees", lat0)
-        ec.codes_set(gid, "longitudeOfFirstGridPointInDegrees", lon0)
-        # Last grid point is derived from first point + (N-1)*increment so
-        # it is exactly consistent with Ni/Nj and the increments, rather
-        # than an independently-measured corner that could disagree by a
-        # fraction of a cell with the declared increment.
-        ec.codes_set(gid, "latitudeOfLastGridPointInDegrees", lat0 + (nj - 1) * inc_lat)
-        ec.codes_set(gid, "longitudeOfLastGridPointInDegrees", lon0 + (ni - 1) * inc_lon)
-        ec.codes_set(gid, "iDirectionIncrementInDegrees", abs(inc_lon))
-        ec.codes_set(gid, "jDirectionIncrementInDegrees", abs(inc_lat))
-        # The regulargrid source stores latitude ascending (row 0 = south);
-        # process_model flips arrays to ascending before we get here, so
-        # this is always south->north / west->east scanning.
-        ec.codes_set(gid, "iScansNegatively", 0)
-        ec.codes_set(gid, "jScansPositively", 1)
-        ec.codes_set(gid, "discipline", 10)
-        ec.codes_set(gid, "parameterCategory", 1)
-        # 2 = u-component (eastward), 3 = v-component (northward) — the
-        # plugin (src/gribcurrents.ts isCurrentField/buildSlots) pairs
-        # strictly on params (2,3) or (0,1); u=1/v=2 would be silently
-        # misread as something else entirely.
-        ec.codes_set(gid, "parameterNumber", 2 if is_u else 3)
-        ec.codes_set(gid, "packingType", "grid_simple")
-        ec.codes_set(gid, "bitmapPresent", 1)
-        ec.codes_set(gid, "missingValue", MISSING_VALUE)
-        out = data.astype(np.float64)
-        out[~valid] = MISSING_VALUE
-        ec.codes_set_values(gid, out.ravel())
-        ec.codes_write(gid, f)
-    finally:
-        ec.codes_release(gid)
-
-
-def _encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u, all_valid_v, hours, bd, bt, path):
-    with open(path, "wb") as f:
-        for h, u, v, valid_u, valid_v in zip(hours, all_u, all_v, all_valid_u, all_valid_v):
-            _write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True)
-            _write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False)
 
 
 def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
@@ -301,8 +222,8 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
                 nj, ni = lat_p.shape
                 inc_lat = (lat_p[-1, 0] - lat_p[0, 0]) / (nj - 1) if nj > 1 else 0.0
                 inc_lon = (lon_p[0, -1] - lon_p[0, 0]) / (ni - 1) if ni > 1 else 0.0
-                _check_uniform(lat_p[:, 0], inc_lat, "latitude", mid)
-                _check_uniform(lon_p[0, :], inc_lon, "longitude", mid)
+                check_uniform(lat_p[:, 0], inc_lat, "latitude", mid)
+                check_uniform(lon_p[0, :], inc_lon, "longitude", mid)
 
             u, v = _extract_uv(ds)
         except Exception as e:
@@ -340,7 +261,7 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
     bd = int(d.strftime("%Y%m%d"))
     bt = int(ch) * 100
     nj, ni = lat_p.shape
-    _encode_grib2(
+    encode_grib2(
         float(lat_p[0, 0]), float(lon_p[0, 0]), inc_lat, inc_lon, ni, nj,
         au, av, avu, avv, ah, bd, bt, out,
     )
@@ -462,7 +383,7 @@ def process_curvilinear_model(mid, m, d, ch, out_dir):
 
     if not au:
         return None
-    _encode_grib2(
+    encode_grib2(
         float(lats[0]), float(lons[0]), inc_lat, inc_lon, ni, nj,
         au, av, avu, avv, ah, bd, bt, out,
     )
