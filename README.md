@@ -13,7 +13,7 @@ Both kinds appear on the [coverage map](#tidal-streams--currents) below, in the 
 
 **Licensing:** Code and tooling are [GPLv3](LICENSE). Original/compiled data catalogs and databases are [CC-BY-NC-4.0](LICENSE-DATA.md). Third-party data sources (NOAA, BSH, FES2014, OpenCPN) follow their own upstream terms — see the [License & Attribution](#license--attribution) section below.
 
-Routing databases are stored as `.sqlite.gz` (gzip-compressed) to reduce download size. The plugin's download dialog handles decompression automatically.
+Routing databases are published as `.sqlite.gz` (gzip-compressed) assets on the rolling [**routing-databases-latest**](https://github.com/marcelrv/signalk-router-data/releases/tag/routing-databases-latest) release — the same way the forecast-current GRIB2 files are published — so rebuilding a region never grows this repository. The repo itself holds only the small `regions/**/*.index.json` descriptors that [`routing-index.json`](routing-index.json) is generated from. The plugin's download dialog resolves the release URL and handles decompression automatically.
 
 ## Coverage
 
@@ -57,7 +57,7 @@ See [specs/tide-current-catalog.md](specs/tide-current-catalog.md) for the full 
 ### RouteIQ (Routing)
 1. Install the [SignalK RouteIQ nautical route planner](https://github.com/marcelrv/signalk-routeiq)
 2. Set `routingDataDir` in the plugin config to a directory on your server
-3. Download the `.sqlite.gz` file(s) for your region(s) from [the regions folder](regions/) or use the plugin's built-in "Manage Routing Data" dialog
+3. Download the `.sqlite.gz` file(s) for your region(s) from the [routing-databases-latest release](https://github.com/marcelrv/signalk-router-data/releases/tag/routing-databases-latest) or use the plugin's built-in "Manage Routing Data" dialog
 4. The plugin automatically decompresses `.sqlite.gz` files on download — just use the dialog
 5. Restart the plugin
 

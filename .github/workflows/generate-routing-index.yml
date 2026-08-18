@@ -3,9 +3,11 @@ on:
   push:
     branches: [main]
     paths:
+      - 'regions/**/*.index.json'
       - 'regions/**/*.sqlite.gz'
       - 'regions/**/*.sqlite'
       - 'scripts/generate_index.py'
+      - 'scripts/routing_release_notes.py'
   workflow_dispatch:
 
 permissions:
@@ -41,3 +43,21 @@ jobs:
         with:
           commit_message: "Auto-update routing-index.json and coverage map"
           file_pattern: routing-index.json coverage-map.png
+
+      # Regenerated from routing-index.json every run so the region table on
+      # the release page never drifts from the published catalog — deploying a
+      # new region updates the release notes automatically. Skipped when the
+      # release does not exist yet (no region has been published to it).
+      - name: Update release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view routing-databases-latest --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "Release routing-databases-latest does not exist yet — nothing to update."
+            exit 0
+          fi
+          python scripts/routing_release_notes.py --index routing-index.json > /tmp/routing_notes.md
+          gh release edit routing-databases-latest \
+            --repo "${{ github.repository }}" \
+            --title "Routing Databases — Nautical Routing Graphs" \
+            --notes-file /tmp/routing_notes.md

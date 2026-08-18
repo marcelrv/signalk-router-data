@@ -14,3 +14,10 @@ tide_models/
 
 # Cached NOAA CO-OPS API responses (scripts/NOAA/noaa_currents_to_utcef.py)
 scripts/NOAA/cache/
+
+# Routing databases are published as GitHub Release assets, not committed —
+# a 10 MB blob per rebuild would live in git history forever.
+# See specs/routing-database-catalog.md §5.
+.release-staging/
+regions/**/*.sqlite
+regions/**/*.sqlite.gz

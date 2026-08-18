@@ -1,197 +1,195 @@
 {
-  "catalog_schema_version": "1.0.0",
+  "catalog_schema_version": "1.1.0",
   "version": 2,
-  "generated": "2026-07-24T23:11:04Z",
+  "generated": "2026-08-18T21:41:43Z",
   "region_count": 1,
   "regions": [
     {
       "id": "europe_nl_zeeland",
-      "file": "regions/europe/nl/zeeland.sqlite.gz",
+      "filename": "zeeland.sqlite.gz",
       "inner_filename": "zeeland.sqlite",
-      "sha256": "db10ce30c8419726072ef3ef4cd1bdf7029e311311976500d2d77fd329f67f0b",
-      "size_bytes": 4550033,
+      "sha256": "fba2452e3286038e1141daa232817ae1769c44675aa3ba6ca7a51a08b774a091",
+      "size_bytes": 7037715,
       "compression": "gzip",
       "country": "NL",
       "name": "Zeeland",
-      "description": "Zeeland province inland and coastal waterways, Netherlands, based on ENCs",
-      "last_update": "2026-07-18T18:06:57Z",
-      "schema_version": 1,
+      "description": "Zeeland province and approaches (Westerschelde, Oosterschelde, Veerse Meer, Grevelingen, Haringvliet, North Sea approach), based on Rijkswaterstaat IENC / ENC data",
+      "last_update": "2026-08-14T22:26:31Z",
+      "schema_version": 2,
       "tags": [
+        "ienc",
         "rws",
-        "enc",
-        "inland",
-        "coastal"
+        "coastal",
+        "inland"
       ],
-      "contributor": "Marcel Verpaalen",
+      "contributor": "",
       "url": "https://github.com/marcelrv/signalk-router-data",
       "bounding_box": {
-        "min_lat": 51.21018,
-        "min_lon": 3.2,
-        "max_lat": 51.7,
-        "max_lon": 4.3
+        "min_lat": 51.21014,
+        "min_lon": 3.13333,
+        "max_lat": 51.95,
+        "max_lon": 4.65
       },
       "boundary_geometry": {
         "type": "Polygon",
         "coordinates": [
           [
             [
-              3.8048,
-              51.21018
+              3.80481,
+              51.21014
             ],
             [
               3.8024,
               51.21042
             ],
             [
-              3.80123,
-              51.21056
+              3.80131,
+              51.21061
             ],
             [
-              3.36644,
-              51.37153
+              3.36606,
+              51.37013
             ],
             [
-              3.36529,
-              51.37199
+              3.36518,
+              51.37046
             ],
             [
-              3.36414,
-              51.37253
+              3.35311,
+              51.37832
             ],
             [
-              3.36185,
-              51.37361
+              3.13607,
+              51.52224
             ],
             [
-              3.36114,
-              51.37398
+              3.13413,
+              51.52356
             ],
             [
-              3.35327,
-              51.37823
+              3.13378,
+              51.52444
             ],
             [
-              3.20116,
-              51.48919
+              3.1336,
+              51.52521
             ],
             [
-              3.20045,
-              51.48973
+              3.13343,
+              51.52609
             ],
             [
-              3.20017,
-              51.49144
+              3.13342,
+              51.52628
             ],
             [
-              3.20003,
-              51.49234
+              3.13333,
+              51.54714
             ],
             [
-              3.2,
-              51.51206
+              3.13333,
+              51.69496
             ],
             [
-              3.2,
-              51.67723
+              3.13334,
+              51.79666
             ],
             [
-              3.20004,
-              51.69339
+              3.1334,
+              51.81864
             ],
             [
-              3.20005,
-              51.69564
+              3.13341,
+              51.82216
             ],
             [
-              3.20006,
-              51.69743
+              3.13342,
+              51.82315
             ],
             [
-              3.20035,
-              51.69833
+              3.13466,
+              51.82359
             ],
             [
-              3.20166,
-              51.69869
+              3.13591,
+              51.82392
             ],
             [
-              3.20427,
-              51.69931
+              3.13733,
+              51.82425
             ],
             [
-              3.20716,
-              51.69976
+              3.14017,
+              51.82469
             ],
             [
-              3.20861,
-              51.69985
+              3.1416,
+              51.8249
             ],
             [
-              3.21006,
-              51.69993
+              4.63787,
+              51.94999
             ],
             [
-              3.21139,
-              51.69996
+              4.63907,
+              51.95
             ],
             [
-              3.23975,
-              51.7
+              4.64038,
+              51.94996
             ],
             [
-              4.08893,
-              51.7
+              4.64991,
+              51.89092
             ],
             [
-              4.14194,
-              51.69997
+              4.65,
+              51.88955
             ],
             [
-              4.14339,
-              51.69986
+              4.65,
+              51.71971
             ],
             [
-              4.21213,
-              51.68897
+              4.64981,
+              51.71366
             ],
             [
-              4.29907,
-              51.65877
+              4.6498,
+              51.71344
             ],
             [
-              4.3,
-              51.65628
+              4.60934,
+              51.64724
             ],
             [
-              4.3,
-              51.65368
+              4.26991,
+              51.37582
             ],
             [
-              4.26992,
-              51.37583
+              4.21798,
+              51.3353
             ],
             [
-              4.21784,
-              51.3352
+              4.21637,
+              51.33421
             ],
             [
-              4.21623,
-              51.33414
-            ],
-            [
-              3.8048,
-              51.21018
+              3.80481,
+              51.21014
             ]
           ]
         ]
       },
       "stats": {
-        "nodes": 30254,
-        "edges": 80385,
-        "pois": 531,
-        "coastal_nodes": 26538,
-        "inland_nodes": 3716
-      }
+        "nodes": 48553,
+        "edges": 137718,
+        "pois": 861,
+        "coastal_nodes": 39787,
+        "inland_nodes": 8766
+      },
+      "deployed": "2026-08-18T21:38:58Z",
+      "download_url": "https://github.com/marcelrv/signalk-router-data/releases/download/routing-databases-latest/zeeland.sqlite.gz"
     }
   ]
 }

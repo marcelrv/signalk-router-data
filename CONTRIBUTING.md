@@ -53,18 +53,23 @@ python3 nautical_routing_pipeline.py \
 Use the deploy script from signalk-router-pipeline:
 
 ```bash
-python3 backend/deploy_to_data_repo.py \
+python3 deploy_to_data_repo.py \
   --input ./myregion.sqlite \
   --continent europe \
   --country nl \
   --region my-region \
-  --data-repo /path/to/signalk-router-data
+  --data-repo /path/to/signalk-router-data \
+  --upload
 ```
 
-This gzips the `.sqlite` file and places it at:
+The database itself is **not committed to this repository**. It is uploaded as
+an asset to the rolling `routing-databases-latest` GitHub Release, because git
+never discards old blobs — a ~10 MB `.sqlite.gz` committed on every rebuild
+would enlarge every user's clone permanently. What the script writes into the
+repo is a small descriptor:
 
 ```
-regions/{continent}/{country-slug}/{region-slug}.sqlite.gz
+regions/{continent}/{country-slug}/{region-slug}.index.json
 ```
 
 | Component | Convention | Example |
@@ -74,23 +79,38 @@ regions/{continent}/{country-slug}/{region-slug}.sqlite.gz
 | `{region-slug}` | Descriptive, hyphen-separated, lowercase | `netherlands`, `usa-east-coast` |
 
 Examples:
-- `regions/europe/nl/netherlands.sqlite.gz`
-- `regions/europe/gb/uk-west-coast.sqlite.gz`
-- `regions/north-america/usa/chesapeake-bay.sqlite.gz`
+- `regions/europe/nl/netherlands.index.json` → asset `netherlands.sqlite.gz`
+- `regions/europe/gb/uk-west-coast.index.json` → asset `uk-west-coast.sqlite.gz`
+- `regions/north-america/usa/chesapeake-bay.index.json` → asset `chesapeake-bay.sqlite.gz`
+
+See [specs/routing-database-catalog.md §5](specs/routing-database-catalog.md#5-hosting--filesystem-layout)
+for the full layout.
 
 ### 3. Submit a Pull Request
 
+Only maintainers can upload release assets, so a contribution comes in two halves:
+
 1. Fork this repository
-2. Add your `.sqlite.gz` file in the correct folder (or use the deploy script above)
-3. Open a Pull Request
-4. The CI workflow will automatically regenerate `routing-index.json` and `coverage-map.png`
+2. Run the deploy script with `--no-upload`. It writes the descriptor and stages
+   the `.sqlite.gz` under `.release-staging/` without publishing anything.
+3. Commit **the descriptor only** (`.sqlite.gz` files are gitignored) and open a
+   Pull Request. Say in the PR where the staged `.sqlite.gz` can be fetched — a
+   link to it in your own fork's releases is easiest.
+4. A maintainer uploads the asset to `routing-databases-latest` and merges. The
+   CI workflow then regenerates `routing-index.json`, `coverage-map.png`, and
+   the release notes.
+
+Note that the descriptor's `sha256` is checked by clients, so the file a
+maintainer uploads must be byte-identical to the one you staged.
 
 ### 4. Updating an Existing Region
 
 To update a region (e.g., with newer ENC data):
 
 1. Regenerate the `.sqlite` file with the pipeline (same `--name`, `--region`)
-2. Run the deploy script again — it overwrites the existing `.sqlite.gz`
+2. Run the deploy script again — it overwrites the release asset in place and
+   rewrites the descriptor. Rebuild as often as you need; only the descriptor's
+   few changed lines land in git history.
 3. Submit a PR — the new `last_update_date` in the metadata will signal to users that an update is available
 
 ## Guidelines

@@ -1,0 +1,187 @@
+{
+  "id": "europe_nl_zeeland",
+  "filename": "zeeland.sqlite.gz",
+  "release_tag": "routing-databases-latest",
+  "inner_filename": "zeeland.sqlite",
+  "sha256": "fba2452e3286038e1141daa232817ae1769c44675aa3ba6ca7a51a08b774a091",
+  "size_bytes": 7037715,
+  "compression": "gzip",
+  "country": "NL",
+  "name": "Zeeland",
+  "description": "Zeeland province and approaches (Westerschelde, Oosterschelde, Veerse Meer, Grevelingen, Haringvliet, North Sea approach), based on Rijkswaterstaat IENC / ENC data",
+  "last_update": "2026-08-14T22:26:31Z",
+  "schema_version": 2,
+  "tags": [
+    "ienc",
+    "rws",
+    "coastal",
+    "inland"
+  ],
+  "contributor": "",
+  "url": "https://github.com/marcelrv/signalk-router-data",
+  "bounding_box": {
+    "min_lat": 51.21014,
+    "min_lon": 3.13333,
+    "max_lat": 51.95,
+    "max_lon": 4.65
+  },
+  "boundary_geometry": {
+    "type": "Polygon",
+    "coordinates": [
+      [
+        [
+          3.80481,
+          51.21014
+        ],
+        [
+          3.8024,
+          51.21042
+        ],
+        [
+          3.80131,
+          51.21061
+        ],
+        [
+          3.36606,
+          51.37013
+        ],
+        [
+          3.36518,
+          51.37046
+        ],
+        [
+          3.35311,
+          51.37832
+        ],
+        [
+          3.13607,
+          51.52224
+        ],
+        [
+          3.13413,
+          51.52356
+        ],
+        [
+          3.13378,
+          51.52444
+        ],
+        [
+          3.1336,
+          51.52521
+        ],
+        [
+          3.13343,
+          51.52609
+        ],
+        [
+          3.13342,
+          51.52628
+        ],
+        [
+          3.13333,
+          51.54714
+        ],
+        [
+          3.13333,
+          51.69496
+        ],
+        [
+          3.13334,
+          51.79666
+        ],
+        [
+          3.1334,
+          51.81864
+        ],
+        [
+          3.13341,
+          51.82216
+        ],
+        [
+          3.13342,
+          51.82315
+        ],
+        [
+          3.13466,
+          51.82359
+        ],
+        [
+          3.13591,
+          51.82392
+        ],
+        [
+          3.13733,
+          51.82425
+        ],
+        [
+          3.14017,
+          51.82469
+        ],
+        [
+          3.1416,
+          51.8249
+        ],
+        [
+          4.63787,
+          51.94999
+        ],
+        [
+          4.63907,
+          51.95
+        ],
+        [
+          4.64038,
+          51.94996
+        ],
+        [
+          4.64991,
+          51.89092
+        ],
+        [
+          4.65,
+          51.88955
+        ],
+        [
+          4.65,
+          51.71971
+        ],
+        [
+          4.64981,
+          51.71366
+        ],
+        [
+          4.6498,
+          51.71344
+        ],
+        [
+          4.60934,
+          51.64724
+        ],
+        [
+          4.26991,
+          51.37582
+        ],
+        [
+          4.21798,
+          51.3353
+        ],
+        [
+          4.21637,
+          51.33421
+        ],
+        [
+          3.80481,
+          51.21014
+        ]
+      ]
+    ]
+  },
+  "stats": {
+    "nodes": 48553,
+    "edges": 137718,
+    "pois": 861,
+    "coastal_nodes": 39787,
+    "inland_nodes": 8766
+  },
+  "deployed": "2026-08-18T21:38:58Z"
+}

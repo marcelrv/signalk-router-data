@@ -6,12 +6,24 @@
 """
 Generate index.json and coverage-map.png for the signalk-router-data repository.
 
-Scans all .sqlite.gz files under regions/, decompresses each to a temp
-location, reads metadata and stats, then produces:
-  - index.json        — machine-readable catalog of all available databases
-  - coverage-map.png  — world map showing coverage areas for README
+Merges two kinds of input under regions/ and produces:
+  - routing-index.json — machine-readable catalog of all available databases
+  - coverage-map.png   — world map showing coverage areas for README
 
-Also accepts plain .sqlite files for development convenience.
+Inputs, in precedence order:
+
+  1. *.index.json descriptors — the normal case. The databases themselves are
+     published as assets on the rolling `routing-databases-latest` GitHub
+     Release (same pattern as the tide/current GRIB releases), so the repo
+     holds only these few-KB descriptors and git history never grows by a
+     10 MB blob per rebuild. Written by the pipeline's deploy_to_data_repo.py.
+
+  2. *.sqlite.gz / *.sqlite files physically present under regions/ — a
+     development convenience, and the path used before release hosting.
+     Decompressed to a temp location so metadata and stats can be read.
+
+A descriptor always wins over a local file for the same region id: the
+descriptor describes the asset that consumers will actually download.
 
 Usage:
     python3 generate_index.py [--regions-dir ./regions] [--output-dir .]
@@ -28,6 +40,14 @@ import argparse
 import sqlite3
 import tempfile
 from datetime import datetime, timezone
+
+# Rolling release that carries the routing database assets. Assets are
+# overwritten in place (gh release upload --clobber), so republishing a region
+# costs no repo growth and no new git objects — see specs/routing-database-catalog.md.
+RELEASE_TAG = "routing-databases-latest"
+RELEASE_DOWNLOAD_BASE = (
+    f"https://github.com/marcelrv/signalk-router-data/releases/download/{RELEASE_TAG}"
+)
 
 COORD_SPACE = 36000000
 TYPE_MASK = 648_000_000_000_000
@@ -156,8 +176,14 @@ def read_metadata_from_gz(gz_path: str, inner_filename: str) -> dict | None:
             shutil.rmtree(tmpdir, ignore_errors=True)
 
 
-def generate_index(regions_dir: str) -> list:
-    """Walk regions_dir, read all .sqlite.gz databases, return region entries."""
+def generate_index(regions_dir: str, skip_ids: set | None = None) -> list:
+    """Walk regions_dir, read all .sqlite.gz databases, return region entries.
+
+    Ids in skip_ids are already covered by a descriptor; skipping them avoids
+    decompressing and hashing a multi-hundred-MB database whose entry is about
+    to be discarded in favour of the descriptor's.
+    """
+    skip_ids = skip_ids or set()
     entries = []
 
     # Scan for .sqlite.gz files (primary) and plain .sqlite files (fallback)
@@ -188,6 +214,10 @@ def generate_index(regions_dir: str) -> list:
             region_id = rel.replace(os.sep, "_").replace(".sqlite", "").lower()
             inner_name = os.path.basename(filepath)
 
+        if region_id in skip_ids:
+            print(f"  [SKIP] {rel} — superseded by its .index.json descriptor", file=sys.stderr)
+            return
+
         print(f"  Scanning {rel}...", file=sys.stderr)
 
         if is_gz:
@@ -203,9 +233,15 @@ def generate_index(regions_dir: str) -> list:
         sha = sha256_file(filepath)
 
         record_path = os.path.join("regions", rel).replace(os.sep, "/")
+        asset_name = os.path.basename(filepath)
 
         entry = {
             "id": region_id,
+            "filename": asset_name,
+            # No download_url: this database exists only as a file in the
+            # repository (dev checkout, or a region not yet published to the
+            # release). Consumers resolve `file` against the catalog's own
+            # directory, as they always have.
             "file": record_path,
             "inner_filename": inner_name,
             "sha256": sha,
@@ -235,6 +271,58 @@ def generate_index(regions_dir: str) -> list:
         process_entry(sqlite, is_gz=False)
 
     return entries
+
+
+DESCRIPTOR_REQUIRED_FIELDS = ("id", "filename", "sha256", "size_bytes", "name")
+
+
+def load_descriptors(regions_dir: str) -> list:
+    """Read every *.index.json descriptor under regions_dir into catalog entries.
+
+    A descriptor is the region's catalog entry as written by the pipeline at
+    deploy time — it already carries the metadata, stats and checksums read
+    from the database, so the database itself never has to be present here.
+    """
+    entries = []
+    paths = sorted(glob.glob(os.path.join(regions_dir, "**", "*.index.json"), recursive=True))
+
+    for path in paths:
+        rel = os.path.relpath(path, regions_dir)
+        try:
+            with open(path) as f:
+                entry = json.load(f)
+        except Exception as e:
+            print(f"  [WARN] {rel} — unreadable descriptor: {e}", file=sys.stderr)
+            continue
+
+        missing = [f for f in DESCRIPTOR_REQUIRED_FIELDS if not entry.get(f)]
+        if missing:
+            print(f"  [SKIP] {rel} — descriptor missing {', '.join(missing)}", file=sys.stderr)
+            continue
+
+        # The descriptor records which release tag holds the asset; the URL is
+        # derived here so that moving the release only changes this script.
+        tag = entry.pop("release_tag", RELEASE_TAG)
+        base = (
+            RELEASE_DOWNLOAD_BASE if tag == RELEASE_TAG
+            else f"https://github.com/marcelrv/signalk-router-data/releases/download/{tag}"
+        )
+        entry["download_url"] = f"{base}/{entry['filename']}"
+        # `file` would be a dangling repo path for a release-hosted database —
+        # a consumer resolving it against the catalog directory gets a 404.
+        entry.pop("file", None)
+
+        print(f"  Descriptor {rel} -> {entry['download_url']}", file=sys.stderr)
+        entries.append(entry)
+
+    return entries
+
+
+def merge_entries(descriptors: list, scanned: list) -> list:
+    """Combine descriptor and scanned entries, descriptors winning on id."""
+    merged = {e["id"]: e for e in scanned}
+    merged.update({e["id"]: e for e in descriptors})
+    return [merged[k] for k in sorted(merged)]
 
 
 def render_coverage_map(entries: list, output_path: str):
@@ -409,11 +497,15 @@ def main():
 
     os.makedirs(output_dir, exist_ok=True)
 
-    print(f"Scanning {regions_dir} for .sqlite.gz files...", file=sys.stderr)
-    entries = generate_index(regions_dir)
+    print(f"Scanning {regions_dir} for descriptors and database files...", file=sys.stderr)
+    descriptors = load_descriptors(regions_dir)
+    entries = merge_entries(
+        descriptors,
+        generate_index(regions_dir, skip_ids={d["id"] for d in descriptors}),
+    )
 
     index = {
-        "catalog_schema_version": "1.0.0",
+        "catalog_schema_version": "1.1.0",
         "version": 2,
         "generated": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "region_count": len(entries),
