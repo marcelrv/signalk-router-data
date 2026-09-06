@@ -1,7 +1,7 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-08-30T11:29:31Z",
+  "generated": "2026-09-06T10:30:25Z",
   "source_count": 82,
   "sources": [
     {
@@ -424,8 +424,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-08-30T11:29:00Z",
-        "latest_cycle": "2026-08-30T00:00:00Z"
+        "last_checked": "2026-09-06T10:29:53Z",
+        "latest_cycle": "2026-09-06T00:00:00Z"
       },
       "files": [
         {
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-08-30T11:29:00Z"
+        "last_checked": "2026-09-06T10:29:53Z"
       },
       "files": [
         {
@@ -3004,7 +3004,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-08-30T11:29:00Z"
+        "last_checked": "2026-09-06T10:29:53Z"
       },
       "files": [
         {
@@ -3733,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-08-30T11:29:00Z"
+        "last_checked": "2026-09-06T10:29:53Z"
       },
       "files": [
         {
@@ -4612,7 +4612,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-08-30T11:29:00Z"
+        "last_checked": "2026-09-06T10:29:53Z"
       },
       "files": [
         {
@@ -5314,7 +5314,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:01Z"
+        "last_checked": "2026-09-06T10:29:54Z"
       },
       "files": [
         {
@@ -5384,7 +5384,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5447,7 +5447,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5510,7 +5510,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5573,7 +5573,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5636,7 +5636,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5699,7 +5699,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5762,7 +5762,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5825,7 +5825,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5888,7 +5888,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -5951,7 +5951,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6014,7 +6014,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6077,7 +6077,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6140,7 +6140,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6203,7 +6203,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6266,7 +6266,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6329,7 +6329,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6392,7 +6392,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6455,7 +6455,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6518,7 +6518,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6581,7 +6581,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6644,7 +6644,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6707,7 +6707,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6770,7 +6770,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6833,7 +6833,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6896,7 +6896,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -6961,7 +6961,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7026,7 +7026,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7091,7 +7091,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7154,7 +7154,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7217,7 +7217,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7280,7 +7280,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7343,7 +7343,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7406,7 +7406,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7469,7 +7469,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7532,7 +7532,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7595,7 +7595,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7658,7 +7658,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7721,7 +7721,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7784,7 +7784,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7847,7 +7847,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7910,7 +7910,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -7973,7 +7973,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8036,7 +8036,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8099,7 +8099,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8162,7 +8162,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8225,7 +8225,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8290,7 +8290,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8355,7 +8355,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8418,7 +8418,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8481,7 +8481,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8544,7 +8544,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8607,7 +8607,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8670,7 +8670,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8733,7 +8733,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8796,7 +8796,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8859,7 +8859,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8922,7 +8922,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -8985,7 +8985,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9048,7 +9048,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9111,7 +9111,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9174,7 +9174,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9237,7 +9237,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9300,7 +9300,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9363,7 +9363,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9426,7 +9426,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9491,7 +9491,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9554,7 +9554,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9617,7 +9617,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9680,7 +9680,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9743,7 +9743,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9806,7 +9806,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9869,7 +9869,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9932,7 +9932,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -9995,7 +9995,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -10058,7 +10058,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
@@ -10121,7 +10121,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-08-30T11:29:31Z"
+        "last_checked": "2026-09-06T10:30:25Z"
       },
       "files": [
         {
