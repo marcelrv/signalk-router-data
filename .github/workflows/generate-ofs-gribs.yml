@@ -30,7 +30,12 @@ jobs:
         run: |
           pip install -q numpy xarray netCDF4 eccodes scipy fsspec aiohttp h5netcdf h5py
 
+      # continue-on-error: a model that fails to generate must not block the
+      # upload of the models that succeeded — the job is failed explicitly by
+      # the final step instead, so stale assets still turn CI red.
       - name: Generate OFS GRIB2 files
+        id: generate
+        continue-on-error: true
         run: |
           python scripts/tide-current/generate_ofs_gribs.py \
             --output-dir ./ofs-gribs
@@ -82,3 +87,9 @@ jobs:
             --repo "${{ github.repository }}" \
             --title "Surface Current Forecasts — US Waters (NOAA OFS)" \
             --notes-file /tmp/ofs_notes.md
+
+      - name: Fail if any model failed to generate
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::One or more OFS models failed to generate (see the 'Generate OFS GRIB2 files' step log). Models that did generate were still uploaded."
+          exit 1

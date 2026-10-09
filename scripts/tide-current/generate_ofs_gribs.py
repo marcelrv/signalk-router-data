@@ -534,6 +534,7 @@ def main():
     # a ThreadPoolExecutor here is a known segfault risk. This is a daily
     # batch job with no latency requirement, so there's no reason to risk it.
     generated = 0
+    failed = []
     for mid in selected:
         is_curvilinear = mid in CURVILINEAR_MODELS
         m = all_models.get(mid)
@@ -566,19 +567,27 @@ def main():
 
         if not path or not os.path.exists(path):
             print(f"  {mid}: Failed to generate GRIB2", file=sys.stderr)
+            failed.append(mid)
             continue
 
         sz = os.path.getsize(path)
         print(f"  {os.path.basename(path)}: {sz} bytes", file=sys.stderr)
         generated += 1
 
-    # Partial failures are tolerated (individual OFS models lag or skip
-    # cycles routinely), but producing NOTHING means the pipeline itself is
-    # broken (THREDDS and S3 both down, schema change) — fail the run so CI goes red
-    # instead of silently leaving the release assets to go stale.
+    # A model with no published cycle in the last 3 days is tolerated (OFS
+    # models lag or skip cycles routinely). But a model whose data WAS found
+    # and still produced no file is a real fault (missing dependency, schema
+    # change, source error) that would otherwise go green while its release
+    # asset silently goes stale. Exit 2 for that — the workflow still uploads
+    # the models that did succeed, then fails the job. Exit 1 means nothing
+    # at all was produced (e.g. THREDDS and S3 both down).
     if generated == 0:
         print("\nNo GRIB2 files generated for any model — failing.", file=sys.stderr)
         sys.exit(1)
+    if failed:
+        print(f"\n{len(failed)} model(s) had data but failed to generate: "
+              f"{', '.join(failed)} — failing.", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":
