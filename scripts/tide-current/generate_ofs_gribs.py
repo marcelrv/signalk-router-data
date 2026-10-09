@@ -5,8 +5,9 @@
 """
 GRIB2 generator for NOAA NOS OFS surface currents.
 
-Fetches surface current data from the NOAA NOS THREDDS DAP server and
-encodes it as a multi-message GRIB2 file per model (grid_simple packing,
+Fetches surface current data from the NOAA NOS THREDDS DAP server (falling
+back to NOAA's noaa-nos-ofs-pds open-data S3 bucket, which mirrors the same
+files, when THREDDS is down) and encodes it as a multi-message GRIB2 file per model (grid_simple packing,
 discipline 10 "oceanographic" / category 1 "currents", params 2=u/3=v).
 Two model shapes, two code paths, same GRIB2 writer at the tail:
 
@@ -35,7 +36,10 @@ dedicated daily workflow that supplies these deps.)
 
 import argparse
 import os
+import shutil
 import sys
+import tempfile
+import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
 
@@ -65,15 +69,62 @@ CURVILINEAR_MODELS = nos_ofs.CURVILINEAR_MODELS
 THREDDS_BASE = "https://opendap.co-ops.nos.noaa.gov/thredds"
 THREDDS_DODS = f"{THREDDS_BASE}/dodsC"
 THREDDS_CAT = f"{THREDDS_BASE}/catalog"
+# NOAA Open Data mirror of the same files ({model}/netcdf/YYYY/MM/DD/<file>).
+# THREDDS has had multi-day 503 outages; S3 has no OPeNDAP endpoint, so files
+# from it are downloaded whole (~100 MB each, faster than byte-range reads).
+S3_BASE = "https://noaa-nos-ofs-pds.s3.amazonaws.com"
+# Flipped off for the rest of the run once THREDDS proves unreachable, so a
+# hard outage doesn't cost a 30 s timeout per model per day probed.
+_thredds_ok = True
 # Fallback target resolution used only if a model in MODELS is missing
 # target_res_deg — every current model sets it explicitly (see nos_ofs.py).
 DEFAULT_RES_DEG = 0.05
 
 
-def _dods_url(model_id: str, upper: str, cycle: str, d: date, hour: int) -> str:
+def _regulargrid_name(model_id: str, cycle: str, d: date, hour: int) -> str:
     tag = f"f{hour:03d}" if hour >= 0 else f"n{abs(hour):03d}"
-    ds = f"{model_id}.t{cycle}z.{d.strftime('%Y%m%d')}.regulargrid.{tag}.nc"
+    return f"{model_id}.t{cycle}z.{d.strftime('%Y%m%d')}.regulargrid.{tag}.nc"
+
+
+def _dods_url(model_id: str, upper: str, cycle: str, d: date, hour: int) -> str:
+    ds = _regulargrid_name(model_id, cycle, d, hour)
     return f"{THREDDS_DODS}/NOAA/{upper}/MODELS/{d.strftime('%Y/%m/%d')}/{ds}"
+
+
+def _s3_url(model_id: str, d: date, filename: str) -> str:
+    return f"{S3_BASE}/{model_id}/netcdf/{d.strftime('%Y/%m/%d')}/{filename}"
+
+
+def _open_dataset(dods_url: str, s3_url: str, source: str) -> xr.Dataset:
+    """Open one OFS netCDF file from `source` ("thredds" or "s3"). A THREDDS
+    open failure falls back to S3 for that file. S3 files are downloaded to a
+    temp file that _close_dataset() deletes — always close via that helper."""
+    global _thredds_ok
+    if source == "thredds" and _thredds_ok:
+        try:
+            return xr.open_dataset(dods_url, engine="netcdf4")
+        except Exception as e:
+            print(f"    THREDDS open failed ({e}); trying S3", file=sys.stderr)
+    fd, tmp = tempfile.mkstemp(suffix=".nc")
+    try:
+        with os.fdopen(fd, "wb") as f, urllib.request.urlopen(s3_url, timeout=120) as resp:
+            shutil.copyfileobj(resp, f)
+        ds = xr.open_dataset(tmp, engine="netcdf4")
+    except Exception:
+        os.unlink(tmp)
+        raise
+    ds.encoding["_tmp_path"] = tmp
+    return ds
+
+
+def _close_dataset(ds: xr.Dataset) -> None:
+    tmp = ds.encoding.get("_tmp_path")
+    ds.close()
+    if tmp:
+        try:
+            os.unlink(tmp)
+        except OSError:
+            pass
 
 
 def _extract_grid(ds: xr.Dataset) -> tuple:
@@ -160,7 +211,7 @@ def _pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
     return mean, count
 
 
-def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
+def process_model(mid, m, d, ch, out_dir, max_hour_override=None, source="thredds"):
     upper = mid.upper()
     step = m["forecast_step_hours"]
     max_h = max_hour_override if max_hour_override is not None else m["forecast_hours"]
@@ -178,8 +229,9 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
 
     for h in hours:
         url = _dods_url(mid, upper, ch, d, h)
+        s3_url = _s3_url(mid, d, _regulargrid_name(mid, ch, d, h))
         try:
-            ds = xr.open_dataset(url, engine="netcdf4")
+            ds = _open_dataset(url, s3_url, source)
         except Exception as e:
             print(f"    SKIP +{h:03d}h: {e}", file=sys.stderr)
             continue
@@ -230,7 +282,7 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
             print(f"    SKIP +{h:03d}h: {e}", file=sys.stderr)
             continue
         finally:
-            ds.close()
+            _close_dataset(ds)
 
         if flip_j:
             u = u[::-1, :]
@@ -268,8 +320,12 @@ def process_model(mid, m, d, ch, out_dir, max_hour_override=None):
     return out
 
 
+def _curvilinear_name(model_id: str, cycle: str, d: date, kind: str) -> str:
+    return f"{model_id}.t{cycle}z.{d.strftime('%Y%m%d')}.fields.{kind}.nc"
+
+
 def _dods_url_curvilinear(model_id: str, upper: str, cycle: str, d: date, kind: str) -> str:
-    ds = f"{model_id}.t{cycle}z.{d.strftime('%Y%m%d')}.fields.{kind}.nc"
+    ds = _curvilinear_name(model_id, cycle, d, kind)
     return f"{THREDDS_DODS}/NOAA/{upper}/MODELS/{d.strftime('%Y/%m/%d')}/{ds}"
 
 
@@ -286,7 +342,7 @@ def _target_grid(bounds: dict, target_res_deg: float) -> tuple:
     return lon_g, lat_g, lats, lons
 
 
-def process_curvilinear_model(mid, m, d, ch, out_dir):
+def process_curvilinear_model(mid, m, d, ch, out_dir, source="thredds"):
     """Curvilinear-grid counterpart to process_model(): fetches the two
     fields.{nowcast,forecast}.nc files (each holding a whole time series,
     unlike the regulargrid path's one-file-per-hour), regrids the native
@@ -314,8 +370,9 @@ def process_curvilinear_model(mid, m, d, ch, out_dir):
 
     for kind in ("nowcast", "forecast"):
         url = _dods_url_curvilinear(mid, upper, ch, d, kind)
+        s3_url = _s3_url(mid, d, _curvilinear_name(mid, ch, d, kind))
         try:
-            ds = xr.open_dataset(url, engine="netcdf4")
+            ds = _open_dataset(url, s3_url, source)
         except Exception as e:
             print(f"    SKIP {kind}: {e}", file=sys.stderr)
             continue
@@ -335,7 +392,7 @@ def process_curvilinear_model(mid, m, d, ch, out_dir):
             print(f"    SKIP {kind}: {e}", file=sys.stderr)
             continue
         finally:
-            ds.close()
+            _close_dataset(ds)
 
         # griddata's linear interpolation fills the ENTIRE convex hull of
         # the wet input points. For a domain where land sits between two
@@ -390,20 +447,63 @@ def process_curvilinear_model(mid, m, d, ch, out_dir):
     return out
 
 
-def _find_latest_cycle(upper, cycles, d, pattern="regulargrid"):
+def _find_cycle_thredds(upper, cycles, d, pattern):
+    """Newest cycle listed in THREDDS' catalog for day d, else None. A 404
+    just means nothing is published for that day; anything else (503, timeout,
+    DNS) marks THREDDS down for the rest of the run and is logged."""
+    global _thredds_ok
     import re
+    if not _thredds_ok:
+        return None
     url = f"{THREDDS_CAT}/NOAA/{upper}/MODELS/{d.strftime('%Y/%m/%d')}/catalog.xml"
     try:
-        req = urllib.request.Request(url)
-        with urllib.request.urlopen(req, timeout=30) as resp:
+        with urllib.request.urlopen(urllib.request.Request(url), timeout=30) as resp:
             content = resp.read().decode()
-        # Iterate newest-first so a late-day workflow_dispatch packages the
-        # most recent cycle instead of always the earliest one available.
-        for c in reversed(cycles):
-            if re.search(rf'\.t{c}z\..*{pattern}', content):
-                return c
-    except Exception:
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            print(f"  THREDDS unavailable ({upper} {d}: HTTP {e.code}) — using S3 from now on", file=sys.stderr)
+            _thredds_ok = False
         return None
+    except Exception as e:
+        print(f"  THREDDS unavailable ({upper} {d}: {e}) — using S3 from now on", file=sys.stderr)
+        _thredds_ok = False
+        return None
+    # Iterate newest-first so a late-day workflow_dispatch packages the
+    # most recent cycle instead of always the earliest one available.
+    for c in reversed(cycles):
+        if re.search(rf'\.t{c}z\..*{pattern}', content):
+            return c
+    return None
+
+
+def _find_cycle_s3(upper, cycles, d, pattern):
+    """Same as _find_cycle_thredds, via the S3 bucket's object listing."""
+    import re
+    mid = upper.lower()
+    day = d.strftime('%Y/%m/%d')
+    for c in reversed(cycles):
+        url = f"{S3_BASE}/?prefix={mid}/netcdf/{day}/{mid}.t{c}z.&max-keys=1000"
+        try:
+            with urllib.request.urlopen(url, timeout=30) as resp:
+                keys = re.findall(r'<Key>([^<]*)</Key>', resp.read().decode())
+        except Exception as e:
+            print(f"  S3 listing failed ({upper} {d} t{c}z: {e})", file=sys.stderr)
+            return None
+        if any(re.search(rf'\.t{c}z\..*{pattern}', k) for k in keys):
+            return c
+    return None
+
+
+def _find_latest_cycle(upper, cycles, d, pattern="regulargrid"):
+    """Returns (cycle, source) for the newest published cycle on day d —
+    THREDDS first, S3 as fallback — or None."""
+    c = _find_cycle_thredds(upper, cycles, d, pattern)
+    if c:
+        return c, "thredds"
+    c = _find_cycle_s3(upper, cycles, d, pattern)
+    if c:
+        return c, "s3"
+    return None
 
 
 def main():
@@ -436,25 +536,25 @@ def main():
             print(f"Unknown model id: {mid}", file=sys.stderr)
             continue
 
-        d = ch = None
+        d = ch = source = None
         cycle_pattern = "fields\\.forecast" if is_curvilinear else "regulargrid"
         for offset in range(3):
             dd = today - timedelta(days=offset)
-            c = _find_latest_cycle(mid.upper(), m["cycles"], dd, cycle_pattern)
-            if c:
-                d, ch = dd, c
+            found = _find_latest_cycle(mid.upper(), m["cycles"], dd, cycle_pattern)
+            if found:
+                d, (ch, source) = dd, found
                 break
 
         if ch is None:
             print(f"\n=== {mid} — No data available (last 3 days) ===", file=sys.stderr)
             continue
 
-        print(f"\n=== {mid} ({m['name']}) — cycle {d} {ch}Z ===", file=sys.stderr)
+        print(f"\n=== {mid} ({m['name']}) — cycle {d} {ch}Z via {source} ===", file=sys.stderr)
         try:
             if is_curvilinear:
-                path = process_curvilinear_model(mid, m, d, ch, args.output_dir)
+                path = process_curvilinear_model(mid, m, d, ch, args.output_dir, source)
             else:
-                path = process_model(mid, m, d, ch, args.output_dir, args.max_hour)
+                path = process_model(mid, m, d, ch, args.output_dir, args.max_hour, source)
         except Exception as e:
             print(f"  {mid}: ERROR — {e}", file=sys.stderr)
             path = None
@@ -469,7 +569,7 @@ def main():
 
     # Partial failures are tolerated (individual OFS models lag or skip
     # cycles routinely), but producing NOTHING means the pipeline itself is
-    # broken (THREDDS outage, schema change) — fail the run so CI goes red
+    # broken (THREDDS and S3 both down, schema change) — fail the run so CI goes red
     # instead of silently leaving the release assets to go stale.
     if generated == 0:
         print("\nNo GRIB2 files generated for any model — failing.", file=sys.stderr)
