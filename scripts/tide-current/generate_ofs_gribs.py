@@ -29,20 +29,20 @@ owns the static catalog entry and is run weekly by generate_index.py).
 Usage:
     python generate_ofs_gribs.py [--output-dir DIR] [--models m1,m2] [--max-hour N]
 
-Requires: numpy, xarray, netCDF4, eccodes, scipy
+Requires: numpy, xarray, netCDF4, eccodes, scipy, fsspec, aiohttp, h5netcdf
 (not installed by the weekly index generator — this script runs in a
 dedicated daily workflow that supplies these deps.)
 """
 
 import argparse
+import io
 import os
-import shutil
 import sys
-import tempfile
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
 
+import fsspec
 import numpy as np
 import xarray as xr
 from scipy.interpolate import griddata
@@ -71,7 +71,10 @@ THREDDS_DODS = f"{THREDDS_BASE}/dodsC"
 THREDDS_CAT = f"{THREDDS_BASE}/catalog"
 # NOAA Open Data mirror of the same files ({model}/netcdf/YYYY/MM/DD/<file>).
 # THREDDS has had multi-day 503 outages; S3 has no OPeNDAP endpoint, so files
-# from it are downloaded whole (~100 MB each, faster than byte-range reads).
+# from it are read with HTTP range requests (fsspec + h5netcdf) — the files
+# hold every depth level (up to 1.7 GB each), so downloading them whole would
+# pull >200 GB per run, while only the surface u/v slice is needed.
+S3_BLOCK_SIZE = 8 * 2**20
 S3_BASE = "https://noaa-nos-ofs-pds.s3.amazonaws.com"
 # Flipped off for the rest of the run once THREDDS proves unreachable, so a
 # hard outage doesn't cost a 30 s timeout per model per day probed.
@@ -97,34 +100,36 @@ def _s3_url(model_id: str, d: date, filename: str) -> str:
 
 def _open_dataset(dods_url: str, s3_url: str, source: str) -> xr.Dataset:
     """Open one OFS netCDF file from `source` ("thredds" or "s3"). A THREDDS
-    open failure falls back to S3 for that file. S3 files are downloaded to a
-    temp file that _close_dataset() deletes — always close via that helper."""
-    global _thredds_ok
+    open failure falls back to S3 for that file. Always close the result via
+    _close_dataset() so the S3 file handle is released too."""
     if source == "thredds" and _thredds_ok:
         try:
             return xr.open_dataset(dods_url, engine="netcdf4")
         except Exception as e:
             print(f"    THREDDS open failed ({e}); trying S3", file=sys.stderr)
-    fd, tmp = tempfile.mkstemp(suffix=".nc")
+    f = fsspec.filesystem("http").open(
+        s3_url, block_size=S3_BLOCK_SIZE, cache_type="blockcache")
     try:
-        with os.fdopen(fd, "wb") as f, urllib.request.urlopen(s3_url, timeout=120) as resp:
-            shutil.copyfileobj(resp, f)
-        ds = xr.open_dataset(tmp, engine="netcdf4")
+        if f.read(4) == b"\x89HDF":
+            f.seek(0)
+            ds = xr.open_dataset(f, engine="h5netcdf")
+        else:
+            # Classic netCDF3 (NYOFS/SJROFS fields files): h5netcdf can't
+            # range-read these, but they're small — fetch whole, read in memory.
+            f.seek(0)
+            ds = xr.open_dataset(io.BytesIO(f.read()), engine="scipy")
     except Exception:
-        os.unlink(tmp)
+        f.close()
         raise
-    ds.encoding["_tmp_path"] = tmp
+    ds.encoding["_s3_file"] = f
     return ds
 
 
 def _close_dataset(ds: xr.Dataset) -> None:
-    tmp = ds.encoding.get("_tmp_path")
+    f = ds.encoding.get("_s3_file")
     ds.close()
-    if tmp:
-        try:
-            os.unlink(tmp)
-        except OSError:
-            pass
+    if f is not None:
+        f.close()
 
 
 def _extract_grid(ds: xr.Dataset) -> tuple:
