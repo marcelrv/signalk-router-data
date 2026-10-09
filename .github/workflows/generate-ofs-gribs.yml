@@ -28,7 +28,7 @@ jobs:
 
       - name: Install Python dependencies
         run: |
-          pip install -q numpy xarray netCDF4 eccodes scipy fsspec aiohttp h5netcdf
+          pip install -q numpy xarray netCDF4 eccodes scipy fsspec aiohttp h5netcdf h5py
 
       - name: Generate OFS GRIB2 files
         run: |

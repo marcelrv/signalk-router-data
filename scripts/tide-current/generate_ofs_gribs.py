@@ -29,7 +29,7 @@ owns the static catalog entry and is run weekly by generate_index.py).
 Usage:
     python generate_ofs_gribs.py [--output-dir DIR] [--models m1,m2] [--max-hour N]
 
-Requires: numpy, xarray, netCDF4, eccodes, scipy, fsspec, aiohttp, h5netcdf
+Requires: numpy, xarray, netCDF4, eccodes, scipy, fsspec, aiohttp, h5netcdf, h5py
 (not installed by the weekly index generator — this script runs in a
 dedicated daily workflow that supplies these deps.)
 """
