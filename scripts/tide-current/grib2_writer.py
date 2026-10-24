@@ -15,6 +15,10 @@ arrays as GRIB2 messages.
 Requires: numpy, eccodes.
 """
 
+import os
+import sys
+import time
+
 import numpy as np
 
 # Sentinel written at masked/non-finite grid points. eccodes excludes any
@@ -94,7 +98,36 @@ def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, ti
 
 
 def encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u, all_valid_v, hours, bd, bt, path):
-    with open(path, "wb") as f:
-        for h, u, v, valid_u, valid_v in zip(hours, all_u, all_v, all_valid_u, all_valid_v):
-            write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True)
-            write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False)
+    # Written to a temp name and renamed only on success: the workflows
+    # upload every ./*.grb2 in the output dir, so a failed encode must never
+    # leave a truncated file under the final name (it would clobber the
+    # previous good release asset).
+    tmp = path + ".tmp"
+    try:
+        with open(tmp, "wb") as f:
+            for h, u, v, valid_u, valid_v in zip(hours, all_u, all_v, all_valid_u, all_valid_v):
+                write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True)
+                write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False)
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        raise
+
+
+def retry(fn, *, label, attempts=3, delay=30, **kwargs):
+    """Call fn(**kwargs), retrying transient failures with a growing delay.
+    Meant for network calls (CMEMS subset); deterministic errors should not
+    be wrapped in it."""
+    for i in range(1, attempts + 1):
+        try:
+            return fn(**kwargs)
+        except Exception as e:
+            if i == attempts:
+                raise
+            wait = delay * i
+            print(f"  {label}: attempt {i}/{attempts} failed "
+                  f"({type(e).__name__}: {e}); retrying in {wait}s", file=sys.stderr)
+            time.sleep(wait)

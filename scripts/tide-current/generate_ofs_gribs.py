@@ -38,6 +38,7 @@ import argparse
 import io
 import os
 import sys
+import traceback
 import urllib.error
 import urllib.request
 from datetime import date, datetime, timedelta
@@ -138,6 +139,13 @@ def _extract_grid(ds: xr.Dataset) -> tuple:
     process_model) rather than re-downloading it with every hour's file."""
     lat = ds["Latitude"].values.astype(np.float64)
     lon = ds["Longitude"].values.astype(np.float64)
+    # A flaky THREDDS/DAP response can hand back NaN-filled coordinates
+    # (seen once on CIOFS during a 502 burst: lon[0,0]=NaN broke the GRIB
+    # encoder for the whole model). Raising here — before the caller keeps
+    # anything — makes that file a per-hour SKIP so the next hour supplies
+    # the grid instead.
+    if not (np.isfinite(lat).all() and np.isfinite(lon).all()):
+        raise ValueError("non-finite Latitude/Longitude in source file")
     if "mask" in ds:
         mask = ds["mask"].values.astype(bool)
     else:
@@ -562,7 +570,8 @@ def main():
             else:
                 path = process_model(mid, m, d, ch, args.output_dir, args.max_hour, source)
         except Exception as e:
-            print(f"  {mid}: ERROR — {e}", file=sys.stderr)
+            print(f"  {mid}: ERROR — {type(e).__name__}: {e}", file=sys.stderr)
+            traceback.print_exc()
             path = None
 
         if not path or not os.path.exists(path):

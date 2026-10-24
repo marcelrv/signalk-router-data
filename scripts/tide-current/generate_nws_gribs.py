@@ -38,13 +38,14 @@ login` session — no explicit login call needed here either way.
 import argparse
 import os
 import sys
+import traceback
 from datetime import datetime, timedelta, timezone
 
 import numpy as np
 import xarray as xr
 import copernicusmarine
 
-from grib2_writer import check_uniform, encode_grib2
+from grib2_writer import check_uniform, encode_grib2, retry
 
 # sources/cmems_nws.py is the single source of truth for the CMEMS NWS
 # region metadata (REGIONS) and dataset id — it is stdlib-only and lives in
@@ -74,7 +75,9 @@ def process_region(rid, r, out_dir, forecast_hours_override=None):
     end = now + timedelta(hours=forecast_hours)
 
     nc_path = os.path.join(out_dir, f"_{rid}_raw.nc")
-    copernicusmarine.subset(
+    retry(
+        copernicusmarine.subset,
+        label=rid,
         dataset_id=DATASET_ID,
         variables=["uo", "vo"],
         minimum_longitude=b["min_lon"],
@@ -177,7 +180,8 @@ def main():
         try:
             path = process_region(rid, r, args.output_dir, args.forecast_hours)
         except Exception as e:
-            print(f"  {rid}: ERROR — {e}", file=sys.stderr)
+            print(f"  {rid}: ERROR — {type(e).__name__}: {e!r}", file=sys.stderr)
+            traceback.print_exc()
             path = None
 
         if not path or not os.path.exists(path):
