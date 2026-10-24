@@ -28,7 +28,12 @@ jobs:
         run: |
           pip install -q copernicusmarine numpy xarray netCDF4 eccodes
 
+      # continue-on-error: a region that fails to generate must not block the
+      # upload of the regions that succeeded — the job is failed explicitly by
+      # the final step instead, so stale assets still turn CI red.
       - name: Generate MED GRIB2 files
+        id: generate
+        continue-on-error: true
         env:
           COPERNICUSMARINE_SERVICE_USERNAME: ${{ secrets.COPERNICUSMARINE_SERVICE_USERNAME }}
           COPERNICUSMARINE_SERVICE_PASSWORD: ${{ secrets.COPERNICUSMARINE_SERVICE_PASSWORD }}
@@ -69,3 +74,9 @@ jobs:
               }
           done
           exit $failed
+
+      - name: Fail if any region failed to generate
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::One or more regions failed to generate (see the 'Generate MED GRIB2 files' step log). Regions that did generate were still uploaded."
+          exit 1

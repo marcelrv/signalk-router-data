@@ -169,6 +169,7 @@ def main():
     selected = args.regions.split(",") if args.regions else list(REGIONS.keys())
 
     generated = 0
+    failed = []
     for rid in selected:
         r = REGIONS.get(rid)
         if r is None:
@@ -185,19 +186,25 @@ def main():
 
         if not path or not os.path.exists(path):
             print(f"  {rid}: Failed to generate GRIB2", file=sys.stderr)
+            failed.append(rid)
             continue
 
         sz = os.path.getsize(path)
         print(f"  {os.path.basename(path)}: {sz} bytes", file=sys.stderr)
         generated += 1
 
-    # Partial failures are tolerated, but producing NOTHING means the
-    # pipeline itself is broken (auth failure, API outage, schema change) —
-    # fail the run so CI goes red instead of silently leaving the release
-    # assets to go stale.
+    # Every configured region is expected to produce a file each run, so a
+    # failed region means its release asset is going stale. Exit 2 for that
+    # — the workflow still uploads the regions that succeeded, then fails
+    # the job. Exit 1 means nothing at all was produced (auth failure, API
+    # outage, schema change).
     if generated == 0:
         print("\nNo GRIB2 files generated for any region — failing.", file=sys.stderr)
         sys.exit(1)
+    if failed:
+        print(f"\n{len(failed)} region(s) failed to generate: "
+              f"{', '.join(failed)} — failing.", file=sys.stderr)
+        sys.exit(2)
 
 
 if __name__ == "__main__":
