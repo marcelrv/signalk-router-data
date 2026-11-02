@@ -1,195 +1,45 @@
 {
   "catalog_schema_version": "1.1.0",
   "version": 2,
-  "generated": "2026-08-18T21:41:43Z",
+  "generated": "2026-11-02T07:07:50Z",
   "region_count": 1,
   "regions": [
     {
-      "id": "europe_nl_zeeland",
-      "filename": "zeeland.sqlite.gz",
-      "inner_filename": "zeeland.sqlite",
-      "sha256": "fba2452e3286038e1141daa232817ae1769c44675aa3ba6ca7a51a08b774a091",
-      "size_bytes": 7037715,
+      "id": "europe_nl_nl-routing",
+      "filename": "europe_nl_nl-routing.sqlite.gz",
+      "inner_filename": "nl-routing.sqlite",
+      "sha256": "513a7b5adb744fcffbf7e6b0ab28fe5ac6c199ecc8856e3ec16f3c5c2e03e9f7",
+      "size_bytes": 7656822,
       "compression": "gzip",
-      "country": "NL",
-      "name": "Zeeland",
-      "description": "Zeeland province and approaches (Westerschelde, Oosterschelde, Veerse Meer, Grevelingen, Haringvliet, North Sea approach), based on Rijkswaterstaat IENC / ENC data",
-      "last_update": "2026-08-14T22:26:31Z",
-      "schema_version": 2,
+      "country": "NL-NAV",
+      "name": "Netherlands waterways (inland and coastal)",
+      "description": "Navigable route network for the Netherlands: inland waterways, IJsselmeer, Wadden Sea, Delta and coastal approaches, based on Rijkswaterstaat IENC / ENC data, NWB vaarwegen, VNDS and BRTN. Waterway centre lines with depth limits, bridges and locks with clearances, tidal regimes, and connections to harbours and marinas. Not for navigation: verify against official charts and notices.",
+      "last_update": "2026-11-02T07:03:13Z",
+      "schema_version": 3,
       "tags": [
         "ienc",
         "rws",
         "coastal",
         "inland"
       ],
-      "contributor": "",
+      "contributor": "Marcel Verpaalen",
       "url": "https://github.com/marcelrv/signalk-router-data",
       "bounding_box": {
-        "min_lat": 51.21014,
-        "min_lon": 3.13333,
-        "max_lat": 51.95,
-        "max_lon": 4.65
+        "min_lat": 50.75,
+        "min_lon": 2.3,
+        "max_lat": 54.2,
+        "max_lon": 7.3
       },
-      "boundary_geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-            [
-              3.80481,
-              51.21014
-            ],
-            [
-              3.8024,
-              51.21042
-            ],
-            [
-              3.80131,
-              51.21061
-            ],
-            [
-              3.36606,
-              51.37013
-            ],
-            [
-              3.36518,
-              51.37046
-            ],
-            [
-              3.35311,
-              51.37832
-            ],
-            [
-              3.13607,
-              51.52224
-            ],
-            [
-              3.13413,
-              51.52356
-            ],
-            [
-              3.13378,
-              51.52444
-            ],
-            [
-              3.1336,
-              51.52521
-            ],
-            [
-              3.13343,
-              51.52609
-            ],
-            [
-              3.13342,
-              51.52628
-            ],
-            [
-              3.13333,
-              51.54714
-            ],
-            [
-              3.13333,
-              51.69496
-            ],
-            [
-              3.13334,
-              51.79666
-            ],
-            [
-              3.1334,
-              51.81864
-            ],
-            [
-              3.13341,
-              51.82216
-            ],
-            [
-              3.13342,
-              51.82315
-            ],
-            [
-              3.13466,
-              51.82359
-            ],
-            [
-              3.13591,
-              51.82392
-            ],
-            [
-              3.13733,
-              51.82425
-            ],
-            [
-              3.14017,
-              51.82469
-            ],
-            [
-              3.1416,
-              51.8249
-            ],
-            [
-              4.63787,
-              51.94999
-            ],
-            [
-              4.63907,
-              51.95
-            ],
-            [
-              4.64038,
-              51.94996
-            ],
-            [
-              4.64991,
-              51.89092
-            ],
-            [
-              4.65,
-              51.88955
-            ],
-            [
-              4.65,
-              51.71971
-            ],
-            [
-              4.64981,
-              51.71366
-            ],
-            [
-              4.6498,
-              51.71344
-            ],
-            [
-              4.60934,
-              51.64724
-            ],
-            [
-              4.26991,
-              51.37582
-            ],
-            [
-              4.21798,
-              51.3353
-            ],
-            [
-              4.21637,
-              51.33421
-            ],
-            [
-              3.80481,
-              51.21014
-            ]
-          ]
-        ]
-      },
+      "boundary_geometry": null,
       "stats": {
-        "nodes": 48553,
-        "edges": 137718,
-        "pois": 861,
-        "coastal_nodes": 39787,
-        "inland_nodes": 8766
+        "nodes": 60816,
+        "edges": 123618,
+        "pois": 8888,
+        "coastal_nodes": 60816,
+        "inland_nodes": 0
       },
-      "deployed": "2026-08-18T21:38:58Z",
-      "download_url": "https://github.com/marcelrv/signalk-router-data/releases/download/routing-databases-latest/zeeland.sqlite.gz"
+      "deployed": "2026-11-02T07:06:49Z",
+      "download_url": "https://github.com/marcelrv/signalk-router-data/releases/download/routing-databases-latest/europe_nl_nl-routing.sqlite.gz"
     }
   ]
 }
