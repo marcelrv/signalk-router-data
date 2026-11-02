@@ -11,7 +11,7 @@ Pre-compiled nautical routing graphs for the [SignalK RouteIQ nautical route pla
 
 Both kinds appear on the [coverage map](#tidal-streams--currents) below, in the color legend and, per-region, in the [interactive coverage map](tide-current-coverage.geojson).
 
-**Licensing:** Code and tooling are [GPLv3](LICENSE). Original/compiled data catalogs and databases are [CC-BY-NC-4.0](LICENSE-DATA.md). Third-party data sources (NOAA, BSH, FES2014, OpenCPN) follow their own upstream terms — see the [License & Attribution](#license--attribution) section below.
+**Licensing:** Code and tooling are [GPLv3](LICENSE). Original/compiled data catalogs are [CC-BY-NC-4.0](LICENSE-DATA.md). Routing databases may carry a different licence, stated in each file's own metadata (`metadata.license`, `metadata.copyright`); e.g. the Netherlands database is [ODbL-1.0](https://opendatacommons.org/licenses/odbl/1-0/). Third-party data sources (NOAA, BSH, FES2014, OpenCPN) follow their own upstream terms — see the [License & Attribution](#license--attribution) section below.
 
 Routing databases are published as `.sqlite.gz` (gzip-compressed) assets on the rolling [**routing-databases-latest**](https://github.com/marcelrv/signalk-router-data/releases/tag/routing-databases-latest) release — the same way the forecast-current GRIB2 files are published — so rebuilding a region never grows this repository. The repo itself holds only the small `regions/**/*.index.json` descriptors that [`routing-index.json`](routing-index.json) is generated from. The plugin's download dialog resolves the release URL and handles decompression automatically.
 
@@ -78,7 +78,9 @@ We welcome new regions and data sources! See:
 
 ### Routing databases
 
-Each database file may have its own licensing terms as documented in its `metadata.url` and `metadata.contributor` fields (see [routing-index.json](routing-index.json)). Check individual file metadata for attribution and license information.
+Each database file may have its own licence, which then takes precedence over CC-BY-NC-4.0. It is stated in the file's `metadata.license` and `metadata.copyright` fields, and the licence and link of every upstream source are in its `data_sources` table. Check individual file metadata for attribution and license information.
+
+- **Netherlands (`europe_nl_nl-routing`)**: [ODbL-1.0](https://opendatacommons.org/licenses/odbl/1-0/), © 2026 Marcel Verpaalen. Contains data from Rijkswaterstaat (NWB vaarwegen incl. BRTN, ENC/IENC, VNDS; all [CC0-1.0](https://data.overheid.nl/)). Not for navigation.
 
 ### Tidal/current data
 

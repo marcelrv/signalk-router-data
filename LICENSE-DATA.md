@@ -4,7 +4,7 @@
 
 This license applies to:
 - **Catalog metadata** (tide-current-index.json, routing-index.json, and their schemas)
-- **Compiled databases** that originate from this project (e.g., Netherlands routing SQLite)
+- **Compiled databases** that originate from this project, unless the database states its own licence in `metadata.license` (e.g. the Netherlands routing database is ODbL-1.0)
 - **Generated datasets** such as UTCEF files derived from primary sources
 
 ## Exclusions
