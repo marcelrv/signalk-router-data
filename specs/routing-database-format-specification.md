@@ -191,12 +191,39 @@ of interior point-graph nodes.
 | `id` | TEXT | Yes | Deterministic MD5 hash of `"{poi_type}_{round(lat,5)}_{round(lon,5)}"` (13 hex chars). `INSERT OR IGNORE` handles duplicates across overlapping regions. |
 | `type_id` | INTEGER | Yes | FK `poi_type_enum` (§2.3) |
 | `name` | TEXT | No | Display name |
-| `properties` | TEXT (JSON) | No | Free-form bag of the source feature's remaining attributes (e.g. raw S-57 fields not otherwise normalized into a column), producer-defined shape — consumers should treat it as opaque/display-only, not depend on specific keys existing. |
+| `properties` | TEXT (JSON object) | No | The keys in §2.10.1, which a consumer may use for routing behaviour, plus any other attributes of the source feature (producer-defined, display-only). Every key is optional: a consumer must work when any of them is missing. |
 | `lat` | REAL | Yes | Latitude |
 | `lon` | REAL | Yes | Longitude |
 | `region_id` | INTEGER | Yes | FK `metadata.id` |
 | `source_tier` | INTEGER | No, default `1` | FK to the domain in §2.4. |
 | `source_id` | INTEGER | No | FK to `data_sources.id`. |
+
+#### 2.10.1 Recognised `properties` keys
+
+Rule for every key: **unknown = key absent**. A producer never writes `null`,
+`""`, `0` or a `999` placeholder for a value it does not know. A consumer
+ignores a key whose value has the wrong type or is out of range, as if it
+were absent.
+
+| Key | POI type | Type | Meaning |
+|---|---|---|---|
+| `subtype` | bridge | string | `"opening"` (a span that opens: bascule, swing, lift, …) or `"fixed"`. |
+| `height` | bridge, `fixed` only | number, metres | Vertical clearance under the fixed span (S-57 `VERCLR`). For display: the routing limit is on the edges (`edges.max_air_draft`). |
+| `closed_height` | bridge, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
+| `typical_wait_minutes` | bridge, lock | number, minutes, >= 0 | Typical wait at this bridge or lock; overrides the consumer's default. |
+| `structure` | bridge | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span it goes through. |
+
+Notes on `structure`:
+
+- Needed where the source names spans individually (Dutch VNDS: "Doorvaartopening
+  1 (vast) X", "Doorvaartopening 2 (beweegbaar) X"). Where it is absent a
+  consumer groups spans by `name`, which suits S-57, where all spans of one
+  bridge share `OBJNAM`.
+- The reference producer writes the lowest `pois.id` among the structure's
+  spans, as a decimal string. Since `pois.id` is derived from position, the
+  value is the same in every database that holds the whole structure.
+  Consumers must treat it as an opaque string and compare it only for
+  equality.
 
 ### 2.11 `override_provenance`
 
