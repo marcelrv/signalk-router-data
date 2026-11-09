@@ -23,13 +23,13 @@ adds to the one before; nothing was removed or renamed:
 |---|---|
 | `1` | The initial format: the tables in §2.1–§2.11. |
 | `2` | `metadata.depth_unknown_sentinel` (§2.1). A file that sets it uses that value (the reference producer writes `-999.0`) for "depth unknown" in `edges.min_depth` and `nodes.node_depth`, and writes any other negative depth as it is charted: a drying height (e.g. `-2.0` = dries 2 m). |
-| `3` | The `notices`, `edge_notices` and `node_notices` tables (§2.12): charted hazards and restricted areas linked to the edges and nodes they affect. A producer that builds without hazard data writes `2`. |
+| `3` | The `notices`, `edge_notices` and `node_notices` tables (§2.12): charted hazards and restricted areas linked to the edges and nodes they affect. A producer that builds without hazard data writes `2`. Version 3 files may also hold the edge-sequence and water-body tables (§2.13), with `edges.edge_sequence_id`, `edges.depth_quality_id` and `metadata.edge_sequence_params`; they are optional. |
 
 - Consumers must not infer behaviour from the number. Read
   `depth_unknown_sentinel` itself to interpret negative depths: when it is
   absent or `NULL`, every negative depth means unknown (the convention
   before version 2, which floored drying heights to `0`). Look for the
-  §2.12 tables themselves rather than for `schema_version >= 3`. Some early
+  §2.12 and §2.13 tables themselves rather than for `schema_version >= 3`. Some early
   builds wrote `3` before either addition existed.
 
 - `metadata.architecture` (TEXT, optional) identifies the structural
@@ -74,6 +74,7 @@ One row per region:
 | `license` | TEXT | No | Data-sharing terms for this specific compiled region (e.g. `"CC-BY-NC-4.0"`). Falls back to the repository-wide default in `LICENSE-DATA.md` when absent. |
 | `copyright` | TEXT | No | Attribution statement to surface in a consuming UI (e.g. "© Rijkswaterstaat, © OpenStreetMap contributors, 2026"). |
 | `architecture` | TEXT | No | See §1. |
+| `edge_sequence_params` | TEXT (JSON) | No (§2.13) | How the derived `edge_sequences` columns were computed from the edges, e.g. `{"distance": "sum", "min_depth": "min of known", "max_air_draft": "min", "min_width": "min", "cost": "sum of distance * cost_factor per direction", "crosses_obstacle": "any"}`. |
 | `dataset_version` | TEXT | No | See §1. |
 
 ### 2.2 `data_sources`
@@ -176,6 +177,8 @@ id = (type_int * 648_000_000_000_000) + (lat_int * 36_000_000) + lon_int
 | `edge_kind_id` | INTEGER | No, default `0` | FK to §2.5. |
 | `source_tier` | INTEGER | No, default `1` | FK to the domain in §2.4. |
 | `source_id` | INTEGER | No | FK to `data_sources.id`. |
+| `edge_sequence_id` | INTEGER | No (§2.13) | FK `edge_sequences.id`: the sequence this edge belongs to. Both direction rows carry the same value. |
+| `depth_quality_id` | INTEGER | No, default `0` (§2.13) | FK `depth_quality_enum.id`: how `min_depth` was obtained. Description only, never a routing cost. |
 | `width_profile` | TEXT (JSON) | No | Array of `[fraction_along_edge, width_m]` samples for `centerline`/`lane` edges, e.g. `[[0.0, 45], [0.5, 30], [1.0, 50]]`, for beam-constraint checks that need more than one scalar. `min_width` above remains the required scalar summary (`= min` of the profile) for consumers that don't read `width_profile`. |
 
 ### 2.9 `navmesh_regions`
@@ -290,6 +293,74 @@ period is set, inside that window. An edge whose only severity-3 links are
 time-limited is closed inside the window and open outside it; a permanent
 severity-3 link normally also sets `edges.crosses_obstacle` (the reference
 producer leaves it off on opening-bridge and lock edges).
+
+### 2.13 Edge sequences and water bodies (optional, version 3)
+
+Which water an edge lies in, how its line was made and how its depth was
+obtained, so a consumer can describe a route ("23 km Prinses
+Margrietkanaal, then the Pikmeer") and warn about depths that were never
+surveyed. None of it is a routing input: the edge columns a router loads
+are unchanged, and a consumer reads these tables only for the edges of a
+route it has found.
+
+Rules:
+
+- **Descriptions, not costs.** `water_body_kind_enum` and
+  `depth_quality_enum` must never be used as a routing cost or preference.
+- **Extendable enums.** Producers may append enum ids; a consumer reads an
+  id it does not know as `other` (`unknown` for depth quality). Ids are
+  never renumbered.
+- **Stable ids.** Edge sequence and water body ids are at most 53 bits and
+  are the same in every database for the same thing, so databases can be
+  merged. A merge must check that an id it already has means the same thing
+  (a sequence: the same end nodes; a water body: the same name and kind)
+  and fail otherwise.
+
+`edge_sequences`, an unbranched chain of edges between two break nodes:
+
+| Column | Type | Required | Description |
+|---|---|---|---|
+| `id` | INTEGER PRIMARY KEY | Yes | 52-bit hash of the end nodes and the first edge. |
+| `node_a`, `node_b` | INTEGER | Yes | End nodes, `node_a < node_b`. |
+| `water_body_id` | INTEGER | No | FK `water_bodies.id`; `NULL` when the water has no name. |
+| `origin_id` | INTEGER | Yes, default `0` | FK `origin_enum.id`: how the line was made. |
+| `distance`, `min_depth`, `depth_quality_id`, `max_air_draft`, `min_width`, `crosses_obstacle` | | No | Derived from the sequence's edges, per `metadata.edge_sequence_params`. |
+| `cost_ab`, `cost_ba` | REAL | No | Cost from `node_a` to `node_b` and back. |
+
+A sequence ends at every node whose degree is not 2, where one-way
+behaviour changes, and where the water body or origin changes. A producer
+may break sequences elsewhere too; a consumer must not read meaning into a
+break beyond "a sequence ends here". Locks and bridges do not break a
+sequence.
+
+`water_bodies`, a named water (canal, river, lake, sea area, channel,
+harbour basin):
+
+| Column | Type | Required | Description |
+|---|---|---|---|
+| `id` | INTEGER PRIMARY KEY | Yes | Assigned once by the producer's gazetteer and kept; never derived from the name, so a rename does not change it. One water across a border (Maas/Meuse) has one id. |
+| `name` | TEXT | Yes | Default name, normally the local official name. |
+| `kind_id` | INTEGER | No | FK `water_body_kind_enum.id`. |
+| `parent_id` | INTEGER | No | FK `water_bodies.id`, e.g. a channel inside a lake. |
+| `country` | TEXT | No | ISO 3166-1 alpha-2; `NULL` for a water shared by several countries. |
+
+`water_body_names (water_body_id, lang, name, kind)`, primary key
+`(water_body_id, lang, name)`: every name of a water body. `lang` is a
+BCP-47 tag (`nl`, `fy`, `de-CH`, …); `kind` is `official` (default),
+`alternative`, `short` or `historic`. To name a water in a language, take
+an `official` name in that language, then `alternative`, then `short`; then
+the same for the base language (`de` for `de-CH`); then `water_bodies.name`.
+
+Enums, with the values defined so far:
+
+| Table | Values |
+|---|---|
+| `origin_enum (id, description)` | `0` other, `1` pipeline (generated), `2` imported (an outside axis copied as is), `3` agent (drawn by an AI agent), `4` manual (drawn or edited by a person), `5` community |
+| `depth_quality_enum (id, description, rank)` | `0` unknown (rank 0), `1` community (10), `2` class_norm (20, a fairway-class draught norm, never surveyed), `3` published_minimum (30, a published minimum along the fairway), `4` charted (40, chart depth areas or soundings), `5` surveyed (35), `6` survey_raster (32), `7` bathymetry_model (25) |
+| `water_body_kind_enum (id, description)` | `0` other, `1` canal, `2` river, `3` lake, `4` channel, `5` sea_area, `6` harbour, `7` estuary |
+
+`rank` orders depth qualities by trust (higher = more trusted). Compare
+ranks, never ids.
 
 ## 3. Complete Example (abridged)
 
