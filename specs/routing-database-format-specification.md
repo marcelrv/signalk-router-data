@@ -72,7 +72,7 @@ One row per region:
 | `depth_unknown_sentinel` | REAL | No (version 2+) | The value that means "depth unknown" in `edges.min_depth` and `nodes.node_depth`; the reference producer writes `-999.0`. `NULL` or absent: any negative depth is unknown. See §1. |
 | `id` | INTEGER PRIMARY KEY AUTOINCREMENT | Yes | Unique per-region ID. Referenced by `nodes.region_id`, `edges` (indirectly via node), `pois.region_id`, and `navmesh_regions.region_id` — despite the FK columns on those tables being named `region_id`, the column on `metadata` itself is `id`, not `region_id`. |
 | `license` | TEXT | No | Data-sharing terms for this specific compiled region (e.g. `"CC-BY-NC-4.0"`). Falls back to the repository-wide default in `LICENSE-DATA.md` when absent. |
-| `copyright` | TEXT | No | Attribution statement to surface in a consuming UI (e.g. "© Rijkswaterstaat, © OpenStreetMap contributors, 2026"). |
+| `copyright` | TEXT | No | Attribution statement to surface in a consuming UI (e.g. "© NOAA, © OpenStreetMap contributors, 2026"). |
 | `architecture` | TEXT | No | See §1. |
 | `edge_sequence_params` | TEXT (JSON) | No (§2.13) | How the derived `edge_sequences` columns were computed from the edges, e.g. `{"distance": "sum", "min_depth": "min of known", "max_air_draft": "min", "min_width": "min", "cost": "sum of distance * cost_factor per direction", "crosses_obstacle": "any"}`. |
 | `dataset_version` | TEXT | No | See §1. |
@@ -230,8 +230,9 @@ were absent.
 
 Notes on `structure`:
 
-- Needed where the source names spans individually (Dutch VNDS: "Doorvaartopening
-  1 (vast) X", "Doorvaartopening 2 (beweegbaar) X"). Where it is absent a
+- Needed where the source names each span on its own ("Span 1 (fixed) X",
+  "Span 2 (lift) X"), so the names do not show which spans belong
+  together. Where it is absent a
   consumer groups spans by `name`, which suits S-57, where all spans of one
   bridge share `OBJNAM`.
 - The reference producer writes the lowest `pois.id` among the structure's
@@ -297,11 +298,11 @@ producer leaves it off on opening-bridge and lock edges).
 ### 2.13 Edge sequences and water bodies (optional, version 3)
 
 Which water an edge lies in, how its line was made and how its depth was
-obtained, so a consumer can describe a route ("23 km Prinses
-Margrietkanaal, then the Pikmeer") and warn about depths that were never
-surveyed. None of it is a routing input: the edge columns a router loads
-are unchanged, and a consumer reads these tables only for the edges of a
-route it has found.
+obtained, so a consumer can describe a route by the waters it runs through
+("23 km on one canal, then across a lake", by name) and warn about depths
+that were never surveyed. None of it is a routing input: the edge columns a
+router loads are unchanged, and a consumer reads these tables only for the
+edges of a route it has found.
 
 Rules:
 
@@ -338,7 +339,7 @@ harbour basin):
 
 | Column | Type | Required | Description |
 |---|---|---|---|
-| `id` | INTEGER PRIMARY KEY | Yes | Assigned once by the producer's gazetteer and kept; never derived from the name, so a rename does not change it. One water across a border (Maas/Meuse) has one id. |
+| `id` | INTEGER PRIMARY KEY | Yes | Assigned once by the producer's gazetteer and kept; never derived from the name, so a rename does not change it. One water across a border (a river through several countries) has one id, with its names in each language. |
 | `name` | TEXT | Yes | Default name, normally the local official name. |
 | `kind_id` | INTEGER | No | FK `water_body_kind_enum.id`. |
 | `parent_id` | INTEGER | No | FK `water_bodies.id`, e.g. a channel inside a lake. |
@@ -346,7 +347,7 @@ harbour basin):
 
 `water_body_names (water_body_id, lang, name, kind)`, primary key
 `(water_body_id, lang, name)`: every name of a water body. `lang` is a
-BCP-47 tag (`nl`, `fy`, `de-CH`, …); `kind` is `official` (default),
+BCP-47 tag (`en`, `fr`, `de-CH`, …); `kind` is `official` (default),
 `alternative`, `short` or `historic`. To name a water in a language, take
 an `official` name in that language, then `alternative`, then `short`; then
 the same for the base language (`de` for `de-CH`); then `water_bodies.name`.
@@ -366,19 +367,19 @@ ranks, never ids.
 
 ```sql
 INSERT INTO metadata (id, country, name, schema_version, depth_unknown_sentinel, architecture, license, copyright)
-VALUES (1, 'NL', 'Netherlands', 3, -999.0, 'navmesh-hybrid', 'CC-BY-NC-4.0',
-        '© Rijkswaterstaat, © OpenStreetMap contributors, © EMODnet Bathymetry, 2026');
+VALUES (1, 'US', 'Chesapeake Bay', 3, -999.0, 'navmesh-hybrid', 'CC-BY-NC-4.0',
+        '© NOAA, © OpenStreetMap contributors, © GEBCO, 2026');
 -- id is normally left to AUTOINCREMENT; shown explicitly here only so the
 -- nodes/edges rows below can reference region_id = 1 unambiguously.
 
 INSERT INTO data_sources (id, name, source_type, url, license, default_tier)
 VALUES
-  (1, 'Rijkswaterstaat IENC', 'ienc', 'https://www.rijkswaterstaat.nl', 'RWS terms', 1),
-  (2, 'OpenStreetMap',        'osm',  'https://www.openstreetmap.org',  'ODbL-1.0',  3),
-  (3, 'EMODnet Bathymetry',   'bathymetry', 'https://emodnet.ec.europa.eu/en/bathymetry', 'EMODnet terms', 4);
+  (1, 'NOAA ENC',      'enc',        'https://nauticalcharts.noaa.gov', 'Public domain', 1),
+  (2, 'OpenStreetMap', 'osm',        'https://www.openstreetmap.org',   'ODbL-1.0',      3),
+  (3, 'GEBCO',         'bathymetry', 'https://www.gebco.net',           'GEBCO terms',   4);
 
 INSERT INTO nodes (id, lat, lon, region_id, node_kind_id, source_tier, source_id)
-VALUES (123456789012, 51.65315, 3.68437, 1, 2, 1, 1);  -- a supernode from Tier-1 data
+VALUES (123456789012, 38.97842, -76.48163, 1, 2, 1, 1);  -- a supernode from Tier-1 data
 
 INSERT INTO edges (source, target, distance, edge_type_id, edge_kind_id, cost_factor, source_tier, source_id)
 VALUES (123456789012, 123456789099, 842.5, 0, 2, 0.8, 1, 1);  -- a Tier-1 lane edge
