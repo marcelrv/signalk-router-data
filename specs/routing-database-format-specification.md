@@ -16,10 +16,21 @@ reference implementation, not the only one.
 
 ## 1. Schema Version
 
-This document specifies **`metadata.schema_version = 1`** — the initial
-released format. There is no prior published version to stay compatible
-with, so everything in §2 is simply the schema, not a delta against
-something else.
+This document specifies **`metadata.schema_version = 3`**. Each version
+adds to the one before; nothing was removed or renamed:
+
+| `schema_version` | Adds |
+|---|---|
+| `1` | The initial format: the tables in §2.1–§2.11. |
+| `2` | `metadata.depth_unknown_sentinel` (§2.1). A file that sets it uses that value (the reference producer writes `-999.0`) for "depth unknown" in `edges.min_depth` and `nodes.node_depth`, and writes any other negative depth as it is charted: a drying height (e.g. `-2.0` = dries 2 m). |
+| `3` | The `notices`, `edge_notices` and `node_notices` tables (§2.12): charted hazards and restricted areas linked to the edges and nodes they affect. A producer that builds without hazard data writes `2`. |
+
+- Consumers must not infer behaviour from the number. Read
+  `depth_unknown_sentinel` itself to interpret negative depths: when it is
+  absent or `NULL`, every negative depth means unknown (the convention
+  before version 2, which floored drying heights to `0`). Look for the
+  §2.12 tables themselves rather than for `schema_version >= 3`. Some early
+  builds wrote `3` before either addition existed.
 
 - `metadata.architecture` (TEXT, optional) identifies the structural
   approach used to build the file (e.g. `"navmesh-hybrid"`,
@@ -57,7 +68,8 @@ One row per region:
 | `url` | TEXT | Yes | Link to original data source / license |
 | `bounding_box` | TEXT (JSON) | Yes | `{"min_lat":..., "min_lon":..., "max_lat":..., "max_lon":...}` |
 | `boundary_geometry` | TEXT (GeoJSON) | Yes | Polygon/MultiPolygon covering the graph |
-| `schema_version` | INTEGER | Yes | `1`, per §1 |
+| `schema_version` | INTEGER | Yes | `1`–`3`, per §1 |
+| `depth_unknown_sentinel` | REAL | No (version 2+) | The value that means "depth unknown" in `edges.min_depth` and `nodes.node_depth`; the reference producer writes `-999.0`. `NULL` or absent: any negative depth is unknown. See §1. |
 | `id` | INTEGER PRIMARY KEY AUTOINCREMENT | Yes | Unique per-region ID. Referenced by `nodes.region_id`, `edges` (indirectly via node), `pois.region_id`, and `navmesh_regions.region_id` — despite the FK columns on those tables being named `region_id`, the column on `metadata` itself is `id`, not `region_id`. |
 | `license` | TEXT | No | Data-sharing terms for this specific compiled region (e.g. `"CC-BY-NC-4.0"`). Falls back to the repository-wide default in `LICENSE-DATA.md` when absent. |
 | `copyright` | TEXT | No | Attribution statement to surface in a consuming UI (e.g. "© Rijkswaterstaat, © OpenStreetMap contributors, 2026"). |
@@ -127,7 +139,7 @@ databases):
 | `lat` | REAL | Yes | Latitude (degrees) |
 | `lon` | REAL | Yes | Longitude (degrees) |
 | `region_id` | INTEGER | Yes | FK `metadata.id` |
-| `node_depth` | REAL | No, default `-1` | Charted depth at this node in metres, `-1` if unknown. Distinct from an edge's `min_depth` (§2.8), which is the shallowest point *along* an edge, not at either endpoint. |
+| `node_depth` | REAL | No, default `-1` | Charted depth at this node in metres; negative = drying height when `metadata.depth_unknown_sentinel` is set. Unknown: the sentinel value, or `-1` in files without it. Distinct from an edge's `min_depth` (§2.8), which is the shallowest point *along* an edge, not at either endpoint. |
 | `node_kind_id` | INTEGER | No, default `0` | FK to §2.6. |
 | `source_tier` | INTEGER | No, default `1` | FK to the domain in §2.4. |
 | `source_id` | INTEGER | No | FK to `data_sources.id`. |
@@ -151,7 +163,7 @@ id = (type_int * 648_000_000_000_000) + (lat_int * 36_000_000) + lon_int
 | `source` | INTEGER | Yes | Source node ID |
 | `target` | INTEGER | Yes | Target node ID |
 | `distance` | REAL | Yes | Edge length in metres |
-| `min_depth` | REAL | No, default `99.0` | Shallowest charted depth (metres) anywhere along the edge — the primary draft-constraint gate. `99.0` means "not sampled against charted depth data," not "confirmed 99m deep"; a consumer should not treat the default as a safety guarantee. |
+| `min_depth` | REAL | No, default `99.0` | Shallowest charted depth (metres) anywhere along the edge — the primary draft-constraint gate. `99.0` means "not sampled against charted depth data," not "confirmed 99m deep"; a consumer should not treat the default as a safety guarantee. Negative values and "unknown" follow `metadata.depth_unknown_sentinel` (§1). |
 | `drval1` | REAL | No | Raw S-57 `DRVAL1` (charted minimum depth-area value) sample this edge's `min_depth` was derived from, kept for traceability back to the source chart attribute. `NULL` when no depth-area feature covered the edge. Not itself a routing input — use `min_depth`. |
 | `max_air_draft` | REAL | No, default `999.0` | Lowest fixed vertical clearance (metres) anywhere along the edge — the air-draft-constraint gate. `999.0` means no charted fixed obstruction was found (or the crossing is a movable-bridge opening, which the pipeline stamps at `999.0` after computing the real opening geometry — see the pipeline's bridge-opening handling). |
 | `min_width` | REAL | No, default `999.0` | Narrowest charted width (metres) anywhere along the edge — the beam-constraint gate. `999.0` means unconstrained/not sampled. |
@@ -188,7 +200,7 @@ of interior point-graph nodes.
 
 | Column | Type | Required | Description |
 |---|---|---|---|
-| `id` | TEXT | Yes | Deterministic MD5 hash of `"{poi_type}_{round(lat,5)}_{round(lon,5)}"` (13 hex chars). `INSERT OR IGNORE` handles duplicates across overlapping regions. |
+| `id` | INTEGER | Yes | Deterministic: the first 13 hex digits of the MD5 of `"{poi_type}_{round(lat,5)}_{round(lon,5)}"`, read as an integer (52 bits, so it is exact in a JavaScript number). `poi_type` is the `poi_type_enum` name, e.g. `bridge`. The same POI gets the same id in every database; `INSERT OR IGNORE` handles duplicates across overlapping regions. |
 | `type_id` | INTEGER | Yes | FK `poi_type_enum` (§2.3) |
 | `name` | TEXT | No | Display name |
 | `properties` | TEXT (JSON object) | No | The keys in §2.10.1, which a consumer may use for routing behaviour, plus any other attributes of the source feature (producer-defined, display-only). Every key is optional: a consumer must work when any of them is missing. |
@@ -242,11 +254,48 @@ tables lean while making provenance queryable and auditable.
 | `date` | TEXT | Yes | ISO 8601 date of approval. |
 | `source_pr_url` | TEXT | No | Link to the merged PR for full audit trail. |
 
+### 2.12 `notices`, `edge_notices`, `node_notices` (version 3)
+
+Charted hazards (wrecks, obstructions, rocks) and restricted areas, kept as
+information a consumer can show or act on rather than baked into edge costs.
+The reference producer's extraction and severity rules are in
+[`docs/SPEC-HAZARDS-AND-NOTICES.md`](https://github.com/marcelrv/signalk-router-pipeline/blob/main/docs/SPEC-HAZARDS-AND-NOTICES.md)
+of signalk-router-pipeline.
+
+`notices`, one row per charted object:
+
+| Column | Type | Required | Description |
+|---|---|---|---|
+| `id` | INTEGER PRIMARY KEY | Yes | Deterministic (first 13 hex digits of an MD5 of class, chart reference and geometry, as an integer), so one chart object has the same id in every database. |
+| `source_class` | TEXT | Yes | S-57 object class, e.g. `RESARE`, `WRECKS`, `OBSTRN`. |
+| `source_ref`, `source_cell` | TEXT | No | S-57 `LNAM` and cell file name, for tracing back to the chart. |
+| `severity` | INTEGER | Yes | `0` info, `1` caution, `2` depth, `3` prohibited. |
+| `depth_m` | REAL | No | Least depth behind a severity-2 notice; `NULL` otherwise or unknown. |
+| `name`, `text` | TEXT | No | Charted name and information text, as charted. |
+| `period_start`, `period_end` | TEXT | No | Recurring window, raw S-57 (`'--1101'`..`'--0515'`; a start later in the year than the end wraps over New Year). |
+| `valid_from`, `valid_until` | TEXT | No | The object's validity, raw S-57 dates; `NULL` = open. |
+| `period_source` | TEXT | No | `'chart'`, `'text-reviewed'`, or `NULL` (no time information). |
+| `text_review` | INTEGER | Yes | `1`: a prohibited area whose text mentions times or conditions that have not been reviewed; it stays prohibited. |
+| `attributes` | TEXT (JSON) | Yes | Every non-empty S-57 attribute. |
+| `geometry` | TEXT (GeoJSON) | Yes | For drawing. |
+| `min_lat`, `min_lon`, `max_lat`, `max_lon` | REAL | No | Bounding box. |
+
+`edge_notices (source, target, notice_id, severity, reason)` links a notice
+to an edge, one row per direction, with the severity that applies to that
+edge and an optional `reason` (e.g. `'seasonal'`, `'boundary graze'`).
+`node_notices (node_id, notice_id, severity)` links a notice to a node.
+
+A notice is active on a date inside `[valid_from, valid_until]` and, when a
+period is set, inside that window. An edge whose only severity-3 links are
+time-limited is closed inside the window and open outside it; a permanent
+severity-3 link normally also sets `edges.crosses_obstacle` (the reference
+producer leaves it off on opening-bridge and lock edges).
+
 ## 3. Complete Example (abridged)
 
 ```sql
-INSERT INTO metadata (id, country, name, schema_version, architecture, license, copyright)
-VALUES (1, 'NL', 'Netherlands', 1, 'navmesh-hybrid', 'CC-BY-NC-4.0',
+INSERT INTO metadata (id, country, name, schema_version, depth_unknown_sentinel, architecture, license, copyright)
+VALUES (1, 'NL', 'Netherlands', 3, -999.0, 'navmesh-hybrid', 'CC-BY-NC-4.0',
         '© Rijkswaterstaat, © OpenStreetMap contributors, © EMODnet Bathymetry, 2026');
 -- id is normally left to AUTOINCREMENT; shown explicitly here only so the
 -- nodes/edges rows below can reference region_id = 1 unambiguously.
