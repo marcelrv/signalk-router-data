@@ -1,20 +1,20 @@
 {
   "catalog_schema_version": "1.1.0",
   "version": 2,
-  "generated": "2026-11-10T19:12:32Z",
+  "generated": "2026-11-10T21:50:50Z",
   "region_count": 1,
   "regions": [
     {
       "id": "europe_nl_nl-routing",
       "filename": "europe_nl_nl-routing.sqlite.gz",
       "inner_filename": "nl-routing.sqlite",
-      "sha256": "05e97ea5a2adc15c7e202e56e381c7a4cb841e5f32d5cb42cda93eb5e8ecbf1c",
-      "size_bytes": 6725950,
+      "sha256": "fd5eff73750a461a45741c7e6e47134977ea2e77498f681dcb32cbb36451e966",
+      "size_bytes": 6730153,
       "compression": "gzip",
       "country": "NL-NAV",
       "name": "Netherlands waterways (inland and coastal)",
       "description": "Navigable route network for the Netherlands: inland waterways, IJsselmeer, Wadden Sea, Delta and coastal approaches, based on Rijkswaterstaat IENC / ENC data, NWB vaarwegen, VNDS and BRTN. Waterway centre lines with depth limits, bridges and locks with clearances, tidal regimes, and connections to harbours and marinas. Not for navigation: verify against official charts and notices.",
-      "last_update": "2026-11-10T18:38:18Z",
+      "last_update": "2026-11-10T21:47:06Z",
       "schema_version": 3,
       "tags": [
         "ienc",
@@ -34,11 +34,11 @@
       "stats": {
         "nodes": 52960,
         "edges": 108104,
-        "pois": 9469,
+        "pois": 9443,
         "coastal_nodes": 52960,
         "inland_nodes": 0
       },
-      "deployed": "2026-11-10T18:38:47Z",
+      "deployed": "2026-11-10T21:49:48Z",
       "download_url": "https://github.com/marcelrv/signalk-router-data/releases/download/routing-databases-latest/europe_nl_nl-routing.sqlite.gz"
     }
   ]
