@@ -227,6 +227,20 @@ were absent.
 | `closed_height` | bridge, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
 | `typical_wait_minutes` | bridge, lock | number, minutes, >= 0 | Typical wait at this bridge or lock; overrides the consumer's default. |
 | `structure` | bridge | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span it goes through. |
+| `kind` | bridge | string, non-empty | What the overhead structure is, for display (icon, label). See the notes below. |
+| `height_unknown` | bridge | boolean, only `true` | The source gives no usable clearance. A `height` written with it is a conservative estimate, not a charted value. |
+
+Notes on `kind`:
+
+- The bridge POI type covers everything a vessel passes under, so the
+  router can treat them alike. `kind` tells them apart. Values:
+  `"bridge"`, `"cable"` (overhead power line), `"pipe"`, `"conveyor"`,
+  `"aqueduct"`, `"weir"`, `"flood_barrier"`, `"lock_gate"`, `"structure"`
+  (another overhead structure).
+- The list is open: a producer may add values. A consumer treats a value
+  it does not know, and an absent `kind`, as `"bridge"`.
+- `kind` changes nothing in routing: `subtype`, `height` and
+  `closed_height` keep their meaning for every kind.
 
 Notes on `structure`:
 
