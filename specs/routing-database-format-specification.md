@@ -179,6 +179,7 @@ id = (type_int * 648_000_000_000_000) + (lat_int * 36_000_000) + lon_int
 | `source_id` | INTEGER | No | FK to `data_sources.id`. |
 | `edge_sequence_id` | INTEGER | No (§2.13) | FK `edge_sequences.id`: the sequence this edge belongs to. Both direction rows carry the same value. |
 | `depth_quality_id` | INTEGER | No, default `0` (§2.13) | FK `depth_quality_enum.id`: how `min_depth` was obtained. Description only, never a routing cost. |
+| `lock_id` | INTEGER | No | The lock chamber this edge runs through: the `pois.id` of that chamber's lock POI (type `1`). `NULL` = not in a lock. Both direction rows carry the same value. A producer that writes the column marks every edge through a chamber and puts a node inside every chamber a line passes, so a route that uses a lock is known from its edges, not guessed from POIs near it. A database without the column says nothing about locks on its edges (absent = unknown, not "no lock"). |
 | `width_profile` | TEXT (JSON) | No | Array of `[fraction_along_edge, width_m]` samples for `centerline`/`lane` edges, e.g. `[[0.0, 45], [0.5, 30], [1.0, 50]]`, for beam-constraint checks that need more than one scalar. `min_width` above remains the required scalar summary (`= min` of the profile) for consumers that don't read `width_profile`. |
 
 ### 2.9 `navmesh_regions`
@@ -226,7 +227,7 @@ were absent.
 | `height` | bridge, `fixed` only | number, metres | Vertical clearance under the fixed span (S-57 `VERCLR`). For display: the routing limit is on the edges (`edges.max_air_draft`). |
 | `closed_height` | bridge, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
 | `typical_wait_minutes` | bridge, lock | number, minutes, >= 0 | Typical wait at this bridge or lock; overrides the consumer's default. |
-| `structure` | bridge | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span it goes through. |
+| `structure` | bridge, lock | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, every chamber of one lock complex too, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span or chamber it goes through. |
 | `kind` | bridge | string, non-empty | What the overhead structure is, for display (icon, label). See the notes below. |
 | `height_unknown` | bridge | boolean, only `true` | The source gives no usable clearance. A `height` written with it is a conservative estimate, not a charted value. |
 
@@ -249,8 +250,15 @@ Notes on `structure`:
   together. Where it is absent a
   consumer groups spans by `name`, which suits S-57, where all spans of one
   bridge share `OBJNAM`.
+- Locks: one lock POI per chamber. The chambers of one lock complex (a
+  boat locks through one of them) share one value, and so do the bridge
+  spans carried over that lock's heads, so a consumer can report a lock
+  and its bridges as one obstacle. Chambers in series (a staircase) are
+  separate lockings and may carry separate values. A bridge carried over two
+  locks does not join them: each of its spans takes the value of the lock
+  under it.
 - The reference producer writes the lowest `pois.id` among the structure's
-  spans, as a decimal string. Since `pois.id` is derived from position, the
+  members (spans and chambers), as a decimal string. Since `pois.id` is derived from position, the
   value is the same in every database that holds the whole structure.
   Consumers must treat it as an opaque string and compare it only for
   equality.
