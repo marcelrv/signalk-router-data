@@ -230,6 +230,9 @@ were absent.
 | `structure` | bridge, lock | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, every chamber of one lock complex too, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span or chamber it goes through. |
 | `kind` | bridge | string, non-empty | What the overhead structure is, for display (icon, label). See the notes below. |
 | `height_unknown` | bridge | boolean, only `true` | The source gives no usable clearance. A `height` written with it is a conservative estimate, not a charted value. |
+| `clearance_reference` | bridge | string | What the charted clearance (`height`, and the edge's `max_air_draft`) is measured from. `"design_high_water"`: the design high water of a river. Absent: no river reference is given. A consumer ignores a value it does not know and treats it as absent. |
+| `underside_nap` | bridge | number, metres | Height of the underside of the span above the vertical datum NAP. Written with `clearance_reference`. |
+| `mhw_nap` | bridge | number, metres | The design high water level, in the same datum as `underside_nap`, that the charted clearance is measured from. Written with `underside_nap`. |
 
 Notes on `kind`:
 
@@ -242,6 +245,22 @@ Notes on `kind`:
   it does not know, and an absent `kind`, as `"bridge"`.
 - `kind` changes nothing in routing: `subtype`, `height` and
   `closed_height` keep their meaning for every kind.
+
+Notes on `clearance_reference`, `underside_nap` and `mhw_nap`:
+
+- On rivers the water level varies by metres, and the published
+  clearance is the one at the design high water: the conservative value.
+  Example: underside +19.62 m NAP, design high water +11.9 m NAP gives a
+  charted clearance of 7.7 m.
+- `clearance_reference`, `underside_nap` and `mhw_nap` come together: a
+  producer writes all three or none. A consumer that does not know them
+  keeps using `height` and `edges.max_air_draft`, which stay the
+  conservative limit.
+- A consumer that knows the actual river level L (same datum) computes
+  the clearance as `underside_nap - L` and may use it instead of the
+  edge limit for this span.
+- `underside_nap` and `mhw_nap` are heights, so they may be negative
+  below the datum.
 
 Notes on `structure`:
 
