@@ -1,5 +1,11 @@
 # Netherlands routing database — changelog
 
+## 0.3.1 — 2026-11-10
+
+- Bridges: fixed-bridge clearances are checked against VNDS. A missing, placeholder or wrong chart height now uses the VNDS value (e.g. Zeelandbrug 11.0 → 8.3 m, Krammer locks 0.1 → 14.88 m).
+- Bridges: a bridge drawn twice in the chart is now one POI.
+- Bridge POIs: new `height_source` and `chart_height` properties.
+
 ## 0.3.0 — 2026-11-10
 
 - Locks: every lock chamber is now a POI, grouped per lock complex (`structure`). Edges through a chamber carry `lock_id`.
