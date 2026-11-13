@@ -16,14 +16,66 @@ reference implementation, not the only one.
 
 ## 1. Schema Version
 
-This document specifies **`metadata.schema_version = 3`**. Each version
-adds to the one before; nothing was removed or renamed:
+### 1.1 Format generation and the compatibility contract
+
+`metadata.format_generation` (INTEGER) is the only number a consumer
+checks before reading a file. A consumer refuses a file whose generation
+it does not know, with a clear message, instead of misreading it.
+
+- **Generation `0` (alpha).** The format may still change in any way:
+  tables, columns and keys can be removed, renamed or given a new meaning.
+  Producer and consumer are released together. A file without
+  `format_generation` is generation `0`.
+- **Generation `1` and later.** Starts with the first non-alpha release.
+  Within one generation the contract below holds; only a break of it
+  starts a new generation.
+
+Every `metadata` row of a file carries the same `format_generation`: a file
+is one generation. When several files are loaded together, each is judged
+on its own; a producer never merges files of different generations into
+one.
+
+The contract (binding from generation `1`, followed as a design rule
+already in generation `0`):
+
+1. **Only additions.** New tables, optional columns, `properties`/`info`
+   keys, POI types and enum values may be added. Nothing is removed,
+   renamed or given another type.
+2. **Absent = unknown, unknown = ignored.** A consumer works when any
+   optional table, column or key is missing, falling back as each section
+   describes. It ignores tables, columns, keys and POI types it does not
+   know (it does not show or route by them).
+3. **Detect features by presence.** A consumer looks for the table, column
+   or key it needs, never at `schema_version`.
+4. **A meaning never changes.** A key or value that needs a new meaning gets
+   a new name.
+5. **Lean file.** The routing database is a product built for routing, also
+   on small devices. Full source history, competing values and editorial
+   data stay in the producer's own store; the file carries the one value in
+   use per fact, with its source only where a user sees it.
+
+The POI model in §2.10 and §2.14 is a generation-0 change that rules 1 and
+4 would not allow later: it removes `edges.lock_id` and
+`properties.structure`, makes `pois.id` opaque instead of recomputable from
+the position, and moves `kind`, `height` and `height_unknown` from
+`properties` to `info`. The first generation-1 release freezes the format
+as it then stands.
+
+### 1.2 `schema_version`
+
+`schema_version` numbers the additions below. It is informational: rule 3
+above applies.
+
+This document specifies **`metadata.schema_version = 4`**. Versions 1–3
+each added to the one before; version 4 also removes, which generation 0
+allows (§1.1):
 
 | `schema_version` | Adds |
 |---|---|
 | `1` | The initial format: the tables in §2.1–§2.11. |
 | `2` | `metadata.depth_unknown_sentinel` (§2.1). A file that sets it uses that value (the reference producer writes `-999.0`) for "depth unknown" in `edges.min_depth` and `nodes.node_depth`, and writes any other negative depth as it is charted: a drying height (e.g. `-2.0` = dries 2 m). |
 | `3` | The `notices`, `edge_notices` and `node_notices` tables (§2.12): charted hazards and restricted areas linked to the edges and nodes they affect. A producer that builds without hazard data writes `2`. Version 3 files may also hold the edge-sequence and water-body tables (§2.13), with `edges.edge_sequence_id`, `edges.depth_quality_id` and `metadata.edge_sequence_params`; they are optional. |
+| `4` | The POI model: `pois.parent_id` and `pois.info`, POI types `5` `lock_chamber` and `6` `bridge_span` (§2.10), the `edge_pois` table (§2.14), `notices.poi_id` (§2.12, in a file that has `notices`), `metadata.format_generation` (§1.1). A file without hazard data may still write `4`: the version names the newest addition used, and the §2.12 tables stay optional. Removed: `edges.lock_id` and `properties.structure`; `kind`, `height` and `height_unknown` moved from `properties` to `info`. |
 
 - Consumers must not infer behaviour from the number. Read
   `depth_unknown_sentinel` itself to interpret negative depths: when it is
@@ -68,7 +120,8 @@ One row per region:
 | `url` | TEXT | Yes | Link to original data source / license |
 | `bounding_box` | TEXT (JSON) | Yes | `{"min_lat":..., "min_lon":..., "max_lat":..., "max_lon":...}` |
 | `boundary_geometry` | TEXT (GeoJSON) | Yes | Polygon/MultiPolygon covering the graph |
-| `schema_version` | INTEGER | Yes | `1`–`3`, per §1 |
+| `schema_version` | INTEGER | Yes | `1`–`4`, per §1.2 |
+| `format_generation` | INTEGER | No, default `0` | Per §1.1. `0` = alpha. The same in every row of a file. |
 | `depth_unknown_sentinel` | REAL | No (version 2+) | The value that means "depth unknown" in `edges.min_depth` and `nodes.node_depth`; the reference producer writes `-999.0`. `NULL` or absent: any negative depth is unknown. See §1. |
 | `id` | INTEGER PRIMARY KEY AUTOINCREMENT | Yes | Unique per-region ID. Referenced by `nodes.region_id`, `edges` (indirectly via node), `pois.region_id`, and `navmesh_regions.region_id` — despite the FK columns on those tables being named `region_id`, the column on `metadata` itself is `id`, not `region_id`. |
 | `license` | TEXT | No | Data-sharing terms for this specific compiled region (e.g. `"CC-BY-NC-4.0"`). Falls back to the repository-wide default in `LICENSE-DATA.md` when absent. |
@@ -98,7 +151,10 @@ a source by a small integer FK instead of repeating a URL string per row.
 ### 2.3 `edge_type_enum` / `poi_type_enum`
 
 `edge_type_enum`: `0=coastal, 1=inland`.
-`poi_type_enum`: `0=harbour, 1=lock, 2=bridge, 3=fairway, 4=waterway`.
+`poi_type_enum`: `0=harbour, 1=lock, 2=bridge, 3=fairway, 4=waterway,
+5=lock_chamber, 6=bridge_span`. See §2.10 for wholes and parts. Producers
+may append ids; ids are never renumbered. A consumer ignores a type it
+does not know (§1.1 rule 2).
 
 ### 2.4 Source tiers (not a table — a shared integer domain)
 
@@ -179,7 +235,6 @@ id = (type_int * 648_000_000_000_000) + (lat_int * 36_000_000) + lon_int
 | `source_id` | INTEGER | No | FK to `data_sources.id`. |
 | `edge_sequence_id` | INTEGER | No (§2.13) | FK `edge_sequences.id`: the sequence this edge belongs to. Both direction rows carry the same value. |
 | `depth_quality_id` | INTEGER | No, default `0` (§2.13) | FK `depth_quality_enum.id`: how `min_depth` was obtained. Description only, never a routing cost. |
-| `lock_id` | INTEGER | No | The lock chamber this edge runs through: the `pois.id` of that chamber's lock POI (type `1`). `NULL` = not in a lock. Both direction rows carry the same value. A producer that writes the column marks every edge through a chamber and puts a node inside every chamber a line passes, so a route that uses a lock is known from its edges, not guessed from POIs near it. A database without the column says nothing about locks on its edges (absent = unknown, not "no lock"). |
 | `width_profile` | TEXT (JSON) | No | Array of `[fraction_along_edge, width_m]` samples for `centerline`/`lane` edges, e.g. `[[0.0, 45], [0.5, 30], [1.0, 50]]`, for beam-constraint checks that need more than one scalar. `min_width` above remains the required scalar summary (`= min` of the profile) for consumers that don't read `width_profile`. |
 
 ### 2.9 `navmesh_regions`
@@ -202,19 +257,70 @@ of interior point-graph nodes.
 
 ### 2.10 `pois`
 
+One table for every thing a route can pass, stop at or go to: harbours,
+locks, bridges, and whatever types are added later (fuel station, mooring
+buoy, …). A new kind of thing is a new POI type, never a new table.
+
+**Wholes and parts.** A thing that has parts is a *whole* with *part*
+rows that point to it through `parent_id`:
+
+| Whole (type) | Parts (type) |
+|---|---|
+| `lock` (1): one lock complex | `lock_chamber` (5): each chamber; `bridge_span` (6): each span of a bridge carried over the lock's heads |
+| `bridge` (2): one bridge or other overhead structure | `bridge_span` (6): each span or opening |
+| `harbour` (0) | none defined yet |
+
+- Exactly one level: a part's parent is a whole, and a whole has no parent.
+- Every `lock_chamber` and `bridge_span` has a parent, also when the
+  structure has only one of them, and every `lock` and `bridge` has at
+  least one part (a source with only a point gives one part at that
+  point), so a consumer handles one shape.
+- A route passes **parts** (it goes under a span, through a chamber) and is
+  reported as passing the **whole**, named after the part it uses. Several
+  parts of one whole on a route are one passage.
+- Facts about the whole (name, opening hours, VHF, wait) sit on the whole;
+  facts about one part (clearance, opening or fixed, chamber size) sit on
+  the part. Nothing is copied from the whole onto its parts: a consumer
+  reads a whole-level fact for a part (e.g. `typical_wait_minutes` for a
+  chamber the route uses) from the part's parent.
+- Chambers in series (a staircase) are separate lockings and may be
+  separate wholes. A bridge carried over two locks does not join them: each
+  of its spans is a part of the lock under it.
+- A `bridge_span` whose parent is a lock has no `bridge` whole of its own:
+  it carries the bridge's name in `name`, the bridge's `kind` in `info`,
+  and the bridge's own `typical_wait_minutes` and `opening_hours`, which
+  apply to that span instead of the lock's.
+
 | Column | Type | Required | Description |
 |---|---|---|---|
-| `id` | INTEGER | Yes | Deterministic: the first 13 hex digits of the MD5 of `"{poi_type}_{round(lat,5)}_{round(lon,5)}"`, read as an integer (52 bits, so it is exact in a JavaScript number). `poi_type` is the `poi_type_enum` name, e.g. `bridge`. The same POI gets the same id in every database; `INSERT OR IGNORE` handles duplicates across overlapping regions. |
+| `id` | INTEGER | Yes | Opaque, stable id, below 2^53, so it is exact in a JavaScript number. The same thing has the same id in every database of one producer and in every release: a producer keeps ids across builds (the reference producer keeps a registry, matching on external references first, then parts and harbours by position, a whole following the majority of its parts). How a new id is made is up to the producer; the reference producer hashes `"{poi_type}_{round(lat,5)}_{round(lon,5)}"` (MD5, first 13 hex digits) the first time it sees a thing, but an id kept from an earlier build no longer matches the hash of the current position. Ids are only comparable between files of one producer: files of two producers may give one thing two ids, and a consumer then shows it twice. Consumers compare ids only for equality. |
 | `type_id` | INTEGER | Yes | FK `poi_type_enum` (§2.3) |
-| `name` | TEXT | No | Display name |
-| `properties` | TEXT (JSON object) | No | The keys in §2.10.1, which a consumer may use for routing behaviour, plus any other attributes of the source feature (producer-defined, display-only). Every key is optional: a consumer must work when any of them is missing. |
-| `lat` | REAL | Yes | Latitude |
+| `parent_id` | INTEGER | Parts: yes; wholes: `NULL` | `pois.id` of the whole this part belongs to. |
+| `name` | TEXT | No | Display name. A part may have its own name ("opening 2"); a consumer shows the whole's name, and a part's name only where it differs. |
+| `properties` | TEXT (JSON object) | No | Routing facts only: the keys in §2.10.1. Small; a consumer may load it for every POI at start-up. |
+| `info` | TEXT (JSON object) | No | Display facts: the keys in §2.10.2 plus any producer-defined keys. A consumer reads it on demand (a route or POI is shown), not at start-up. |
+| `lat` | REAL | Yes | Latitude. A whole with parts is at the mean position of all its parts, also the parts in other files. A whole without parts (a harbour) has its own position. A charted point of the whole, if a source has one, may go in `info`. |
 | `lon` | REAL | Yes | Longitude |
 | `region_id` | INTEGER | Yes | FK `metadata.id` |
 | `source_tier` | INTEGER | No, default `1` | FK to the domain in §2.4. |
-| `source_id` | INTEGER | No | FK to `data_sources.id`. |
+| `source_id` | INTEGER | No | FK to `data_sources.id`: the main source of the row. Per-fact sources, where they matter, are in `info.sources`. |
+
+A whole cut by a region border is written in every database that holds
+any part of it, with the same `id` and the same row content (its position
+computed over all its parts), so loading several databases gives one whole
+with the union of its parts. Every part is written in the database of each
+region it lies in, and in every database with an `edge_pois` row that
+points to it. Every part's parent is in the same file: a conforming file
+has no dangling `parent_id`. A consumer that finds one treats the part as
+a whole of its own.
 
 #### 2.10.1 Recognised `properties` keys
+
+**Which keys go in `properties`:** only facts a router needs *during the
+route search or the wait schedule*. Everything else, including facts shown
+with a route or used for warnings after a route is found, goes in `info`
+(§2.10.2). A fact that later becomes a routing input gets a new key in
+`properties` (§1.1 rule 4); a key never moves.
 
 Rule for every key: **unknown = key absent**. A producer never writes `null`,
 `""`, `0` or a `999` placeholder for a value it does not know. A consumer
@@ -223,28 +329,13 @@ were absent.
 
 | Key | POI type | Type | Meaning |
 |---|---|---|---|
-| `subtype` | bridge | string | `"opening"` (a span that opens: bascule, swing, lift, …) or `"fixed"`. |
-| `height` | bridge, `fixed` only | number, metres | Vertical clearance under the fixed span (S-57 `VERCLR`). For display: the routing limit is on the edges (`edges.max_air_draft`). |
-| `closed_height` | bridge, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
-| `typical_wait_minutes` | bridge, lock | number, minutes, >= 0 | Typical wait at this bridge or lock; overrides the consumer's default. |
-| `structure` | bridge, lock | string, non-empty | Identifies one physical structure: every span of the same bridge carries the same value, every chamber of one lock complex too, and no other structure in the database uses it. A route that passes a structure is one crossing, reported as the span or chamber it goes through. |
-| `kind` | bridge | string, non-empty | What the overhead structure is, for display (icon, label). See the notes below. |
-| `height_unknown` | bridge | boolean, only `true` | The source gives no usable clearance. A `height` written with it is a conservative estimate, not a charted value. |
-| `clearance_reference` | bridge | string | What the charted clearance (`height`, and the edge's `max_air_draft`) is measured from. `"design_high_water"`: the design high water of a river. Absent: no river reference is given. A consumer ignores a value it does not know and treats it as absent. |
-| `underside_nap` | bridge | number, metres | Height of the underside of the span above the vertical datum NAP. Written with `clearance_reference`. |
-| `mhw_nap` | bridge | number, metres | The design high water level, in the same datum as `underside_nap`, that the charted clearance is measured from. Written with `underside_nap`. |
-
-Notes on `kind`:
-
-- The bridge POI type covers everything a vessel passes under, so the
-  router can treat them alike. `kind` tells them apart. Values:
-  `"bridge"`, `"cable"` (overhead power line), `"pipe"`, `"conveyor"`,
-  `"aqueduct"`, `"weir"`, `"flood_barrier"`, `"lock_gate"`, `"structure"`
-  (another overhead structure).
-- The list is open: a producer may add values. A consumer treats a value
-  it does not know, and an absent `kind`, as `"bridge"`.
-- `kind` changes nothing in routing: `subtype`, `height` and
-  `closed_height` keep their meaning for every kind.
+| `subtype` | bridge_span | string | `"opening"` (a span that opens: bascule, swing, lift, …) or `"fixed"`. |
+| `closed_height` | bridge_span, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
+| `typical_wait_minutes` | lock, bridge (wholes); bridge_span whose parent is a lock (§2.10) | number, minutes, >= 0 | Typical wait at this lock or bridge; overrides the consumer's default. |
+| `opening_hours` | lock, bridge (wholes); bridge_span whose parent is a lock (§2.10) | string, non-empty | When the lock or bridge is normally operated, regular and seasonal schedules included, in OpenStreetMap `opening_hours` syntax. Exceptions for a period (works, closures) are notices (§2.12), not this key. Absent: no schedule known, not "always operated". A consumer ignores a string it cannot parse. |
+| `clearance_reference` | bridge_span | string | What the charted clearance (`info.height`, and the edge's `max_air_draft`) is measured from. `"design_high_water"`: the design high water of a river. Absent: no river reference is given. A consumer ignores a value it does not know and treats it as absent. |
+| `underside_nap` | bridge_span | number, metres | Height of the underside of the span above the vertical datum NAP. Written with `clearance_reference`. |
+| `mhw_nap` | bridge_span | number, metres | The design high water level, in the same datum as `underside_nap`, that the charted clearance is measured from. Written with `underside_nap`. |
 
 Notes on `clearance_reference`, `underside_nap` and `mhw_nap`:
 
@@ -261,26 +352,41 @@ Notes on `clearance_reference`, `underside_nap` and `mhw_nap`:
   edge limit for this span.
 - `underside_nap` and `mhw_nap` are heights, so they may be negative
   below the datum.
+- They are in `properties`, not `info`, because a consumer that knows the
+  river level uses them as the span's clearance during the route search.
 
-Notes on `structure`:
+#### 2.10.2 Recognised `info` keys
 
-- Needed where the source names each span on its own ("Span 1 (fixed) X",
-  "Span 2 (lift) X"), so the names do not show which spans belong
-  together. Where it is absent a
-  consumer groups spans by `name`, which suits S-57, where all spans of one
-  bridge share `OBJNAM`.
-- Locks: one lock POI per chamber. The chambers of one lock complex (a
-  boat locks through one of them) share one value, and so do the bridge
-  spans carried over that lock's heads, so a consumer can report a lock
-  and its bridges as one obstacle. Chambers in series (a staircase) are
-  separate lockings and may carry separate values. A bridge carried over two
-  locks does not join them: each of its spans takes the value of the lock
-  under it.
-- The reference producer writes the lowest `pois.id` among the structure's
-  members (spans and chambers), as a decimal string. Since `pois.id` is derived from position, the
-  value is the same in every database that holds the whole structure.
-  Consumers must treat it as an opaque string and compare it only for
-  equality.
+Same rule as §2.10.1: unknown = key absent. Producers may add other keys;
+a consumer ignores keys it does not know.
+
+| Key | POI type | Type | Meaning |
+|---|---|---|---|
+| `kind` | bridge (whole); bridge_span whose parent is a lock | string, non-empty | What the overhead structure is, for display (icon, label). A span under a `bridge` whole has none and takes the whole's. See the notes below. |
+| `height` | bridge_span, `fixed` only | number, metres | Vertical clearance under the fixed span (S-57 `VERCLR`). For display: the routing limit is on the edges (`edges.max_air_draft`). |
+| `height_unknown` | bridge_span | boolean, only `true` | The source gives no usable clearance. A `height` written with it is a conservative estimate, not a charted value. |
+| `refs` | any | array of `{"scheme": string, "id": string}` | Identifiers of this thing in other datasets, any number, any scheme, e.g. `{"scheme": "isrs", "id": "…"}`, `{"scheme": "osm", "id": "way/123"}`, `{"scheme": "usace", "id": "…"}`. Scheme names are lower case. For linking and display only; never the POI's identity. |
+| `sources` | any | object, key → `data_sources.id` | Where a fact on this row came from, for the facts where a user sees it (e.g. `{"height": 3}`); a key may name a `properties` or an `info` key. A key not listed comes from `pois.source_id`. |
+
+Notes on `kind`:
+
+- The bridge POI type covers everything a vessel passes under, so the
+  router can treat them alike. `kind` tells them apart. Values:
+  `"bridge"`, `"cable"` (overhead power line), `"pipe"`, `"conveyor"`,
+  `"aqueduct"`, `"weir"`, `"flood_barrier"`, `"lock_gate"`, `"structure"`
+  (another overhead structure).
+- The list is open: a producer may add values. A consumer treats a value
+  it does not know, and an absent `kind`, as `"bridge"`.
+- `kind` changes nothing in routing: `subtype`, `info.height` and
+  `closed_height` keep their meaning for every kind.
+
+Notes on the whole/part model, replacing the earlier `structure` key:
+
+- The earlier `properties.structure` string (lowest member id) is replaced
+  by `parent_id` and is no longer written.
+- Grouping spans by `name` is a consumer fallback for files without
+  `parent_id` only (older files, producers without wholes); in a file with
+  `parent_id` the parent is authoritative.
 
 ### 2.11 `override_provenance`
 
@@ -324,6 +430,7 @@ of signalk-router-pipeline.
 | `attributes` | TEXT (JSON) | Yes | Every non-empty S-57 attribute. |
 | `geometry` | TEXT (GeoJSON) | Yes | For drawing. |
 | `min_lat`, `min_lon`, `max_lat`, `max_lon` | REAL | No | Bounding box. |
+| `poi_id` | INTEGER | No (version 4) | `pois.id` of the whole or part the notice concerns (works, a closure, a temporary lower clearance), for display. Absent: not linked to a POI. It changes no routing: the edges a notice affects are in `edge_notices`. |
 
 `edge_notices (source, target, notice_id, severity, reason)` links a notice
 to an edge, one row per direction, with the severity that applies to that
@@ -404,11 +511,45 @@ Enums, with the values defined so far:
 `rank` orders depth qualities by trust (higher = more trusted). Compare
 ranks, never ids.
 
+### 2.14 `edge_pois` (optional)
+
+Which parts an edge passes: the lock chamber it runs through, the bridge
+spans it goes under. It links the graph to the POIs; every fact stays on
+the POI. A consumer reads it for the edges of a route it has found, not at
+start-up.
+
+| Column | Type | Required | Description |
+|---|---|---|---|
+| `source`, `target` | INTEGER | Yes | The edge's node pair, undirected: `source < target`. A consumer looks up an edge `(a, b)` of either direction as `(min(a,b), max(a,b))`. |
+| `poi_id` | INTEGER | Yes | `pois.id` of a part (`lock_chamber`, `bridge_span`). That POI, and its parent, have rows in the same file. |
+
+Primary key `(source, target, poi_id)`.
+
+- **Lock chambers.** A producer that writes lock rows puts a node inside
+  every chamber a line passes, so the rows mark exactly the edges in the
+  chamber.
+- **Bridge spans.** "Passes under" means the same as for
+  `edges.max_air_draft` (§2.8), and includes opening spans, which have no
+  height limit.
+- **Absent = unknown.** Without the table a consumer falls back to finding
+  POIs near the route geometry, and knows no lock spans. With it, the table
+  is complete for every `lock_chamber` and `bridge_span` on that file's
+  edges: an edge with no rows passes none, and an empty table means no edge
+  of the file passes one.
+- **Macro edges** (§7) carry the union of the rows of the edges they
+  aggregate.
+- **Several files.** One node pair can be in several databases (seams,
+  overlaps). A consumer takes the union of the rows of every file that
+  holds the pair and has the table; a file that lacks the pair or the table
+  has no say.
+- Other POI types may be linked later; a consumer ignores the types it does
+  not handle.
+
 ## 3. Complete Example (abridged)
 
 ```sql
-INSERT INTO metadata (id, country, name, schema_version, depth_unknown_sentinel, architecture, license, copyright)
-VALUES (1, 'US', 'Chesapeake Bay', 3, -999.0, 'navmesh-hybrid', 'CC-BY-NC-4.0',
+INSERT INTO metadata (id, country, name, schema_version, format_generation, depth_unknown_sentinel, architecture, license, copyright)
+VALUES (1, 'US', 'Chesapeake Bay', 4, 0, -999.0, 'navmesh-hybrid', 'CC-BY-NC-4.0',
         '© NOAA, © OpenStreetMap contributors, © GEBCO, 2026');
 -- id is normally left to AUTOINCREMENT; shown explicitly here only so the
 -- nodes/edges rows below can reference region_id = 1 unambiguously.
@@ -424,12 +565,22 @@ VALUES (123456789012, 38.97842, -76.48163, 1, 2, 1, 1);  -- a supernode from Tie
 
 INSERT INTO edges (source, target, distance, edge_type_id, edge_kind_id, cost_factor, source_tier, source_id)
 VALUES (123456789012, 123456789099, 842.5, 0, 2, 0.8, 1, 1);  -- a Tier-1 lane edge
+
+-- a lock (whole) with one chamber (part), and the edge that runs through the chamber
+INSERT INTO pois (id, type_id, parent_id, name, properties, info, lat, lon, region_id, source_id)
+VALUES (2001, 1, NULL, 'Example Lock', '{"typical_wait_minutes": 20, "opening_hours": "Mo-Su 06:00-22:00"}',
+        '{"refs": [{"scheme": "usace", "id": "…"}]}', 38.98010, -76.47990, 1, 1),
+       (2002, 5, 2001, NULL, NULL, NULL, 38.98010, -76.47990, 1, 1);
+INSERT INTO edge_pois (source, target, poi_id) VALUES (123456789012, 123456789099, 2002);
 ```
 
 ## 4. Loading & Overlay Merge (consumption contract)
 
 1. Load one or more region `.sqlite` files. Node/POI IDs are globally
-   unique and self-merge across regions (§§2.7, 2.10).
+   unique and self-merge across regions (§§2.7, 2.10; POI ids within the
+   files of one producer). A whole or part in
+   several files is one POI; its parts are the union over the files.
+   `edge_pois` rows merge as described in §2.14.
 2. Apply the override overlay **after** all base regions are loaded:
    process `deleted_nodes`/`deleted_edges` tombstones first, then
    add/replace rows. The override authoring format (human-readable files
@@ -533,7 +684,9 @@ including [signalk-router-pipeline](https://github.com/marcelrv/signalk-router-p
 **Consumer**: any routing engine, including
 [SignalK RouteIQ](https://github.com/marcelrv/signalk-routeiq), which
 must implement at minimum: node/edge/poi loading and ID-based merging
-(§§2.7, 2.10), the overlay merge (§4), tier-based routability (§5), and
+(§§2.7, 2.10), wholes and parts (`parent_id`, §2.10), the
+format-generation check and the ignore rules (§1.1),
+the overlay merge (§4), tier-based routability (§5), and
 either full or minimum-viable navmesh-region handling (§6) — a database
 containing `navmesh_regions` must never be silently mis-routed by a
 conformant consumer.
