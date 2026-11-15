@@ -282,7 +282,8 @@ rows that point to it through `parent_id`:
   facts about one part (clearance, opening or fixed, chamber size) sit on
   the part. Nothing is copied from the whole onto its parts: a consumer
   reads a whole-level fact for a part (e.g. `typical_wait_minutes` for a
-  chamber the route uses) from the part's parent.
+  chamber the route uses) from the part's parent, unless the part carries
+  its own value (§2.10.1).
 - Chambers in series (a staircase) are separate lockings and may be
   separate wholes. A bridge carried over two locks does not join them: each
   of its spans is a part of the lock under it.
@@ -331,7 +332,7 @@ were absent.
 |---|---|---|---|
 | `subtype` | bridge_span | string | `"opening"` (a span that opens: bascule, swing, lift, …) or `"fixed"`. |
 | `closed_height` | bridge_span, `opening` only | number, metres, > 0 | Vertical clearance under the span while it is closed (S-57 `VERCCL`). Lets a consumer skip the wait for a vessel that fits under the closed span. Never an air-draft limit. |
-| `typical_wait_minutes` | lock, bridge (wholes); bridge_span whose parent is a lock (§2.10) | number, minutes, >= 0 | Typical wait at this lock or bridge; overrides the consumer's default. |
+| `typical_wait_minutes` | lock, bridge (wholes); bridge_span whose parent is a lock (§2.10); lock_chamber | number, minutes, >= 0 | Typical wait at this lock or bridge; overrides the consumer's default. On a `lock_chamber` it applies to that chamber only and overrides the lock's value, e.g. `0` for a chamber that stands open while the others operate. |
 | `opening_hours` | lock, bridge (wholes); bridge_span whose parent is a lock (§2.10) | string, non-empty | When the lock or bridge is normally operated, regular and seasonal schedules included, in OpenStreetMap `opening_hours` syntax. Exceptions for a period (works, closures) are notices (§2.12), not this key. Absent: no schedule known, not "always operated". A consumer ignores a string it cannot parse. |
 | `clearance_reference` | bridge_span | string | What the charted clearance (`info.height`, and the edge's `max_air_draft`) is measured from. `"design_high_water"`: the design high water of a river. Absent: no river reference is given. A consumer ignores a value it does not know and treats it as absent. |
 | `underside_nap` | bridge_span | number, metres | Height of the underside of the span above the vertical datum NAP. Written with `clearance_reference`. |
