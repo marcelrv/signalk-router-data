@@ -1,5 +1,19 @@
 # Netherlands routing database — changelog
 
+## 0.4.0 — 2026-11-16
+
+Requires signalk-routeiq 0.1.0 or higher: the file uses database format version 4 (the POI model), which older plugin versions cannot read correctly. Routes, depths and notices are unchanged from 0.3.1 except for the clearances below.
+
+- POIs: locks and bridges are wholes with parts. 380 locks with their 444 chambers (`lock_chamber`), 3,473 bridges with their 6,239 spans (`bridge_span`), linked by `parent_id`. Replaces `structure` and `edges.lock_id`.
+- POIs: ids are stable from one release to the next.
+- Edges: new `edge_pois` table lists the locks and bridges each edge passes, so a route reports the structures on it.
+- Bridge POIs: the name comes from VNDS instead of the span id (e.g. "Leinebrug", not "Doorvaartopening (beweegbaar) Leinebrug"; "Platvoetbrug", not "B175").
+- Bridge POIs: `kind`, `height` and `height_unknown` moved from `properties` to the new `info` column.
+- Bridges: an opening span without a charted closed clearance takes the VNDS one (1,576 spans, was 1,173; e.g. Haringvlietbrug 8.27 m), so a low boat can pass closed instead of always waiting.
+- Overhead cables: an NAP-referenced cable takes the design high water of the nearest river bridge instead of a flat 15 m margin (e.g. Haringvliet 24 → 37.39 m). Cables now carry `underside_nap`, `mhw_nap` and `clearance_reference` like river bridges (585 spans, was 545), and are never grouped with a bridge. 184 edges changed clearance.
+- Waiting times: opening spans inside an operated lock add no wait of their own.
+- Validation: all 76 reference routes pass, none worse than 0.3.1.
+
 ## 0.3.1 — 2026-11-10
 
 - Bridges: fixed-bridge clearances are checked against VNDS. A missing, placeholder or wrong chart height now uses the VNDS value (e.g. Zeelandbrug 11.0 → 8.3 m, Krammer locks 0.1 → 14.88 m).
