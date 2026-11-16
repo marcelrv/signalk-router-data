@@ -3,14 +3,14 @@
   "filename": "europe_nl_nl-routing.sqlite.gz",
   "release_tag": "routing-databases-latest",
   "inner_filename": "nl-routing.sqlite",
-  "sha256": "fd5eff73750a461a45741c7e6e47134977ea2e77498f681dcb32cbb36451e966",
-  "size_bytes": 6730153,
+  "sha256": "44d76a90b2cce4b465c783be3e50d6de57a413685c8129793c40754d0b6048ca",
+  "size_bytes": 7049835,
   "compression": "gzip",
   "country": "NL-NAV",
   "name": "Netherlands waterways (inland and coastal)",
   "description": "Navigable route network for the Netherlands: inland waterways, IJsselmeer, Wadden Sea, Delta and coastal approaches, based on Rijkswaterstaat IENC / ENC data, NWB vaarwegen, VNDS and BRTN. Waterway centre lines with depth limits, bridges and locks with clearances, tidal regimes, and connections to harbours and marinas. Not for navigation: verify against official charts and notices.",
-  "last_update": "2026-11-10T21:47:06Z",
-  "schema_version": 3,
+  "last_update": "2026-11-16T21:12:48Z",
+  "schema_version": 4,
   "tags": [
     "ienc",
     "rws",
@@ -29,9 +29,9 @@
   "stats": {
     "nodes": 52960,
     "edges": 108104,
-    "pois": 9443,
+    "pois": 13296,
     "coastal_nodes": 52960,
     "inland_nodes": 0
   },
-  "deployed": "2026-11-10T21:49:48Z"
+  "deployed": "2026-11-16T21:13:25Z"
 }
