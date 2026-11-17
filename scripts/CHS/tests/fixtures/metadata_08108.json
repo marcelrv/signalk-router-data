@@ -1,0 +1,54 @@
+{
+ "chsRegionCode": "PAC",
+ "classCode": "B",
+ "code": "08108",
+ "datums": [],
+ "ebbDirection": 0,
+ "floodDirection": 180,
+ "heights": [],
+ "id": "63aefc7784e5432cd3b6eb1e",
+ "isTidal": true,
+ "isTideTableReferencePort": false,
+ "latitude": 50.133333,
+ "longitude": -125.35,
+ "officialName": "Seymour Narrows",
+ "operating": false,
+ "owner": "CHS-SHC",
+ "provinceCode": "BC",
+ "stationOwner": {
+  "acronymEn": "CHS",
+  "acronymFr": "SHC",
+  "code": "CHS-SHC",
+  "id": "5ce598ed487b84486892825c",
+  "nameEn": "Canadian Hydrographic Service",
+  "nameFr": "Service hydrographique du Canada"
+ },
+ "timeSeries": [
+  {
+   "code": "wcsp1",
+   "id": "63c731bc0e8f9f47ac683e2d",
+   "nameEn": "Water current speed predictions sensor 1",
+   "nameFr": "Pr\u00e9dictions de vitesse du courant d'eau capteur 1",
+   "owner": "CHS-SHC",
+   "phenomenonId": "5d690f3d38604ef9646f03fb"
+  },
+  {
+   "code": "wcdp1",
+   "id": "63c731bc0e8f9f47ac683e2f",
+   "nameEn": "Water current direction predictions sensor 1",
+   "nameFr": "Pr\u00e9dictions de la direction du courant d'eau capteur 1",
+   "owner": "CHS-SHC",
+   "phenomenonId": "5e4bf351305b990bbec4dfb9"
+  },
+  {
+   "code": "wcp1-events",
+   "id": "6812797f963da24e8c45af51",
+   "nameEn": "Water current prediction events sensor 1",
+   "nameFr": "\u00c9v\u00e9nements de pr\u00e9diction de courants d'eau capteur 1",
+   "owner": "CHS-SHC",
+   "phenomenonId": "5d690f3d38604ef9646f03fb"
+  }
+ ],
+ "timeZoneCode": "Canada/Pacific",
+ "type": "TEMPORARY"
+}
