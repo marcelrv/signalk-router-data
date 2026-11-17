@@ -43,6 +43,11 @@ jobs:
           echo "GRIB2 files:"
           ls -lh ./ciops-gribs/
 
+      # Built before the upload so a release created on the first run gets
+      # the full notes (attribution included) even if a later upload fails.
+      - name: Generate release notes
+        run: python scripts/tide-current/currents_release_notes.py ciops > /tmp/ciops_notes.md
+
       - name: Upload GRIB2 files to GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -62,7 +67,7 @@ jobs:
                   gh release create ciops-currents-latest "$f" \
                     --repo "${{ github.repository }}" \
                     --title "Surface Current Forecasts — Canada (ECCC CIOPS)" \
-                    --notes "(placeholder — the region table is filled in by the 'Update release notes' step below)" \
+                    --notes-file /tmp/ciops_notes.md \
                     --latest=false || {
                       # The step shell runs with -e, so without this a failed
                       # create would abort the loop and skip the other files.
@@ -83,10 +88,10 @@ jobs:
       # pipeline actually produces — adding a region updates the release
       # page automatically.
       - name: Update release notes
+        if: ${{ !cancelled() }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          python scripts/tide-current/currents_release_notes.py ciops > /tmp/ciops_notes.md
           gh release edit ciops-currents-latest \
             --repo "${{ github.repository }}" \
             --title "Surface Current Forecasts — Canada (ECCC CIOPS)" \
