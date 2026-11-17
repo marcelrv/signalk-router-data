@@ -344,13 +344,20 @@ def parse_day(s: str) -> datetime:
 def main():
     ap = argparse.ArgumentParser(description="CHS IWLS current predictions -> regional UTCEF files")
     ap.add_argument("--cache-dir", default=os.path.join(HERE, "cache"))
-    ap.add_argument("--out-dir", default=os.path.normpath(os.path.join(HERE, "..", "..", "regions")))
+    ap.add_argument("--out-dir", default=None,
+                    help="output root (default: the repo's regions/; required with --station/--limit)")
     ap.add_argument("--start", default="2026-11-17", help="first day of the fit window (UTC, YYYY-MM-DD)")
     ap.add_argument("--days", type=int, default=365, help="length of the fit window in days")
     ap.add_argument("--limit", type=int, default=None, help="convert only the first N stations (debug)")
     ap.add_argument("--station", action="append", default=[], help="only this CHS station code (repeatable)")
     ap.add_argument("--workers", type=int, default=3, help="stations fetched in parallel")
     args = ap.parse_args()
+    if args.out_dir is None:
+        # A filtered run writes only a subset of stations; writing it to regions/
+        # would replace the complete regional archives.
+        if args.station or args.limit:
+            ap.error("--station/--limit write partial archives; pass a separate --out-dir")
+        args.out_dir = os.path.normpath(os.path.join(HERE, "..", "..", "regions"))
 
     start = parse_day(args.start)
     end = start + timedelta(days=args.days)
@@ -367,19 +374,28 @@ def main():
         except (RuntimeError, ValueError) as e:
             return s, None, e
 
-    by_region, skipped = {}, 0
+    by_region, skipped, failed = {}, 0, 0
     with ThreadPoolExecutor(max_workers=max(1, args.workers)) as pool:
         for s, feat, err in pool.map(work, stations):
             name = (s.get("officialName") or "").strip()
             if err:
-                print(f"  [Warning] {s['code']} {name}: {err}")
-                skipped += 1
+                # ValueError: station lacks enough predictions (expected skip).
+                # RuntimeError: fetch failed, so the archive would be incomplete.
+                if isinstance(err, RuntimeError):
+                    print(f"  [Error] {s['code']} {name}: {err}")
+                    failed += 1
+                else:
+                    print(f"  [Warning] {s['code']} {name}: {err}")
+                    skipped += 1
                 continue
             c = feat["properties"]["chs"]
             print(f"  {s['code']} {name:28s} peak {c['peak_kn']:5.2f} kn  fit rms {c['fit_rms_kn']:.3f} kn")
             lon, lat = feat["geometry"]["coordinates"]
             by_region.setdefault(region_for(lat, lon)["id"], []).append(feat)
-    print(f"[CHS] converted {sum(map(len, by_region.values()))}, skipped {skipped}")
+    print(f"[CHS] converted {sum(map(len, by_region.values()))}, skipped {skipped}, failed {failed}")
+    if failed:
+        print(f"[Error] {failed} station(s) failed to fetch; no regional files written")
+        return 1
 
     for region in REGIONS:
         feats = by_region.get(region["id"])

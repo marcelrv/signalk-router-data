@@ -116,29 +116,40 @@ def main():
     ap.add_argument("--start", default=None, help="validation start (default: day after the fit window)")
     ap.add_argument("--days", type=int, default=28)
     ap.add_argument("--flag-pct", type=float, default=10.0)
+    ap.add_argument("--allow-skipped", action="store_true",
+                    help="exit 0 even if some stations could not be validated")
     args = ap.parse_args()
 
-    flagged = 0
+    flagged = validated = skipped = 0
     for path in args.files:
         print(f"\n== {path}")
         print(f"{'station':34s} {'peak':>6s} {'rmseAx':>7s} {'bias':>7s} {'rmseV':>7s} {'slack':>10s} {'max':>10s}")
         for f in load_features(path):
             c = f["properties"]["chs"]
-            start = chs.parse_day(args.start or c["fit_window"][1])
+            if args.start:
+                start = chs.parse_day(args.start)
+            else:  # fit_window[1] is the last fitted sample's date: start the day after
+                start = chs.parse_day(c["fit_window"][1]) + timedelta(days=1)
             end = start + timedelta(days=args.days)
             label = f"{c['station_code']} {f['properties']['station_name']}"[:34]
             try:
                 r = validate_feature(f, start, end, args.cache_dir)
             except (RuntimeError, ValueError) as e:
                 print(f"{label:34s} [skipped: {e}]")
+                skipped += 1
                 continue
+            validated += 1
             bad = r["rmse_vec_kn"] > args.flag_pct / 100.0 * r["peak_kn"]
             flagged += bad
             slack = f"{r['slack_err_min']:.1f}m/{r['n_slack']}" if r["slack_err_min"] is not None else "-"
             mx = f"{r['max_err_kn']:.2f}kn/{r['n_max']}" if r["max_err_kn"] is not None else "-"
             print(f"{label:34s} {r['peak_kn']:6.2f} {r['rmse_axis_kn']:7.3f} {r['bias_axis_kn']:7.3f} "
                   f"{r['rmse_vec_kn']:7.3f} {slack:>10s} {mx:>10s}{'  <-- FLAG' if bad else ''}")
-    print(f"\n{flagged} station(s) flagged (vector RMSE > {args.flag_pct}% of peak).")
+    print(f"\n{validated} validated, {skipped} skipped; "
+          f"{flagged} flagged (vector RMSE > {args.flag_pct}% of peak).")
+    if skipped and not args.allow_skipped:
+        print(f"{skipped} station(s) could not be validated (use --allow-skipped to accept).")
+        return 1
     return 1 if flagged else 0
 
 

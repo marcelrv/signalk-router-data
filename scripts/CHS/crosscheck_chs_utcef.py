@@ -115,9 +115,10 @@ def main():
         c_axis = principal_axis(cu, cv)
 
         nearest = {}
+        lat_bound = args.radius_km / 111.0 + 0.01  # 1 deg latitude >= 110.57 km
         for src, fname, f in others:
             lon, lat = f["geometry"]["coordinates"]
-            if abs(lat - clat) > 0.3:
+            if abs(lat - clat) > lat_bound:
                 continue
             d = haversine_km(clat, clon, lat, lon)
             if d <= args.radius_km and (src not in nearest or d < nearest[src][0]):
