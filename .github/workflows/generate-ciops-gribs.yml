@@ -1,0 +1,85 @@
+name: Generate ECCC CIOPS Current GRIB2 Files
+
+on:
+  schedule:
+    # CIOPS runs at 00/06/12/18 UTC and a run's files are complete on the
+    # MSC Datamart ~7 h 10 min later — run ~7.5 h after each cycle. The
+    # generator picks the newest complete run itself, so a late run just
+    # means this pass republishes the previous one.
+    - cron: '30 1,7,13,19 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ciops-gribs
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -q numpy netCDF4 eccodes
+
+      # continue-on-error: a region that fails to generate must not block the
+      # upload of the regions that succeeded — the job is failed explicitly by
+      # the final step instead, so stale assets still turn CI red.
+      - name: Generate CIOPS GRIB2 files
+        id: generate
+        continue-on-error: true
+        run: |
+          python scripts/tide-current/generate_ciops_gribs.py \
+            --output-dir ./ciops-gribs
+          echo "---"
+          echo "GRIB2 files:"
+          ls -lh ./ciops-gribs/
+
+      - name: Upload GRIB2 files to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Per-file isolation: a failed upload must not block the remaining
+          # regions' uploads — collect failures and fail the job at the end.
+          failed=0
+          for f in ./ciops-gribs/*.grb2; do
+            [ -f "$f" ] || continue
+            echo "Uploading $(basename $f)..."
+            gh release upload ciops-currents-latest "$f" \
+              --clobber \
+              --repo "${{ github.repository }}" \
+              2>/tmp/gh_upload_err.txt || {
+                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
+                  echo "Release does not exist — creating..."
+                  gh release create ciops-currents-latest "$f" \
+                    --repo "${{ github.repository }}" \
+                    --title "Surface Current Forecasts — Canada (ECCC CIOPS)" \
+                    --notes "Gridded surface current forecasts (tide + weather + river forcing) for British Columbia and Atlantic Canada, regenerated four times a day from Environment and Climate Change Canada's Coastal Ice Ocean Prediction System (CIOPS-East, CIOPS-West and CIOPS-Salish Sea, MSC Datamart). One multi-message GRIB2 file per region, hourly steps to +48 h from the model run. Data Source: Environment and Climate Change Canada. Contains information licenced under the Data Server End-use Licence of Environment and Climate Change Canada (https://eccc-msc.github.io/open-data/licence/readme_en/). These files are geographically subsetted and re-encoded from NetCDF to GRIB2 by this repository — NOT an official ECCC product and not endorsed by ECCC. Model currents in narrow passes and rapids are much weaker than reality; use the CHS station predictions there. Not for navigation." \
+                    --latest=false || {
+                      # The step shell runs with -e, so without this a failed
+                      # create would abort the loop and skip the other files.
+                      echo "Release creation FAILED for $(basename $f)"
+                      failed=1
+                    }
+                else
+                  echo "Upload FAILED for $(basename $f):"
+                  cat /tmp/gh_upload_err.txt
+                  failed=1
+                fi
+              }
+          done
+          exit $failed
+
+      - name: Fail if any region failed to generate
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::One or more regions failed to generate (see the 'Generate CIOPS GRIB2 files' step log). Regions that did generate were still uploaded."
+          exit 1

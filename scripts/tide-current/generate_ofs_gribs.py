@@ -49,7 +49,10 @@ import xarray as xr
 from scipy.interpolate import griddata
 from scipy.spatial import cKDTree
 
-from grib2_writer import UNIFORMITY_TOLERANCE_FRACTION, check_uniform, encode_grib2
+from grib2_writer import (
+    UNIFORMITY_TOLERANCE_FRACTION, check_uniform, encode_grib2, pool_mean as _pool_mean,
+    pool_weighted as _pool_weighted,
+)
 
 # sources/nos_ofs.py is the single source of truth for the NOS OFS model
 # metadata (MODELS) and the shared polygon/bbox helpers — it is stdlib-only
@@ -188,40 +191,6 @@ def _pool_step(native_spacing_deg: float, target_res_deg: float) -> int:
     if native_spacing_deg <= 0:
         return 1
     return max(1, int(round(target_res_deg / native_spacing_deg)))
-
-
-def _pool_mean(arr: np.ndarray, step: int) -> np.ndarray:
-    """Plain (unweighted) step x step block-mean pool, truncating to whole
-    blocks. Used for the lat/lon coordinate arrays, which are always
-    defined (never masked) on these regulargrid files — the block mean of
-    a uniform axis is exactly the block center."""
-    ny, nx = arr.shape
-    ny2, nx2 = (ny // step) * step, (nx // step) * step
-    pny, pnx = ny2 // step, nx2 // step
-    return arr[:ny2, :nx2].reshape(pny, step, pnx, step).mean(axis=(1, 3))
-
-
-def _pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
-    """Wet-aware step x step block-mean pool: averages only the native
-    points where `valid` is True (mask AND per-hour isfinite — see
-    caller), truncating to whole blocks. A dry/land native cell in a
-    mostly-wet block does not drag the mean toward zero, and a channel
-    narrower than one output cell still contributes its wet points to that
-    cell's mean instead of vanishing entirely.
-
-    Returns (mean, wet_count) both shaped (ny // step, nx // step); mean is
-    NaN wherever wet_count is 0 (the caller must treat those as missing —
-    NaN is never itself a valid packed value)."""
-    ny, nx = arr.shape
-    ny2, nx2 = (ny // step) * step, (nx // step) * step
-    pny, pnx = ny2 // step, nx2 // step
-    arr_t = arr[:ny2, :nx2].reshape(pny, step, pnx, step)
-    valid_t = valid[:ny2, :nx2].reshape(pny, step, pnx, step)
-    count = valid_t.sum(axis=(1, 3))
-    total = np.where(valid_t, arr_t, 0.0).sum(axis=(1, 3))
-    with np.errstate(invalid="ignore", divide="ignore"):
-        mean = np.where(count > 0, total / np.maximum(count, 1), np.nan)
-    return mean, count
 
 
 def process_model(mid, m, d, ch, out_dir, max_hour_override=None, source="thredds"):
