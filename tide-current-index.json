@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-11-17T08:53:47Z",
-  "source_count": 84,
+  "generated": "2026-11-17T13:00:12Z",
+  "source_count": 85,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T08:53:20Z",
+        "last_checked": "2026-11-17T12:59:44Z",
         "latest_cycle": "2026-11-17T00:00:00Z"
       },
       "files": [
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T08:53:20Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -3004,7 +3004,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T08:53:20Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -3733,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T08:53:20Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -4219,6 +4219,649 @@
       ]
     },
     {
+      "id": "eccc_ciops",
+      "source": "eccc",
+      "type": "grib2",
+      "name": "Surface Current Forecasts \u2014 Canada (ECCC CIOPS)",
+      "description": "Gridded surface current forecasts (tide + weather + river forcing) for British Columbia and Atlantic Canada, extracted from Environment and Climate Change Canada's Coastal Ice Ocean Prediction System (CIOPS-East, CIOPS-West, CIOPS-Salish Sea) and re-encoded as compact GRIB2 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Data Source: Environment and Climate Change Canada. Contains information licenced under the Data Server End-use Licence of Environment and Climate Change Canada (https://eccc-msc.github.io/open-data/licence/readme_en/). This repackaging is NOT an official ECCC product and is not endorsed by ECCC. Model currents in narrow passes and rapids are much weaker than reality \u2014 use the CHS station predictions there. Not for navigation.",
+      "contributor": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+      "url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "eccc",
+        "ocean-currents",
+        "canada",
+        "north-america"
+      ],
+      "region": {
+        "name": "Canada \u2014 British Columbia and Atlantic coasts",
+        "bounding_box": {
+          "min_lat": 43.3,
+          "min_lon": -134.5,
+          "max_lat": 55.0,
+          "max_lon": -52.5
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  -123.9,
+                  48.2
+                ],
+                [
+                  -122.7,
+                  48.2
+                ],
+                [
+                  -122.7,
+                  49.22
+                ],
+                [
+                  -123.9,
+                  49.22
+                ],
+                [
+                  -123.9,
+                  48.2
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -125.6,
+                  49.9
+                ],
+                [
+                  -124.6,
+                  49.9
+                ],
+                [
+                  -124.6,
+                  50.6
+                ],
+                [
+                  -125.6,
+                  50.6
+                ],
+                [
+                  -125.6,
+                  49.9
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -132.5,
+                  51.0
+                ],
+                [
+                  -127.5,
+                  51.0
+                ],
+                [
+                  -127.5,
+                  53.3
+                ],
+                [
+                  -132.5,
+                  53.3
+                ],
+                [
+                  -132.5,
+                  51.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -134.5,
+                  53.0
+                ],
+                [
+                  -129.0,
+                  53.0
+                ],
+                [
+                  -129.0,
+                  55.0
+                ],
+                [
+                  -134.5,
+                  55.0
+                ],
+                [
+                  -134.5,
+                  53.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -67.3,
+                  44.2
+                ],
+                [
+                  -63.3,
+                  44.2
+                ],
+                [
+                  -63.3,
+                  45.9
+                ],
+                [
+                  -67.3,
+                  45.9
+                ],
+                [
+                  -67.3,
+                  44.2
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -66.4,
+                  43.3
+                ],
+                [
+                  -59.6,
+                  43.3
+                ],
+                [
+                  -59.6,
+                  46.3
+                ],
+                [
+                  -66.4,
+                  46.3
+                ],
+                [
+                  -66.4,
+                  43.3
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -66.0,
+                  45.6
+                ],
+                [
+                  -60.0,
+                  45.6
+                ],
+                [
+                  -60.0,
+                  48.6
+                ],
+                [
+                  -66.0,
+                  48.6
+                ],
+                [
+                  -66.0,
+                  45.6
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -71.3,
+                  47.0
+                ],
+                [
+                  -64.0,
+                  47.0
+                ],
+                [
+                  -64.0,
+                  50.3
+                ],
+                [
+                  -71.3,
+                  50.3
+                ],
+                [
+                  -71.3,
+                  47.0
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  -59.6,
+                  46.5
+                ],
+                [
+                  -52.5,
+                  46.5
+                ],
+                [
+                  -52.5,
+                  52.0
+                ],
+                [
+                  -59.6,
+                  52.0
+                ],
+                [
+                  -59.6,
+                  46.5
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 12,
+        "last_checked": "2026-11-17T12:59:44Z"
+      },
+      "files": [
+        {
+          "region_id": "ciops_gulf_islands",
+          "name": "Gulf Islands, Haro Strait & Victoria (500 m)",
+          "description": "High-resolution (500 m) surface current forecasts for the southern Gulf Islands passes (Active, Porlier, Dodd), Haro and Rosario Straits, Boundary Pass and the eastern Strait of Juan de Fuca off Victoria.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -123.9,
+                  48.2
+                ],
+                [
+                  -122.7,
+                  48.2
+                ],
+                [
+                  -122.7,
+                  49.22
+                ],
+                [
+                  -123.9,
+                  49.22
+                ],
+                [
+                  -123.9,
+                  48.2
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_gulf_islands_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_discovery_islands",
+          "name": "Discovery Islands & Seymour Narrows (500 m)",
+          "description": "High-resolution (500 m) surface current forecasts for Discovery Passage / Seymour Narrows, Okisollo Channel, the Yuculta and Arran Rapids and Cordero Channel.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -125.6,
+                  49.9
+                ],
+                [
+                  -124.6,
+                  49.9
+                ],
+                [
+                  -124.6,
+                  50.6
+                ],
+                [
+                  -125.6,
+                  50.6
+                ],
+                [
+                  -125.6,
+                  49.9
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_discovery_islands_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_bc_central_coast",
+          "name": "BC Central Coast & Haida Gwaii South",
+          "description": "Surface current forecasts for the BC central coast (Fitz Hugh Sound, Inside Passage to Princess Royal Island), southern Hecate Strait and southern Haida Gwaii.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -132.5,
+                  51.0
+                ],
+                [
+                  -127.5,
+                  51.0
+                ],
+                [
+                  -127.5,
+                  53.3
+                ],
+                [
+                  -132.5,
+                  53.3
+                ],
+                [
+                  -132.5,
+                  51.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_bc_central_coast_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_bc_north_coast",
+          "name": "BC North Coast, Hecate Strait & Dixon Entrance",
+          "description": "Surface current forecasts for the BC north coast (Grenville Channel, Prince Rupert, Chatham Sound), northern Hecate Strait, Dixon Entrance and northern Haida Gwaii.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -134.5,
+                  53.0
+                ],
+                [
+                  -129.0,
+                  53.0
+                ],
+                [
+                  -129.0,
+                  55.0
+                ],
+                [
+                  -134.5,
+                  55.0
+                ],
+                [
+                  -134.5,
+                  53.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_bc_north_coast_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_bay_of_fundy",
+          "name": "Bay of Fundy",
+          "description": "Surface current forecasts for the Bay of Fundy, Grand Manan, Passamaquoddy Bay, Minas Channel and Basin, and Chignecto Bay.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -67.3,
+                  44.2
+                ],
+                [
+                  -63.3,
+                  44.2
+                ],
+                [
+                  -63.3,
+                  45.9
+                ],
+                [
+                  -67.3,
+                  45.9
+                ],
+                [
+                  -67.3,
+                  44.2
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_bay_of_fundy_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_nova_scotia",
+          "name": "Nova Scotia Atlantic Coast & Cape Breton",
+          "description": "Surface current forecasts for the Atlantic coast of Nova Scotia from Cape Sable to Cape Breton, including Halifax, the Strait of Canso and Chedabucto Bay.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -66.4,
+                  43.3
+                ],
+                [
+                  -59.6,
+                  43.3
+                ],
+                [
+                  -59.6,
+                  46.3
+                ],
+                [
+                  -66.4,
+                  46.3
+                ],
+                [
+                  -66.4,
+                  43.3
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_nova_scotia_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_gulf_st_lawrence",
+          "name": "Southern Gulf of St. Lawrence",
+          "description": "Surface current forecasts for Northumberland Strait, Prince Edward Island, the Magdalen Islands, Chaleur Bay and western Cape Breton.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -66.0,
+                  45.6
+                ],
+                [
+                  -60.0,
+                  45.6
+                ],
+                [
+                  -60.0,
+                  48.6
+                ],
+                [
+                  -66.0,
+                  48.6
+                ],
+                [
+                  -66.0,
+                  45.6
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_gulf_st_lawrence_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_st_lawrence_estuary",
+          "name": "St. Lawrence Estuary & Gaspe",
+          "description": "Surface current forecasts for the St. Lawrence Estuary from the Quebec City area to the Gaspe Peninsula, including the Saguenay mouth.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -71.3,
+                  47.0
+                ],
+                [
+                  -64.0,
+                  47.0
+                ],
+                [
+                  -64.0,
+                  50.3
+                ],
+                [
+                  -71.3,
+                  50.3
+                ],
+                [
+                  -71.3,
+                  47.0
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_st_lawrence_estuary_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        },
+        {
+          "region_id": "ciops_newfoundland",
+          "name": "Newfoundland & Strait of Belle Isle",
+          "description": "Surface current forecasts around Newfoundland (south and west coasts, Avalon Peninsula, Notre Dame Bay) and the Strait of Belle Isle, at ~4 km (2x2 pooled CIOPS-East grid).",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  -59.6,
+                  46.5
+                ],
+                [
+                  -52.5,
+                  46.5
+                ],
+                [
+                  -52.5,
+                  52.0
+                ],
+                [
+                  -59.6,
+                  52.0
+                ],
+                [
+                  -59.6,
+                  46.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/ciops-currents-latest/ciops_newfoundland_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "01",
+            "07",
+            "13",
+            "19"
+          ]
+        }
+      ]
+    },
+    {
       "id": "nos_ofs",
       "source": "noaa",
       "type": "grib2",
@@ -4612,7 +5255,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T08:53:20Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -5314,7 +5957,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:21Z"
+        "last_checked": "2026-11-17T12:59:45Z"
       },
       "files": [
         {
@@ -5384,7 +6027,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5447,7 +6090,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5510,7 +6153,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5573,7 +6216,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5636,7 +6279,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5699,7 +6342,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5762,7 +6405,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5825,7 +6468,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5888,7 +6531,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -5951,7 +6594,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6014,7 +6657,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6077,7 +6720,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6140,7 +6783,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6203,7 +6846,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6266,7 +6909,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6329,7 +6972,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6392,7 +7035,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6455,7 +7098,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6518,7 +7161,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6581,7 +7224,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6644,7 +7287,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6707,7 +7350,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6770,7 +7413,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6833,7 +7476,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6896,7 +7539,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6959,7 +7602,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7022,7 +7665,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7085,7 +7728,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7148,7 +7791,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7211,7 +7854,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7274,7 +7917,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7337,7 +7980,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7400,7 +8043,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7463,7 +8106,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7526,7 +8169,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7589,7 +8232,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7652,7 +8295,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7715,7 +8358,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7778,7 +8421,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7841,7 +8484,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7904,7 +8547,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7967,7 +8610,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8030,7 +8673,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8096,7 +8739,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8162,7 +8805,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8227,7 +8870,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8292,7 +8935,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8357,7 +9000,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8422,7 +9065,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8487,7 +9130,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8552,7 +9195,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8615,7 +9258,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8678,7 +9321,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8741,7 +9384,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8804,7 +9447,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8867,7 +9510,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8930,7 +9573,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8993,7 +9636,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9056,7 +9699,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9119,7 +9762,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9182,7 +9825,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9245,7 +9888,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9308,7 +9951,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9371,7 +10014,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9434,7 +10077,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9497,7 +10140,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9560,7 +10203,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9623,7 +10266,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9686,7 +10329,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9749,7 +10392,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9812,7 +10455,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9875,7 +10518,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9938,7 +10581,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10001,7 +10644,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10064,7 +10707,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10127,7 +10770,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10190,7 +10833,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10253,7 +10896,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T08:53:47Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {

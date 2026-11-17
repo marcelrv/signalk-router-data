@@ -4,13 +4,14 @@
 # Licensed under the GNU General Public License v3.0 or later.
 """
 Shared GRIB2 encoding tail for the daily current-forecast generators
-(generate_ofs_gribs.py, generate_ibi_gribs.py). Extracted once a second
+(generate_ofs_gribs.py, generate_ibi_gribs.py, generate_ciops_gribs.py, ...). Extracted once a second
 generator needed the identical output side: grid_simple packing, discipline
 10 "oceanographic" / category 1 "currents", params 2=u/3=v, bitmap-encoded
 missing values, regular_ll south->north / west->east scanning. Each caller
 owns everything upstream of this (fetching, pooling/regridding, per-model
 quirks) — this module only knows how to write already-regular-grid u/v
-arrays as GRIB2 messages.
+arrays as GRIB2 messages, plus the wet-aware block-pooling helpers shared
+by the generators that downsample a regular native grid (OFS, CIOPS).
 
 Requires: numpy, eccodes.
 """
@@ -47,6 +48,40 @@ def check_uniform(coords_1d: np.ndarray, inc: float, axis_name: str, label: str)
             f"{label}: {axis_name} spacing not uniform "
             f"(max deviation {max_dev:.6f} deg exceeds tolerance {tol:.6f} deg) — aborting"
         )
+
+
+def pool_mean(arr: np.ndarray, step: int) -> np.ndarray:
+    """Plain (unweighted) step x step block-mean pool, truncating to whole
+    blocks. Used for the lat/lon coordinate arrays, which are always
+    defined (never masked) on the NOS OFS regulargrid files — the block mean of
+    a uniform axis is exactly the block center."""
+    ny, nx = arr.shape
+    ny2, nx2 = (ny // step) * step, (nx // step) * step
+    pny, pnx = ny2 // step, nx2 // step
+    return arr[:ny2, :nx2].reshape(pny, step, pnx, step).mean(axis=(1, 3))
+
+
+def pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
+    """Wet-aware step x step block-mean pool: averages only the native
+    points where `valid` is True (mask AND per-hour isfinite — see
+    caller), truncating to whole blocks. A dry/land native cell in a
+    mostly-wet block does not drag the mean toward zero, and a channel
+    narrower than one output cell still contributes its wet points to that
+    cell's mean instead of vanishing entirely.
+
+    Returns (mean, wet_count) both shaped (ny // step, nx // step); mean is
+    NaN wherever wet_count is 0 (the caller must treat those as missing —
+    NaN is never itself a valid packed value)."""
+    ny, nx = arr.shape
+    ny2, nx2 = (ny // step) * step, (nx // step) * step
+    pny, pnx = ny2 // step, nx2 // step
+    arr_t = arr[:ny2, :nx2].reshape(pny, step, pnx, step)
+    valid_t = valid[:ny2, :nx2].reshape(pny, step, pnx, step)
+    count = valid_t.sum(axis=(1, 3))
+    total = np.where(valid_t, arr_t, 0.0).sum(axis=(1, 3))
+    with np.errstate(invalid="ignore", divide="ignore"):
+        mean = np.where(count > 0, total / np.maximum(count, 1), np.nan)
+    return mean, count
 
 
 def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, time_val, step, is_u):
