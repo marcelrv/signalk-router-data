@@ -64,7 +64,7 @@ jobs:
                   gh release create med-currents-latest "$f" \
                     --repo "${{ github.repository }}" \
                     --title "Surface Current Forecasts — Mediterranean Sea (Copernicus Marine CMEMS MED)" \
-                    --notes "Gridded surface current forecasts (tide + weather forcing) for the Mediterranean Sea, regenerated daily from the Copernicus Marine Service MED analysis-and-forecast model (dataset cmems_mod_med_phy-cur_anfc_4.2km-2D_PT1H-m). Generated using E.U. Copernicus Marine Service Information (https://doi.org/10.48670/mds-00359). NOT an official Copernicus product; not endorsed by CMCC or Mercator Ocean International. See https://github.com/marcelrv/signalk-router-data/issues/7 for background." \
+                    --notes "(placeholder — the region table is filled in by the 'Update release notes' step below)" \
                     --latest=false
                 else
                   echo "Upload FAILED for $(basename $f):"
@@ -74,6 +74,20 @@ jobs:
               }
           done
           exit $failed
+
+      # Regenerated from sources/ REGIONS every run so the region table
+      # (files, coverage, resolution, horizons) never drifts from what the
+      # pipeline actually produces — adding a region updates the release
+      # page automatically.
+      - name: Update release notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python scripts/tide-current/currents_release_notes.py med > /tmp/med_notes.md
+          gh release edit med-currents-latest \
+            --repo "${{ github.repository }}" \
+            --title "Surface Current Forecasts — Mediterranean Sea (Copernicus Marine CMEMS MED)" \
+            --notes-file /tmp/med_notes.md
 
       - name: Fail if any region failed to generate
         if: steps.generate.outcome == 'failure'
