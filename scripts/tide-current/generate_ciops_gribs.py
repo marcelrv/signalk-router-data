@@ -195,7 +195,10 @@ def process_domain(domain: str, rids: list, run_date: str, run_hour: str,
             for rid in rids:
                 js, is_, _, _ = meta[rid]
                 step = REGIONS[rid].get("pool_step", 1)
-                ru, rv, rvalid = u[js, is_], v[js, is_], valid[js, is_]
+                # Copy: a basic slice is a view that would keep this hour's
+                # full-domain arrays (~22 MB for CIOPS-East) alive until
+                # encoding, i.e. ~1 GB across 48 hours.
+                ru, rv, rvalid = u[js, is_].copy(), v[js, is_].copy(), valid[js, is_].copy()
                 if step > 1:
                     ru, cnt = pool_weighted(ru, rvalid, step)
                     rv, _ = pool_weighted(rv, rvalid, step)
@@ -221,12 +224,23 @@ def process_domain(domain: str, rids: list, run_date: str, run_hour: str,
         lon0 = rlon0 + grid["inc_lon"] * (step - 1) / 2.0
         nj, ni = s["u"][0].shape
         out = os.path.join(out_dir, f"{rid}_currents.grb2")
-        # Round the grid geometry to what GRIB2 stores (micro-degrees) so the
-        # declared last grid point is consistent with Ni/Nj x increment.
-        encode_grib2(
-            round(lat0, 6), round(lon0, 6), round(inc_lat, 6), round(inc_lon, 6), ni, nj,
-            s["u"], s["v"], s["valid"], s["valid"], s["hours"], bd, bt, out,
-        )
+        # Per-region isolation: one region failing to encode must not stop
+        # the domain's other regions (main() reports the missing ones and
+        # exits 2, so the workflow still uploads the rest).
+        try:
+            # Round the grid geometry to what GRIB2 stores (micro-degrees) so
+            # the declared last grid point is consistent with Ni/Nj x increment.
+            encode_grib2(
+                round(lat0, 6), round(lon0, 6), round(inc_lat, 6), round(inc_lon, 6), ni, nj,
+                s["u"], s["v"], s["valid"], s["valid"], s["hours"], bd, bt, out,
+            )
+        except Exception as e:
+            print(f"  {rid}: encode ERROR — {type(e).__name__}: {e!r}", file=sys.stderr)
+            traceback.print_exc()
+            results[rid] = None
+            continue
+        finally:
+            slabs[rid] = None
         wet = int(s["valid"][0].sum())
         print(f"  {rid}: {ni}x{nj} cells, {wet} wet, {len(s['hours'])} steps, "
               f"{os.path.getsize(out)} bytes", file=sys.stderr)
