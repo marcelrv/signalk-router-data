@@ -75,49 +75,49 @@ USER_AGENT = "signalk-router-data/noaa-currents (https://github.com/marcelrv/sig
 # NOAA constituent spellings -> IHO/engine-canonical names (UTCEF spec §5.0).
 NAME_MAP = {"LAM2": "LAMBDA2", "RHO": "RHO1"}
 
-# Regions are matched in order; first hit wins. Folders mirror the FES2014
-# basin layout under regions/.
+# Regions are matched in order; first hit wins. Station files live under
+# regions/<continent>/<country>/ (FES2014 grids keep their ocean-basin folders).
 REGIONS = [
     {
         "id": "noaa_pacific_islands",
         "title": "NOAA Tidal Currents — Guam, Samoa & Pacific Islands",
-        "folder": "pacific_oceania",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: lat < 0 or (0 <= lat < 25 and (lon > 100 or lon < -165)),
     },
     {
         "id": "noaa_hawaii",
         "title": "NOAA Tidal Currents — Hawaiian Islands",
-        "folder": "pacific_oceania",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: 18 <= lat <= 23.5 and -161.5 <= lon <= -154,
     },
     {
         "id": "noaa_alaska",
         "title": "NOAA Tidal Currents — Alaska & Aleutians",
-        "folder": "pacific_asia",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: lat >= 51 or (lat >= 49.5 and lon <= -128) or lon > 100,
     },
     {
         "id": "noaa_us_west_coast",
         "title": "NOAA Tidal Currents — US West Coast & Puget Sound",
-        "folder": "pacific_asia",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: lon <= -113,
     },
     {
         "id": "noaa_puerto_rico",
         "title": "NOAA Tidal Currents — Puerto Rico & Virgin Islands",
-        "folder": "atlantic",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: 16.5 <= lat <= 19.5 and -68.5 <= lon <= -63.5,
     },
     {
         "id": "noaa_gulf_of_mexico",
         "title": "NOAA Tidal Currents — Gulf of Mexico",
-        "folder": "atlantic",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: lat <= 31 and lon <= -81.8,
     },
     {
         "id": "noaa_us_east_coast",
         "title": "NOAA Tidal Currents — US East Coast",
-        "folder": "atlantic",
+        "folder": "north-america/usa",
         "match": lambda lat, lon: True,
     },
 ]

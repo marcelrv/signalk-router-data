@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-11-17T11:20:01Z",
-  "source_count": 83,
+  "generated": "2026-11-17T13:00:12Z",
+  "source_count": 85,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,7 +424,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T11:19:35Z",
+        "last_checked": "2026-11-17T12:59:44Z",
         "latest_cycle": "2026-11-17T00:00:00Z"
       },
       "files": [
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -3004,7 +3004,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -3733,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -4469,7 +4469,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 12,
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -5255,7 +5255,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:44Z"
       },
       "files": [
         {
@@ -5957,7 +5957,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:19:35Z"
+        "last_checked": "2026-11-17T12:59:45Z"
       },
       "files": [
         {
@@ -6027,7 +6027,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6090,7 +6090,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6153,7 +6153,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6216,7 +6216,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6279,7 +6279,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6342,7 +6342,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6405,7 +6405,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6468,7 +6468,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6531,7 +6531,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6594,7 +6594,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6657,7 +6657,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6720,7 +6720,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6783,7 +6783,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6846,7 +6846,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6909,7 +6909,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -6972,7 +6972,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7035,7 +7035,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7098,7 +7098,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7161,7 +7161,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7224,7 +7224,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7287,7 +7287,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7350,7 +7350,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7413,7 +7413,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7476,7 +7476,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7539,208 +7539,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
           "filename": "regions/atlantic/ats_west_africa.utcef",
           "sha256": "542756c35e110028acb628bd1fa3421a0b3517094be137baf06c441e6ea96c43",
           "size_bytes": 1802557
-        }
-      ]
-    },
-    {
-      "id": "utcef_noaa_gulf_of_mexico",
-      "source": "noaa",
-      "type": "utcef",
-      "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
-      "description": "Harmonic tidal current predictions for 142 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
-      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
-      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
-      "tags": [
-        "utcef",
-        "tidal",
-        "currents",
-        "noaa",
-        "harmonic",
-        "station-based",
-        "regional"
-      ],
-      "region": {
-        "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
-        "bounding_box": {
-          "min_lat": 23.97,
-          "min_lon": -97.81,
-          "max_lat": 31.18,
-          "max_lon": -81.3
-        },
-        "boundary_geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -97.81,
-                23.97
-              ],
-              [
-                -81.3,
-                23.97
-              ],
-              [
-                -81.3,
-                31.18
-              ],
-              [
-                -97.81,
-                31.18
-              ],
-              [
-                -97.81,
-                23.97
-              ]
-            ]
-          ]
-        }
-      },
-      "update_check": {
-        "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
-      },
-      "files": [
-        {
-          "filename": "regions/atlantic/noaa_gulf_of_mexico.utcef",
-          "sha256": "25fa27953c1d2ecbd33f14d2c7632885cdb0d3189c9118afad4d403bd4242c82",
-          "size_bytes": 67987
-        }
-      ]
-    },
-    {
-      "id": "utcef_noaa_puerto_rico",
-      "source": "noaa",
-      "type": "utcef",
-      "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
-      "description": "Harmonic tidal current predictions for 5 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
-      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
-      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
-      "tags": [
-        "utcef",
-        "tidal",
-        "currents",
-        "noaa",
-        "harmonic",
-        "station-based",
-        "regional"
-      ],
-      "region": {
-        "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
-        "bounding_box": {
-          "min_lat": 17.59,
-          "min_lon": -67.73,
-          "max_lat": 18.83,
-          "max_lon": -65.07
-        },
-        "boundary_geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -67.73,
-                17.59
-              ],
-              [
-                -65.07,
-                17.59
-              ],
-              [
-                -65.07,
-                18.83
-              ],
-              [
-                -67.73,
-                18.83
-              ],
-              [
-                -67.73,
-                17.59
-              ]
-            ]
-          ]
-        }
-      },
-      "update_check": {
-        "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
-      },
-      "files": [
-        {
-          "filename": "regions/atlantic/noaa_puerto_rico.utcef",
-          "sha256": "07ce3907aa1edb4ce685696ec8725190ef2c09cc8dd3c056e184cba894af65fa",
-          "size_bytes": 2516
-        }
-      ]
-    },
-    {
-      "id": "utcef_noaa_us_east_coast",
-      "source": "noaa",
-      "type": "utcef",
-      "name": "NOAA Tidal Currents \u2014 US East Coast",
-      "description": "Harmonic tidal current predictions for 1455 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
-      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
-      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
-      "tags": [
-        "utcef",
-        "tidal",
-        "currents",
-        "noaa",
-        "harmonic",
-        "station-based",
-        "regional"
-      ],
-      "region": {
-        "name": "NOAA Tidal Currents \u2014 US East Coast",
-        "bounding_box": {
-          "min_lat": 24.1,
-          "min_lon": -82.3,
-          "max_lat": 45.58,
-          "max_lon": -66.48
-        },
-        "boundary_geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -82.3,
-                24.1
-              ],
-              [
-                -66.48,
-                24.1
-              ],
-              [
-                -66.48,
-                45.58
-              ],
-              [
-                -82.3,
-                45.58
-              ],
-              [
-                -82.3,
-                24.1
-              ]
-            ]
-          ]
-        }
-      },
-      "update_check": {
-        "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
-      },
-      "files": [
-        {
-          "filename": "regions/atlantic/noaa_us_east_coast.utcef",
-          "sha256": "1bd3798a76d5c3aa3a85e46ed9848986c29f8471ab4e02998fa3ca310399342a",
-          "size_bytes": 627429
         }
       ]
     },
@@ -7797,7 +7602,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7860,7 +7665,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7923,7 +7728,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -7986,7 +7791,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8049,7 +7854,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8112,7 +7917,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8175,7 +7980,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8238,7 +8043,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8301,7 +8106,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8364,7 +8169,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8427,7 +8232,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8490,7 +8295,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8553,7 +8358,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8616,7 +8421,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8679,7 +8484,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8742,7 +8547,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8805,7 +8610,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -8868,13 +8673,145 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
           "filename": "regions/mediterranean/med_mediterranean.utcef",
           "sha256": "1ead32d305abb031cf7a8df2e6b9713f4f54f8a33104a7f20911a73523b460d1",
           "size_bytes": 9207741
+        }
+      ]
+    },
+    {
+      "id": "utcef_chs_atlantic_canada",
+      "source": "chs",
+      "type": "utcef",
+      "name": "CHS Tidal Currents \u2014 Atlantic Canada",
+      "description": "Harmonic tidal current predictions for 3 Canadian Hydrographic Service (CHS) current stations. CHS publishes predictions only as time series, so constituents were least-squares fitted to one year (2026-11-17 to 2027-11-17) of CHS 15-minute predictions from the IWLS API by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data); the fit residual is in each station's properties.chs.fit_rms_kn. Predictions are purely astronomical; actual currents can deviate with weather and river flow.\n\nThis product is not to be used for navigation.\nThis product was made by or for the User Marcel Verpaalen (signalk-router-data) and contains intellectual property (Data) of the Canadian Hydrographic Service of the Department of Fisheries and Oceans.\nThe copyrights in the Data are and remain the property of His Majesty the King in Right of Canada and shall not be sold, licensed, leased, assigned or given to a third party.\nThe incorporation of the Data in this product does not constitute an endorsement or an approval of this product by the Canadian Hydrographic Service, the Department of Fisheries and Oceans or His Majesty the King in Right of Canada",
+      "contributor": "Canadian Hydrographic Service (CHS), Fisheries and Oceans Canada",
+      "url": "https://www.tides.gc.ca/en",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "chs",
+        "harmonic",
+        "station-based",
+        "regional",
+        "non-commercial"
+      ],
+      "region": {
+        "name": "CHS Tidal Currents \u2014 Atlantic Canada",
+        "bounding_box": {
+          "min_lat": 44.25,
+          "min_lon": -67.43,
+          "max_lat": 46.78,
+          "max_lon": -59.92
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -67.43,
+                44.25
+              ],
+              [
+                -59.92,
+                44.25
+              ],
+              [
+                -59.92,
+                46.78
+              ],
+              [
+                -67.43,
+                46.78
+              ],
+              [
+                -67.43,
+                44.25
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/canada/chs_atlantic_canada.utcef",
+          "sha256": "92528d57561944a8c4e8c868a8fe123fc9f02d740e34f4ce063b75d6ebf02bb1",
+          "size_bytes": 2712
+        }
+      ]
+    },
+    {
+      "id": "utcef_chs_bc_coast",
+      "source": "chs",
+      "type": "utcef",
+      "name": "CHS Tidal Currents \u2014 British Columbia",
+      "description": "Harmonic tidal current predictions for 27 Canadian Hydrographic Service (CHS) current stations. CHS publishes predictions only as time series, so constituents were least-squares fitted to one year (2026-11-17 to 2027-11-17) of CHS 15-minute predictions from the IWLS API by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data); the fit residual is in each station's properties.chs.fit_rms_kn. Predictions are purely astronomical; actual currents can deviate with weather and river flow.\n\nThis product is not to be used for navigation.\nThis product was made by or for the User Marcel Verpaalen (signalk-router-data) and contains intellectual property (Data) of the Canadian Hydrographic Service of the Department of Fisheries and Oceans.\nThe copyrights in the Data are and remain the property of His Majesty the King in Right of Canada and shall not be sold, licensed, leased, assigned or given to a third party.\nThe incorporation of the Data in this product does not constitute an endorsement or an approval of this product by the Canadian Hydrographic Service, the Department of Fisheries and Oceans or His Majesty the King in Right of Canada",
+      "contributor": "Canadian Hydrographic Service (CHS), Fisheries and Oceans Canada",
+      "url": "https://www.tides.gc.ca/en",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "chs",
+        "harmonic",
+        "station-based",
+        "regional",
+        "non-commercial"
+      ],
+      "region": {
+        "name": "CHS Tidal Currents \u2014 British Columbia",
+        "bounding_box": {
+          "min_lat": 47.73,
+          "min_lon": -132.65,
+          "max_lat": 54.79,
+          "max_lon": -122.52
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -132.65,
+                47.73
+              ],
+              [
+                -122.52,
+                47.73
+              ],
+              [
+                -122.52,
+                54.79
+              ],
+              [
+                -132.65,
+                54.79
+              ],
+              [
+                -132.65,
+                47.73
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/canada/chs_bc_coast.utcef",
+          "sha256": "daa5ce7e6b6f03cbe5e73255fa09f037ecf579831adc44101225e42e2da558dd",
+          "size_bytes": 17599
         }
       ]
     },
@@ -8933,13 +8870,273 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
-          "filename": "regions/pacific_asia/noaa_alaska.utcef",
-          "sha256": "2ad7a5b68299f17a12648601331329f46b5361089150df833bbe1ff6db1936d0",
-          "size_bytes": 219903
+          "filename": "regions/north-america/usa/noaa_alaska.utcef",
+          "sha256": "2d9e18c1a716446ec183c4e23a60696497241cc2a2f262826b26db4c7c6b865c",
+          "size_bytes": 219539
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_gulf_of_mexico",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
+      "description": "Harmonic tidal current predictions for 142 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Gulf of Mexico",
+        "bounding_box": {
+          "min_lat": 23.97,
+          "min_lon": -97.81,
+          "max_lat": 31.18,
+          "max_lon": -81.3
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -97.81,
+                23.97
+              ],
+              [
+                -81.3,
+                23.97
+              ],
+              [
+                -81.3,
+                31.18
+              ],
+              [
+                -97.81,
+                31.18
+              ],
+              [
+                -97.81,
+                23.97
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/usa/noaa_gulf_of_mexico.utcef",
+          "sha256": "25fa27953c1d2ecbd33f14d2c7632885cdb0d3189c9118afad4d403bd4242c82",
+          "size_bytes": 67987
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_hawaii",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
+      "description": "Harmonic tidal current predictions for 14 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
+        "bounding_box": {
+          "min_lat": 19.77,
+          "min_lon": -158.63,
+          "max_lat": 22.23,
+          "max_lon": -155.4
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -158.63,
+                19.77
+              ],
+              [
+                -155.4,
+                19.77
+              ],
+              [
+                -155.4,
+                22.23
+              ],
+              [
+                -158.63,
+                22.23
+              ],
+              [
+                -158.63,
+                19.77
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/usa/noaa_hawaii.utcef",
+          "sha256": "d2302e618c5cb1f15a5d7937cebadd35a94367eac3c519b1400c5f6104c53bc6",
+          "size_bytes": 8033
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_puerto_rico",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
+      "description": "Harmonic tidal current predictions for 5 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 Puerto Rico & Virgin Islands",
+        "bounding_box": {
+          "min_lat": 17.59,
+          "min_lon": -67.73,
+          "max_lat": 18.83,
+          "max_lon": -65.07
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -67.73,
+                17.59
+              ],
+              [
+                -65.07,
+                17.59
+              ],
+              [
+                -65.07,
+                18.83
+              ],
+              [
+                -67.73,
+                18.83
+              ],
+              [
+                -67.73,
+                17.59
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/usa/noaa_puerto_rico.utcef",
+          "sha256": "07ce3907aa1edb4ce685696ec8725190ef2c09cc8dd3c056e184cba894af65fa",
+          "size_bytes": 2516
+        }
+      ]
+    },
+    {
+      "id": "utcef_noaa_us_east_coast",
+      "source": "noaa",
+      "type": "utcef",
+      "name": "NOAA Tidal Currents \u2014 US East Coast",
+      "description": "Harmonic tidal current predictions for 1455 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
+      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
+      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
+      "tags": [
+        "utcef",
+        "tidal",
+        "currents",
+        "noaa",
+        "harmonic",
+        "station-based",
+        "regional"
+      ],
+      "region": {
+        "name": "NOAA Tidal Currents \u2014 US East Coast",
+        "bounding_box": {
+          "min_lat": 24.1,
+          "min_lon": -82.3,
+          "max_lat": 45.58,
+          "max_lon": -66.48
+        },
+        "boundary_geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                -82.3,
+                24.1
+              ],
+              [
+                -66.48,
+                24.1
+              ],
+              [
+                -66.48,
+                45.58
+              ],
+              [
+                -82.3,
+                45.58
+              ],
+              [
+                -82.3,
+                24.1
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "sha256",
+        "last_checked": "2026-11-17T13:00:12Z"
+      },
+      "files": [
+        {
+          "filename": "regions/north-america/usa/noaa_us_east_coast.utcef",
+          "sha256": "1bd3798a76d5c3aa3a85e46ed9848986c29f8471ab4e02998fa3ca310399342a",
+          "size_bytes": 627429
         }
       ]
     },
@@ -8998,13 +9195,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
-          "filename": "regions/pacific_asia/noaa_us_west_coast.utcef",
-          "sha256": "4ec2f555576d7c054013ddfb11f211a756d4520f566dcc265fb6a0abdaa1b688",
-          "size_bytes": 183630
+          "filename": "regions/north-america/usa/noaa_us_west_coast.utcef",
+          "sha256": "1a08a328a4629d947aeec2040da4dd060e260fdbc77c511da60af6e0836c9441",
+          "size_bytes": 183112
         }
       ]
     },
@@ -9061,7 +9258,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9124,7 +9321,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9187,7 +9384,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9250,7 +9447,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9313,7 +9510,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9376,7 +9573,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9439,7 +9636,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9502,7 +9699,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9565,7 +9762,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9628,7 +9825,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9691,7 +9888,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9754,7 +9951,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9817,7 +10014,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9880,7 +10077,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -9943,7 +10140,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10006,7 +10203,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10069,78 +10266,13 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
           "filename": "regions/pacific_asia/ptn_us_west_coast.utcef",
           "sha256": "536ad36882ef97a1a664413c9bf26b84524c5caa005e371d3e073bab3c85c863",
           "size_bytes": 6922265
-        }
-      ]
-    },
-    {
-      "id": "utcef_noaa_hawaii",
-      "source": "noaa",
-      "type": "utcef",
-      "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
-      "description": "Harmonic tidal current predictions for 14 NOAA CO-OPS current stations, converted from the official NOAA harmonic constituents \u2014 subordinate stations are synthesized from their reference station's harmonics and NOAA's published flood/ebb offsets \u2014 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Predictions are purely astronomical; actual currents can deviate with weather and river flow.",
-      "contributor": "NOAA Center for Operational Oceanographic Products and Services (CO-OPS)",
-      "url": "https://tidesandcurrents.noaa.gov/currents_info.html",
-      "tags": [
-        "utcef",
-        "tidal",
-        "currents",
-        "noaa",
-        "harmonic",
-        "station-based",
-        "regional"
-      ],
-      "region": {
-        "name": "NOAA Tidal Currents \u2014 Hawaiian Islands",
-        "bounding_box": {
-          "min_lat": 19.77,
-          "min_lon": -158.63,
-          "max_lat": 22.23,
-          "max_lon": -155.4
-        },
-        "boundary_geometry": {
-          "type": "Polygon",
-          "coordinates": [
-            [
-              [
-                -158.63,
-                19.77
-              ],
-              [
-                -155.4,
-                19.77
-              ],
-              [
-                -155.4,
-                22.23
-              ],
-              [
-                -158.63,
-                22.23
-              ],
-              [
-                -158.63,
-                19.77
-              ]
-            ]
-          ]
-        }
-      },
-      "update_check": {
-        "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
-      },
-      "files": [
-        {
-          "filename": "regions/pacific_oceania/noaa_hawaii.utcef",
-          "sha256": "d2302e618c5cb1f15a5d7937cebadd35a94367eac3c519b1400c5f6104c53bc6",
-          "size_bytes": 8033
         }
       ]
     },
@@ -10197,7 +10329,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10260,7 +10392,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10323,7 +10455,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10386,7 +10518,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10449,7 +10581,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10512,7 +10644,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10575,7 +10707,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10638,7 +10770,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10701,7 +10833,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {
@@ -10764,7 +10896,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T11:20:01Z"
+        "last_checked": "2026-11-17T13:00:12Z"
       },
       "files": [
         {

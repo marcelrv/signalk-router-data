@@ -1,0 +1,160 @@
+[
+ {
+  "alternativeName": "Chutes r\u00e9versibles",
+  "chsRegionCode": "ATL",
+  "code": "00066",
+  "id": "5cebf1de3d0f4a073c4bb9f1",
+  "latitude": 45.259,
+  "longitude": -66.087,
+  "officialName": "Reversing Falls",
+  "operating": false,
+  "provinceCode": "NB",
+  "timeSeries": [
+   {
+    "code": "wlp-hilo",
+    "id": "605cd9ff2c8e55275706bfcc",
+    "nameEn": "High and Low Tide Predictions",
+    "nameFr": "Pr\u00e9dictions de pleines et basses mers",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   },
+   {
+    "code": "wcp-reversing-falls",
+    "id": "6852ae8df9e587013280be2e",
+    "nameEn": "Time of slack waters for the end of the inward run (flood) and outward run (ebb)",
+    "nameFr": "Heure de l'\u00e9tale de courant indiqu\u00e9e pour la fin du courant montant (flot) et descendant (jusant)",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5dcdb20c4e075159944368cd"
+   }
+  ],
+  "type": "VIRTUAL"
+ },
+ {
+  "chsRegionCode": "PAC",
+  "code": "09339",
+  "id": "603023f41113077897271273",
+  "latitude": 54.236287,
+  "longitude": -130.303479,
+  "officialName": "Pembina Terminal",
+  "operating": true,
+  "provinceCode": "BC",
+  "timeSeries": [
+   {
+    "code": "wlo",
+    "id": "60302ed41113077897273506",
+    "nameEn": "Water level official value",
+    "nameFr": "Niveau d'eau, valeur officielle",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   },
+   {
+    "code": "wlp",
+    "id": "60302f201113077897273532",
+    "nameEn": "Water level predictions",
+    "nameFr": "Pr\u00e9dictions de niveaux d'eau",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   },
+   {
+    "code": "wcs1",
+    "id": "60302f981113077897273672",
+    "nameEn": "Water current speed sensor 1",
+    "nameFr": "Vitesse du courant capteur 1",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5d690f3d38604ef9646f03fb"
+   },
+   {
+    "code": "wcd1",
+    "id": "60302fb11113077897273675",
+    "nameEn": "Water current direction sensor 1",
+    "nameFr": "Direction du courant capteur 1",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5e4bf351305b990bbec4dfb9"
+   },
+   {
+    "code": "wlp-hilo",
+    "id": "60526e4cd013060f934d5bc7",
+    "nameEn": "High and Low Tide Predictions",
+    "nameFr": "Pr\u00e9dictions de pleines et basses mers",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   }
+  ],
+  "type": "TEMPORARY"
+ },
+ {
+  "chsRegionCode": "PAC",
+  "code": "08108",
+  "id": "63aefc7784e5432cd3b6eb1e",
+  "latitude": 50.133333,
+  "longitude": -125.35,
+  "officialName": "Seymour Narrows",
+  "operating": false,
+  "provinceCode": "BC",
+  "timeSeries": [
+   {
+    "code": "wcsp1",
+    "id": "63c731bc0e8f9f47ac683e2d",
+    "nameEn": "Water current speed predictions sensor 1",
+    "nameFr": "Pr\u00e9dictions de vitesse du courant d'eau capteur 1",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5d690f3d38604ef9646f03fb"
+   },
+   {
+    "code": "wcdp1",
+    "id": "63c731bc0e8f9f47ac683e2f",
+    "nameEn": "Water current direction predictions sensor 1",
+    "nameFr": "Pr\u00e9dictions de la direction du courant d'eau capteur 1",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5e4bf351305b990bbec4dfb9"
+   },
+   {
+    "code": "wcp1-events",
+    "id": "6812797f963da24e8c45af51",
+    "nameEn": "Water current prediction events sensor 1",
+    "nameFr": "\u00c9v\u00e9nements de pr\u00e9diction de courants d'eau capteur 1",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5d690f3d38604ef9646f03fb"
+   }
+  ],
+  "type": "TEMPORARY"
+ },
+ {
+  "alternativeName": "Leaf Basin, LEAF BASIN, Lac Aux Feuilles",
+  "chsRegionCode": "CNA",
+  "code": "04315",
+  "id": "5cebf1dd3d0f4a073c4bb8c3",
+  "latitude": 58.733333,
+  "longitude": -69.833333,
+  "officialName": "Tasiujaq",
+  "operating": false,
+  "provinceCode": "QC",
+  "timeSeries": [
+   {
+    "code": "wlo",
+    "id": "5dd306f4e0fdc4b9b4bfe1a7",
+    "nameEn": "Water level official value",
+    "nameFr": "Niveau d'eau, valeur officielle",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   },
+   {
+    "code": "wlp",
+    "id": "5cebf1dd3d0f4a073c4bb8c2",
+    "nameEn": "Water level predictions",
+    "nameFr": "Pr\u00e9dictions de niveaux d'eau",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   },
+   {
+    "code": "wlp-hilo",
+    "id": "5d9dd7b733a9f593161c3e1f",
+    "nameEn": "High and Low Tide Predictions",
+    "nameFr": "Pr\u00e9dictions de pleines et basses mers",
+    "owner": "CHS-SHC",
+    "phenomenonId": "5ce598df487b84486892821c"
+   }
+  ],
+  "type": "TEMPORARY"
+ }
+]
