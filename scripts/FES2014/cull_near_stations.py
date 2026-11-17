@@ -18,8 +18,10 @@ A file's source is its `metadata.catalog.source`; files without a catalog
 block are FES2014 (`fes2014`), as in scripts/tide-current/sources/utcef_regions.py.
 
 Typical runs:
-  # FES grid points near NOAA or CHS stations (15 km)
-  python3 cull_near_stations.py --near noaa,chs
+  # FES grid points near NOAA stations (15 km). Not near CHS: CHS has only
+  # ~30 sparse point stations, and culling around them would leave holes in
+  # the FES area coverage.
+  python3 cull_near_stations.py --near noaa
   # NOAA copies of Canadian stations: CHS is the authority in Canadian waters
   python3 cull_near_stations.py --near chs --targets noaa --radius-km 2
 
