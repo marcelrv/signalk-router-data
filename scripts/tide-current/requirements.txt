@@ -5,3 +5,6 @@
 # generate_ofs_gribs.py (the daily OFS GRIB2 generator, not run by the
 # weekly index generator) additionally requires:
 #   numpy xarray netCDF4 eccodes scipy fsspec aiohttp h5netcdf h5py
+#
+# generate_ciops_gribs.py (ECCC CIOPS, its own workflow) additionally requires:
+#   numpy netCDF4 eccodes

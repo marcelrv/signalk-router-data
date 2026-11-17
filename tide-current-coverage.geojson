@@ -6308,6 +6308,384 @@
         "coordinates": [
           [
             [
+              -123.9,
+              48.2
+            ],
+            [
+              -122.7,
+              48.2
+            ],
+            [
+              -122.7,
+              49.22
+            ],
+            [
+              -123.9,
+              49.22
+            ],
+            [
+              -123.9,
+              48.2
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Gulf Islands, Haro Strait & Victoria (500 m)",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "High-resolution (500 m) surface current forecasts for the southern Gulf Islands passes (Active, Porlier, Dodd), Haro and Rosario Straits, Boundary Pass and the eastern Strait of Juan de Fuca off Victoria.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -125.6,
+              49.9
+            ],
+            [
+              -124.6,
+              49.9
+            ],
+            [
+              -124.6,
+              50.6
+            ],
+            [
+              -125.6,
+              50.6
+            ],
+            [
+              -125.6,
+              49.9
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Discovery Islands & Seymour Narrows (500 m)",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "High-resolution (500 m) surface current forecasts for Discovery Passage / Seymour Narrows, Okisollo Channel, the Yuculta and Arran Rapids and Cordero Channel.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -132.5,
+              51.0
+            ],
+            [
+              -127.5,
+              51.0
+            ],
+            [
+              -127.5,
+              53.3
+            ],
+            [
+              -132.5,
+              53.3
+            ],
+            [
+              -132.5,
+              51.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "BC Central Coast & Haida Gwaii South",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for the BC central coast (Fitz Hugh Sound, Inside Passage to Princess Royal Island), southern Hecate Strait and southern Haida Gwaii.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -134.5,
+              53.0
+            ],
+            [
+              -129.0,
+              53.0
+            ],
+            [
+              -129.0,
+              55.0
+            ],
+            [
+              -134.5,
+              55.0
+            ],
+            [
+              -134.5,
+              53.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "BC North Coast, Hecate Strait & Dixon Entrance",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for the BC north coast (Grenville Channel, Prince Rupert, Chatham Sound), northern Hecate Strait, Dixon Entrance and northern Haida Gwaii.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -67.3,
+              44.2
+            ],
+            [
+              -63.3,
+              44.2
+            ],
+            [
+              -63.3,
+              45.9
+            ],
+            [
+              -67.3,
+              45.9
+            ],
+            [
+              -67.3,
+              44.2
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Bay of Fundy",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for the Bay of Fundy, Grand Manan, Passamaquoddy Bay, Minas Channel and Basin, and Chignecto Bay.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -66.4,
+              43.3
+            ],
+            [
+              -59.6,
+              43.3
+            ],
+            [
+              -59.6,
+              46.3
+            ],
+            [
+              -66.4,
+              46.3
+            ],
+            [
+              -66.4,
+              43.3
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Nova Scotia Atlantic Coast & Cape Breton",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for the Atlantic coast of Nova Scotia from Cape Sable to Cape Breton, including Halifax, the Strait of Canso and Chedabucto Bay.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -66.0,
+              45.6
+            ],
+            [
+              -60.0,
+              45.6
+            ],
+            [
+              -60.0,
+              48.6
+            ],
+            [
+              -66.0,
+              48.6
+            ],
+            [
+              -66.0,
+              45.6
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Southern Gulf of St. Lawrence",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for Northumberland Strait, Prince Edward Island, the Magdalen Islands, Chaleur Bay and western Cape Breton.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -71.3,
+              47.0
+            ],
+            [
+              -64.0,
+              47.0
+            ],
+            [
+              -64.0,
+              50.3
+            ],
+            [
+              -71.3,
+              50.3
+            ],
+            [
+              -71.3,
+              47.0
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "St. Lawrence Estuary & Gaspe",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts for the St. Lawrence Estuary from the Quebec City area to the Gaspe Peninsula, including the Saguenay mouth.",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -59.6,
+              46.5
+            ],
+            [
+              -52.5,
+              46.5
+            ],
+            [
+              -52.5,
+              52.0
+            ],
+            [
+              -59.6,
+              52.0
+            ],
+            [
+              -59.6,
+              46.5
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Newfoundland & Strait of Belle Isle",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Environment and Climate Change Canada (Meteorological Service of Canada)",
+        "description": "Surface current forecasts around Newfoundland (south and west coasts, Avalon Peninsula, Notre Dame Bay) and the Strait of Belle Isle, at ~4 km (2x2 pooled CIOPS-East grid).",
+        "info_url": "https://eccc-msc.github.io/open-data/msc-data/nwp_ciops/readme_ciops_en/",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -123.1,
               37.4
             ],
