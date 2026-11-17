@@ -88,7 +88,9 @@ def max_errors_kn(times_ms, speed_kn, events) -> tuple:
     for t, e in _interior_events(times_ms, events, ("EXTREMA_FLOOD", "EXTREMA_EBB")):
         m = np.abs(times_ms - t) <= SEARCH_MIN * 60000.0
         if m.any():
-            out.append(abs(float(np.max(speed_kn[m])) - float(e["value"])))
+            # Compare magnitudes: CHS reports ebb maxima as positive knots today,
+            # but a signed (negative) ebb value must not count as a doubled error.
+            out.append(abs(float(np.max(speed_kn[m])) - abs(float(e["value"]))))
         else:
             misses += 1
     return out, misses
