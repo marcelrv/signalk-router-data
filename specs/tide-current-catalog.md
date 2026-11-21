@@ -139,6 +139,8 @@ Standardized tags for the tide/current catalog:
 | `daily` | Updated daily |
 | `community` | Community-contributed data |
 | `noaa` | NOAA/NCEP source |
+| `chs` | Canadian Hydrographic Service source |
+| `non-commercial` | Upstream licence forbids commercial use; check the file's `license` metadata |
 | `opencpn` | OpenCPN project source |
 | `xtide` | XTide format |
 | `ocean-currents` | Ocean current content |

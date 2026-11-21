@@ -22,3 +22,6 @@ scripts/NOAA/cache/
 .release-staging/
 regions/**/*.sqlite
 regions/**/*.sqlite.gz
+
+# Cached CHS IWLS API responses (scripts/CHS/chs_currents_to_utcef.py)
+scripts/CHS/cache/

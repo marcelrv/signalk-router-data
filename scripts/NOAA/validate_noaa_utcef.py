@@ -21,7 +21,7 @@ shift (low correlation); missing-constituent error is bounded by the reported
 dropped amplitude.
 
 Usage:
-  python3 validate_noaa_utcef.py ../../regions/atlantic/noaa_us_east_coast.utcef \
+  python3 validate_noaa_utcef.py ../../regions/north-america/usa/noaa_us_east_coast.utcef \
       [--stations 8] [--days 14] [--seed 42] [--station-id NOAA_ACT1616_1]
 """
 import argparse
