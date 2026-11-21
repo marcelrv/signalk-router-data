@@ -51,8 +51,8 @@ REGIONS = {
     },
     "delta": {
         "file": "delta_dcsm_hd",
-        "title": "Ooster-/Westerschelde & Voordelta — High-Density Tidal Streams",
-        "bbox": [3.0, 51.20, 4.42, 51.82],
+        "title": "Ooster-/Westerschelde, Voordelta & Maasmond — High-Density Tidal Streams",
+        "bbox": [3.0, 51.20, 4.42, 52.05],  # north edge takes in Haringvliet, Slijkgat, Maasmond
     },
 }
 CATALOG = {
