@@ -107,7 +107,7 @@ SOURCES = {
     "dcsm": {
         "module": "rws_dcsm",
         "intro": (
-            "Rolling data release (**TEST**): high-resolution **forecast currents for the Dutch "
+            "Rolling data release: high-resolution **forecast currents for the Dutch "
             "Wadden Sea and the Delta** (tide + wind + surge, depth-averaged), regenerated from "
             "the 00Z and 12Z runs of Rijkswaterstaat's operational DCSM-FM 100 m model as "
             "published on the open [NOOS Matroos](https://noos.matroos.rws.nl/) server "
@@ -118,10 +118,12 @@ SOURCES = {
         "footer": [
             "- Depth-averaged currents: expect speeds ~20% below surface-current models "
             "such as BSH. Dry tidal flats read 0.",
-            "- Source: Rijkswaterstaat (DCSM-FM via NOOS Matroos). These repackaged files are "
-            "**not an official Rijkswaterstaat product** and are not endorsed by "
-            "Rijkswaterstaat — not for navigation.",
-            "- **Licence of the source data is not yet confirmed** — test use only.",
+            "- Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos), "
+            "[open data](https://www.rijkswaterstaat.nl/zakelijk/open-data) (CC0 1.0). These "
+            "files are [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/): **\"Source: "
+            "Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos); processed by signalk-router-data\"**. "
+            "**Not an official Rijkswaterstaat product** and not endorsed by Rijkswaterstaat or "
+            "Deltares — not for official navigation.",
         ],
     },
 }

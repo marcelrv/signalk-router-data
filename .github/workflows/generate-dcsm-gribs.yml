@@ -1,18 +1,14 @@
 name: Generate RWS DCSM-FM Current GRIB2 Files
 
-# PUBLISHING IS OFF until the licence of the Rijkswaterstaat / NOOS Matroos
-# model data is confirmed. Until then:
-#   - the schedule below stays commented out (manual runs only), and
-#   - PUBLISH is 'false', so a run keeps the GRIB2 files as a workflow
-#     artifact for inspection and does not touch the release.
-# To go live: uncomment the schedule, set PUBLISH to 'true', and set
-# PUBLISH_TO_CATALOG = True in scripts/tide-current/sources/rws_dcsm.py.
+# Rijkswaterstaat / Deltares DCSM-FM 100 m forecast currents from NOOS Matroos
+# (open data, CC0), 00Z and 12Z runs. Set PUBLISH to 'false' to run without
+# touching the release (the GRIB2 files are then kept as a workflow artifact).
 
 on:
-  # schedule:
-  #   # 00Z run is on Matroos ~04:15 UTC, 12Z run ~16:15 UTC.
-  #   - cron: '40 4 * * *'
-  #   - cron: '40 16 * * *'
+  schedule:
+    # 00Z run is on Matroos ~04:15-04:35 UTC, 12Z run ~16:15-16:35 UTC.
+    - cron: '45 4 * * *'
+    - cron: '45 16 * * *'
   workflow_dispatch:
     inputs:
       analysis:
@@ -28,7 +24,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  PUBLISH: 'false'
+  PUBLISH: 'true'
 
 jobs:
   generate:
@@ -64,7 +60,7 @@ jobs:
           echo "GRIB2 files:"
           ls -lh ./dcsm-gribs/
 
-      - name: Keep GRIB2 files as a workflow artifact (publishing off)
+      - name: Keep GRIB2 files as a workflow artifact (PUBLISH off)
         if: ${{ env.PUBLISH != 'true' && !cancelled() }}
         uses: actions/upload-artifact@v4
         with:
