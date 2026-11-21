@@ -25,6 +25,8 @@ download-stats.json:
    "daily":  {"YYYY-MM-DD": {name: n}},   # new downloads seen at that day's snapshots
    "assets": {name: {"id": asset id, "count": count at snapshot}}}  # bookkeeping
 
+download-stats.bak.json holds the previous version (see BACKUP_NAME).
+
 Usage (needs the gh CLI, authenticated; GH_TOKEN in workflows):
     python3 release_download_stats.py TAG [--repo owner/name] [--dry-run]
     python3 release_download_stats.py --report [TAG ...]   # print totals
@@ -42,6 +44,11 @@ import tempfile
 from datetime import datetime, timezone
 
 STATS_NAME = "download-stats.json"
+# Previous version, uploaded before STATS_NAME is replaced: `gh release
+# upload --clobber` deletes the old asset before uploading the new one, so a
+# failed upload would otherwise lose the totals. load_stats() falls back to it.
+BACKUP_NAME = "download-stats.bak.json"
+OWN_NAMES = (STATS_NAME, BACKUP_NAME)
 DEFAULT_REPO = "marcelrv/signalk-router-data"
 KEEP_DAYS = 800
 
@@ -63,9 +70,16 @@ def get_release(tag: str, repo: str):
 
 
 def load_stats(release: dict, repo: str) -> dict:
-    for a in release.get("assets", []):
-        if a["name"] == STATS_NAME:
-            return json.loads(gh_api(f"releases/assets/{a['id']}", repo, "application/octet-stream"))
+    """The stats asset, or the backup when an earlier replacement failed
+    half-way (main deleted, new one not uploaded). Starting from the backup
+    is exact: its per-asset bookkeeping matches the counts it summed."""
+    by_name = {a["name"]: a for a in release.get("assets", [])}
+    for name in OWN_NAMES:
+        if name in by_name:
+            if name == BACKUP_NAME:
+                print(f"  {STATS_NAME} missing, recovering from {BACKUP_NAME}", file=sys.stderr)
+            return json.loads(gh_api(f"releases/assets/{by_name[name]['id']}", repo,
+                                     "application/octet-stream"))
     return {}
 
 
@@ -79,7 +93,7 @@ def update(stats: dict, release: dict, now: datetime) -> dict:
     assets = {}
     for a in release.get("assets", []):
         name, aid, count = a["name"], a["id"], int(a["download_count"])
-        if name == STATS_NAME:
+        if name in OWN_NAMES:
             continue
         prev = seen.get(name)
         new = count - prev["count"] if prev and prev["id"] == aid else count
@@ -114,12 +128,20 @@ def snapshot(tag: str, repo: str, dry_run: bool) -> None:
         print(json.dumps(stats["totals"], indent=2))
         return
     with tempfile.TemporaryDirectory() as d:
-        path = os.path.join(d, STATS_NAME)
-        with open(path, "w") as f:
-            json.dump(stats, f, indent=1)
-            f.write("\n")
-        subprocess.run(["gh", "release", "upload", tag, path, "--clobber", "--repo", repo],
-                       check=True, capture_output=True)
+        # Back up the previous totals first; if that fails, nothing has been
+        # replaced yet and the exception leaves the release untouched.
+        if before:
+            upload(tag, repo, d, BACKUP_NAME, before)
+        upload(tag, repo, d, STATS_NAME, stats)
+
+
+def upload(tag: str, repo: str, d: str, name: str, data: dict) -> None:
+    path = os.path.join(d, name)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=1)
+        f.write("\n")
+    subprocess.run(["gh", "release", "upload", tag, path, "--clobber", "--repo", repo],
+                   check=True, capture_output=True)
 
 
 def report(tags: list, repo: str) -> None:
