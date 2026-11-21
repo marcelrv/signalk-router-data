@@ -114,7 +114,7 @@ SOURCES = {
             "(source `dcsm7_harmonie_bf_f2w_zuno`) — u/v regridded from the curvilinear model "
             "grid to a regular lat/lon grid and re-encoded as compact GRIB2."
         ),
-        "updated": "twice daily (~05 and ~17 UTC, from the 00Z and 12Z runs)",
+        "updated": "twice daily (~06:30 and ~18:30 UTC, from the 00Z and 12Z runs)",
         "footer": [
             "- Depth-averaged currents: expect speeds ~20% below surface-current models "
             "such as BSH. Dry tidal flats read 0.",

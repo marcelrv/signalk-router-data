@@ -14,8 +14,11 @@ format as the CMEMS/CIOPS/OFS files) -> delete the raw file.
 Source quirks (checked on real runs, Nov 2026):
   - Matroos cannot subset 2-D maps on the server: one run is a single
     ~4.5 GB NetCDF covering the NW European shelf (ZUNO v4 curvilinear
-    grid, dims time x row x col = 307 x 638 x 1449). At ~4 MB/s that is
-    ~18 min; it is streamed to disk with curl and read with netCDF4 slices.
+    grid, dims time x row x col = 307 x 638 x 1449). It is streamed to disk
+    with curl and read with netCDF4 slices. Speed depends on where it runs:
+    ~4 MB/s (~18 min) from the Netherlands, but only ~0.8 MB/s (~95 min) on a
+    GitHub-hosted runner (measured 2026-11-21). The server ignores Range
+    requests, so the download cannot be split into parallel parts.
   - `time` has 307 slots at 10-min steps from analysis -3 h. The 00Z run of
     21 Nov 2026 filled all of them (to +48 h); runs seen earlier filled only
     ~169 (to +25 h) and padded the rest with time = 0 (not masked). So the
@@ -75,7 +78,8 @@ CROP_MARGIN_DEG = 0.03
 # A full run is ~4.5 GB (Nov 2026); anything much smaller is an error page or a
 # truncated transfer.
 MIN_RAW_BYTES = 500_000_000
-DOWNLOAD_TIMEOUT_S = 75 * 60
+# Per attempt; two attempts must fit in the workflow's job timeout.
+DOWNLOAD_TIMEOUT_S = 150 * 60
 EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
 KM_PER_DEG_LAT = 110.57
 
@@ -111,8 +115,10 @@ def download_run(analysis: datetime, dest: str) -> None:
 
     def _once():
         try:
-            subprocess.run(["curl", "-fsS", "--retry", "2", "--retry-delay", "60",
-                            "-m", str(DOWNLOAD_TIMEOUT_S), "-o", tmp, url], check=True)
+            # No curl --retry: -m applies per curl attempt, so curl retries
+            # would multiply the worst case; retry() below does the retrying.
+            subprocess.run(["curl", "-fsS", "-m", str(DOWNLOAD_TIMEOUT_S), "-o", tmp, url],
+                           check=True)
             size = os.path.getsize(tmp)
             if size < MIN_RAW_BYTES:
                 raise RuntimeError(f"download only {size} bytes, expected a multi-GB NetCDF")
@@ -122,7 +128,7 @@ def download_run(analysis: datetime, dest: str) -> None:
                 os.remove(tmp)
             raise
 
-    retry(_once, label="download", attempts=3, delay=120)
+    retry(_once, label="download", attempts=2, delay=120)
     dt = (datetime.now(timezone.utc) - t0).total_seconds()
     size = os.path.getsize(dest)
     print(f"  downloaded {size / 1e9:.2f} GB in {dt / 60:.1f} min "
