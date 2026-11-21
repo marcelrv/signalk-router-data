@@ -36,6 +36,7 @@ reported and the exit code is 0 unless --strict is given.
 """
 
 import argparse
+import copy
 import json
 import os
 import subprocess
@@ -84,7 +85,9 @@ def load_stats(release: dict, repo: str) -> dict:
 
 
 def update(stats: dict, release: dict, now: datetime) -> dict:
-    """Add the downloads since the previous snapshot. Pure: no I/O."""
+    """Add the downloads since the previous snapshot. Pure: no I/O, and
+    `stats` is not modified (it is uploaded as the backup afterwards)."""
+    stats = copy.deepcopy(stats)
     tag = release["tag_name"]
     totals = stats.get("totals", {}).get("files", {})
     seen = stats.get("assets", {})

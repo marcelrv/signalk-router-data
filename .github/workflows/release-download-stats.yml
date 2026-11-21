@@ -29,7 +29,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          for tag in $(gh release list --repo "${{ github.repository }}" --limit 100 --json tagName -q '.[].tagName'); do
+          # Separate assignment, so a failing list fails the step instead of
+          # running the loop zero times.
+          tags=$(gh release list --repo "${{ github.repository }}" --limit 100 --json tagName -q '.[].tagName')
+          [ -n "$tags" ] || { echo "::error::no releases listed"; exit 1; }
+          for tag in $tags; do
             python3 scripts/release_download_stats.py "$tag" --strict || echo "::warning::download stats failed for $tag"
           done
 
