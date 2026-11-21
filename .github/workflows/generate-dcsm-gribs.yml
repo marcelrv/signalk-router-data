@@ -51,11 +51,15 @@ jobs:
       - name: Generate DCSM GRIB2 files
         id: generate
         continue-on-error: true
+        # Passed via env, never interpolated into the script (no shell
+        # injection from the manual-run input); the generator validates it.
+        env:
+          ANALYSIS: ${{ inputs.analysis }}
         run: |
-          args=""
-          if [ -n "${{ inputs.analysis }}" ]; then args="--analysis ${{ inputs.analysis }}"; fi
+          args=()
+          if [ -n "$ANALYSIS" ]; then args=(--analysis "$ANALYSIS"); fi
           python scripts/tide-current/generate_dcsm_gribs.py \
-            --output-dir ./dcsm-gribs $args
+            --output-dir ./dcsm-gribs "${args[@]}"
           echo "---"
           echo "GRIB2 files:"
           ls -lh ./dcsm-gribs/

@@ -159,9 +159,11 @@ def select_hours(ds, forecast_hours: int) -> tuple:
     hours = sorted(picked)
     if not hours or hours[0] != 0:
         raise RuntimeError(f"no analysis-time slot in the file (analysis {analysis:%Y-%m-%d %H:%MZ})")
-    missing = sorted(set(range(hours[-1] + 1)) - set(hours))
+    # The whole horizon must be there: a truncated run would otherwise be
+    # published while the catalog advertises +forecast_hours.
+    missing = sorted(set(range(forecast_hours + 1)) - set(hours))
     if missing:
-        raise RuntimeError(f"missing lead hours {missing}")
+        raise RuntimeError(f"missing lead hours {missing} (need 0..{forecast_hours})")
     return analysis, [(picked[h], h) for h in hours]
 
 
