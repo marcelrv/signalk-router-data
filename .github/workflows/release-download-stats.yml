@@ -1,0 +1,44 @@
+name: Record Release Download Counts
+
+# Daily snapshot of the download counts of every release into its
+# download-stats.json (see scripts/release_download_stats.py). The currents
+# workflows also take a snapshot just before they replace their files; this
+# one covers the releases that are uploaded by hand (routing databases) and
+# gives a value per day for all of them. 21:10 UTC is clear of the other
+# scheduled workflows, so two runs do not update the same stats file at once.
+
+on:
+  schedule:
+    - cron: '10 21 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-download-stats
+  cancel-in-progress: false
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Snapshot every release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for tag in $(gh release list --repo "${{ github.repository }}" --limit 100 --json tagName -q '.[].tagName'); do
+            python3 scripts/release_download_stats.py "$tag" --strict || echo "::warning::download stats failed for $tag"
+          done
+
+      - name: Summary
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          {
+            echo '```'
+            python3 scripts/release_download_stats.py --report
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"

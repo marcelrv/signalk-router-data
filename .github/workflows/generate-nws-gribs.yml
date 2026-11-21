@@ -49,6 +49,15 @@ jobs:
       - name: Generate release notes
         run: python scripts/tide-current/currents_release_notes.py nws > /tmp/nws_notes.md
 
+      # Read the download counts before the upload replaces the files (a
+      # replaced asset restarts at 0) and add them to download-stats.json
+      # in the release. Never blocks the upload.
+      - name: Record download counts
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/release_download_stats.py nws-currents-latest
+
       - name: Upload GRIB2 files to GitHub Release
         env:
           GH_TOKEN: ${{ github.token }}
