@@ -75,3 +75,14 @@ so tolerances below that turn every cell into a point. Default scale 2.5.
   ("open, tenzij"); the derived UTCEF files are CC-BY-4.0 with attribution to
   Rijkswaterstaat / Deltares DCSM-FM and a not-for-navigation disclaimer
   (`metadata.license`, `copyright`, `citation_required`, `data_sources`).
+  Exception: constituents inferred with FES2014 ratios (now N2 and K2) fall
+  under the AVISO+ licence (scientific and non-commercial use);
+  `add_fes_credit()` then adds the FES2014 citation, a data source and the
+  licence note to the metadata.
+- **TODO at the 30+ day rebuild (~2026-12-05): drop FES2014.** Fit N2
+  directly (needs ~28 days to separate from M2) and infer K2 from the
+  equilibrium ratio K2/S2 = 0.272 at the S2 phase (no FES, costs ~0.02 kn
+  median). Then `inferred` is FES-free, `add_fes_credit()` must not run, and
+  the files are plain CC-BY-4.0 again. Re-run `astro_compare.py` to confirm the
+  RMS does not get worse. (Equilibrium N2 instead of fitting would cost
+  ~0.11 kn median: real N2 lags M2 by ~30 deg here.)

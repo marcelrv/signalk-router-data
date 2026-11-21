@@ -168,6 +168,39 @@ def choose_constituents(days):
     return chosen, inferred
 
 
+FES_CITATION = ("FES2014 was produced by Noveltis, Legos and CLS and distributed by Aviso+, "
+                "with support from Cnes (https://www.aviso.altimetry.fr/)")
+
+
+def add_fes_credit(meta: dict, inferred: dict) -> dict:
+    """Credit FES2014 when constituents were inferred with its ratios.
+
+    The ratios come from netherlands.utcef, which is under the AVISO+ licence
+    (scientific and non-commercial redistribution) and requires the FES2014
+    citation. Until the inference no longer uses FES (planned: fit N2 directly
+    from a 29+ day record, infer K2 from the equilibrium ratio), the output
+    says so in its licence, copyright, citation and data sources."""
+    if not inferred:
+        return meta
+    names = "/".join(inferred)
+    meta["license"] = (f"CC-BY-4.0, except the {names} constituents, inferred with FES2014 ratios: "
+                       "AVISO+ licence (scientific and non-commercial use)")
+    meta["copyright"] += (f" The {names} constituents are inferred with amplitude ratios and phase "
+                          "offsets from FES2014 (Copyright Legos/Noveltis/Cnes/CLS, AVISO+ licence for "
+                          "scientific and non-commercial use).")
+    meta["citation_required"] += f"; {FES_CITATION}"
+    meta["data_sources"].append({
+        "name": "FES2014 (via AVISO+)", "url": "https://www.aviso.altimetry.fr/", "role": "Inference ratios",
+        "license": "AVISO+ License Agreement (scientific and non-commercial)",
+        "notes": f"Median {names} ratios to M2/S2 from regions/europe/netherlands.utcef"})
+    # metadata.description and catalog.contributor reach tide-current-index.json.
+    meta["description"] += (f" The {names} values are inferred with FES2014 ratios and fall under the "
+                            f"AVISO+ licence (scientific and non-commercial use). {FES_CITATION}.")
+    meta["catalog"] = {**meta["catalog"],
+                       "contributor": meta["catalog"]["contributor"] + " Inference ratios: FES2014 (AVISO+)."}
+    return meta
+
+
 def fes_inference_ratios(fes_path: Path, bbox, pairs):
     """Median complex ratio minor/reference on the major axis, from FES2014.
     pairs: {minor: reference}. Returns {minor: (amplitude ratio, g_minor - g_ref)}."""
@@ -491,6 +524,7 @@ def build(region, cfg, rec, args):
         },
         "dataset": {"type": "FeatureCollection", "features": feats},
     }
+    add_fes_credit(payload["metadata"], inferred)
     args.out.mkdir(parents=True, exist_ok=True)
     out = args.out / f"{cfg['file']}.utcef"
     with zipfile.ZipFile(out, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
