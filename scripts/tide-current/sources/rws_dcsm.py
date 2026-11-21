@@ -33,17 +33,18 @@ the UTCEF, then BSH for the open sea.
 
 The regions use the same boxes as those UTCEF datasets.
 
-Licence: NOT yet confirmed for the Matroos model output. PUBLISH_TO_CATALOG
-stays False (and the workflow does not upload) until it is.
+Licence: Rijkswaterstaat publishes its data as open data under CC0 1.0
+(https://www.rijkswaterstaat.nl/zakelijk/open-data); the DCSM-FM output on
+NOOS Matroos is provided by Rijkswaterstaat and Deltares. The derived GRIB2
+files are CC-BY-4.0, with the attribution below, same as the DCSM UTCEF
+datasets.
 """
 
 import json
 import sys
 
-# Gate for the catalog entry. Off until the Rijkswaterstaat / Matroos data
-# licence is confirmed: the index must not point at a release that does not
-# exist (the workflow's upload is gated by the same decision).
-PUBLISH_TO_CATALOG = False
+# Gate for the catalog entry, same convention as cmems_nws.PUBLISH_TO_CATALOG.
+PUBLISH_TO_CATALOG = True
 
 GITHUB_RELEASE_BASE = "https://github.com/marcelrv/signalk-router-data/releases/download/dcsm-currents-latest"
 
@@ -61,6 +62,11 @@ CYCLES = ["00", "12"]
 # holding a 26-step file per region well under ~40 MB.
 TARGET_RES_LAT_DEG = 0.0025
 TARGET_RES_LON_DEG = 0.0035
+# GRIB2 simple-packing bits per value. 12 bits over the ~3 m/s spread of
+# u or v in one message gives a step of 2^-10 m/s (~1 mm/s, 0.002 kn), max
+# rounding error ~0.5 mm/s, invisible at the plugin's 0.01 kn output, and
+# halves the files compared with the writer's 24-bit default.
+BITS_PER_VALUE = 12
 
 REGIONS = {
     "dcsm_wadden": {
@@ -71,6 +77,7 @@ REGIONS = {
         "bounds": {"min_lat": 52.88, "max_lat": 53.72, "min_lon": 4.55, "max_lon": 7.35},
         "target_res_lat_deg": TARGET_RES_LAT_DEG,
         "target_res_lon_deg": TARGET_RES_LON_DEG,
+        "bits_per_value": BITS_PER_VALUE,
         "forecast_hours": 25,
     },
     "dcsm_delta": {
@@ -80,6 +87,7 @@ REGIONS = {
         "bounds": {"min_lat": 51.20, "max_lat": 52.05, "min_lon": 3.00, "max_lon": 4.42},
         "target_res_lat_deg": TARGET_RES_LAT_DEG,
         "target_res_lon_deg": TARGET_RES_LON_DEG,
+        "bits_per_value": BITS_PER_VALUE,
         "forecast_hours": 25,
     },
 }
@@ -91,9 +99,9 @@ DESCRIPTION = (
     "grid and re-encoded as GRIB2 by signalk-router-data scripts "
     "(https://github.com/marcelrv/signalk-router-data). Hourly, from the model analysis "
     "to +25 h. Depth-averaged, so speeds are ~20% below surface-current models such as "
-    "BSH. Source: Rijkswaterstaat (DCSM-FM, NOOS Matroos). This repackaging is NOT an "
-    "official Rijkswaterstaat product and is not endorsed by Rijkswaterstaat. "
-    "LICENCE NOT YET CONFIRMED: test use only. Not for navigation."
+    "BSH. Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos), open data (CC0 1.0); "
+    "processed by signalk-router-data, licensed CC-BY-4.0. Not an official Rijkswaterstaat "
+    "product and not endorsed by Rijkswaterstaat or Deltares. Not for official navigation."
 )
 
 
@@ -137,12 +145,12 @@ def build_source() -> dict:
         "id": "rws_dcsm",
         "source": "rws",
         "type": "grib2",
-        "name": "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM, TEST)",
+        "name": "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)",
         "description": DESCRIPTION,
-        "contributor": "Rijkswaterstaat (DCSM-FM via NOOS Matroos)",
+        "contributor": "Rijkswaterstaat / Deltares (DCSM-FM via NOOS Matroos)",
         "url": "https://noos.matroos.rws.nl/",
         "tags": ["grib2", "regional", "gridded", "forecast", "rws", "dcsm-fm",
-                 "ocean-currents", "high-density", "test", "europe", "netherlands"],
+                 "ocean-currents", "high-density", "daily", "europe", "netherlands"],
         "region": {
             "name": "Netherlands — Wadden Sea & Delta",
             "bounding_box": _bbox_of_polygons(all_poly_coords),

@@ -289,6 +289,7 @@ def process_region(rid, r, ds, analysis, slots, out_dir):
         float(lats[0]), float(lons[0]), float(r["target_res_lat_deg"]), float(r["target_res_lon_deg"]),
         ni, nj, au, av, avu, avu, ah,
         int(f"{analysis:%Y%m%d}"), analysis.hour * 100, out,
+        bits_per_value=r.get("bits_per_value"),
     )
     return out
 
