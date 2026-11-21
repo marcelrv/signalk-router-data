@@ -129,12 +129,18 @@ SOURCES = {
 }
 
 
+def _deg(v: float) -> str:
+    # One decimal, or two when one would round the bound (e.g. 4.55, 52.05).
+    a = abs(v)
+    return f"{a:.1f}" if abs(round(a, 1) - a) < 1e-9 else f"{a:.2f}"
+
+
 def _lat(v: float) -> str:
-    return f"{abs(v):.1f}°{'N' if v >= 0 else 'S'}"
+    return f"{_deg(v)}°{'N' if v >= 0 else 'S'}"
 
 
 def _lon(v: float) -> str:
-    return f"{abs(v):.1f}°{'E' if v >= 0 else 'W'}"
+    return f"{_deg(v)}°{'E' if v >= 0 else 'W'}"
 
 
 def _span(lo: float, hi: float, fmt) -> str:
