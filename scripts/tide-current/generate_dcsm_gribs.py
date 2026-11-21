@@ -347,9 +347,9 @@ def main():
         with netCDF4.Dataset(raw) as ds:
             ds.set_auto_mask(True)
             fh = args.forecast_hours
-            min_h = fh or max(REGIONS[rid]["forecast_hours"] for rid in selected)
-            max_h = fh or max(REGIONS[rid].get("max_forecast_hours", REGIONS[rid]["forecast_hours"])
-                              for rid in selected)
+            min_h = fh if fh is not None else max(REGIONS[rid]["forecast_hours"] for rid in selected)
+            max_h = fh if fh is not None else max(
+                REGIONS[rid].get("max_forecast_hours", REGIONS[rid]["forecast_hours"]) for rid in selected)
             analysis, slots = select_hours(ds, min_h, max_h)
             print(f"Analysis {analysis:%Y-%m-%d %H:%MZ}, lead hours "
                   f"{slots[0][1]}..{slots[-1][1]} ({len(slots)} steps)", file=sys.stderr)
@@ -358,7 +358,7 @@ def main():
             for rid in selected:
                 r = REGIONS[rid]
                 print(f"\n=== {rid} ({r['name']}) ===", file=sys.stderr)
-                want = fh or r.get("max_forecast_hours", r["forecast_hours"])
+                want = fh if fh is not None else r.get("max_forecast_hours", r["forecast_hours"])
                 try:
                     path = process_region(rid, r, ds, analysis,
                                           [s for s in slots if s[1] <= want], args.output_dir)
