@@ -84,7 +84,8 @@ def pool_weighted(arr: np.ndarray, valid: np.ndarray, step: int) -> tuple:
     return mean, count
 
 
-def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, time_val, step, is_u):
+def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, time_val, step, is_u,
+              bits_per_value=None):
     import eccodes as ec
 
     gid = ec.codes_grib_new_from_samples("GRIB2")
@@ -122,6 +123,10 @@ def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, ti
         # misread as something else entirely.
         ec.codes_set(gid, "parameterNumber", 2 if is_u else 3)
         ec.codes_set(gid, "packingType", "grid_simple")
+        # None keeps eccodes' default (24 bits). 12 bits still resolves
+        # currents to ~1 mm/s; see generate_dcsm_gribs.py.
+        if bits_per_value is not None:
+            ec.codes_set(gid, "bitsPerValue", int(bits_per_value))
         ec.codes_set(gid, "bitmapPresent", 1)
         ec.codes_set(gid, "missingValue", MISSING_VALUE)
         out = data.astype(np.float64)
@@ -132,7 +137,8 @@ def write_msg(f, data, valid, lat0, lon0, inc_lat, inc_lon, ni, nj, date_val, ti
         ec.codes_release(gid)
 
 
-def encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u, all_valid_v, hours, bd, bt, path):
+def encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u, all_valid_v, hours, bd, bt, path,
+                 bits_per_value=None):
     # Written to a temp name and renamed only on success: the workflows
     # upload every ./*.grb2 in the output dir, so a failed encode must never
     # leave a truncated file under the final name (it would clobber the
@@ -141,8 +147,10 @@ def encode_grib2(lat0, lon0, inc_lat, inc_lon, ni, nj, all_u, all_v, all_valid_u
     try:
         with open(tmp, "wb") as f:
             for h, u, v, valid_u, valid_v in zip(hours, all_u, all_v, all_valid_u, all_valid_v):
-                write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True)
-                write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False)
+                write_msg(f, u, valid_u, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, True,
+                          bits_per_value)
+                write_msg(f, v, valid_v, lat0, lon0, inc_lat, inc_lon, ni, nj, bd, bt, h, False,
+                          bits_per_value)
         os.replace(tmp, path)
     except BaseException:
         try:
