@@ -176,6 +176,15 @@ def _resolution(mod, r: dict) -> str:
     return f"{txt} ({r['pool_step']}×{r['pool_step']} pooled)" if r.get("pool_step", 1) > 1 else txt
 
 
+def _forecast(r: dict) -> str:
+    # max_forecast_hours (DCSM): the run length varies, forecast_hours is the
+    # guaranteed minimum.
+    hi = r.get("max_forecast_hours")
+    if hi and hi > r["forecast_hours"]:
+        return f"+{r['forecast_hours']} h (up to +{hi} h), hourly"
+    return f"+{r['forecast_hours']} h, hourly"
+
+
 def main() -> None:
     if len(sys.argv) != 2 or sys.argv[1] not in SOURCES:
         sys.exit(f"usage: {sys.argv[0]} {{{'|'.join(SOURCES)}}}")
@@ -201,7 +210,7 @@ def main() -> None:
             f"[{fname}]({mod.GITHUB_RELEASE_BASE}/{fname})",
             _coverage(r["bounds"]),
             _resolution(mod, r),
-            f"+{r['forecast_hours']} h, hourly",
+            _forecast(r),
         ]
         if has_domain:
             row.insert(1, mod.DOMAINS[r["domain"]]["token"])

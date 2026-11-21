@@ -16,9 +16,12 @@ Source quirks (checked on real runs, Nov 2026):
     ~4.5 GB NetCDF covering the NW European shelf (ZUNO v4 curvilinear
     grid, dims time x row x col = 307 x 638 x 1449). At ~4 MB/s that is
     ~18 min; it is streamed to disk with curl and read with netCDF4 slices.
-  - `time` has 307 slots at 10-min steps but only ~169 are real (analysis
-    -3 h to +25 h); the rest are padding with time = 0, not masked. Only
-    full hours from the analysis to +forecast_hours are kept.
+  - `time` has 307 slots at 10-min steps from analysis -3 h. The 00Z run of
+    21 Nov 2026 filled all of them (to +48 h); runs seen earlier filled only
+    ~169 (to +25 h) and padded the rest with time = 0 (not masked). So the
+    horizon varies: every full hour from the analysis up to
+    max_forecast_hours is kept as long as the hours are contiguous, and a run
+    that does not reach forecast_hours (the guaranteed minimum) is rejected.
   - lat/lon (row, col) hold fill values outside the model domain.
   - Land cells are masked (the mask does not change in time). Dry cells are
     NOT masked: their velocity is exactly 0, and stays 0 here (a dry flat
@@ -144,27 +147,31 @@ def _minutes_since_epoch(var) -> np.ndarray:
     raise RuntimeError(f"unexpected time units {units!r}")
 
 
-def select_hours(ds, forecast_hours: int) -> tuple:
+def select_hours(ds, min_hours: int, max_hours: int) -> tuple:
     """Returns (analysis datetime, [(time index, lead hour), ...]) for the
-    full-hour slots from the analysis to +forecast_hours. Padding slots
-    (time == 0) fall outside that window and drop out."""
+    contiguous full-hour slots from the analysis up to +max_hours. Padding
+    slots (time == 0) fall outside that window and drop out. Fails if the
+    contiguous run does not reach +min_hours."""
     anal_min = float(_minutes_since_epoch(ds["analysis_time"])[0])
     analysis = EPOCH + timedelta(minutes=anal_min)
     t = _minutes_since_epoch(ds["time"])
     picked = {}
     for i, m in enumerate(t):
         lead = (m - anal_min) / 60.0
-        if 0 <= lead <= forecast_hours + 1e-6 and abs(lead - round(lead)) < 1e-6:
+        if 0 <= lead <= max_hours + 1e-6 and abs(lead - round(lead)) < 1e-6:
             picked.setdefault(int(round(lead)), i)
     hours = sorted(picked)
     if not hours or hours[0] != 0:
         raise RuntimeError(f"no analysis-time slot in the file (analysis {analysis:%Y-%m-%d %H:%MZ})")
-    # The whole horizon must be there: a truncated run would otherwise be
-    # published while the catalog advertises +forecast_hours.
-    missing = sorted(set(range(forecast_hours + 1)) - set(hours))
-    if missing:
-        raise RuntimeError(f"missing lead hours {missing} (need 0..{forecast_hours})")
-    return analysis, [(picked[h], h) for h in hours]
+    # Keep the contiguous hours from 0; the guaranteed minimum must be there,
+    # or a truncated run would be published while the notes promise +min_hours.
+    last = 0
+    while last + 1 in picked:
+        last += 1
+    if last < min_hours:
+        missing = sorted(set(range(min_hours + 1)) - set(hours))
+        raise RuntimeError(f"missing lead hours {missing} (need at least 0..{min_hours})")
+    return analysis, [(picked[h], h) for h in range(last + 1)]
 
 
 def read_crop(ds, bounds: dict) -> tuple:
@@ -310,7 +317,7 @@ def main():
     parser.add_argument("--keep-raw", action="store_true",
                         help="Keep the downloaded NetCDF")
     parser.add_argument("--forecast-hours", type=int, default=None,
-                        help="Override the forecast horizon (testing only)")
+                        help="Require and write exactly this horizon (testing only)")
     args = parser.parse_args()
 
     os.makedirs(args.output_dir, exist_ok=True)
@@ -339,8 +346,11 @@ def main():
     try:
         with netCDF4.Dataset(raw) as ds:
             ds.set_auto_mask(True)
-            horizon = args.forecast_hours or max(REGIONS[rid]["forecast_hours"] for rid in selected)
-            analysis, slots = select_hours(ds, horizon)
+            fh = args.forecast_hours
+            min_h = fh or max(REGIONS[rid]["forecast_hours"] for rid in selected)
+            max_h = fh or max(REGIONS[rid].get("max_forecast_hours", REGIONS[rid]["forecast_hours"])
+                              for rid in selected)
+            analysis, slots = select_hours(ds, min_h, max_h)
             print(f"Analysis {analysis:%Y-%m-%d %H:%MZ}, lead hours "
                   f"{slots[0][1]}..{slots[-1][1]} ({len(slots)} steps)", file=sys.stderr)
             if args.analysis and f"{analysis:%Y%m%d%H%M}" != args.analysis:
@@ -348,7 +358,7 @@ def main():
             for rid in selected:
                 r = REGIONS[rid]
                 print(f"\n=== {rid} ({r['name']}) ===", file=sys.stderr)
-                want = args.forecast_hours or r["forecast_hours"]
+                want = fh or r.get("max_forecast_hours", r["forecast_hours"])
                 try:
                     path = process_region(rid, r, ds, analysis,
                                           [s for s in slots if s[1] <= want], args.output_dir)

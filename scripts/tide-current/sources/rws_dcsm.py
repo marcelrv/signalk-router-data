@@ -20,7 +20,8 @@ with KNMI HARMONIE wind/pressure, as published on the open NOOS Matroos server
 interpolated to the ZUNO v4 curvilinear grid (638 x 1449), ~175-220 m cells
 in the Wadden and ~70-110 m in the Delta. Velocities are depth-averaged
 (east/north, m/s); land is masked, dry cells read exactly 0. Runs every 3 h
-(the 00/06/12/18Z runs carry the full forecast), from analysis -3 h to +25 h.
+from analysis -3 h to +25 h, or to +48 h (the 00Z run of 21 Nov 2026 had
+the full +48 h; earlier runs stopped at +25 h).
 See generate_dcsm_gribs.py for the download, time and mask quirks.
 
 This complements, not replaces:
@@ -28,7 +29,7 @@ This complements, not replaces:
     invisible at that resolution.
   - The tide-only DCSM UTCEF datasets (utcef_wadden_dcsm_hd /
     utcef_delta_dcsm_hd): any date, but no wind/surge.
-Intended plugin order: this GRIB first (weather-aware, ~25 h ahead), then
+Intended plugin order: this GRIB first (weather-aware, 25-48 h ahead), then
 the UTCEF, then BSH for the open sea.
 
 The regions use the same boxes as those UTCEF datasets.
@@ -78,7 +79,10 @@ REGIONS = {
         "target_res_lat_deg": TARGET_RES_LAT_DEG,
         "target_res_lon_deg": TARGET_RES_LON_DEG,
         "bits_per_value": BITS_PER_VALUE,
+        # forecast_hours: guaranteed minimum (shorter runs are rejected);
+        # max_forecast_hours: written when the run has it.
         "forecast_hours": 25,
+        "max_forecast_hours": 48,
     },
     "dcsm_delta": {
         "name": "Dutch Delta (DCSM-FM)",
@@ -88,7 +92,10 @@ REGIONS = {
         "target_res_lat_deg": TARGET_RES_LAT_DEG,
         "target_res_lon_deg": TARGET_RES_LON_DEG,
         "bits_per_value": BITS_PER_VALUE,
+        # forecast_hours: guaranteed minimum (shorter runs are rejected);
+        # max_forecast_hours: written when the run has it.
         "forecast_hours": 25,
+        "max_forecast_hours": 48,
     },
 }
 
@@ -98,7 +105,7 @@ DESCRIPTION = (
     "model as published on the open NOOS Matroos server, regridded to a regular lat/lon "
     "grid and re-encoded as GRIB2 by signalk-router-data scripts "
     "(https://github.com/marcelrv/signalk-router-data). Hourly, from the model analysis "
-    "to +25 h. Depth-averaged, so speeds are ~20% below surface-current models such as "
+    "to at least +25 h, up to +48 h when the run has it. Depth-averaged, so speeds are ~20% below surface-current models such as "
     "BSH. Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos), open data (CC0 1.0); "
     "processed by signalk-router-data, licensed CC-BY-4.0. Not an official Rijkswaterstaat "
     "product and not endorsed by Rijkswaterstaat or Deltares. Not for official navigation."
