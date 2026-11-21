@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-11-17T13:00:12Z",
-  "source_count": 85,
+  "generated": "2026-11-21T21:28:15Z",
+  "source_count": 86,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,8 +424,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T12:59:44Z",
-        "latest_cycle": "2026-11-17T00:00:00Z"
+        "last_checked": "2026-11-21T21:27:47Z",
+        "latest_cycle": "2026-11-21T00:00:00Z"
       },
       "files": [
         {
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T12:59:44Z"
+        "last_checked": "2026-11-21T21:27:47Z"
       },
       "files": [
         {
@@ -3004,7 +3004,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T12:59:44Z"
+        "last_checked": "2026-11-21T21:27:47Z"
       },
       "files": [
         {
@@ -3733,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T12:59:44Z"
+        "last_checked": "2026-11-21T21:27:47Z"
       },
       "files": [
         {
@@ -4469,7 +4469,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 12,
-        "last_checked": "2026-11-17T12:59:44Z"
+        "last_checked": "2026-11-21T21:27:47Z"
       },
       "files": [
         {
@@ -5255,7 +5255,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-17T12:59:44Z"
+        "last_checked": "2026-11-21T21:27:47Z"
       },
       "files": [
         {
@@ -5957,7 +5957,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T12:59:45Z"
+        "last_checked": "2026-11-21T21:27:48Z"
       },
       "files": [
         {
@@ -5971,6 +5971,179 @@
           "url": "https://raw.githubusercontent.com/OpenCPN/OpenCPN/master/data/tcdata/HARMONICS_NO_US.IDX",
           "sha256": "684e72a1e35473ca692184a7ab3c802db732159cedec5270da878714f104c4b1",
           "size_bytes": 318716
+        }
+      ]
+    },
+    {
+      "id": "rws_dcsm",
+      "source": "rws",
+      "type": "grib2",
+      "name": "Forecast Currents \u2014 Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)",
+      "description": "High-resolution (~250 m) forecast currents (tide + wind + surge, depth-averaged) for the Dutch Wadden Sea and the Delta, from Rijkswaterstaat's operational DCSM-FM 100 m model as published on the open NOOS Matroos server, regridded to a regular lat/lon grid and re-encoded as GRIB2 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Hourly, from the model analysis to at least +25 h, up to +48 h when the run has it. Depth-averaged, so speeds are ~20% below surface-current models such as BSH. Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos), open data (CC0 1.0); processed by signalk-router-data, licensed CC-BY-4.0. Not an official Rijkswaterstaat product and not endorsed by Rijkswaterstaat or Deltares. Not for official navigation.",
+      "contributor": "Rijkswaterstaat / Deltares (DCSM-FM via NOOS Matroos)",
+      "url": "https://noos.matroos.rws.nl/",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "rws",
+        "dcsm-fm",
+        "ocean-currents",
+        "high-density",
+        "daily",
+        "europe",
+        "netherlands"
+      ],
+      "region": {
+        "name": "Netherlands \u2014 Wadden Sea & Delta",
+        "bounding_box": {
+          "min_lat": 51.2,
+          "min_lon": 3.0,
+          "max_lat": 53.72,
+          "max_lon": 7.35
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  4.55,
+                  52.88
+                ],
+                [
+                  7.35,
+                  52.88
+                ],
+                [
+                  7.35,
+                  53.72
+                ],
+                [
+                  4.55,
+                  53.72
+                ],
+                [
+                  4.55,
+                  52.88
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  3.0,
+                  51.2
+                ],
+                [
+                  4.42,
+                  51.2
+                ],
+                [
+                  4.42,
+                  52.05
+                ],
+                [
+                  3.0,
+                  52.05
+                ],
+                [
+                  3.0,
+                  51.2
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 12,
+        "last_checked": "2026-11-21T21:27:48Z"
+      },
+      "files": [
+        {
+          "region_id": "dcsm_wadden",
+          "name": "Dutch Wadden Sea (DCSM-FM)",
+          "description": "Forecast currents (tide + weather) for the Dutch Wadden Sea from Den Helder to the Eems/Dollard, including the tidal inlets and ~20 km of North Sea off the islands.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  4.55,
+                  52.88
+                ],
+                [
+                  7.35,
+                  52.88
+                ],
+                [
+                  7.35,
+                  53.72
+                ],
+                [
+                  4.55,
+                  53.72
+                ],
+                [
+                  4.55,
+                  52.88
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/dcsm-currents-latest/dcsm_wadden_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "05",
+            "17"
+          ]
+        },
+        {
+          "region_id": "dcsm_delta",
+          "name": "Dutch Delta (DCSM-FM)",
+          "description": "Forecast currents (tide + weather) for the Voordelta, Westerschelde (to Antwerp), Oosterschelde, Haringvliet/Slijkgat and the Maasmond.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  3.0,
+                  51.2
+                ],
+                [
+                  4.42,
+                  51.2
+                ],
+                [
+                  4.42,
+                  52.05
+                ],
+                [
+                  3.0,
+                  52.05
+                ],
+                [
+                  3.0,
+                  51.2
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/dcsm-currents-latest/dcsm_delta_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "05",
+            "17"
+          ]
         }
       ]
     },
@@ -6027,7 +6200,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6090,7 +6263,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6153,7 +6326,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6216,7 +6389,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6279,7 +6452,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6342,7 +6515,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6405,7 +6578,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6468,7 +6641,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6531,7 +6704,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6594,7 +6767,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6657,7 +6830,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6720,7 +6893,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6783,7 +6956,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6846,7 +7019,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6909,7 +7082,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -6972,7 +7145,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7035,7 +7208,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7098,7 +7271,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7161,7 +7334,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7224,7 +7397,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7287,7 +7460,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7350,7 +7523,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7413,7 +7586,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7476,7 +7649,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7539,7 +7712,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7602,7 +7775,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7665,7 +7838,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7728,7 +7901,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7791,7 +7964,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7854,7 +8027,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7917,7 +8090,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -7980,7 +8153,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8043,7 +8216,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8106,7 +8279,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8169,7 +8342,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8232,7 +8405,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8295,7 +8468,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8358,7 +8531,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8421,7 +8594,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8484,7 +8657,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8547,7 +8720,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8610,7 +8783,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8673,7 +8846,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8739,7 +8912,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8805,7 +8978,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8870,7 +9043,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -8935,7 +9108,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9000,7 +9173,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9065,7 +9238,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9130,7 +9303,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9195,7 +9368,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9258,7 +9431,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9321,7 +9494,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9384,7 +9557,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9447,7 +9620,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9510,7 +9683,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9573,7 +9746,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9636,7 +9809,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9699,7 +9872,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9762,7 +9935,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9825,7 +9998,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9888,7 +10061,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -9951,7 +10124,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10014,7 +10187,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10077,7 +10250,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10140,7 +10313,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10203,7 +10376,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10266,7 +10439,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10329,7 +10502,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10392,7 +10565,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10455,7 +10628,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10518,7 +10691,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10581,7 +10754,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10644,7 +10817,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10707,7 +10880,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10770,7 +10943,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10833,7 +11006,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
@@ -10896,7 +11069,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-17T13:00:12Z"
+        "last_checked": "2026-11-21T21:28:15Z"
       },
       "files": [
         {
