@@ -79,10 +79,16 @@ so tolerances below that turn every cell into a point. Default scale 2.5.
   under the AVISO+ licence (scientific and non-commercial use);
   `add_fes_credit()` then adds the FES2014 citation, a data source and the
   licence note to the metadata.
-- **TODO at the 30+ day rebuild (~2026-12-05): drop FES2014.** Fit N2
-  directly (needs ~28 days to separate from M2) and infer K2 from the
-  equilibrium ratio K2/S2 = 0.272 at the S2 phase (no FES, costs ~0.02 kn
-  median). Then `inferred` is FES-free, `add_fes_credit()` must not run, and
-  the files are plain CC-BY-4.0 again. Re-run `astro_compare.py` to confirm the
-  RMS does not get worse. (Equilibrium N2 instead of fitting would cost
-  ~0.11 kn median: real N2 lags M2 by ~30 deg here.)
+- **TODO at the 30+ day rebuild (~2026-12-05): drop FES2014 from all
+  inference.** Fit N2 directly (needs ~28 days to separate from M2). Every
+  constituent that still has to be inferred then takes the equilibrium-tide
+  ratio at its reference's phase instead of an FES ratio: K2/S2 = 0.272
+  (S2/K2 need ~6 months; costs ~0.02 kn median) and P1/K1 = 0.331 (P1 is in
+  `INFER` and needs ~6 months to separate from K1; it is absent from the
+  current files only because the FES diurnal currents here are below the
+  0.05 m/s threshold, and K1 is ~0.02 m/s, so P1 is ~0.006 m/s). Remove
+  `fes_inference_ratios()` and `--fes` from the build, so no `INFER` entry can
+  fall back to FES. Then `add_fes_credit()` must not run and the files are
+  plain CC-BY-4.0 again. Re-run `astro_compare.py` to confirm the RMS does not
+  get worse. (Equilibrium N2 instead of fitting would cost ~0.11 kn median:
+  real N2 lags M2 by ~30 deg here.)
