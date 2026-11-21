@@ -93,6 +93,9 @@ def main():
             dd = np.degrees(np.angle((p[ok, 0] + 1j * p[ok, 1]) / (ua[ok, j] + 1j * va[ok, j]))) if ok.any() else np.array([np.nan])
             daily = [ps[i:i + 24].mean() / max(as_[i:i + 24].mean(), 1e-6) for i in range(0, len(t) - 23, 24)]
             rows.append((names[j], dkm[j], rms, ps.max() / as_.max(), np.median(np.abs(dd)), daily))
+        if not rows:
+            print(f"\n== {path.name}: no stations matched")
+            continue
         R = np.array([r[2] for r in rows])
         D = np.array([r[5] for r in rows])
         dmed = np.median(D, axis=0)

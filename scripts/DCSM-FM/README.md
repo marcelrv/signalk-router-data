@@ -17,15 +17,14 @@ catalog ids stay stable when the test flag is dropped.
 | `dcsm_to_utcef.py` | Harmonic fit of every model cell (one vectorised least-squares; UTide nodal corrections and Greenwich arguments), point placement, UTCEF writer |
 | `validate_utcef.py` + `plugin_predict.mjs` | Runs the signalk-tidal-currents plugin's own `utcefSampleAt` on the output and compares with the raw model series |
 | `astro_compare.py` | Compares UTCEF (through the plugin) with the tide-only DCSM-FM run (Matroos maps1d `dcsm_fm100m_astro`, no weather) at its ~270 named stations in the Wadden and Delta — the cleanest check of the fit |
-| `hp33_compare.py` | Compares fitted spring/neap rates and set at HW+h of a reference port with tidal-atlas arrows read by hand into a private CSV (the atlas is copyrighted; it is only a check, never a data source) |
 
 ```bash
 .venv/bin/python scripts/DCSM-FM/dcsm_to_utcef.py --routing nl-routing.sqlite --out dist
-.venv/bin/python scripts/DCSM-FM/validate_utcef.py dist/wadden_dcsm.utcef --plot val.png
-.venv/bin/python scripts/DCSM-FM/hp33_compare.py arrows.csv --scan-hours
+.venv/bin/python scripts/DCSM-FM/validate_utcef.py dist/wadden_dcsm_hd.utcef --plot val.png
 ```
 
-Needs `numpy scipy netCDF4 utide` (and `node` + a built plugin `dist/` for validation).
+Needs `numpy scipy netCDF4 utide` (and `node` + a built plugin `dist/` for validation;
+`matplotlib` for `--plot`).
 
 ## Point placement
 
@@ -57,8 +56,10 @@ so tolerances below that turn every cell into a point. Default scale 2.5.
 - Short records: constituents are chosen by the Rayleigh criterion plus
   minimum lengths; N2, K2 (and P1) are inferred from M2, S2, K1 with FES2014
   ratios until the record separates them (~28 days for N2, ~180 for K2).
-- The record includes weather; over 15 days the mean flow (`mean_offset`) is
-  mostly wind-driven.
+- The record includes weather, yet the fitted mean flow (`mean_offset`, which
+  the plugin adds to every prediction) is mostly tidal residual flow: zeroing
+  it raised the RMS against the tide-only run (Delta p50 0.155 → 0.174 m/s,
+  Wadden 0.177 → 0.181), so it is exported.
 - The open NOOS Matroos keeps only ~14 days for every current source (maps and
   station series alike); longer history is on the login-only Matroos. The
   collector therefore also stores the tide-only station run (`astro1d/`).

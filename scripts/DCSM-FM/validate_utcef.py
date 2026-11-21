@@ -32,6 +32,7 @@ def main():
         feats = json.loads(z.read(z.namelist()[0]))["dataset"]["features"]
     random.seed(1)
     pick = [f for f in feats if f["id"] in args.ids] + random.sample(feats, min(args.n, len(feats)))
+    pick = list({f["id"]: f for f in pick}.values())  # dedupe; dict keeps first-seen order (explicit ids first)
     with netCDF4.Dataset(args.data / "grid.nc") as g:
         lat = g["lat"][:].filled(np.nan)
         lon = g["lon"][:].filled(np.nan)
