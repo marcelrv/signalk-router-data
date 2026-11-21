@@ -1,0 +1,123 @@
+name: Generate RWS DCSM-FM Current GRIB2 Files
+
+# Rijkswaterstaat / Deltares DCSM-FM 100 m forecast currents from NOOS Matroos
+# (open data, CC0), 00Z and 12Z runs. Set PUBLISH to 'false' to run without
+# touching the release (the GRIB2 files are then kept as a workflow artifact).
+
+on:
+  schedule:
+    # 00Z run is on Matroos ~04:15-04:35 UTC, 12Z run ~16:15-16:35 UTC.
+    - cron: '45 4 * * *'
+    - cron: '45 16 * * *'
+  workflow_dispatch:
+    inputs:
+      analysis:
+        description: 'Run to use (YYYYMMDDHHMM); empty = latest 00Z/12Z'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dcsm-gribs
+  cancel-in-progress: false
+
+env:
+  PUBLISH: 'true'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    # The whole-shelf NetCDF is ~4.5 GB and Matroos serves it at
+    # ~4 MB/s, so the download alone takes ~18 min (more on retry).
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -q numpy scipy netCDF4 eccodes
+
+      - name: Check free disk space
+        run: df -h .
+
+      # continue-on-error: a region that fails must not block the upload of
+      # the one that succeeded; the last step fails the job instead.
+      - name: Generate DCSM GRIB2 files
+        id: generate
+        continue-on-error: true
+        # Passed via env, never interpolated into the script (no shell
+        # injection from the manual-run input); the generator validates it.
+        env:
+          ANALYSIS: ${{ inputs.analysis }}
+        run: |
+          args=()
+          if [ -n "$ANALYSIS" ]; then args=(--analysis "$ANALYSIS"); fi
+          python scripts/tide-current/generate_dcsm_gribs.py \
+            --output-dir ./dcsm-gribs "${args[@]}"
+          echo "---"
+          echo "GRIB2 files:"
+          ls -lh ./dcsm-gribs/
+
+      - name: Keep GRIB2 files as a workflow artifact (PUBLISH off)
+        if: ${{ env.PUBLISH != 'true' && !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcsm-gribs
+          path: ./dcsm-gribs/*.grb2
+          retention-days: 3
+          if-no-files-found: warn
+
+      - name: Generate release notes
+        if: ${{ env.PUBLISH == 'true' }}
+        run: python scripts/tide-current/currents_release_notes.py dcsm > /tmp/dcsm_notes.md
+
+      - name: Upload GRIB2 files to GitHub Release
+        if: ${{ env.PUBLISH == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          failed=0
+          for f in ./dcsm-gribs/*.grb2; do
+            [ -f "$f" ] || continue
+            echo "Uploading $(basename $f)..."
+            gh release upload dcsm-currents-latest "$f" \
+              --clobber \
+              --repo "${{ github.repository }}" \
+              2>/tmp/gh_upload_err.txt || {
+                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
+                  echo "Release does not exist — creating..."
+                  gh release create dcsm-currents-latest "$f" \
+                    --repo "${{ github.repository }}" \
+                    --title "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)" \
+                    --notes-file /tmp/dcsm_notes.md \
+                    --latest=false
+                else
+                  echo "Upload FAILED for $(basename $f):"
+                  cat /tmp/gh_upload_err.txt
+                  failed=1
+                fi
+              }
+          done
+          exit $failed
+
+      - name: Update release notes
+        if: ${{ env.PUBLISH == 'true' && !cancelled() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release edit dcsm-currents-latest \
+            --repo "${{ github.repository }}" \
+            --title "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)" \
+            --notes-file /tmp/dcsm_notes.md
+
+      - name: Fail if any region failed to generate
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::One or more regions failed to generate (see the 'Generate DCSM GRIB2 files' step log)."
+          exit 1

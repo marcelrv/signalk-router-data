@@ -5,12 +5,13 @@
 """
 Emit the markdown body for the rolling `<source>-currents-latest` GitHub
 releases of the CMEMS (IBI, MED, NWS) and ECCC CIOPS surface-current
-pipelines, generated from each source module's REGIONS so the region table
-never drifts from what the pipeline actually produces. Stdlib-only.
+pipelines, and of the Rijkswaterstaat DCSM-FM one, generated from each
+source module's REGIONS so the region table never drifts from what the
+pipeline actually produces. Stdlib-only.
 (The NOAA OFS release has its own generator: ofs_release_notes.py.)
 
 Usage:
-    python3 currents_release_notes.py {ibi|med|nws|ciops} > notes.md
+    python3 currents_release_notes.py {ibi|med|nws|ciops|dcsm} > notes.md
 """
 
 import importlib
@@ -103,15 +104,43 @@ SOURCES = {
             "**not an official ECCC product** and are not endorsed by ECCC — not for navigation.",
         ],
     },
+    "dcsm": {
+        "module": "rws_dcsm",
+        "intro": (
+            "Rolling data release: high-resolution **forecast currents for the Dutch "
+            "Wadden Sea and the Delta** (tide + wind + surge, depth-averaged), regenerated from "
+            "the 00Z and 12Z runs of Rijkswaterstaat's operational DCSM-FM 100 m model as "
+            "published on the open [NOOS Matroos](https://noos.matroos.rws.nl/) server "
+            "(source `dcsm7_harmonie_bf_f2w_zuno`) — u/v regridded from the curvilinear model "
+            "grid to a regular lat/lon grid and re-encoded as compact GRIB2."
+        ),
+        "updated": "twice daily (~05 and ~17 UTC, from the 00Z and 12Z runs)",
+        "footer": [
+            "- Depth-averaged currents: expect speeds ~20% below surface-current models "
+            "such as BSH. Dry tidal flats read 0.",
+            "- Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos), "
+            "[open data](https://www.rijkswaterstaat.nl/zakelijk/open-data) (CC0 1.0). These "
+            "files are [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/): **\"Source: "
+            "Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos); processed by signalk-router-data\"**. "
+            "**Not an official Rijkswaterstaat product** and not endorsed by Rijkswaterstaat or "
+            "Deltares — not for official navigation.",
+        ],
+    },
 }
 
 
+def _deg(v: float) -> str:
+    # One decimal, or two when one would round the bound (e.g. 4.55, 52.05).
+    a = abs(v)
+    return f"{a:.1f}" if abs(round(a, 1) - a) < 1e-9 else f"{a:.2f}"
+
+
 def _lat(v: float) -> str:
-    return f"{abs(v):.1f}°{'N' if v >= 0 else 'S'}"
+    return f"{_deg(v)}°{'N' if v >= 0 else 'S'}"
 
 
 def _lon(v: float) -> str:
-    return f"{abs(v):.1f}°{'E' if v >= 0 else 'W'}"
+    return f"{_deg(v)}°{'E' if v >= 0 else 'W'}"
 
 
 def _span(lo: float, hi: float, fmt) -> str:
@@ -134,15 +163,26 @@ def _resolution(mod, r: dict) -> str:
         d = r["target_res_deg"]
         return f"{d:.3g}° ({_km(d)})"
     if "target_res_lat_deg" in r:
-        # Non-square native grid (NWS): quote both steps, km for the N-S one.
+        # Non-square grid (NWS, DCSM): quote both steps, distance for the N-S one.
+        km = r["target_res_lat_deg"] * 111
+        dist = f"≈{km:.1f} km" if km >= 1 else f"≈{km * 1000:.0f} m"
         return (f"{r['target_res_lat_deg']:.3g}° lat × {r['target_res_lon_deg']:.3g}° lon "
-                f"(≈1.5 km)")
+                f"({dist})")
     # CIOPS: native resolution from the Datamart domain path, times pooling.
     native = mod.DOMAINS[r["domain"]]["path"].split("/")[-1]  # "2km" / "500m"
     meters = float(native[:-2]) * 1000 if native.endswith("km") else float(native[:-1])
     eff = meters * r.get("pool_step", 1)
     txt = f"{eff / 1000:g} km" if eff >= 1000 else f"{eff:g} m"
     return f"{txt} ({r['pool_step']}×{r['pool_step']} pooled)" if r.get("pool_step", 1) > 1 else txt
+
+
+def _forecast(r: dict) -> str:
+    # max_forecast_hours (DCSM): the run length varies, forecast_hours is the
+    # guaranteed minimum.
+    hi = r.get("max_forecast_hours")
+    if hi and hi > r["forecast_hours"]:
+        return f"+{r['forecast_hours']} h (up to +{hi} h), hourly"
+    return f"+{r['forecast_hours']} h, hourly"
 
 
 def main() -> None:
@@ -170,7 +210,7 @@ def main() -> None:
             f"[{fname}]({mod.GITHUB_RELEASE_BASE}/{fname})",
             _coverage(r["bounds"]),
             _resolution(mod, r),
-            f"+{r['forecast_hours']} h, hourly",
+            _forecast(r),
         ]
         if has_domain:
             row.insert(1, mod.DOMAINS[r["domain"]]["token"])
