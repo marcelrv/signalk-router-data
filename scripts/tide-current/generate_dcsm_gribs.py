@@ -13,9 +13,9 @@ format as the CMEMS/CIOPS/OFS files) -> delete the raw file.
 
 Source quirks (checked on real runs, Nov 2026):
   - Matroos cannot subset 2-D maps on the server: one run is a single
-    ~2.5-3.5 GB NetCDF covering the NW European shelf (ZUNO v4 curvilinear
-    grid, dims time x row x col = 307 x 638 x 1449). At ~5 MB/s that is
-    8-17 min; it is streamed to disk with curl and read with netCDF4 slices.
+    ~4.5 GB NetCDF covering the NW European shelf (ZUNO v4 curvilinear
+    grid, dims time x row x col = 307 x 638 x 1449). At ~4 MB/s that is
+    ~18 min; it is streamed to disk with curl and read with netCDF4 slices.
   - `time` has 307 slots at 10-min steps but only ~169 are real (analysis
     -3 h to +25 h); the rest are padding with time = 0, not masked. Only
     full hours from the analysis to +forecast_hours are kept.
@@ -69,7 +69,7 @@ REGIONS = rws_dcsm.REGIONS
 # Source cells this far outside a region box are still read, so the
 # triangulation reaches the box edges.
 CROP_MARGIN_DEG = 0.03
-# A full run is ~2.5-3.5 GB; anything much smaller is an error page or a
+# A full run is ~4.5 GB (Nov 2026); anything much smaller is an error page or a
 # truncated transfer.
 MIN_RAW_BYTES = 500_000_000
 DOWNLOAD_TIMEOUT_S = 75 * 60

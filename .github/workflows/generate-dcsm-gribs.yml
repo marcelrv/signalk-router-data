@@ -33,8 +33,8 @@ env:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    # The whole-shelf NetCDF is ~2.5-3.5 GB and Matroos serves it at
-    # ~3-5 MB/s, so the download alone can take 10-20 min (more on retry).
+    # The whole-shelf NetCDF is ~4.5 GB and Matroos serves it at
+    # ~4 MB/s, so the download alone takes ~18 min (more on retry).
     timeout-minutes: 120
     steps:
       - uses: actions/checkout@v7
