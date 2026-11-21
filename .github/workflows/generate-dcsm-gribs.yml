@@ -30,8 +30,9 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     # The whole-shelf NetCDF is ~4.5 GB and reaches a GitHub-hosted runner at
-    # only ~0.8 MB/s (~95 min; measured 2026-11-21). The generator allows
-    # 2 attempts of 150 min each, so the job needs ~5.5 h at worst (limit 6 h).
+    # only ~0.8 MB/s (~95 min; measured 2026-11-21). The generator gives the
+    # download 270 min in total (all retries); the other ~60 min cover setup,
+    # processing and the release upload (GitHub's maximum is 360).
     timeout-minutes: 330
     steps:
       - uses: actions/checkout@v7
