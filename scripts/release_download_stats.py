@@ -70,18 +70,19 @@ def get_release(tag: str, repo: str):
         raise
 
 
-def load_stats(release: dict, repo: str) -> dict:
-    """The stats asset, or the backup when an earlier replacement failed
-    half-way (main deleted, new one not uploaded). Starting from the backup
-    is exact: its per-asset bookkeeping matches the counts it summed."""
+def load_stats(release: dict, repo: str) -> tuple:
+    """(stats, name of the asset they came from, or None). Falls back to the
+    backup when an earlier replacement failed half-way (main deleted, new one
+    not uploaded). Starting from the backup is exact: its per-asset
+    bookkeeping matches the counts it summed."""
     by_name = {a["name"]: a for a in release.get("assets", [])}
     for name in OWN_NAMES:
         if name in by_name:
             if name == BACKUP_NAME:
                 print(f"  {STATS_NAME} missing, recovering from {BACKUP_NAME}", file=sys.stderr)
             return json.loads(gh_api(f"releases/assets/{by_name[name]['id']}", repo,
-                                     "application/octet-stream"))
-    return {}
+                                     "application/octet-stream")), name
+    return {}, None
 
 
 def update(stats: dict, release: dict, now: datetime) -> dict:
@@ -123,7 +124,7 @@ def snapshot(tag: str, repo: str, dry_run: bool) -> None:
     if release is None:
         print(f"{tag}: release does not exist yet, nothing to count")
         return
-    before = load_stats(release, repo)
+    before, source = load_stats(release, repo)
     stats = update(before, release, datetime.now(timezone.utc))
     added = stats["totals"]["all"] - before.get("totals", {}).get("all", 0)
     print(f"{tag}: +{added} downloads since the last snapshot, {stats['totals']['all']} in total")
@@ -132,8 +133,10 @@ def snapshot(tag: str, repo: str, dry_run: bool) -> None:
         return
     with tempfile.TemporaryDirectory() as d:
         # Back up the previous totals first; if that fails, nothing has been
-        # replaced yet and the exception leaves the release untouched.
-        if before:
+        # replaced yet and the exception leaves the release untouched. When
+        # recovering from the backup, it is the only copy: leave it alone and
+        # only restore the main asset (the next run refreshes the backup).
+        if before and source == STATS_NAME:
             upload(tag, repo, d, BACKUP_NAME, before)
         upload(tag, repo, d, STATS_NAME, stats)
 
@@ -152,7 +155,7 @@ def report(tags: list, repo: str) -> None:
         tags = [r["tag_name"] for r in json.loads(gh_api("releases?per_page=100", repo))]
     for tag in tags:
         release = get_release(tag, repo)
-        stats = load_stats(release, repo) if release else {}
+        stats = load_stats(release, repo)[0] if release else {}
         if not stats:
             print(f"\n{tag}: no {STATS_NAME} yet")
             continue
