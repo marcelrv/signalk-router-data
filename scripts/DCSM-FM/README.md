@@ -71,4 +71,7 @@ so tolerances below that turn every cell into a point. Default scale 2.5.
 - Against the BSH North Sea GRIB (surface 1 m, ~5.5 km): raw DCSM vector
   correlation 0.94 (Wadden) / 0.98 (Delta), speeds ~0.8× BSH (surface vs
   depth-averaged), direction within ~10°.
-- Matroos data licence still to be confirmed before publishing.
+- Licence: Rijkswaterstaat publishes its data as open data under CC0 1.0
+  ("open, tenzij"); the derived UTCEF files are CC-BY-4.0 with attribution to
+  Rijkswaterstaat / Deltares DCSM-FM and a not-for-navigation disclaimer
+  (`metadata.license`, `copyright`, `citation_required`, `data_sources`).

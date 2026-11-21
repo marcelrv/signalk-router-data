@@ -454,8 +454,7 @@ def build(region, cfg, rec, args):
         test_note = (
             f"TEST RELEASE built from a short {rec.days:.0f}-day model record: tidal set is good (median "
             "within a few degrees of the tide-only model), but spring-neap variation is exaggerated "
-            "(speeds up to ~30% low at neaps, slightly high at springs) until a 30+ day rebuild. "
-            "Licence of the Rijkswaterstaat model data still to be confirmed. ")
+            "(speeds up to ~30% low at neaps, slightly high at springs) until a 30+ day rebuild. ")
     t0 = dt.datetime(1970, 1, 1) + dt.timedelta(minutes=int(rec.minutes[0]))
     t1 = dt.datetime(1970, 1, 1) + dt.timedelta(minutes=int(rec.minutes[-1]))
     now = dt.datetime.now(dt.timezone.utc)
@@ -471,13 +470,21 @@ def build(region, cfg, rec, args):
                 f"{', '.join(chosen)}; inferred from FES2014 ratios: {', '.join(f'{m} (from {r})' for m, r in inferred.items()) or 'none'}. "
                 "Points follow the routed channels of the signalk-router-data Netherlands network, denser "
                 "where the stream changes quickly. Dry periods count as zero current. "
-                "PROTOTYPE — not for navigation, not endorsed by Rijkswaterstaat."),
+                "Not for official navigation: derived from numerical model output, not an official "
+                "Rijkswaterstaat or Hydrographic Office product and not endorsed by them; no liability is "
+                "accepted for errors or for incidents resulting from its use."),
             "last_updated": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
             "region": {"name": title, "bbox": bbox},
-            "copyright": "Model data: Rijkswaterstaat. Derived harmonics and packaging: see repository license.",
-            "license": "To be confirmed (Rijkswaterstaat open data)",
+            "copyright": ("Tidal current harmonic constituents derived from DCSM-FM model output (NOOS Matroos), "
+                          "provided by Rijkswaterstaat (Ministry of Infrastructure and Water Management, the "
+                          "Netherlands) and Deltares as open data (CC0 1.0). Harmonic analysis, point placement "
+                          "and packaging: signalk-router-data."),
+            "license": "CC-BY-4.0",
+            "license_url": "https://creativecommons.org/licenses/by/4.0/",
+            "citation_required": "Source: Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos); processed by signalk-router-data",
             "data_sources": [
-                {"name": "Rijkswaterstaat NOOS Matroos", "url": "https://noos.matroos.rws.nl/", "role": "Distributor"},
+                {"name": "Rijkswaterstaat NOOS Matroos", "url": "https://noos.matroos.rws.nl/", "role": "Distributor",
+                 "license": "CC0-1.0 (Rijkswaterstaat open data)", "license_url": "https://www.rijkswaterstaat.nl/zakelijk/open-data"},
                 {"name": "Rijkswaterstaat / Deltares DCSM-FM", "role": "Model Developer"},
             ],
             "catalog": {**CATALOG, "tags": CATALOG["tags"] + (["test"] if TEST_RELEASE else [])},
