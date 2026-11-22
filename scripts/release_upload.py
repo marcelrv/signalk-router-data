@@ -16,8 +16,9 @@ a missing download until the next good run. Instead, per file:
      renamed back);
   3. delete NAME.replaced.
 
-Leftovers from an interrupted run are cleaned up first: a NAME.replaced
-with no NAME is restored to NAME, other leftovers are deleted.
+Leftovers from an interrupted run are cleaned up first, release-wide (also
+for files not regenerated this run): a NAME.replaced with no NAME is
+restored to NAME, other leftovers are deleted.
 
 Each file is handled on its own: a failure is reported and the next file is
 still tried; the exit code is 1 if any file failed. The release is created
@@ -95,6 +96,31 @@ def clean_leftovers(name: str, assets: dict, release_id: int, repo: str) -> dict
     return list_assets(release_id, repo)
 
 
+def recover_release(release_id: int, repo: str) -> list:
+    """Release-wide cleanup of an interrupted run, done before any upload so
+    it also happens for files that are not regenerated this time: restore
+    every NAME.replaced whose NAME is missing, delete the other leftovers.
+    Each asset is handled on its own; returns the names that failed."""
+    failed = []
+    assets = list_assets(release_id, repo)
+    for leftover, aid in sorted(assets.items()):
+        try:
+            if leftover.endswith(OLD_SUFFIX):
+                name = leftover[:-len(OLD_SUFFIX)]
+                if name not in assets:
+                    print(f"  restoring {leftover} -> {name} (left by an interrupted run)",
+                          file=sys.stderr)
+                    rename_asset(aid, name, repo)
+                else:
+                    delete_asset(aid, repo)
+            elif leftover.endswith(TMP_SUFFIX):
+                delete_asset(aid, repo)
+        except GhError as e:
+            print(f"  could not clean up {leftover}: {e}", file=sys.stderr)
+            failed.append(leftover)
+    return failed
+
+
 def replace_file(tag: str, path: str, release_id: int, repo: str, workdir: str) -> None:
     name = os.path.basename(path)
     tmp, old = name + TMP_SUFFIX, name + OLD_SUFFIX
@@ -142,11 +168,12 @@ def main() -> None:
     args = ap.parse_args()
 
     files = [f for f in args.files if os.path.isfile(f)]
+    release = get_release(args.tag, args.repo)
+    failed = recover_release(release["id"], args.repo) if release else []
     if not files:
         print("No files to upload.", file=sys.stderr)
-        return
+        sys.exit(1 if failed else 0)
 
-    release = get_release(args.tag, args.repo)
     if release is None:
         print(f"Release {args.tag} does not exist — creating...", file=sys.stderr)
         cmd = ["release", "create", args.tag, "--repo", args.repo, "--title", args.title,
@@ -157,7 +184,6 @@ def main() -> None:
         if release is None:
             sys.exit(f"Release {args.tag} still not found after creating it")
 
-    failed = []
     with tempfile.TemporaryDirectory() as workdir:
         for path in files:
             name = os.path.basename(path)
