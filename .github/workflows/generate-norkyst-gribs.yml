@@ -78,7 +78,10 @@ jobs:
                     --repo "${{ github.repository }}" \
                     --title "Surface Current Forecasts — Norwegian Coast (MET Norway NorKyst v3)" \
                     --notes-file /tmp/norkyst_notes.md \
-                    --latest=false
+                    --latest=false || {
+                      echo "Release creation FAILED for $(basename $f)"
+                      failed=1
+                    }
                 else
                   echo "Upload FAILED for $(basename $f):"
                   cat /tmp/gh_upload_err.txt

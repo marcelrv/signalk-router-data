@@ -177,7 +177,7 @@ def main() -> None:
                        "this repackaging is NOT an official MET Norway product and is not "
                        "endorsed by MET Norway. Not for official navigation.",
         "contributor": "Norwegian Meteorological Institute (MET Norway)",
-        "url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3_800m_m00_be/catalog.html",
+        "url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
         "tags": ["grib2", "regional", "gridded", "forecast", "met-norway", "norkyst",
                  "ocean-currents", "daily", "europe", "norway"],
         "region": {

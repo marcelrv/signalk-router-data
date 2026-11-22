@@ -132,7 +132,7 @@ SOURCES = {
             "Rolling data release: gridded **surface current forecasts for the Norwegian coast "
             "and fjords** (tide + weather + river forcing), regenerated daily from the 00 UTC run "
             "of MET Norway's [NorKyst v3 ocean model]"
-            "(https://thredds.met.no/thredds/catalog/fou-hi/norkystv3_800m_m00_be/catalog.html) "
+            "(https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be) "
             "(ROMS, 800 m, dataset `norkystv3_800m_m00_be`) — surface u/v regridded to a regular "
             "lat/lon grid and re-encoded as compact GRIB2. Open sea far from land is left out "
             "to keep the files small."
