@@ -45,7 +45,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 from grib2_writer import encode_grib2, retry
-from generate_dcsm_gribs import _project, build_regridder, target_axes
+from generate_dcsm_gribs import KM_PER_DEG_LAT, _project, build_regridder, target_axes
 
 _SOURCES_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sources")
 if _SOURCES_DIR not in sys.path:
@@ -99,10 +99,10 @@ def select_hours(ds, min_hours: int, max_hours: int) -> tuple:
     return run, [(picked[h], h) for h in range(last + 1)]
 
 
-def crop_window(lat, lon, bounds: dict) -> tuple:
-    m = CROP_MARGIN_DEG
-    inside = ((lon >= bounds["min_lon"] - m) & (lon <= bounds["max_lon"] + m)
-              & (lat >= bounds["min_lat"] - m) & (lat <= bounds["max_lat"] + m))
+def crop_window(lat, lon, bounds: dict, m_lat: float = CROP_MARGIN_DEG,
+                m_lon: float = CROP_MARGIN_DEG) -> tuple:
+    inside = ((lon >= bounds["min_lon"] - m_lon) & (lon <= bounds["max_lon"] + m_lon)
+              & (lat >= bounds["min_lat"] - m_lat) & (lat <= bounds["max_lat"] + m_lat))
     r, c = np.where(inside)
     if r.size == 0:
         raise RuntimeError("region lies outside the model grid")
@@ -124,14 +124,26 @@ def read_surface(ds, name, slots, rs, cs) -> np.ndarray:
     return np.concatenate(out, axis=0)
 
 
-def offshore_mask(lat2d, lon2d, wet, lats, lons, km: float) -> np.ndarray:
-    """True for target cells within km of a land cell of the source window."""
-    land = ~wet
+def land_cells(ds, lat, lon, bounds: dict, time_index: int, km: float) -> tuple:
+    """lat/lon of the land cells within km of the region box. Read from a
+    window padded by km (one hour of u only), so land just outside the box
+    still counts when measuring how far a sea cell is from the coast."""
+    mid = np.radians(0.5 * (bounds["min_lat"] + bounds["max_lat"]))
+    pad_lat = km / KM_PER_DEG_LAT
+    pad_lon = km / (KM_PER_DEG_LAT * np.cos(mid))
+    rs, cs = crop_window(lat, lon, bounds, pad_lat, pad_lon)
+    u = retry(lambda: ds["u_eastward"][time_index, 0, rs, cs], label="land mask")
+    land = np.ma.getmaskarray(u)
+    return lat[rs, cs][land], lon[rs, cs][land]
+
+
+def offshore_mask(land_lat, land_lon, lats, lons, km: float) -> np.ndarray:
+    """True for target cells within km of a land cell."""
     lon_g, lat_g = np.meshgrid(lons, lats)
-    if not land.any():
+    if land_lat.size == 0:
         return np.zeros(lat_g.shape, dtype=bool)
     lat0 = float(np.mean(lats))
-    tree = cKDTree(_project(lon2d[land], lat2d[land], lat0))
+    tree = cKDTree(_project(land_lon, land_lat, lat0))
     d, _ = tree.query(_project(lon_g.ravel(), lat_g.ravel(), lat0), distance_upper_bound=km)
     return np.isfinite(d).reshape(lat_g.shape)
 
@@ -151,7 +163,9 @@ def process_region(rid, r, ds, lat, lon, run, slots, out_dir):
 
     mat, valid, st = build_regridder(lat2d, lon2d, wet, lats, lons)
     if r.get("offshore_km"):
-        near = offshore_mask(lat2d, lon2d, wet, lats, lons, float(r["offshore_km"]))
+        km = float(r["offshore_km"])
+        land_lat, land_lon = land_cells(ds, lat, lon, r["bounds"], slots[0][0], km)
+        near = offshore_mask(land_lat, land_lon, lats, lons, km)
         valid = valid & near
     print(f"  {rid}: source window {lat2d.shape[0]}x{lat2d.shape[1]}, {int(wet.sum())} wet cells; "
           f"target {ni}x{nj}, {int(valid.sum())} valid after offshore cut "
