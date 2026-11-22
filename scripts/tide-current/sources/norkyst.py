@@ -23,6 +23,10 @@ Issue #5. Source facts (checked on the live server, Nov 2026):
   - No credentials needed.
   - Licence CC-BY-4.0, "Norwegian Meteorological Institute (MET Norway)"
     (https://www.met.no/en/free-meteorological-data/Licensing-and-crediting).
+    The dataset's own `license` attribute says CC-BY-4.0 (as does MET
+    Norway's licensing page); the THREDDS catalog page still inherits a
+    generic "CC BY 3.0" rights line, also shown on the retired legacy
+    product. The dataset-level statement is used.
   - Replaces the legacy norkyst800m-1h product, which stopped on 2025-10-05.
   - The forecast reaches THREDDS in five parts, the last around 06:15 UTC;
     until then the aggregation shows an incomplete run (hence the 06:50 cron).
