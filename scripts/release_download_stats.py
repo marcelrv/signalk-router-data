@@ -95,11 +95,16 @@ def update(stats: dict, release: dict, now: datetime) -> dict:
     daily = stats.get("daily", {})
     day = now.strftime("%Y-%m-%d")
     assets = {}
+    names = {a["name"] for a in release.get("assets", [])}
     for a in release.get("assets", []):
         name, aid, count = a["name"], a["id"], int(a["download_count"])
-        # Skip own files and the temporary names release_upload.py uses
-        # while it swaps a file in (only left behind by a failed run).
-        if name in OWN_NAMES or name.endswith((".uploading", ".replaced")):
+        # Temporary names of release_upload.py, only left behind by an
+        # interrupted run: a NAME.replaced without NAME is still the live
+        # file (the next upload restores it), so it is counted as NAME and
+        # keeps its checkpoint; other leftovers are skipped.
+        if name.endswith(".replaced") and name[:-len(".replaced")] not in names:
+            name = name[:-len(".replaced")]
+        elif name in OWN_NAMES or name.endswith((".uploading", ".replaced")):
             continue
         prev = seen.get(name)
         new = count - prev["count"] if prev and prev["id"] == aid else count
