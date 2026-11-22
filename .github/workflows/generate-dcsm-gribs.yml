@@ -29,9 +29,11 @@ env:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    # The whole-shelf NetCDF is ~4.5 GB and Matroos serves it at
-    # ~4 MB/s, so the download alone takes ~18 min (more on retry).
-    timeout-minutes: 120
+    # The whole-shelf NetCDF is ~4.5 GB and reaches a GitHub-hosted runner at
+    # only ~0.8 MB/s (~95 min; measured 2026-11-21). The generator gives the
+    # download 270 min in total (all retries); the other ~60 min cover setup,
+    # processing and the release upload (GitHub's maximum is 360).
+    timeout-minutes: 330
     steps:
       - uses: actions/checkout@v7
 
@@ -76,6 +78,16 @@ jobs:
       - name: Generate release notes
         if: ${{ env.PUBLISH == 'true' }}
         run: python scripts/tide-current/currents_release_notes.py dcsm > /tmp/dcsm_notes.md
+
+      # Read the download counts before the upload replaces the files (a
+      # replaced asset restarts at 0) and add them to download-stats.json
+      # in the release. Never blocks the upload.
+      - name: Record download counts
+        if: ${{ env.PUBLISH == 'true' }}
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/release_download_stats.py dcsm-currents-latest
 
       - name: Upload GRIB2 files to GitHub Release
         if: ${{ env.PUBLISH == 'true' }}

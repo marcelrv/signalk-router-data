@@ -143,9 +143,10 @@ def build_source() -> dict:
             # One multi-message file per region (all hours), same as
             # cmems_nws.py.
             "forecast_hours": [0],
-            # When the release asset is refreshed: ~05 UTC from the 00Z run,
-            # ~17 UTC from the 12Z run.
-            "cycle_hours": ["05", "17"],
+            # When the release asset is refreshed: the workflow starts at 04:45
+            # and 16:45 UTC and the download takes ~95 min on a GitHub runner,
+            # so ~06:30 UTC from the 00Z run and ~18:30 UTC from the 12Z run.
+            "cycle_hours": ["07", "19"],
         })
 
     return {

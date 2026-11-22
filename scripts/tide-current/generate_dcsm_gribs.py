@@ -14,8 +14,11 @@ format as the CMEMS/CIOPS/OFS files) -> delete the raw file.
 Source quirks (checked on real runs, Nov 2026):
   - Matroos cannot subset 2-D maps on the server: one run is a single
     ~4.5 GB NetCDF covering the NW European shelf (ZUNO v4 curvilinear
-    grid, dims time x row x col = 307 x 638 x 1449). At ~4 MB/s that is
-    ~18 min; it is streamed to disk with curl and read with netCDF4 slices.
+    grid, dims time x row x col = 307 x 638 x 1449). It is streamed to disk
+    with curl and read with netCDF4 slices. Speed depends on where it runs:
+    ~4 MB/s (~18 min) from the Netherlands, but only ~0.8 MB/s (~95 min) on a
+    GitHub-hosted runner (measured 2026-11-21). The server ignores Range
+    requests, so the download cannot be split into parallel parts.
   - `time` has 307 slots at 10-min steps from analysis -3 h. The 00Z run of
     21 Nov 2026 filled all of them (to +48 h); runs seen earlier filled only
     ~169 (to +25 h) and padded the rest with time = 0 (not masked). So the
@@ -51,6 +54,7 @@ import argparse
 import os
 import subprocess
 import sys
+import time
 import traceback
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -75,7 +79,15 @@ CROP_MARGIN_DEG = 0.03
 # A full run is ~4.5 GB (Nov 2026); anything much smaller is an error page or a
 # truncated transfer.
 MIN_RAW_BYTES = 500_000_000
-DOWNLOAD_TIMEOUT_S = 75 * 60
+# Total time for the download, all attempts together. A full transfer takes
+# ~95 min on a GitHub runner; the workflow's job timeout (330 min) leaves
+# ~60 min on top of this for setup, processing and the release upload.
+DOWNLOAD_BUDGET_S = 270 * 60
+# Abort an attempt that stalls (below 10 kB/s for 5 min) so it can be retried.
+STALL_BYTES_PER_S = 10_000
+STALL_SECONDS = 300
+RETRY_WAIT_S = 120
+MIN_ATTEMPT_S = 15 * 60
 EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
 KM_PER_DEG_LAT = 110.57
 
@@ -107,23 +119,37 @@ def download_run(analysis: datetime, dest: str) -> None:
            f"&source={rws_dcsm.MATROOS_SOURCE}&analysis={analysis:%Y%m%d%H%M}&timezone=GMT")
     print(f"  downloading {url}", file=sys.stderr)
     tmp = dest + ".part"
-    t0 = datetime.now(timezone.utc)
-
-    def _once():
+    t0 = time.monotonic()
+    deadline = t0 + DOWNLOAD_BUDGET_S
+    attempt = 0
+    # Retry until the total budget is used up rather than a fixed number of
+    # times: a short outage (HTTP 5xx, connection refused) fails fast and is
+    # retried every RETRY_WAIT_S, while each attempt may use whatever budget is
+    # left, so a slow but steady transfer still completes. No curl --retry:
+    # its retries would not respect the overall deadline.
+    while True:
+        attempt += 1
+        left = deadline - time.monotonic()
         try:
-            subprocess.run(["curl", "-fsS", "--retry", "2", "--retry-delay", "60",
-                            "-m", str(DOWNLOAD_TIMEOUT_S), "-o", tmp, url], check=True)
+            subprocess.run(["curl", "-fsS", "-m", str(int(left)),
+                            "--speed-limit", str(STALL_BYTES_PER_S), "--speed-time", str(STALL_SECONDS),
+                            "-o", tmp, url], check=True)
             size = os.path.getsize(tmp)
             if size < MIN_RAW_BYTES:
                 raise RuntimeError(f"download only {size} bytes, expected a multi-GB NetCDF")
             os.replace(tmp, dest)
-        except BaseException:
+            break
+        except Exception as e:
             if os.path.exists(tmp):
                 os.remove(tmp)
-            raise
-
-    retry(_once, label="download", attempts=3, delay=120)
-    dt = (datetime.now(timezone.utc) - t0).total_seconds()
+            left = deadline - time.monotonic() - RETRY_WAIT_S
+            if left < MIN_ATTEMPT_S:
+                raise RuntimeError(f"download failed after {attempt} attempt(s) in "
+                                   f"{(time.monotonic() - t0) / 60:.0f} min: {e}") from e
+            print(f"  download attempt {attempt} failed ({type(e).__name__}: {e}); retrying in "
+                  f"{RETRY_WAIT_S}s, {left / 60:.0f} min of the budget left", file=sys.stderr)
+            time.sleep(RETRY_WAIT_S)
+    dt = time.monotonic() - t0
     size = os.path.getsize(dest)
     print(f"  downloaded {size / 1e9:.2f} GB in {dt / 60:.1f} min "
           f"({size / 1e6 / max(dt, 1):.1f} MB/s)", file=sys.stderr)
