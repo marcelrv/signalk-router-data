@@ -1,0 +1,109 @@
+name: Generate NorKyst Current GRIB2 Files
+
+on:
+  schedule:
+    # Once daily — NorKyst runs once a day at 00 UTC. The forecast reaches
+    # THREDDS in five parts, the last one around 06:15 UTC (seen Nov 2026);
+    # before that the run is incomplete and the generator refuses it.
+    - cron: '50 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: norkyst-gribs
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+
+      - name: Install Python dependencies
+        run: |
+          pip install -q numpy scipy netCDF4 eccodes
+
+      # continue-on-error: a region that fails to generate must not block the
+      # upload of the regions that succeeded — the job is failed explicitly by
+      # the final step instead, so stale assets still turn CI red.
+      - name: Generate NorKyst GRIB2 files
+        id: generate
+        continue-on-error: true
+        run: |
+          python scripts/tide-current/generate_norkyst_gribs.py \
+            --output-dir ./norkyst-gribs
+          echo "---"
+          echo "GRIB2 files:"
+          ls -lh ./norkyst-gribs/
+
+      # Built before the upload so a release created on the first run gets
+      # the full notes (attribution included) even if a later upload fails.
+      - name: Generate release notes
+        run: python scripts/tide-current/currents_release_notes.py norkyst > /tmp/norkyst_notes.md
+
+      # Read the download counts before the upload replaces the files (a
+      # replaced asset restarts at 0) and add them to download-stats.json
+      # in the release. Never blocks the upload.
+      - name: Record download counts
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/release_download_stats.py norkyst-currents-latest
+
+      - name: Upload GRIB2 files to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Per-file isolation: a failed upload must not block the remaining
+          # regions' uploads (each asset is independent) — collect failures
+          # and fail the job at the END instead of aborting mid-loop.
+          failed=0
+          for f in ./norkyst-gribs/*.grb2; do
+            [ -f "$f" ] || continue
+            echo "Uploading $(basename $f)..."
+            gh release upload norkyst-currents-latest "$f" \
+              --clobber \
+              --repo "${{ github.repository }}" \
+              2>/tmp/gh_upload_err.txt || {
+                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
+                  echo "Release does not exist — creating..."
+                  gh release create norkyst-currents-latest "$f" \
+                    --repo "${{ github.repository }}" \
+                    --title "Surface Current Forecasts — Norwegian Coast (MET Norway NorKyst v3)" \
+                    --notes-file /tmp/norkyst_notes.md \
+                    --latest=false
+                else
+                  echo "Upload FAILED for $(basename $f):"
+                  cat /tmp/gh_upload_err.txt
+                  failed=1
+                fi
+              }
+          done
+          exit $failed
+
+      # Regenerated from sources/ REGIONS every run so the region table
+      # (files, coverage, resolution, horizons) never drifts from what the
+      # pipeline actually produces — adding a region updates the release
+      # page automatically.
+      - name: Update release notes
+        if: ${{ !cancelled() }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release edit norkyst-currents-latest \
+            --repo "${{ github.repository }}" \
+            --title "Surface Current Forecasts — Norwegian Coast (MET Norway NorKyst v3)" \
+            --notes-file /tmp/norkyst_notes.md
+
+      - name: Fail if any region failed to generate
+        if: steps.generate.outcome == 'failure'
+        run: |
+          echo "::error::One or more regions failed to generate (see the 'Generate NorKyst GRIB2 files' step log). Regions that did generate were still uploaded."
+          exit 1

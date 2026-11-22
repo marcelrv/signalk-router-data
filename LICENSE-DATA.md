@@ -13,6 +13,7 @@ The following data is **not** covered by this license and retains its original u
 
 - **NOAA RTOFS** (GRIB2 products): Public domain, U.S. Government work. No restrictions beyond NOAA's data use policies.
 - **FES2014 / AVISO+**: Distributed under the [AVISO+ License Agreement](https://www.aviso.altimetry.fr/fileadmin/documents/data/License_Aviso.pdf) for scientific and non-commercial use only. See README section "UTCEF / FES2014-derived datasets" for attribution and citation requirements.
+- **MET Norway NorKyst v3 forecast currents** (GRIB2 on the `norkyst-currents-latest` release): CC-BY-4.0, "Norwegian Meteorological Institute (MET Norway)" ([licensing and crediting](https://www.met.no/en/free-meteorological-data/Licensing-and-crediting)). Regridded and re-encoded by this project; not an official MET Norway product and not endorsed by MET Norway.
 - **OpenCPN / XTide harmonics**: Licensed under OpenCPN's terms. Refer to the [OpenCPN project](https://github.com/OpenCPN/OpenCPN/tree/master/data/tcdata) for details.
 - **NOAA ENC** (Electronic Navigational Charts, US coastal): Public domain, U.S. Government work, from NOAA Office of Coast Survey.
 - **US Army Corps of Engineers Inland ENC** (`ienccloud.us`, US inland rivers): U.S. Government work; check `ienccloud.us` for current redistribution terms before bundling into a downstream commercial product.
