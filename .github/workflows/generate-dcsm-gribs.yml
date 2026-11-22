@@ -94,29 +94,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          failed=0
-          for f in ./dcsm-gribs/*.grb2; do
-            [ -f "$f" ] || continue
-            echo "Uploading $(basename $f)..."
-            gh release upload dcsm-currents-latest "$f" \
-              --clobber \
-              --repo "${{ github.repository }}" \
-              2>/tmp/gh_upload_err.txt || {
-                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
-                  echo "Release does not exist — creating..."
-                  gh release create dcsm-currents-latest "$f" \
-                    --repo "${{ github.repository }}" \
-                    --title "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)" \
-                    --notes-file /tmp/dcsm_notes.md \
-                    --latest=false
-                else
-                  echo "Upload FAILED for $(basename $f):"
-                  cat /tmp/gh_upload_err.txt
-                  failed=1
-                fi
-              }
-          done
-          exit $failed
+          # Each file is uploaded under a temporary name and swapped in, so a
+          # failed upload never removes the live file (`--clobber` deletes the
+          # old asset first). Per-file isolation; exit 1 if any file failed.
+          python3 scripts/release_upload.py dcsm-currents-latest ./dcsm-gribs/*.grb2 \
+            --repo "${{ github.repository }}" \
+            --title "Forecast Currents — Dutch Wadden Sea & Delta (Rijkswaterstaat DCSM-FM)" \
+            --notes-file /tmp/dcsm_notes.md
 
       - name: Update release notes
         if: ${{ env.PUBLISH == 'true' && !cancelled() }}
