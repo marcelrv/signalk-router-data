@@ -6,7 +6,7 @@
 Keep running download totals for the files of a rolling GitHub release.
 
 GitHub counts downloads per uploaded asset, and the rolling releases replace
-their files on every run (`gh release upload --clobber`), which starts a new
+their files on every run (scripts/release_upload.py), which starts a new
 asset at 0 downloads. Run this just BEFORE a workflow uploads new files: it
 reads each asset's current count, adds what is new since the previous
 snapshot to a `download-stats.json` asset in the same release, and uploads
@@ -97,7 +97,9 @@ def update(stats: dict, release: dict, now: datetime) -> dict:
     assets = {}
     for a in release.get("assets", []):
         name, aid, count = a["name"], a["id"], int(a["download_count"])
-        if name in OWN_NAMES:
+        # Skip own files and the temporary names release_upload.py uses
+        # while it swaps a file in (only left behind by a failed run).
+        if name in OWN_NAMES or name.endswith((".uploading", ".replaced")):
             continue
         prev = seen.get(name)
         new = count - prev["count"] if prev and prev["id"] == aid else count

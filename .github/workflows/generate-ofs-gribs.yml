@@ -56,32 +56,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Per-file isolation: a failed upload must not block the remaining
-          # regions' uploads (each asset is independent) — collect failures
-          # and fail the job at the END instead of aborting mid-loop.
-          failed=0
-          for f in ./ofs-gribs/*.grb2; do
-            [ -f "$f" ] || continue
-            echo "Uploading $(basename $f)..."
-            gh release upload ofs-currents-latest "$f" \
-              --clobber \
-              --repo "${{ github.repository }}" \
-              2>/tmp/gh_upload_err.txt || {
-                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
-                  echo "Release does not exist — creating..."
-                  gh release create ofs-currents-latest "$f" \
-                    --repo "${{ github.repository }}" \
-                    --title "Surface Current Forecasts — US Waters (NOAA OFS)" \
-                    --notes "(placeholder — the region table is filled in by the 'Update release notes' step below)" \
-                    --latest=false
-                else
-                  echo "Upload FAILED for $(basename $f):"
-                  cat /tmp/gh_upload_err.txt
-                  failed=1
-                fi
-              }
-          done
-          exit $failed
+          # Each file is uploaded under a temporary name and swapped in, so a
+          # failed upload never removes the live file (`--clobber` deletes the
+          # old asset first). Per-file isolation; exit 1 if any file failed.
+          python3 scripts/release_upload.py ofs-currents-latest ./ofs-gribs/*.grb2 \
+            --repo "${{ github.repository }}" \
+            --title "Surface Current Forecasts — US Waters (NOAA OFS)" \
+            --notes "(placeholder — the region table is filled in by the 'Update release notes' step below)"
 
       # Regenerated from sources/nos_ofs.py MODELS every run so the region
       # table (files, coverage, resolution, horizons) never drifts from

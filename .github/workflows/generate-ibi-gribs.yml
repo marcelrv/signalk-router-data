@@ -62,32 +62,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          # Per-file isolation: a failed upload must not block the remaining
-          # regions' uploads (each asset is independent) — collect failures
-          # and fail the job at the END instead of aborting mid-loop.
-          failed=0
-          for f in ./ibi-gribs/*.grb2; do
-            [ -f "$f" ] || continue
-            echo "Uploading $(basename $f)..."
-            gh release upload ibi-currents-latest "$f" \
-              --clobber \
-              --repo "${{ github.repository }}" \
-              2>/tmp/gh_upload_err.txt || {
-                if grep -qi "release not found" /tmp/gh_upload_err.txt; then
-                  echo "Release does not exist — creating..."
-                  gh release create ibi-currents-latest "$f" \
-                    --repo "${{ github.repository }}" \
-                    --title "Surface Current Forecasts — Iberia/Biscay (Copernicus Marine CMEMS IBI)" \
-                    --notes-file /tmp/ibi_notes.md \
-                    --latest=false
-                else
-                  echo "Upload FAILED for $(basename $f):"
-                  cat /tmp/gh_upload_err.txt
-                  failed=1
-                fi
-              }
-          done
-          exit $failed
+          # Each file is uploaded under a temporary name and swapped in, so a
+          # failed upload never removes the live file (`--clobber` deletes the
+          # old asset first). Per-file isolation; exit 1 if any file failed.
+          python3 scripts/release_upload.py ibi-currents-latest ./ibi-gribs/*.grb2 \
+            --repo "${{ github.repository }}" \
+            --title "Surface Current Forecasts — Iberia/Biscay (Copernicus Marine CMEMS IBI)" \
+            --notes-file /tmp/ibi_notes.md
 
       # Regenerated from sources/ REGIONS every run so the region table
       # (files, coverage, resolution, horizons) never drifts from what the
