@@ -63,7 +63,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function initTheme() {
-  const saved = localStorage.getItem('sk-data-theme');
+  let saved = null;
+  try {
+    saved = localStorage.getItem('sk-data-theme');
+  } catch {
+    // Storage may be blocked in strict privacy / third-party cookie modes
+  }
   const preferred = window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
   setTheme(saved || preferred, false);
 }
@@ -71,7 +76,13 @@ function initTheme() {
 function setTheme(theme, persist = true) {
   state.theme = theme === 'light' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', state.theme);
-  if (persist) localStorage.setItem('sk-data-theme', state.theme);
+  if (persist) {
+    try {
+      localStorage.setItem('sk-data-theme', state.theme);
+    } catch {
+      // Ignore storage errors when site storage is disabled
+    }
+  }
   if (map) {
     restyleAllLayers();
   }
@@ -143,6 +154,7 @@ async function loadCatalogs() {
 
     const annotate = (items) => {
       for (const item of items) {
+        item.bbox = normalizeBbox(item.bbox, item.geometry);
         item.geometry = fixAntimeridianGeometry(item.geometry, item.bbox);
         item.bboxArea = computeBboxArea(item.bbox);
         item.isGlobal = item.bboxArea > 40000;
@@ -405,7 +417,7 @@ function applyFilters({ fitMap = false } = {}) {
       }
     }
     if (q) {
-      const haystack = `${item.name} ${item.regionName} ${item.provider} ${item.description} ${item.tags.join(' ')}`.toLowerCase();
+      const haystack = `${item.rawId || ''} ${item.name} ${item.regionName} ${item.provider} ${item.description} ${item.tags.join(' ')}`.toLowerCase();
       if (!haystack.includes(q)) return false;
     }
     return true;
@@ -787,12 +799,16 @@ async function getUserCoordinates() {
         });
       });
       return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps' };
-    } catch {
-      // Fall through to IP geolocation if denied/timed out
+    } catch (err) {
+      // Respect explicit user denial: do not silently fall back to third-party IP lookup
+      if (err && err.code === 1) {
+        throw new Error('Location permission was denied.');
+      }
+      throw new Error(err?.message || 'Browser location unavailable.');
     }
   }
 
-  // 2. Fallback: approximate IP geolocation (works even on non-HTTPS LAN previews)
+  // 2. Fallback only when browser geolocation isn't available (e.g. non-HTTPS LAN preview)
   const res = await fetch('https://get.geojs.io/v1/ip/geo.json');
   if (!res.ok) throw new Error('Location service unavailable');
   const data = await res.json();
@@ -866,7 +882,7 @@ function openDetailModal(item) {
     addMetaBox(
       grid,
       'Bounding Box',
-      `${item.bbox.min_lat.toFixed(1)}°–${item.bbox.max_lat.toFixed(1)}° N, ${item.bbox.min_lon.toFixed(1)}°–${item.bbox.max_lon.toFixed(1)}° E`
+      `${formatCoord(item.bbox.min_lat, 'N', 'S', 1)} – ${formatCoord(item.bbox.max_lat, 'N', 'S', 1)}, ${formatCoord(item.bbox.min_lon, 'E', 'W', 1)} – ${formatCoord(item.bbox.max_lon, 'E', 'W', 1)}`
     );
   }
   body.appendChild(grid);
@@ -954,7 +970,7 @@ function openDetailModal(item) {
   // Footer actions
   footer.textContent = '';
 
-  if (!item.isGlobal) {
+  if (layerById.has(item.id)) {
     const zoomBtn = el('button', 'btn btn-secondary');
     zoomBtn.type = 'button';
     zoomBtn.textContent = 'Zoom on map';
@@ -1267,6 +1283,24 @@ function computeBboxArea(bbox) {
 }
 
 /**
+ * Normalizes wide Pacific bboxes stored with min_lon < max_lon spanning > 180°
+ * (e.g. -75..110 -> min_lon: 110, max_lon: -75 across the antimeridian) so
+ * distanceToBboxDeg, detail display, and polygon splitting all agree.
+ */
+function normalizeBbox(bbox, geom) {
+  if (!bbox) return bbox;
+  const { min_lon, max_lon } = bbox;
+  const isSimpleRect =
+    geom?.type === 'Polygon' &&
+    geom.coordinates.length === 1 &&
+    geom.coordinates[0].length === 5;
+  if (isSimpleRect && (max_lon - min_lon) > 180 && (max_lon - min_lon) < 350) {
+    return { ...bbox, min_lon: max_lon, max_lon: min_lon };
+  }
+  return bbox;
+}
+
+/**
  * Splits antimeridian-crossing polygons (e.g. Alaska 177.4°E to -128.15°W,
  * Bering Sea, Fiji, Central South Pacific) into a clean MultiPolygon on
  * [east, 180] and [-180, west] so Leaflet never draws horizontal bands
@@ -1278,14 +1312,8 @@ function fixAntimeridianGeometry(geom, bbox) {
   const isGlobal = (max_lon - min_lon) >= 350;
   if (isGlobal) return geom;
 
-  // Case 1: explicit antimeridian crossing (min_lon > max_lon, e.g. 170 -> -170)
   if (min_lon > max_lon) {
     return splitBboxAtAntimeridian(min_lat, max_lat, min_lon, max_lon);
-  }
-
-  // Case 2: Pacific bbox stored with min_lon < max_lon spanning > 180° (e.g. -75 -> 110)
-  if (geom.type === 'Polygon' && geom.coordinates.length === 1 && geom.coordinates[0].length === 5 && (max_lon - min_lon) > 180) {
-    return splitBboxAtAntimeridian(min_lat, max_lat, max_lon, min_lon);
   }
 
   return geom;
@@ -1362,8 +1390,8 @@ function formatShortDate(iso) {
   return d.toISOString().slice(0, 10);
 }
 
-function formatCoord(val, pos, neg) {
-  return `${Math.abs(val).toFixed(3)}° ${val >= 0 ? pos : neg}`;
+function formatCoord(val, pos, neg, decimals = 3) {
+  return `${Math.abs(val).toFixed(decimals)}° ${val >= 0 ? pos : neg}`;
 }
 
 function el(tag, className) {

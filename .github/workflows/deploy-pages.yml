@@ -9,6 +9,12 @@ on:
       - 'tide-current-index.json'
       - 'routing-index.json'
       - '.github/workflows/deploy-pages.yml'
+  workflow_run:
+    workflows:
+      - "Generate Routing Index & Coverage Map"
+      - "Generate Tide/Current Index"
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -22,6 +28,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

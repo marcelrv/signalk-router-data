@@ -17,8 +17,27 @@ import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote
 
 BASE_URL = "https://marcelrv.github.io/signalk-router-data/"
+
+
+def normalize_bbox(bbox: dict | None, geom: dict | None) -> dict | None:
+    if not bbox:
+        return None
+    min_lon = bbox["min_lon"]
+    max_lon = bbox["max_lon"]
+    # Flip wide Pacific bboxes stored with min_lon < max_lon spanning > 180°
+    # (e.g. -75..110 -> 110..-75 across the antimeridian)
+    is_simple_rect = (
+        geom
+        and geom.get("type") == "Polygon"
+        and len(geom.get("coordinates", [])) == 1
+        and len(geom["coordinates"][0]) == 5
+    )
+    if is_simple_rect and 180 < (max_lon - min_lon) < 350:
+        return {**bbox, "min_lon": max_lon, "max_lon": min_lon}
+    return bbox
 
 
 def main() -> None:
@@ -35,7 +54,7 @@ def main() -> None:
         desc = s.get("description", "")
         stype = s.get("type", "").upper()
         region = s.get("region", {})
-        bbox = region.get("bounding_box")
+        bbox = normalize_bbox(region.get("bounding_box"), region.get("boundary_geometry"))
 
         ds = {
             "@type": "Dataset",
@@ -43,7 +62,7 @@ def main() -> None:
             "description": desc[:400],
             "encodingFormat": "application/octet-stream" if stype == "GRIB2" else "text/plain",
             "keywords": s.get("tags", []),
-            "url": f"{BASE_URL}?type={s.get('type', '')}&q={s.get('id', '')}",
+            "url": f"{BASE_URL}?type={quote(s.get('type', ''), safe='')}&q={quote(name, safe='')}",
         }
         if bbox:
             ds["spatialCoverage"] = {
@@ -98,10 +117,11 @@ def main() -> None:
 
     html_text = index_path.read_text("utf-8")
 
-    # 1. Replace JSON-LD block
+    # 1. Replace JSON-LD block (escape '<' so '</script>' or '<!--' cannot break HTML)
+    safe_jsonld = json.dumps(catalog_ld, ensure_ascii=False).replace("<", "\\u003c")
     ld_script = (
         '<script type="application/ld+json" id="seo-jsonld">\n'
-        + json.dumps(catalog_ld, ensure_ascii=False)
+        + safe_jsonld
         + "\n  </script>"
     )
     html_text = re.sub(
