@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Nautical Data — Tidal Currents, GRIB2 Forecasts &amp; Waterway Routing</title>
+  <meta name="description" content="Interactive coverage map and free catalog of GRIB2 surface current forecasts (NOAA OFS, Copernicus CMEMS, BSH, ECCC CIOPS, MET Norway, RWS), tidal stream harmonics, and nautical routing graphs for OpenCPN, qtVlm, XyGrib, LuckGrib, and Signal K." />
+  <meta name="keywords" content="GRIB2 currents, tidal currents, OpenCPN currents, qtVlm GRIB2, XyGrib currents, LuckGrib, Signal K, RouteIQ, NOAA OFS, Copernicus CMEMS, BSH currents, ECCC CIOPS, NorKyst, DCSM-FM, XTide harmonics, nautical routing" />
+  <link rel="canonical" href="https://marcelrv.github.io/signalk-router-data/" />
+
+  <!-- Open Graph / Social Preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://marcelrv.github.io/signalk-router-data/" />
+  <meta property="og:title" content="Open Nautical Data — Tidal Currents, GRIB2 Forecasts &amp; Waterway Routing" />
+  <meta property="og:description" content="Interactive map of free GRIB2 ocean current forecasts, tidal stream tables, and nautical routing databases for OpenCPN, qtVlm, XyGrib, LuckGrib, and Signal K." />
+  <meta property="og:image" content="https://raw.githubusercontent.com/marcelrv/signalk-router-data/main/tide-current-coverage.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Structured Data for Google & Google Dataset Search (enriched automatically at deploy time) -->
+  <script type="application/ld+json" id="seo-jsonld">
+  {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "name": "Open Nautical Data",
+    "description": "Free catalog of GRIB2 ocean current forecasts, predicted tidal stream tables (UTCEF and XTide harmonics), and nautical waterway routing databases for OpenCPN, qtVlm, XyGrib, LuckGrib, and Signal K.",
+    "url": "https://marcelrv.github.io/signalk-router-data/",
+    "keywords": ["GRIB2", "tidal currents", "ocean currents", "OpenCPN", "qtVlm", "XyGrib", "Signal K", "nautical routing"]
+  }
+  </script>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1a2b'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%2338bdf8' stroke-width='2'/%3E%3Cpolygon points='16,7 19.5,16 16,25 12.5,16' fill='%2338bdf8'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%230b1a2b'/%3E%3C/svg%3E" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Header -->
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="28" height="28">
+            <circle cx="16" cy="16" r="13" fill="none" stroke="currentColor" stroke-width="2" opacity="0.35"/>
+            <polygon points="16,4 20,16 16,28 12,16" fill="currentColor"/>
+            <circle cx="16" cy="16" r="2.2" fill="var(--bg)"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>Open Nautical Data</h1>
+          <p class="subtitle">Tidal Currents, Ocean Forecasts &amp; Waterway Routing</p>
+        </div>
+      </div>
+
+      <div class="catalog-tabs" role="tablist" aria-label="Data catalog">
+        <button type="button" id="tab-tidal" class="catalog-tab active" role="tab" aria-selected="true" data-catalog="tidal">
+          Tidal &amp; Currents <span class="tab-count" id="tab-count-tidal">0</span>
+        </button>
+        <button type="button" id="tab-routing" class="catalog-tab" role="tab" aria-selected="false" data-catalog="routing">
+          Routing Databases <span class="tab-count" id="tab-count-routing">0</span>
+        </button>
+      </div>
+
+      <nav class="topbar-actions" aria-label="Links and controls">
+        <button type="button" id="guide-open-btn" class="nav-link nav-link-guide" title="How to import GRIB2 &amp; tidal data into OpenCPN, qtVlm, XyGrib, Signal K and more">
+          How to use
+        </button>
+        <div class="plugin-links">
+          <a href="https://github.com/marcelrv/signalk-routeiq" target="_blank" rel="noopener" class="nav-link">
+            RouteIQ
+          </a>
+          <a href="https://github.com/marcelrv/signalk-tidal-currents" target="_blank" rel="noopener" class="nav-link">
+            Tidal Currents
+          </a>
+          <a href="https://github.com/marcelrv/signalk-router-data" target="_blank" rel="noopener" class="nav-link nav-link-repo">
+            GitHub
+          </a>
+        </div>
+
+        <div class="mobile-view-toggle" role="tablist" aria-label="View mode">
+          <button type="button" id="view-map-btn" class="view-btn active" role="tab" aria-selected="true">Map</button>
+          <button type="button" id="view-list-btn" class="view-btn" role="tab" aria-selected="false">List</button>
+        </div>
+
+        <button type="button" id="theme-toggle" class="icon-btn" title="Switch color theme" aria-label="Switch color theme">
+          <span class="theme-icon-dark" aria-hidden="true">☀️</span>
+          <span class="theme-icon-light" aria-hidden="true">🌙</span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Quick Filter Bar -->
+    <section class="filterbar" aria-label="Dataset filters">
+      <div class="search-wrap">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          type="search"
+          id="search-input"
+          placeholder="Search region, data source, country, tag…"
+          autocomplete="off"
+          aria-label="Search datasets"
+        />
+      </div>
+
+      <div class="filter-pills" id="tidal-type-pills" role="group" aria-label="Tidal dataset type filters">
+        <button type="button" class="pill active" data-type="all" aria-pressed="true">
+          All <span class="pill-count" id="count-all">0</span>
+        </button>
+        <button type="button" class="pill" data-type="grib2" aria-pressed="false">
+          <span class="dot dot-grib2"></span>
+          Forecast (GRIB2) <span class="pill-count" id="count-grib2">0</span>
+        </button>
+        <button type="button" class="pill" data-type="utcef" aria-pressed="false">
+          <span class="dot dot-utcef"></span>
+          Predicted (UTCEF) <span class="pill-count" id="count-utcef">0</span>
+        </button>
+        <button type="button" class="pill" data-type="harmonic" aria-pressed="false">
+          <span class="dot dot-harmonic"></span>
+          Harmonic <span class="pill-count" id="count-harmonic">0</span>
+        </button>
+      </div>
+
+      <div class="tag-controls">
+        <button type="button" id="tags-btn" class="pill pill-outline" aria-expanded="false" aria-controls="tags-popover">
+          Tags <span class="pill-count" id="active-tags-count" hidden>0</span>
+        </button>
+        <div id="active-tags-inline" class="active-tags-inline"></div>
+        <button type="button" id="clear-filters-btn" class="text-btn" hidden>Reset</button>
+
+        <!-- Tags Popover -->
+        <div id="tags-popover" class="tags-popover" hidden role="dialog" aria-label="Filter by tags">
+          <div class="tags-popover-header">
+            <span>Filter by tag</span>
+            <button type="button" id="tags-close-btn" class="close-btn" aria-label="Close tags">&times;</button>
+          </div>
+          <div id="tags-list" class="tags-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Split Workspace -->
+    <main class="workspace" id="workspace" data-mobile-view="map">
+      <!-- Sidebar List -->
+      <aside class="sidebar" aria-label="Dataset catalog list">
+        <div class="sidebar-header">
+          <span id="results-summary">Loading catalogs…</span>
+          <span id="catalog-updated" class="muted-meta"></span>
+        </div>
+        <div class="info-banner" id="info-banner">
+          <strong>Forecast vs. Predicted:</strong>
+          <span>GRIB2 forecasts combine tides + weather and refresh daily; UTCEF &amp; Harmonic are static astronomical tide tables.</span>
+        </div>
+        <div id="dataset-list" class="dataset-list" role="list"></div>
+      </aside>
+
+      <!-- Map Container -->
+      <div class="map-pane">
+        <div id="map" role="application" aria-label="Interactive dataset coverage map"></div>
+
+        <!-- Floating Map Controls -->
+        <div class="map-toolbar">
+          <button type="button" id="near-me-btn" class="map-chip" title="Zoom to your location and find nearby datasets">
+            📍 Near me
+          </button>
+          <button type="button" id="seamarks-toggle" class="map-chip active" aria-pressed="true" title="Toggle OpenSeaMap nautical seamarks overlay">
+            ⚓ Seamarks
+          </button>
+          <button type="button" id="fit-all-btn" class="map-chip" title="Fit map to visible datasets">
+            ⤢ Fit visible
+          </button>
+        </div>
+
+        <div class="map-hint" id="map-hint">
+          Click anywhere on the map to inspect all overlapping datasets
+        </div>
+
+        <div class="map-legend" id="map-legend" aria-label="Map legend"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Overlap-Aware Region Inspector Modal -->
+  <div id="inspector-backdrop" class="modal-backdrop" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="inspector-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="inspector-title">Datasets at this location</h2>
+          <p id="inspector-coords" class="modal-subtitle"></p>
+        </div>
+        <button type="button" class="close-btn" data-close="inspector" aria-label="Close">&times;</button>
+      </div>
+      <div id="inspector-body" class="modal-body inspector-list"></div>
+    </div>
+  </div>
+
+  <!-- Dataset Detail Modal -->
+  <div id="detail-backdrop" class="modal-backdrop" hidden>
+    <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+      <div class="modal-header">
+        <div class="detail-header-meta">
+          <div id="detail-badges" class="badge-row"></div>
+          <h2 id="detail-title"></h2>
+          <p id="detail-region" class="modal-subtitle"></p>
+        </div>
+        <button type="button" class="close-btn" data-close="detail" aria-label="Close">&times;</button>
+      </div>
+      <div id="detail-body" class="modal-body"></div>
+      <div id="detail-footer" class="modal-footer"></div>
+    </div>
+  </div>
+
+  <!-- Import Guide Modal (OpenCPN, qtVlm, XyGrib, LuckGrib, Expedition, Signal K) -->
+  <div id="guide-backdrop" class="modal-backdrop" hidden>
+    <div class="modal modal-lg" role="dialog" aria-modal="true" aria-labelledby="guide-title">
+      <div class="modal-header">
+        <div>
+          <h2 id="guide-title">How to Use This Data in Marine Apps</h2>
+          <p class="modal-subtitle">Standard GRIB2 surface currents &amp; XTide harmonics work across most chartplotters and weather routers</p>
+        </div>
+        <button type="button" class="close-btn" data-close="guide" aria-label="Close">&times;</button>
+      </div>
+      <div class="modal-body guide-body">
+        <div class="guide-card">
+          <h3>OpenCPN <span class="badge badge-grib2">GRIB2</span> <span class="badge badge-harmonic">Harmonic</span></h3>
+          <ol class="guide-steps">
+            <li><strong>Forecast Currents (GRIB2):</strong> Download a <code>.grb2</code> file from any Forecast dataset. In OpenCPN, enable the built-in <em>GRIB</em> plugin, click the GRIB toolbar icon → <em>Open File</em> → select the downloaded file, and turn on the <strong>Current</strong> overlay in GRIB Settings.</li>
+            <li><strong>Harmonic Stations:</strong> Download both the <code>HARMONICS_*</code> data file and its matching <code>.IDX</code> file into the same folder, then add the <code>.IDX</code> file under <em>Options → Charts → Tides &amp; Currents → Add Dataset</em>.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>qtVlm <span class="badge badge-grib2">GRIB2</span></h3>
+          <ol class="guide-steps">
+            <li>Download a regional <code>.grb2</code> file and open it via <em>GRIB → Open GRIB</em> (or load it as a secondary <strong>Currents GRIB</strong> alongside your wind forecast).</li>
+            <li>qtVlm displays current vectors and automatically includes surface currents in weather-routing isochrones.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>XyGrib <span class="badge badge-grib2">GRIB2</span></h3>
+          <ol class="guide-steps">
+            <li>Open the downloaded <code>.grb2</code> via <em>File → Open</em>.</li>
+            <li>Enable <em>Weather Map → Currents</em> to inspect current speed/direction arrows and step through the forecast timeline.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>LuckGrib (macOS / iOS) <span class="badge badge-grib2">GRIB2</span></h3>
+          <ol class="guide-steps">
+            <li>Download the <code>.grb2</code> file and open or AirDrop it into LuckGrib.</li>
+            <li>Enable the <strong>Currents</strong> display layer to animate surface current vectors alongside wind/pressure models.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>Expedition / Adrena <span class="badge badge-grib2">GRIB2</span></h3>
+          <ol class="guide-steps">
+            <li>Import the downloaded <code>.grb2</code> through the standard GRIB2 current file loader to use high-resolution regional currents in tactical and race routing.</li>
+          </ol>
+        </div>
+
+        <div class="guide-card">
+          <h3>Signal K <span class="badge badge-grib2">GRIB2</span> <span class="badge badge-utcef">UTCEF</span> <span class="badge badge-harmonic">Harmonic</span> <span class="badge badge-routing">Routing DB</span></h3>
+          <ol class="guide-steps">
+            <li><strong>Tidal &amp; Currents:</strong> Install <a href="https://github.com/marcelrv/signalk-tidal-currents" target="_blank" rel="noopener">signalk-tidal-currents</a> and use its built-in Catalog Browser for automatic downloads and scheduled forecast refreshes.</li>
+            <li><strong>Waterway Routing:</strong> Install <a href="https://github.com/marcelrv/signalk-routeiq" target="_blank" rel="noopener">signalk-routeiq</a> and open its Data Manager to download and update routing databases automatically.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/marcelrv/signalk-router-data/releases" target="_blank" rel="noopener" class="btn btn-secondary">All GitHub Releases ↗</a>
+        <button type="button" class="btn btn-primary" data-close="guide">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO_NOSCRIPT_PLACEHOLDER -->
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
