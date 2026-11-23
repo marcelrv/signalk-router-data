@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://marcelrv.github.io/signalk-router-data/sitemap.xml

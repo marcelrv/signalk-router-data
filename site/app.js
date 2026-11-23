@@ -46,6 +46,7 @@ let seamarksLayer;
 let polygonGroup;
 let clickMarker;
 let userMarker;
+let lastFocusedElement = null;
 const layerById = new Map();
 
 // --------------------------------------------------------------------------
@@ -57,7 +58,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   readUrlParams();
   initMap();
   bindUI();
-  await loadCatalogs();
+  const loaded = await loadCatalogs();
+  if (!loaded) return;
   syncCatalogUI();
   applyFilters({ fitMap: state.activeCatalog === 'routing' });
 });
@@ -175,6 +177,7 @@ async function loadCatalogs() {
     document.getElementById('tab-count-routing').textContent = String(state.catalogs.routing.items.length);
 
     updateTidalTypeCounts();
+    return true;
   } catch (err) {
     summaryEl.textContent = 'Failed to load catalog JSON files.';
     const listEl = document.getElementById('dataset-list');
@@ -182,6 +185,7 @@ async function loadCatalogs() {
     const box = el('div', 'empty-state');
     box.textContent = `Error loading catalogs: ${err.message}. Serve this site over HTTP alongside routing-index.json and tide-current-index.json.`;
     listEl.appendChild(box);
+    return false;
   }
 }
 
@@ -721,7 +725,7 @@ function openInspectorModal(lat, lng, hits, { nearby = [], subtitlePrefix = '' }
     }
   }
 
-  backdrop.hidden = false;
+  openModal('inspector');
 }
 
 // --------------------------------------------------------------------------
@@ -939,7 +943,7 @@ function openDetailModal(item) {
       oStrong.textContent = 'Use in OpenCPN & XTide: ';
       other.append(
         oStrong,
-        'Standard XTide ASCII harmonics file. Download and add it under OpenCPN → Settings → Ships → Tides & Currents → Add Dataset.'
+        'Standard XTide ASCII harmonics file. Download and add it under OpenCPN → Options → Charts → Tides & Currents → Add Dataset.'
       );
       other.appendChild(document.createElement('br'));
       const guideLink = el('button', 'inline-guide-btn');
@@ -1007,11 +1011,36 @@ function openDetailModal(item) {
     footer.appendChild(relLink);
   }
 
-  backdrop.hidden = false;
+  openModal('detail');
 }
 
 function openGuideModal() {
-  document.getElementById('guide-backdrop').hidden = false;
+  openModal('guide');
+}
+
+function getFocusableElements(container) {
+  return [...container.querySelectorAll(
+    'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+  )].filter((node) => node.offsetParent !== null);
+}
+
+function getActiveModalBackdrop() {
+  for (const name of ['guide', 'detail', 'inspector']) {
+    const node = document.getElementById(`${name}-backdrop`);
+    if (node && !node.hidden) return node;
+  }
+  return null;
+}
+
+function openModal(name) {
+  const backdrop = document.getElementById(`${name}-backdrop`);
+  if (!backdrop) return;
+  if (!getActiveModalBackdrop() && document.activeElement instanceof HTMLElement) {
+    lastFocusedElement = document.activeElement;
+  }
+  backdrop.hidden = false;
+  const focusables = getFocusableElements(backdrop);
+  if (focusables.length) focusables[0].focus();
 }
 
 function addMetaBox(grid, label, value) {
@@ -1027,6 +1056,10 @@ function addMetaBox(grid, label, value) {
 function closeModal(name) {
   const elNode = document.getElementById(`${name}-backdrop`);
   if (elNode) elNode.hidden = true;
+  if (!getActiveModalBackdrop() && lastFocusedElement && document.contains(lastFocusedElement)) {
+    lastFocusedElement.focus();
+    lastFocusedElement = null;
+  }
 }
 
 // --------------------------------------------------------------------------
@@ -1135,6 +1168,22 @@ function bindUI() {
       closeModal('inspector');
       tagsPopover.hidden = true;
       tagsBtn.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    if (e.key === 'Tab') {
+      const activeBackdrop = getActiveModalBackdrop();
+      if (!activeBackdrop) return;
+      const focusables = getFocusableElements(activeBackdrop);
+      if (!focusables.length) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 }
