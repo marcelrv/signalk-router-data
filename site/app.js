@@ -804,15 +804,15 @@ async function getUserCoordinates() {
       });
       return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps' };
     } catch (err) {
-      // Respect explicit user denial: do not silently fall back to third-party IP lookup
+      // Respect explicit user denial: do not fall back to third-party IP lookup
       if (err && err.code === 1) {
         throw new Error('Location permission was denied.');
       }
-      throw new Error(err?.message || 'Browser location unavailable.');
+      // Fall through to approximate IP lookup on timeout / position unavailable
     }
   }
 
-  // 2. Fallback only when browser geolocation isn't available (e.g. non-HTTPS LAN preview)
+  // 2. Fallback when browser geolocation is unavailable or times out (e.g. desktop without GPS)
   const res = await fetch('https://get.geojs.io/v1/ip/geo.json');
   if (!res.ok) throw new Error('Location service unavailable');
   const data = await res.json();
