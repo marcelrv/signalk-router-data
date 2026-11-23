@@ -5,13 +5,13 @@
 """
 Emit the markdown body for the rolling `<source>-currents-latest` GitHub
 releases of the CMEMS (IBI, MED, NWS) and ECCC CIOPS surface-current
-pipelines, and of the Rijkswaterstaat DCSM-FM one, generated from each
-source module's REGIONS so the region table never drifts from what the
-pipeline actually produces. Stdlib-only.
+pipelines, and of the Rijkswaterstaat DCSM-FM and MET Norway NorKyst ones,
+generated from each source module's REGIONS so the region table never
+drifts from what the pipeline actually produces. Stdlib-only.
 (The NOAA OFS release has its own generator: ofs_release_notes.py.)
 
 Usage:
-    python3 currents_release_notes.py {ibi|med|nws|ciops|dcsm} > notes.md
+    python3 currents_release_notes.py {ibi|med|nws|ciops|dcsm|norkyst} > notes.md
 """
 
 import importlib
@@ -124,6 +124,27 @@ SOURCES = {
             "Rijkswaterstaat / Deltares DCSM-FM (NOOS Matroos); processed by signalk-router-data\"**. "
             "**Not an official Rijkswaterstaat product** and not endorsed by Rijkswaterstaat or "
             "Deltares — not for official navigation.",
+        ],
+    },
+    "norkyst": {
+        "module": "norkyst",
+        "intro": (
+            "Rolling data release: gridded **surface current forecasts for the Norwegian coast "
+            "and fjords** (tide + weather + river forcing), regenerated daily from the 00 UTC run "
+            "of MET Norway's [NorKyst v3 ocean model]"
+            "(https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be) "
+            "(ROMS, 800 m, dataset `norkystv3_800m_m00_be`) — surface u/v regridded to a regular "
+            "lat/lon grid and re-encoded as compact GRIB2. Open sea far from land is left out "
+            "to keep the files small."
+        ),
+        "updated": "daily ~07:00 UTC",
+        "footer": [
+            "- Based on data from the Norwegian Meteorological Institute (MET Norway), licensed "
+            "[CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/) "
+            "([crediting](https://www.met.no/en/free-meteorological-data/Licensing-and-crediting)). "
+            "These repackaged files are **not an official MET Norway product** and are not "
+            "endorsed by MET Norway — do not use for primary navigation.",
+            "- Background: [#5](https://github.com/marcelrv/signalk-router-data/issues/5).",
         ],
     },
 }
