@@ -1,15 +1,20 @@
-# Nautical Routing & Tidal Streams Data
+# Open Nautical Data — Tidal Currents, GRIB2 Forecasts & Waterway Routing
 
 [![Generate Routing Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-routing-index.yml)
 [![Generate Tide/Current Index](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/generate-tide-current-index.yml)
+[![Deploy GitHub Pages](https://github.com/marcelrv/signalk-router-data/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/marcelrv/signalk-router-data/actions/workflows/deploy-pages.yml)
 
-Pre-compiled nautical routing graphs for the [SignalK RouteIQ nautical route planner](https://github.com/marcelrv/signalk-routeiq) and tidal/current data sources for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin.
+> **[Explore the Interactive Coverage Map & Data Catalog →](https://marcelrv.github.io/signalk-router-data/)**
+> Pan, zoom, filter by type or tag, click any point to inspect overlapping datasets, and download regional GRIB2 files directly.
+> Direct links: [Tidal & Currents](https://marcelrv.github.io/signalk-router-data/) · [GRIB2 Forecasts](https://marcelrv.github.io/signalk-router-data/?type=grib2) · [Routing Databases](https://marcelrv.github.io/signalk-router-data/?catalog=routing)
+
+Open catalog of GRIB2 ocean current forecasts, predicted tidal stream tables (UTCEF & XTide harmonics), and pre-compiled nautical routing graphs. Built for the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) and [SignalK RouteIQ](https://github.com/marcelrv/signalk-routeiq) plugins — and the standard **GRIB2 current forecasts** and **XTide harmonics** can also be imported directly into **OpenCPN, qtVlm, XyGrib, LuckGrib, and Expedition/Adrena**.
 
 **Two kinds of tidal/current data, worth knowing apart before picking a source:**
 - **Predicted currents (astronomical, no weather)** — static harmonic tide tables, computed from the sun and moon alone. Small files, never need refreshing, but blind to wind, storm surge, and river flow.
 - **Forecast currents (tide + weather)** — gridded ocean-model output that combines tides with wind, weather, and (where relevant) river discharge. Refreshed regularly — daily for most sources, up to 4x/day for a few — from real forecast models.
 
-Both kinds appear on the [coverage map](#tidal-streams--currents) below, in the color legend and, per-region, in the [interactive coverage map](tide-current-coverage.geojson).
+Both kinds appear on the [interactive coverage explorer](https://marcelrv.github.io/signalk-router-data/) and in the static [coverage map](#tidal-streams--currents) below.
 
 **Licensing:** Code and tooling are [GPLv3](LICENSE). Original/compiled data catalogs are [CC-BY-NC-4.0](LICENSE-DATA.md). Routing databases may carry a different licence, stated in each file's own metadata (`metadata.license`, `metadata.copyright`); e.g. the Netherlands database is [ODbL-1.0](https://opendatacommons.org/licenses/odbl/1-0/). Third-party data sources (NOAA, CHS, BSH, FES2014, Rijkswaterstaat, OpenCPN) follow their own upstream terms; note that the CHS-derived files (`regions/north-america/canada/chs_*.utcef`) are **non-commercial use only and not for navigation** — see the [License & Attribution](#license--attribution) section below.
 
@@ -19,13 +24,15 @@ Routing databases are published as `.sqlite.gz` (gzip-compressed) assets on the 
 
 ### Tidal Streams & Currents
 
-![Tide/Current Coverage Map](tide-current-coverage.png)
+[![Tide/Current Coverage Map](tide-current-coverage.png)](https://marcelrv.github.io/signalk-router-data/)
 
-For an interactive version — pan, zoom, and click any region to see its name, provider, and description — open [`tide-current-coverage.geojson`](tide-current-coverage.geojson); GitHub renders `.geojson` files as a live map automatically.
+Click the map above to open the **[Interactive Tidal & Currents Explorer](https://marcelrv.github.io/signalk-router-data/)** (filter by GRIB2 / UTCEF / Harmonic, search by region or tag, zoom with OpenSeaMap seamarks, and click anywhere to inspect overlapping datasets). The raw GeoJSON is also available in [`tide-current-coverage.geojson`](tide-current-coverage.geojson).
 
 ### Routing Databases
 
-![Coverage Map](coverage-map.png)
+[![Routing Databases Coverage Map](coverage-map.png)](https://marcelrv.github.io/signalk-router-data/?catalog=routing)
+
+Click the map above to open the **[Interactive Routing Databases Explorer](https://marcelrv.github.io/signalk-router-data/?catalog=routing)** for SignalK RouteIQ.
 
 ## Data Sources
 
@@ -68,10 +75,14 @@ See [specs/tide-current-catalog.md](specs/tide-current-catalog.md) for the full 
 
 Multiple `.sqlite` files can coexist in the same directory — the plugin merges them at startup.
 
-### Tidal Currents
+### Tidal Currents (Signal K)
 1. Install the [SignalK Tidal Currents](https://github.com/marcelrv/signalk-tidal-currents) plugin
 2. The plugin reads `tide-current-index.json` to list available data sources
-3. Download the sources for your region via the plugin UI
+3. Download the sources for your region via the plugin UI (with automatic forecast refreshes)
+
+### Other Marine Apps (OpenCPN, qtVlm, XyGrib, LuckGrib, Expedition)
+- **Forecast currents (`.grb2`):** Browse the [Interactive GRIB2 Forecast Map](https://marcelrv.github.io/signalk-router-data/?type=grib2) and download the regional `.grb2` file directly, then open it in **OpenCPN** (built-in GRIB plugin → *Current* overlay), **qtVlm** (*GRIB → Open GRIB / Currents GRIB*), **XyGrib**, **LuckGrib**, or **Expedition/Adrena**.
+- **Harmonic stations (`HARMONICS_*`):** Add directly in **OpenCPN** (*Settings → Ships → Tides & Currents → Add Dataset*) or **XTide**.
 
 ## Contributing
 
