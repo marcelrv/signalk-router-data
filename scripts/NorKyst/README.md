@@ -7,8 +7,8 @@ Source: MET Norway's NorKyst v3 800 m ROMS model, best-estimate aggregation
 Point density follows leisure traffic from EMODnet vessel density (Sailing + Pleasure Craft).
 
 Output: `regions/europe/norkyst_norway_hd.utcef` (catalog id `utcef_norkyst_norway_hd`),
-one file for the four NorKyst GRIB regions (south, west, nordland, north), ~24.7k points,
-~5.9 MB. **Test release** (`TEST_RELEASE` in the generator).
+one file for the four NorKyst GRIB regions (south, west, nordland, north), ~32.2k points,
+~7.6 MB. **Test release** (`TEST_RELEASE` in the generator).
 
 | Script | What it does |
 |---|---|
@@ -40,17 +40,23 @@ answers HTTP 429 above ~4 parallel requests; the fetcher retries with backoff.
 - **Route mask** = cells at or above the region's p90 leisure density; seeds thinned to
   1.5 km (the 500 m DCSM step is below the 800 m grid). Class distances and
   tolerances as DCSM with `--tol-scale 1.0 --maxd-scale 1.0` (a point every 3–4 cells).
+- **Mean-aware placement** (`norkyst_to_utcef.py`): the placement error includes the
+  record mean, `sqrt(|dmean|^2 + 0.5 sum|dc|^2)`, since the mean is exported as
+  `mean_offset`; DCSM keeps the tide-only metric. Merged build: 32,219 points, 7.62 MB.
+  Held-out validation only counts samples before the fit window starts.
 - **mean_offset kept**: held-out RMS p50 0.176 vs 0.202 m/s without it, in all regions.
 - **Long-period terms (MSF/MM/MF) kept**: held-out RMS p50 0.1757 vs 0.1768 dropped — a near tie.
 - Regions overlap at the seams; the merge drops 1,394 same-cell duplicates.
 
 ## Results and limits (held-out, merged file, n=400)
 
-- RMS p50/p95 0.154/0.338 m/s, set error at peak 13°.
+- RMS p50/p95 0.165/0.347 m/s, set error at peak 12°. (The tide-only placement scored 0.155/0.336
+  on the same window; the validator compares each station with its own cell, so this is sampling noise,
+  not coverage. Mean-aware placement adds points where the mean flow differs.)
 - Strong tidal streams are well captured: Moskstraumen variance explained 0.84, spring
-  daily-max ratio 0.97; Tromsø sound 0.72 / 1.01.
+  daily-max ratio 0.97; Tromsø sound 0.71 / 1.01.
 - **Most of the coast is weather- and coastal-current-dominated at the surface**: median
-  tidal variance explained ~0.02; p95 speed of the prediction is ~0.47 of the model.
+  tidal variance explained ~0.02; p95 speed of the prediction is ~0.49 of the model.
   In the Skagerrak/Oslofjord (tide ~4 % of the variance; Drøbak spring ratio 0.56) the file
   gives the tide plus a yearly mean, not the actual current — use the GRIB forecast there.
 - Straits narrower than the 800 m grid (Saltstraumen, Rystraumen) are land in the model

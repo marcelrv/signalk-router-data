@@ -327,16 +327,17 @@ def vec_rms_err(C, i, j):
     return np.sqrt(0.5 * np.sum(np.abs(dc) ** 2, axis=1))
 
 
-def place(P, C, cls_tol, cls_maxd, seeds, max_rounds=400, batch=300):
+def place(P, C, cls_tol, cls_maxd, seeds, max_rounds=400, batch=300, err_fn=vec_rms_err):
     """P: (N,2) metres. C: (N, 2+2K) complex [mean_u, mean_v, cu_k..., cv_k...].
-    seeds: initial cell indices. Returns chosen cell indices."""
+    seeds: initial cell indices. err_fn(C, i, j): error between cells i and j.
+    Returns chosen cell indices."""
     chosen = list(dict.fromkeys(seeds))
     blocked = np.zeros(len(P), bool)
     for rnd in range(max_rounds):
         tree = cKDTree(P[chosen])
         d, k = tree.query(P)
         near = np.asarray(chosen)[k]
-        err = vec_rms_err(C, np.arange(len(P)), near)
+        err = err_fn(C, np.arange(len(P)), near)
         exceed = np.maximum(err / cls_tol, d / cls_maxd)
         exceed[blocked] = 0
         cand = np.where(exceed > 1)[0]

@@ -12,6 +12,7 @@ per region (non-zero cells inside the region box).
 import argparse
 import glob
 import os
+import shutil
 import sys
 import urllib.request
 import zipfile
@@ -33,23 +34,38 @@ REGIONS = {
 }
 
 
-def fetch_types(ais, types):
-    """Download+extract each type's zip into its own directory; return tif paths."""
+def fetch_types(ais, types, years):
+    """Download+extract each type's zip into its own directory; require every
+    requested type/year TIFF (extract to a temp dir, rename when complete)."""
     for t in types:
         d = os.path.join(ais, f"ex_{t}Avg")
-        if glob.glob(os.path.join(d, "**", "*.tif"), recursive=True):
-            continue
-        zp = os.path.join(ais, "zips", f"EMODnet_HA_Vessel_Density_{t}Avg.zip")
-        os.makedirs(os.path.dirname(zp), exist_ok=True)
-        if not os.path.exists(zp):
-            print("downloading", zp, file=sys.stderr)
-            urllib.request.urlretrieve(BASE + os.path.basename(zp), zp)
-        os.makedirs(d, exist_ok=True)
-        with zipfile.ZipFile(zp) as z:
-            for n in z.namelist():  # flat extract, no path traversal
-                if n.endswith(".tif"):
-                    with open(os.path.join(d, os.path.basename(n)), "wb") as f:
-                        f.write(z.read(n))
+        need = [f"vesseldensity_{t}_{y}.tif" for y in years]
+
+        def have():
+            return {os.path.basename(f) for f in glob.glob(os.path.join(d, "**", "*.tif"), recursive=True)}
+        if not set(need) <= have():
+            zp = os.path.join(ais, "zips", f"EMODnet_HA_Vessel_Density_{t}Avg.zip")
+            os.makedirs(os.path.dirname(zp), exist_ok=True)
+            if not os.path.exists(zp):
+                print("downloading", zp, file=sys.stderr)
+                urllib.request.urlretrieve(BASE + os.path.basename(zp), zp)
+            tmp = d + ".tmp"
+            shutil.rmtree(tmp, ignore_errors=True)
+            os.makedirs(tmp)
+            with zipfile.ZipFile(zp) as z:
+                for n in z.namelist():  # flat extract, no path traversal
+                    if n.endswith(".tif"):
+                        with open(os.path.join(tmp, os.path.basename(n)), "wb") as f:
+                            f.write(z.read(n))
+            if not set(need) <= {f for f in os.listdir(tmp)}:
+                miss = sorted(set(need) - set(os.listdir(tmp)))
+                shutil.rmtree(tmp, ignore_errors=True)
+                sys.exit(f"type {t}: zip lacks {miss}")
+            shutil.rmtree(d, ignore_errors=True)
+            os.rename(tmp, d)
+        miss = sorted(set(need) - have())
+        if miss:
+            sys.exit(f"type {t}: missing input TIFFs {miss}")
 
 
 def read_tif(path):
@@ -71,6 +87,7 @@ def load_grid(root):
         p = os.path.join(root, "ais", "grid_latlon.nc")
         if not os.path.exists(p):
             print("fetching lat/lon via OPeNDAP", file=sys.stderr)
+            os.makedirs(os.path.dirname(p), exist_ok=True)
             with netCDF4.Dataset(OPENDAP) as s, netCDF4.Dataset(p, "w") as o:
                 for k in ("Y", "X"):
                     o.createDimension(k, len(s.dimensions[k]))
@@ -97,7 +114,7 @@ def main():
         years = [int(y) for y in a.years.split(",")]
 
     lat, lon = load_grid(a.root)
-    fetch_types(ais, types)
+    fetch_types(ais, types, years)
 
     # grid -> EPSG:3035 pixel indices (nearest neighbour)
     gx, gy = Transformer.from_crs(4326, 3035, always_xy=True).transform(lon, lat)
@@ -107,8 +124,7 @@ def main():
         for t in types:
             f = glob.glob(os.path.join(ais, f"ex_{t}Avg", "**", f"vesseldensity_{t}_{y}.tif"), recursive=True)
             if not f:
-                print(f"missing {t} {y}", file=sys.stderr)
-                continue
+                sys.exit(f"missing input {t} {y}")
             r, (x0, y0, px) = read_tif(f[0])
             yr = r if yr is None else np.where(np.isnan(yr) & np.isnan(r), np.nan, np.nan_to_num(yr) + np.nan_to_num(r))
         if yr is None:

@@ -129,6 +129,14 @@ def fit_block(X, Y):
     return coef, rms, std
 
 
+def mean_aware_err(C, i, j):
+    """RMS vector difference including the record mean (exported as mean_offset):
+    sqrt(|dmean_u|^2 + |dmean_v|^2 + 0.5 sum|dc|^2)."""
+    dm = np.abs(C[i, :2].real - C[j, :2].real)
+    dc = C[i, 2:] - C[j, 2:]
+    return np.sqrt(np.sum(dm ** 2, axis=1) + 0.5 * np.sum(np.abs(dc) ** 2, axis=1))
+
+
 # ── region build ────────────────────────────────────────────────────────────
 
 def build(region, cfg, ctx, args):
@@ -174,10 +182,10 @@ def build(region, cfg, ctx, args):
         sel = np.zeros((TILE, TILE), bool)
         blk = inreg[y0:y0 + TILE, x0:x0 + TILE]
         sel[:blk.shape[0], :blk.shape[1]] = blk
-        U, V = read_tile(files, sel[:blk.shape[0], :blk.shape[1]])
-        if U.shape[0] != len(secs):
-            print(f"[{region}] tile {y0},{x0}: {U.shape[0]} samples != {len(secs)}; skipped")
+        if not np.array_equal(read_times(files), secs):
+            print(f"[{region}] tile {y0},{x0}: time axis differs from the region axis; skipped")
             continue
+        U, V = read_tile(files, sel[:blk.shape[0], :blk.shape[1]])
         cu, ru, su = fit_block(X, U)
         cv, rv, sv = fit_block(X, V)
         parts["peak"].append(np.nanmax(np.hypot(U, V), axis=0))
@@ -233,14 +241,14 @@ def build(region, cfg, ctx, args):
         seeds = np.array([int(np.argmin(dist_route))])
     print(f"[{region}] route threshold p{args.route_pct:g} = {thr:.3g}; {int(rmask.sum())} route cells; "
           f"{len(seeds)} seeds in fitted cells")
-    pts = place(P, Cmat, tol, maxd, list(seeds))
+    pts = place(P, Cmat, tol, maxd, list(seeds), err_fn=mean_aware_err)
     print(f"[{region}] {len(pts)} points placed (tol-scale {args.tol_scale:g})")
     if len(pts) > args.max_points:
         print(f"[{region}] WARNING: {len(pts)} points exceed --max-points {args.max_points}; "
               f"rerun with a larger --tol-scale (e.g. {args.tol_scale * 1.3:.1f})")
 
     d, k = cKDTree(P[pts]).query(P)
-    err = vec_rms_err(Cmat, np.arange(len(P)), pts[k])
+    err = mean_aware_err(Cmat, np.arange(len(P)), pts[k])
     for name, c in CLASSES.items():
         m = cls == c["code"]
         if m.any():

@@ -8,7 +8,7 @@
 
 Output: <cache>/<fit|validation>/tile_YYY_XXX/YYYY-MM.nc (int16 u/v, scale attrs, time, tile offsets).
 """
-import argparse, datetime as dt, os, sys, time, urllib.parse, urllib.request
+import argparse, datetime as dt, glob, os, sys, time, urllib.parse, urllib.request
 import threading
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np
@@ -94,12 +94,29 @@ def time_axis():
     return np.asarray(t, dtype="f8")
 
 
-def resolve_window(times, a):
+def fit_start_date(times, cache):
+    """First day of the fit window: earliest timestamp in the fit cache if present,
+    else the start the fit window would resolve to."""
+    firsts = []
+    for d in sorted(glob.glob(os.path.join(cache, "fit", "tile_*"))):
+        fs = sorted(glob.glob(os.path.join(d, "*.nc")))
+        if fs:
+            with netCDF4.Dataset(fs[0]) as ds:
+                firsts.append(float(ds["time"][0]))
+    if firsts:
+        return (EPOCH + dt.timedelta(seconds=min(firsts))).date()
+    last_day = (EPOCH + dt.timedelta(seconds=float(times[-1]))).date()
+    return last_day - dt.timedelta(days=FORECAST_MARGIN_DAYS + 365)
+
+
+def resolve_window(times, a, cache=CACHE):
     last_day = (EPOCH + dt.timedelta(seconds=float(times[-1]))).date()
     cutoff = last_day - dt.timedelta(days=FORECAST_MARGIN_DAYS)  # last analysis day
-    main_start = cutoff - dt.timedelta(days=365)  # 366 full days incl. cutoff
     if a.validation:
-        end = a.end or main_start - dt.timedelta(days=1)
+        fit_start = fit_start_date(times, cache)
+        end = a.end or fit_start - dt.timedelta(days=1)
+        if end >= fit_start:
+            sys.exit(f"validation window ends {end}, overlapping the fit window starting {fit_start}")
         start = a.start or end - dt.timedelta(days=VALIDATION_DAYS - 1)
     else:
         end, start = a.end or cutoff, a.start
@@ -151,9 +168,21 @@ def dods(var, a, b, y0, y1, x0, x1):
     return arr.astype("i2").reshape(b - a, y1 - y0, x1 - x0)
 
 
+def unit_done(unit, times):
+    """True if the tile-month file exists and holds exactly the requested hours."""
+    _, path, idx, _ = unit
+    if not os.path.exists(path):
+        return False
+    try:
+        with netCDF4.Dataset(path) as d:
+            return np.array_equal(d["time"][:].astype("f8"), times[idx])
+    except Exception:
+        return False
+
+
 def fetch_unit(unit, times, stats):
     t, path, idx, chunks = unit
-    if os.path.exists(path):
+    if unit_done(unit, times):
         return
     y0, y1, x0, x1 = t
     U = np.empty((len(idx), y1 - y0, x1 - x0), "i2"); V = np.empty_like(U)
@@ -182,7 +211,7 @@ def fetch_unit(unit, times, stats):
 
 def run_jobs(units, times, workers):
     stats, t0 = [], time.time()
-    todo = [u for u in units if not os.path.exists(u[1])]
+    todo = [u for u in units if not unit_done(u, times)]
     done = 0
     with ThreadPoolExecutor(workers) as ex:
         for f in [ex.submit(fetch_unit, u, times, stats) for u in todo]:
@@ -218,19 +247,21 @@ def main():
         a.start, a.end, a.validation = s, s + dt.timedelta(days=1), False
         tiles = tiles[len(tiles) // 2:][:3]
         a.cache = os.path.join(a.cache, "bench")
-    start, end, i0, i1 = resolve_window(times, a)
+    start, end, i0, i1 = resolve_window(times, a, a.cache)
     outdir = os.path.join(a.cache, "validation" if a.validation else "fit")
     hours = i1 - i0
     nreq = len(tiles) * -(-hours // a.hours_per_request) * 2
     gb = sum((t[1] - t[0]) * (t[3] - t[2]) for t in tiles) * hours * 4 / 1e9  # raw int16 u+v
     print(f"window {start}..{end} hours={hours} tiles={len(tiles)} requests~{nreq} raw={gb:.1f} GB")
     if a.dry_run:
+        n = sum(not unit_done(u, times) for u in jobs(times, tiles, i0, i1, a.hours_per_request, outdir))
+        print(f"files to fetch: {n}")
         return
     if a.cmd == "bench":
         import shutil
         for w in (1, 4):  # different days per run so neither benefits from the server's warm cache
             a.start = dt.date(2025, 6, 1) + dt.timedelta(days=10 * w); a.end = a.start + dt.timedelta(days=1)
-            start, end, i0, i1 = resolve_window(times, a)
+            start, end, i0, i1 = resolve_window(times, a, a.cache)
             shutil.rmtree(outdir, ignore_errors=True)
             units = list(jobs(times, tiles, i0, i1, a.hours_per_request, outdir))
             wall, req, mb = run_jobs(units, times, w)

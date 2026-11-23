@@ -19,6 +19,7 @@ weather, the prediction is tide (+mean_offset) only.
 --no-mean zeroes mean_offset in the UTCEF copy fed to the plugin.
 """
 import argparse
+import hashlib
 import json
 import random
 import subprocess
@@ -125,6 +126,13 @@ def main():
     if not pick:
         sys.exit("nothing to validate")
 
+    # held-out samples must precede the fit window (an older cache overlapped it by a day)
+    t_cut = np.inf
+    if window == "validation":
+        fit_tiles = tile_files(args.data, "fit")
+        if fit_tiles:
+            t_cut = min(float(read_times(v[:1])[0]) for v in fit_tiles.values())
+
     # model series, tile by tile (one read per tile)
     series = {}  # j -> (times_s, U, V)
     by_tile = {}
@@ -138,6 +146,9 @@ def main():
         files = tiles[(y0, x0)]
         U, V = read_tile(files, sel)
         t = read_times(files)
+        keep = t < t_cut
+        if not keep.all():
+            U, V, t = U[keep], V[keep], t[keep]
         order = {rc: k for k, rc in enumerate(zip(*np.where(sel)))}  # raster order = read order
         for j in js:
             k = order[(cell[j][0] - y0, cell[j][1] - x0)]
@@ -147,7 +158,7 @@ def main():
     groups = {}
     for j in pick:
         t = series[j][0]
-        groups.setdefault((len(t), t[0], t[-1]), []).append(j)
+        groups.setdefault(hashlib.sha1(np.ascontiguousarray(t, dtype='f8').tobytes()).hexdigest(), []).append(j)
     pred = {}
     with tempfile.TemporaryDirectory() as td:
         p = Path(td) / args.utcef.name
