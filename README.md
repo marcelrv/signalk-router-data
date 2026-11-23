@@ -82,7 +82,7 @@ Multiple `.sqlite` files can coexist in the same directory — the plugin merges
 
 ### Other Marine Apps (OpenCPN, qtVlm, XyGrib, LuckGrib, Expedition)
 - **Forecast currents (`.grb2`):** Browse the [Interactive GRIB2 Forecast Map](https://marcelrv.github.io/signalk-router-data/?type=grib2) and download the regional `.grb2` file directly, then open it in **OpenCPN** (built-in GRIB plugin → *Current* overlay), **qtVlm** (*GRIB → Open GRIB / Currents GRIB*), **XyGrib**, **LuckGrib**, or **Expedition/Adrena**.
-- **Harmonic stations (`HARMONICS_*`):** Add directly in **OpenCPN** (*Options → Charts → Tides & Currents → Add Dataset*) or **XTide**.
+- **Harmonic stations (`HARMONICS_*` + `.IDX`):** Download both the `HARMONICS_*` data file and its matching `.IDX` companion file into the same folder, then select the `.IDX` file in **OpenCPN** (*Options → Charts → Tides & Currents → Add Dataset*) or use with **XTide**.
 
 ## Contributing
 

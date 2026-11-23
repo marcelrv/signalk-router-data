@@ -824,16 +824,16 @@ async function getUserCoordinates() {
   return { lat, lng, source: 'ip' };
 }
 
+function lonDistDeg(a, b) {
+  return Math.abs((((a - b + 180) % 360) + 360) % 360 - 180);
+}
+
 function distanceToBboxDeg(lat, lng, bbox) {
   const dLat = lat < bbox.min_lat ? bbox.min_lat - lat : (lat > bbox.max_lat ? lat - bbox.max_lat : 0);
-  let dLon = 0;
-  if (bbox.min_lon <= bbox.max_lon) {
-    dLon = lng < bbox.min_lon ? bbox.min_lon - lng : (lng > bbox.max_lon ? lng - bbox.max_lon : 0);
-  } else {
-    // Antimeridian-crossing bbox
-    const inside = lng >= bbox.min_lon || lng <= bbox.max_lon;
-    if (!inside) dLon = Math.min(Math.abs(bbox.min_lon - lng), Math.abs(lng - bbox.max_lon));
-  }
+  const insideLon = bbox.min_lon <= bbox.max_lon
+    ? (lng >= bbox.min_lon && lng <= bbox.max_lon)
+    : (lng >= bbox.min_lon || lng <= bbox.max_lon);
+  const dLon = insideLon ? 0 : Math.min(lonDistDeg(lng, bbox.min_lon), lonDistDeg(lng, bbox.max_lon));
   return Math.hypot(dLat, dLon);
 }
 
@@ -943,7 +943,7 @@ function openDetailModal(item) {
       oStrong.textContent = 'Use in OpenCPN & XTide: ';
       other.append(
         oStrong,
-        'Standard XTide ASCII harmonics file. Download and add it under OpenCPN → Options → Charts → Tides & Currents → Add Dataset.'
+        'Standard OpenCPN/XTide harmonics pair. Download both the HARMONICS_* data file and its matching .IDX file into the same folder, then add the .IDX file under OpenCPN → Options → Charts → Tides & Currents → Add Dataset.'
       );
       other.appendChild(document.createElement('br'));
       const guideLink = el('button', 'inline-guide-btn');
