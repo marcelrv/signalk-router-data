@@ -1,8 +1,8 @@
 {
   "catalog_schema_version": "1.0.0",
   "version": 1,
-  "generated": "2026-11-22T16:38:04Z",
-  "source_count": 88,
+  "generated": "2026-11-23T09:23:34Z",
+  "source_count": 89,
   "sources": [
     {
       "id": "bsh_currents",
@@ -424,8 +424,8 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-22T16:37:32Z",
-        "latest_cycle": "2026-11-22T00:00:00Z"
+        "last_checked": "2026-11-23T09:23:05Z",
+        "latest_cycle": "2026-11-23T00:00:00Z"
       },
       "files": [
         {
@@ -2562,7 +2562,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-22T16:37:32Z"
+        "last_checked": "2026-11-23T09:23:05Z"
       },
       "files": [
         {
@@ -3004,7 +3004,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-22T16:37:32Z"
+        "last_checked": "2026-11-23T09:23:05Z"
       },
       "files": [
         {
@@ -3733,7 +3733,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-22T16:37:32Z"
+        "last_checked": "2026-11-23T09:23:05Z"
       },
       "files": [
         {
@@ -4469,7 +4469,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 12,
-        "last_checked": "2026-11-22T16:37:32Z"
+        "last_checked": "2026-11-23T09:23:05Z"
       },
       "files": [
         {
@@ -4857,6 +4857,304 @@
             "07",
             "13",
             "19"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "norkyst",
+      "source": "met_norway",
+      "type": "grib2",
+      "name": "Surface Current Forecasts \u2014 Norwegian Coast (MET Norway NorKyst v3)",
+      "description": "Gridded surface current forecasts (tide + weather + river forcing) for the Norwegian coast and fjords, extracted from the MET Norway NorKyst v3 (ROMS, 800 m) ocean model, regridded to a regular lat/lon grid and re-encoded as compact GRIB2 by signalk-router-data scripts (https://github.com/marcelrv/signalk-router-data). Open sea far from land is left out to keep files small. Based on data from the Norwegian Meteorological Institute (MET Norway), licensed CC-BY-4.0; this repackaging is NOT an official MET Norway product and is not endorsed by MET Norway. Not for official navigation.",
+      "contributor": "Norwegian Meteorological Institute (MET Norway)",
+      "url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
+      "tags": [
+        "grib2",
+        "regional",
+        "gridded",
+        "forecast",
+        "met-norway",
+        "norkyst",
+        "ocean-currents",
+        "daily",
+        "europe",
+        "norway"
+      ],
+      "region": {
+        "name": "Norway \u2014 Skagerrak to Finnmark",
+        "bounding_box": {
+          "min_lat": 57.8,
+          "min_lon": 4.0,
+          "max_lat": 71.5,
+          "max_lon": 31.5
+        },
+        "boundary_geometry": {
+          "type": "MultiPolygon",
+          "coordinates": [
+            [
+              [
+                [
+                  5.5,
+                  57.8
+                ],
+                [
+                  11.5,
+                  57.8
+                ],
+                [
+                  11.5,
+                  60.2
+                ],
+                [
+                  5.5,
+                  60.2
+                ],
+                [
+                  5.5,
+                  57.8
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  4.0,
+                  58.8
+                ],
+                [
+                  11.0,
+                  58.8
+                ],
+                [
+                  11.0,
+                  64.0
+                ],
+                [
+                  4.0,
+                  64.0
+                ],
+                [
+                  4.0,
+                  58.8
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  9.5,
+                  63.7
+                ],
+                [
+                  17.0,
+                  63.7
+                ],
+                [
+                  17.0,
+                  68.0
+                ],
+                [
+                  9.5,
+                  68.0
+                ],
+                [
+                  9.5,
+                  63.7
+                ]
+              ]
+            ],
+            [
+              [
+                [
+                  12.0,
+                  67.5
+                ],
+                [
+                  31.5,
+                  67.5
+                ],
+                [
+                  31.5,
+                  71.5
+                ],
+                [
+                  12.0,
+                  71.5
+                ],
+                [
+                  12.0,
+                  67.5
+                ]
+              ]
+            ]
+          ]
+        }
+      },
+      "update_check": {
+        "method": "expiry",
+        "max_age_hours": 24,
+        "last_checked": "2026-11-23T09:23:05Z"
+      },
+      "files": [
+        {
+          "region_id": "norkyst_south",
+          "name": "Skagerrak, Oslofjord & S\u00f8rlandet",
+          "description": "Surface current forecasts for the Skagerrak, the Oslofjord and the S\u00f8rlandet coast of southern Norway.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  5.5,
+                  57.8
+                ],
+                [
+                  11.5,
+                  57.8
+                ],
+                [
+                  11.5,
+                  60.2
+                ],
+                [
+                  5.5,
+                  60.2
+                ],
+                [
+                  5.5,
+                  57.8
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/norkyst-currents-latest/norkyst_south_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "norkyst_west",
+          "name": "West coast: Stavanger \u2013 Bergen \u2013 \u00c5lesund \u2013 Trondheim",
+          "description": "Surface current forecasts for the west coast of Norway: Stavanger, Bergen, the Sognefjord, \u00c5lesund and the Trondheimsfjord.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  4.0,
+                  58.8
+                ],
+                [
+                  11.0,
+                  58.8
+                ],
+                [
+                  11.0,
+                  64.0
+                ],
+                [
+                  4.0,
+                  64.0
+                ],
+                [
+                  4.0,
+                  58.8
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/norkyst-currents-latest/norkyst_west_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "norkyst_nordland",
+          "name": "Helgeland \u2013 Bod\u00f8 \u2013 Lofoten",
+          "description": "Surface current forecasts for Helgeland, Bod\u00f8, the Saltstraumen approach and the Lofoten islands.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  9.5,
+                  63.7
+                ],
+                [
+                  17.0,
+                  63.7
+                ],
+                [
+                  17.0,
+                  68.0
+                ],
+                [
+                  9.5,
+                  68.0
+                ],
+                [
+                  9.5,
+                  63.7
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/norkyst-currents-latest/norkyst_nordland_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
+          ]
+        },
+        {
+          "region_id": "norkyst_north",
+          "name": "Vester\u00e5len \u2013 Troms\u00f8 \u2013 Finnmark",
+          "description": "Surface current forecasts for Vester\u00e5len, Troms\u00f8 and the Finnmark coast to the Russian border.",
+          "boundary_geometry": {
+            "type": "Polygon",
+            "coordinates": [
+              [
+                [
+                  12.0,
+                  67.5
+                ],
+                [
+                  31.5,
+                  67.5
+                ],
+                [
+                  31.5,
+                  71.5
+                ],
+                [
+                  12.0,
+                  71.5
+                ],
+                [
+                  12.0,
+                  67.5
+                ]
+              ]
+            ]
+          },
+          "type": "forecast",
+          "url_template": "https://github.com/marcelrv/signalk-router-data/releases/download/norkyst-currents-latest/norkyst_north_currents.grb2",
+          "forecast_hours": [
+            0
+          ],
+          "cycle_hours": [
+            "00"
           ]
         }
       ]
@@ -5255,7 +5553,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 24,
-        "last_checked": "2026-11-22T16:37:32Z"
+        "last_checked": "2026-11-23T09:23:05Z"
       },
       "files": [
         {
@@ -5957,7 +6255,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:37:33Z"
+        "last_checked": "2026-11-23T09:23:07Z"
       },
       "files": [
         {
@@ -6060,7 +6358,7 @@
       "update_check": {
         "method": "expiry",
         "max_age_hours": 12,
-        "last_checked": "2026-11-22T16:37:33Z"
+        "last_checked": "2026-11-23T09:23:07Z"
       },
       "files": [
         {
@@ -6200,7 +6498,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6263,7 +6561,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6326,7 +6624,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6389,7 +6687,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6452,7 +6750,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6515,7 +6813,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6578,7 +6876,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6641,7 +6939,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6704,7 +7002,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6767,7 +7065,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6830,7 +7128,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6893,7 +7191,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -6956,7 +7254,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7019,7 +7317,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7082,7 +7380,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7145,7 +7443,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7208,7 +7506,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7271,7 +7569,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7334,7 +7632,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7397,7 +7695,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7460,7 +7758,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7523,7 +7821,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7586,7 +7884,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7649,7 +7947,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7712,7 +8010,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7779,7 +8077,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7842,7 +8140,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7905,7 +8203,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -7968,7 +8266,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8035,7 +8333,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8098,7 +8396,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8161,7 +8459,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8224,7 +8522,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8287,7 +8585,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8350,7 +8648,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8413,7 +8711,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8476,7 +8774,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8539,7 +8837,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8602,7 +8900,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8665,7 +8963,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8728,7 +9026,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8791,7 +9089,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8854,7 +9152,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8917,7 +9215,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -8980,7 +9278,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9046,7 +9344,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9112,7 +9410,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9177,7 +9475,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9242,7 +9540,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9307,7 +9605,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9372,7 +9670,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9437,7 +9735,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9502,7 +9800,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9565,7 +9863,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9628,7 +9926,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9691,7 +9989,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9754,7 +10052,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9817,7 +10115,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9880,7 +10178,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -9943,7 +10241,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10006,7 +10304,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10069,7 +10367,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10132,7 +10430,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10195,7 +10493,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10258,7 +10556,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10321,7 +10619,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10384,7 +10682,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10447,7 +10745,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10510,7 +10808,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10573,7 +10871,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10636,7 +10934,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10699,7 +10997,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10762,7 +11060,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10825,7 +11123,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10888,7 +11186,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -10951,7 +11249,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -11014,7 +11312,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -11077,7 +11375,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -11140,7 +11438,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {
@@ -11203,7 +11501,7 @@
       },
       "update_check": {
         "method": "sha256",
-        "last_checked": "2026-11-22T16:38:04Z"
+        "last_checked": "2026-11-23T09:23:34Z"
       },
       "files": [
         {

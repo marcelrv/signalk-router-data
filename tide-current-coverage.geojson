@@ -6854,6 +6854,174 @@
         "coordinates": [
           [
             [
+              5.5,
+              57.8
+            ],
+            [
+              11.5,
+              57.8
+            ],
+            [
+              11.5,
+              60.2
+            ],
+            [
+              5.5,
+              60.2
+            ],
+            [
+              5.5,
+              57.8
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Skagerrak, Oslofjord & S\u00f8rlandet",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Norwegian Meteorological Institute (MET Norway)",
+        "description": "Surface current forecasts for the Skagerrak, the Oslofjord and the S\u00f8rlandet coast of southern Norway.",
+        "info_url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              4.0,
+              58.8
+            ],
+            [
+              11.0,
+              58.8
+            ],
+            [
+              11.0,
+              64.0
+            ],
+            [
+              4.0,
+              64.0
+            ],
+            [
+              4.0,
+              58.8
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "West coast: Stavanger \u2013 Bergen \u2013 \u00c5lesund \u2013 Trondheim",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Norwegian Meteorological Institute (MET Norway)",
+        "description": "Surface current forecasts for the west coast of Norway: Stavanger, Bergen, the Sognefjord, \u00c5lesund and the Trondheimsfjord.",
+        "info_url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              9.5,
+              63.7
+            ],
+            [
+              17.0,
+              63.7
+            ],
+            [
+              17.0,
+              68.0
+            ],
+            [
+              9.5,
+              68.0
+            ],
+            [
+              9.5,
+              63.7
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Helgeland \u2013 Bod\u00f8 \u2013 Lofoten",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Norwegian Meteorological Institute (MET Norway)",
+        "description": "Surface current forecasts for Helgeland, Bod\u00f8, the Saltstraumen approach and the Lofoten islands.",
+        "info_url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              12.0,
+              67.5
+            ],
+            [
+              31.5,
+              67.5
+            ],
+            [
+              31.5,
+              71.5
+            ],
+            [
+              12.0,
+              71.5
+            ],
+            [
+              12.0,
+              67.5
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Vester\u00e5len \u2013 Troms\u00f8 \u2013 Finnmark",
+        "category": "Forecast currents (tide + weather)",
+        "provider": "Norwegian Meteorological Institute (MET Norway)",
+        "description": "Surface current forecasts for Vester\u00e5len, Troms\u00f8 and the Finnmark coast to the Russian border.",
+        "info_url": "https://thredds.met.no/thredds/catalog/fou-hi/norkystv3.html?dataset=norkystv3_800m_m00_be",
+        "stroke": "#22c55e",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#22c55e",
+        "fill-opacity": 0.45
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -123.1,
               37.4
             ],
