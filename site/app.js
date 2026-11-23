@@ -732,14 +732,15 @@ function openInspectorModal(lat, lng, hits, { nearby = [], subtitlePrefix = '' }
 // "Near Me" Geolocation (Browser GPS with HTTPS/IP fallback)
 // --------------------------------------------------------------------------
 
-async function locateUser() {
+async function locateUser({ forceIp = false } = {}) {
   const btn = document.getElementById('near-me-btn');
-  const origLabel = btn.textContent;
+  const origLabel = '📍 Near me';
   btn.disabled = true;
   btn.textContent = '📍 Locating…';
+  hideMapToast();
 
   try {
-    const loc = await getUserCoordinates();
+    const loc = forceIp ? await fetchIpCoordinates() : await getUserCoordinates();
     state.userLocation = loc;
 
     if (userMarker) map.removeLayer(userMarker);
@@ -784,10 +785,53 @@ async function locateUser() {
       openInspectorModal(loc.lat, loc.lng, hits, { nearby, subtitlePrefix: prefix });
     }, 650);
   } catch (err) {
-    alert(`Could not determine your location: ${err.message}`);
+    if (err?.code === 'PERMISSION_DENIED') {
+      showMapToast('Browser location is blocked.', {
+        actionLabel: 'Use IP location',
+        onAction: () => locateUser({ forceIp: true }),
+      });
+    } else {
+      showMapToast(err?.message || 'Could not determine your location.');
+    }
   } finally {
     btn.disabled = false;
     btn.textContent = origLabel;
+  }
+}
+
+let toastTimer = null;
+
+function showMapToast(message, { actionLabel, onAction, timeoutMs = 10000 } = {}) {
+  const toast = document.getElementById('map-toast');
+  const text = document.getElementById('map-toast-text');
+  const actionBtn = document.getElementById('map-toast-action');
+  if (!toast || !text || !actionBtn) return;
+
+  if (toastTimer) clearTimeout(toastTimer);
+  text.textContent = message;
+
+  if (actionLabel && onAction) {
+    actionBtn.textContent = actionLabel;
+    actionBtn.hidden = false;
+    actionBtn.onclick = () => {
+      hideMapToast();
+      onAction();
+    };
+  } else {
+    actionBtn.hidden = true;
+    actionBtn.onclick = null;
+  }
+
+  toast.hidden = false;
+  toastTimer = setTimeout(hideMapToast, timeoutMs);
+}
+
+function hideMapToast() {
+  const toast = document.getElementById('map-toast');
+  if (toast) toast.hidden = true;
+  if (toastTimer) {
+    clearTimeout(toastTimer);
+    toastTimer = null;
   }
 }
 
@@ -804,15 +848,21 @@ async function getUserCoordinates() {
       });
       return { lat: pos.coords.latitude, lng: pos.coords.longitude, source: 'gps' };
     } catch (err) {
-      // Respect explicit user denial: do not fall back to third-party IP lookup
+      // Respect explicit user denial: surface an opt-in toast instead of silent IP lookup
       if (err && err.code === 1) {
-        throw new Error('Location permission was denied.');
+        const denied = new Error('Location permission was denied.');
+        denied.code = 'PERMISSION_DENIED';
+        throw denied;
       }
       // Fall through to approximate IP lookup on timeout / position unavailable
     }
   }
 
   // 2. Fallback when browser geolocation is unavailable or times out (e.g. desktop without GPS)
+  return fetchIpCoordinates();
+}
+
+async function fetchIpCoordinates() {
   const res = await fetch('https://get.geojs.io/v1/ip/geo.json');
   if (!res.ok) throw new Error('Location service unavailable');
   const data = await res.json();
@@ -1129,8 +1179,9 @@ function bindUI() {
     applyFilters();
   });
 
-  // Near me geolocation
+  // Near me geolocation & toast dismiss
   document.getElementById('near-me-btn').addEventListener('click', () => locateUser());
+  document.getElementById('map-toast-close').addEventListener('click', () => hideMapToast());
 
   // Seamarks overlay toggle
   const seamarksBtn = document.getElementById('seamarks-toggle');
