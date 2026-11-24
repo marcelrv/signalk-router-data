@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const loaded = await loadCatalogs();
   if (!loaded) return;
   syncCatalogUI();
-  applyFilters({ fitMap: state.activeCatalog === 'routing' });
+  applyFilters({ fitMap: true });
 });
 
 function initTheme() {
@@ -98,10 +98,12 @@ function getTypeColor(type) {
 function initMap() {
   map = L.map('map', {
     center: [25, 0],
-    zoom: 2,
+    zoom: 2.5,
     minZoom: 2,
     maxZoom: 16,
-    maxBounds: [[-85, -180], [85, 180]],
+    zoomSnap: 0.25,
+    zoomDelta: 0.5,
+    maxBounds: [[-65, -180], [78, 180]],
     maxBoundsViscosity: 0.9,
   });
 
@@ -603,7 +605,7 @@ function renderMapPolygons(fitMap = false) {
   }
 
   if (fitMap && nonGlobalBounds.isValid()) {
-    map.fitBounds(nonGlobalBounds, { padding: [32, 32], maxZoom: 8 });
+    map.fitBounds(nonGlobalBounds, { padding: [16, 16], maxZoom: 8 });
   }
 }
 
@@ -1150,7 +1152,7 @@ function bindUI() {
         else state.activeTypes.add(type);
       }
       syncTypePillUI();
-      applyFilters();
+      applyFilters({ fitMap: true });
     });
   });
   syncTypePillUI();
