@@ -10,7 +10,7 @@ Output: <cache>/<fit|validation>/tile_YYY_XXX/YYYY-MM.nc (int16 u/v, scale attrs
 """
 import argparse, datetime as dt, glob, os, sys, time, urllib.parse, urllib.request
 import threading
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import numpy as np
 import netCDF4
 from scipy import ndimage
@@ -214,7 +214,7 @@ def run_jobs(units, times, workers):
     with ThreadPoolExecutor(workers) as ex:
         futs = [ex.submit(fetch_unit, u, times, stats) for u in todo]
         try:
-            for f in futs:
+            for f in as_completed(futs):  # completion order, so a failure is seen at once
                 f.result()
                 done += 1
                 if done % 10 == 0 or done == len(todo):
