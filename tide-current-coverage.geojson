@@ -1184,6 +1184,48 @@
         "coordinates": [
           [
             [
+              4.0,
+              57.8
+            ],
+            [
+              31.5,
+              57.8
+            ],
+            [
+              31.5,
+              71.5
+            ],
+            [
+              4.0,
+              71.5
+            ],
+            [
+              4.0,
+              57.8
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "region": "Norwegian Coast \u2014 High-Density Tidal Streams (NorKyst v3) (TEST)",
+        "category": "Predicted currents (astronomical, no weather)",
+        "provider": "Model data: Norwegian Meteorological Institute (MET Norway), NorKyst v3. Harmonic analysis and point placement: signalk-router-data. Point positions chosen with EMODnet vessel density (Cogea Srl).",
+        "description": "TEST RELEASE: experimental, validate before relying on it. Tidal stream harmonics derived by harmonic analysis of MET Norway's NorKyst v3 800 m ocean model (surface current, hourly, thredds.met.no fou-hi/norkystv3_800m_m00_be) over 2025-11-21 \u2013 2026-11-21 (366 days), for four areas: Skagerrak, Oslofjord & S\u00f8rlandet; the west coast from Stavanger via Bergen and \u00c5lesund to Trondheim; Helgeland, Bod\u00f8 & Lofoten; Vester\u00e5len, Troms\u00f8 & Finnmark. Fitted: M2, S2, K1, O1, M4, MS4, M6, N2, K2, P1, Q1, MN4, S4, M8, MK3, M3, NU2, L2, 2N2, MU2, 2SM2, S6, MSF, MM, MF. Point positions follow leisure-vessel traffic density (EMODnet Human Activities, used only to choose where points go) and are denser where the stream changes quickly. Straits narrower than the model's 800 m grid (for example Saltstraumen and Rystraumen) are land in the model and carry no current. Gives the tide plus the yearly mean surface flow only: along much of the coast, and above all in the Skagerrak and Oslofjord, the surface current is driven mostly by wind and the Norwegian Coastal Current, so the actual current can be much stronger; use a current forecast there. Surface current of a numerical model: not for official navigation, not an official product of MET Norway or the Norwegian Hydrographic Service and not endorsed by them; no liability is accepted for errors or for incidents resulting from its use.",
+        "info_url": "https://thredds.met.no/",
+        "stroke": "#f59e0b",
+        "stroke-width": 1,
+        "stroke-opacity": 0.7,
+        "fill": "#f59e0b",
+        "fill-opacity": 0.1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
               -4.0,
               50.5
             ],
