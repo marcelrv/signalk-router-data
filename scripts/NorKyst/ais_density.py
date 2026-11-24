@@ -48,7 +48,10 @@ def fetch_types(ais, types, years):
             os.makedirs(os.path.dirname(zp), exist_ok=True)
             if not os.path.exists(zp):
                 print("downloading", zp, file=sys.stderr)
-                urllib.request.urlretrieve(BASE + os.path.basename(zp), zp)
+                part = zp + ".part"  # a cut-off download must not look finished
+                with urllib.request.urlopen(BASE + os.path.basename(zp), timeout=120) as r, open(part, "wb") as fh:
+                    shutil.copyfileobj(r, fh)
+                os.replace(part, zp)
             tmp = d + ".tmp"
             shutil.rmtree(tmp, ignore_errors=True)
             os.makedirs(tmp)

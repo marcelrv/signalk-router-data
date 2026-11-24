@@ -181,9 +181,7 @@ def unit_done(unit, times):
 
 
 def fetch_unit(unit, times, stats):
-    t, path, idx, chunks = unit
-    if unit_done(unit, times):
-        return
+    t, path, idx, chunks = unit  # run_jobs already skipped finished units (netCDF reads need NC_LOCK)
     y0, y1, x0, x1 = t
     U = np.empty((len(idx), y1 - y0, x1 - x0), "i2"); V = np.empty_like(U)
     pos = 0
@@ -214,11 +212,17 @@ def run_jobs(units, times, workers):
     todo = [u for u in units if not unit_done(u, times)]
     done = 0
     with ThreadPoolExecutor(workers) as ex:
-        for f in [ex.submit(fetch_unit, u, times, stats) for u in todo]:
-            f.result()
-            done += 1
-            if done % 10 == 0 or done == len(todo):
-                log(f"{done}/{len(todo)} files, {time.time() - t0:.0f}s")
+        futs = [ex.submit(fetch_unit, u, times, stats) for u in todo]
+        try:
+            for f in futs:
+                f.result()
+                done += 1
+                if done % 10 == 0 or done == len(todo):
+                    log(f"{done}/{len(todo)} files, {time.time() - t0:.0f}s")
+        except BaseException:  # a failed unit or Ctrl-C: drop the queue, let running units finish
+            for f in futs:
+                f.cancel()
+            raise
     wall = time.time() - t0
     req = sum(s[0] for s in stats); mb = sum(s[1] for s in stats) / 1e6
     return wall, req, mb
